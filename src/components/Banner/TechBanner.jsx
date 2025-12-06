@@ -86,6 +86,128 @@ const TechBanner = () => {
     }
   ];
 
+  const carouselRef = React.useRef(null);
+  const positionRef = React.useRef(0);
+  const isDraggingRef = React.useRef(false);
+  const startXRef = React.useRef(0);
+  const animationRef = React.useRef(null);
+  const lastTimeRef = React.useRef(0);
+  const isHoveredRef = React.useRef(false);
+
+  // Speed of auto-scroll (pixels per millisecond)
+  const SPEED = 0.005; 
+
+  const animate = React.useCallback((time) => {
+    if (!lastTimeRef.current) lastTimeRef.current = time;
+    const delta = time - lastTimeRef.current;
+    lastTimeRef.current = time;
+
+    if (!isDraggingRef.current && !isHoveredRef.current && carouselRef.current) {
+      // Move left
+      positionRef.current -= SPEED * delta;
+      
+      // Check for wrap-around
+      // We are scrolling a container that has 2 sets of items.
+      // When we have scrolled past the first set (50%), we reset to 0.
+      // The width of the content is what matters.
+      // Let's assume the container width is 100% of the visible area? No, the container is much wider.
+      // We are translating by percentage of the carousel's width.
+      // The carousel contains 2 sets. So -50% is exactly the end of the first set.
+      
+      if (positionRef.current <= -50) {
+        positionRef.current = 0;
+      }
+      
+      carouselRef.current.style.transform = `translateX(${positionRef.current}%)`;
+    }
+    
+    animationRef.current = requestAnimationFrame(animate);
+  }, []);
+
+  React.useEffect(() => {
+    animationRef.current = requestAnimationFrame(animate);
+    return () => cancelAnimationFrame(animationRef.current);
+  }, [animate]);
+
+  const handleMouseDown = (e) => {
+    isDraggingRef.current = true;
+    startXRef.current = e.pageX;
+    carouselRef.current.style.cursor = 'grabbing';
+  };
+
+  const handleTouchStart = (e) => {
+    isDraggingRef.current = true;
+    startXRef.current = e.touches[0].pageX;
+  };
+
+  const handleMouseMove = (e) => {
+    if (!isDraggingRef.current) return;
+    e.preventDefault();
+    
+    const x = e.pageX;
+    const walk = x - startXRef.current;
+    startXRef.current = x;
+    
+    // Convert pixel movement to percentage
+    // We need the total width of the carousel element
+    if (carouselRef.current) {
+      const width = carouselRef.current.offsetWidth;
+      const percentageMove = (walk / width) * 100;
+      
+      positionRef.current += percentageMove;
+      
+      // Handle wrapping during drag
+      if (positionRef.current > 0) {
+        positionRef.current = -50;
+      } else if (positionRef.current <= -50) {
+        positionRef.current = 0;
+      }
+      
+      carouselRef.current.style.transform = `translateX(${positionRef.current}%)`;
+    }
+  };
+
+  const handleTouchMove = (e) => {
+    if (!isDraggingRef.current) return;
+    
+    const x = e.touches[0].pageX;
+    const walk = x - startXRef.current;
+    startXRef.current = x;
+    
+    if (carouselRef.current) {
+      const width = carouselRef.current.offsetWidth;
+      const percentageMove = (walk / width) * 100;
+      
+      positionRef.current += percentageMove;
+      
+      if (positionRef.current > 0) {
+        positionRef.current = -50;
+      } else if (positionRef.current <= -50) {
+        positionRef.current = 0;
+      }
+      
+      carouselRef.current.style.transform = `translateX(${positionRef.current}%)`;
+    }
+  };
+
+  const handleDragEnd = () => {
+    isDraggingRef.current = false;
+    if (carouselRef.current) {
+      carouselRef.current.style.cursor = 'grab';
+    }
+  };
+
+  const handleMouseEnter = () => {
+    isHoveredRef.current = true;
+  };
+
+  const handleMouseLeave = () => {
+    isHoveredRef.current = false;
+    if (isDraggingRef.current) {
+      handleDragEnd();
+    }
+  };
+
   return (
     <section className="tech-banner">
       <div className="banner-container">
@@ -94,7 +216,18 @@ const TechBanner = () => {
         <div className="gradient-right"></div>
         
         {/* Carousel container */}
-        <div className="carousel">
+        <div 
+          className="carousel" 
+          ref={carouselRef}
+          onMouseDown={handleMouseDown}
+          onMouseLeave={handleMouseLeave}
+          onMouseUp={handleDragEnd}
+          onMouseMove={handleMouseMove}
+          onTouchStart={handleTouchStart}
+          onTouchEnd={handleDragEnd}
+          onTouchMove={handleTouchMove}
+          onMouseEnter={handleMouseEnter}
+        >
           {/* First set of technologies */}
           {technologies.map((tech, index) => (
             <div key={`first-${index}`} className="tech-item">
