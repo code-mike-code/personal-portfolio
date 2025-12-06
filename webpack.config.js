@@ -60,6 +60,7 @@ module.exports = {
     hot: true,
     port: 3001,
     open: true,
+    allowedHosts: 'all', // Allow ngrok tunneling
   },
   mode: 'development',
 };
