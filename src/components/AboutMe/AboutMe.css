@@ -1,0 +1,16 @@
+.about-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    margin-bottom: 4rem;
+}
+.about-content {
+    max-width: 1280px;
+}
+.text-1 {
+    text-align: start;
+}
+.text-2 {
+    text-align: end;
+}

@@ -1,0 +1,122 @@
+/* Tech Banner Styles */
+
+.tech-banner {
+  width: 100%;
+  height: 20vh;
+  min-height: 0;
+  margin: 0 auto;
+  background-color: #000000;
+  padding: 4rem 0;
+  overflow: hidden;
+}
+
+.banner-container {
+  position: relative;
+}
+
+.gradient-left {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 8rem;
+  background: linear-gradient(to right, #000000, transparent);
+  z-index: 10;
+}
+
+.gradient-right {
+  position: absolute;
+  right: 0;
+  top: 0;
+  height: 100%;
+  width: 8rem;
+  background: linear-gradient(to left, #000000, transparent);
+  z-index: 10;
+}
+
+.carousel {
+  display: flex;
+  animation: scroll 30s linear infinite;
+}
+
+.carousel:hover {
+  animation-play-state: paused;
+}
+
+.tech-item {
+  flex-shrink: 0;
+  margin: 0 4rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.icon-container {
+  color: #ffffff;
+  margin-bottom: 1rem;
+  transition: all 0.3s ease;
+}
+
+.icon-container:hover {
+  transform: scale(1.2);
+}
+
+.tech-icon {
+  width: 3.4rem;
+  height: 3.4rem;
+}
+
+.tech-name {
+  color: #ffffff;
+  font-size: 0.875rem;
+  font-weight: 500;
+  letter-spacing: 0.025em;
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@media (max-width: 768px) {
+  .tech-banner {
+    padding: 2rem 0;
+  }
+  
+  .tech-item {
+    margin: 0 3rem;
+  }
+  
+  .tech-icon {
+    width: 2.8rem;
+    height: 2.8rem;
+  }
+  
+  .tech-name {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .tech-banner {
+    padding: 1.5rem 0;
+  }
+  
+  .tech-item {
+    margin: 0 2rem;
+  }
+  
+  .tech-icon {
+    width: 2.2rem;
+    height: 2.2rem;
+  }
+  
+  .gradient-left,
+  .gradient-right {
+    width: 4rem;
+  }
+}

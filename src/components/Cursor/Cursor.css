@@ -1,0 +1,111 @@
+/* Cursor element styles */
+
+.custom-cursor {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 28px;
+  height: 28px;
+  margin-left: -14px;
+  margin-top: -14px;
+  border-radius: 50%;
+  border: 0.2px solid rgba(0,0,0,0.12);
+  pointer-events: none;
+  background: rgba(255,255,255,1);
+  z-index: 10001;
+  transform: translate3d(0,0,0) scale(1);
+  transition: transform 0.12s cubic-bezier(.2,.9,.2,1), opacity 0.12s, background 0.12s, box-shadow 0.12s;
+  opacity: 0;
+  box-shadow: 0 0 48px 18px rgba(255,255,255,0.12), 0 0 22px 8px rgba(255,255,255,0.18);
+  mix-blend-mode: difference;
+  will-change: transform, opacity, left, top, background;
+}
+
+.custom-cursor--visible { 
+  opacity: 1; 
+}
+
+.custom-cursor--invert {
+  background: rgba(255,255,255,1);
+  transform: translate3d(0,0,0) scale(1.12);
+  box-shadow: 0 0 60px 22px rgba(255,255,255,0.2);
+  mix-blend-mode: difference;
+}
+
+.custom-cursor--accent {
+  mix-blend-mode: difference;
+  background: rgba(255,255,255,1);
+  transform: translate3d(0,0,0) scale(1.18);
+  box-shadow:
+    0 0 28px 8px rgba(231,76,60,0.18),
+    0 0 80px 28px rgba(231,76,60,0.12);
+  border-color: rgba(0,0,0,0.08);
+}
+
+.header-lit { position: relative; z-index: 1002; }
+.header-lit::after {
+  content: "";
+  position: absolute;
+  left: 6%;
+  right: 6%;
+  bottom: -6px;
+  height: 10px;
+  pointer-events: none;
+  border-radius: 6px;
+  background: linear-gradient(0deg, rgba(255,255,255,0.28), rgba(255,255,255,0.06) 40%, rgba(255,255,255,0));
+  filter: blur(6px);
+  transform: translateY(6px);
+  transition: opacity 0.18s ease, transform 0.18s ease;
+  opacity: 1;
+  mix-blend-mode: screen;
+}
+
+.accent-lit {
+  position: relative;
+  z-index: 1002;
+  background-color: #e74c3c !important;
+  color: #fff !important;
+  transition: background 0.18s ease, color 0.18s ease, transform 0.12s;
+  transform: translateY(-2px);
+}
+
+.accent-lit::after {
+  content: "";
+  position: absolute;
+  left: 8%;
+  right: 8%;
+  bottom: -8px;
+  height: 12px;
+  pointer-events: none;
+  border-radius: 8px;
+  background: linear-gradient(0deg, rgba(231,76,60,0.28), rgba(231,76,60,0.06) 40%, rgba(231,76,60,0));
+  filter: blur(8px);
+  transform: translateY(6px);
+  transition: opacity 0.18s ease, transform 0.18s ease;
+  opacity: 1;
+  mix-blend-mode: screen;
+}
+
+@media (pointer: fine) and (hover: hover) {
+  html, 
+  body, 
+  * {
+    cursor: none;
+  }
+  input, 
+  textarea, 
+  select, 
+  button { 
+    cursor: auto; 
+  }
+}
+
+@media (pointer: coarse), (max-width: 900px) {
+  .custom-cursor { 
+    display: none; 
+  }
+  .header-lit::after, 
+  .accent-lit::after { 
+    display: none; 
+  }
+}

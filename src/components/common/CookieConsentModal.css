@@ -1,0 +1,149 @@
+/* CookieConsentModal.css */
+
+.ccm-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.ccm-modal {
+  max-width: 480px;
+  width: 90%;
+  background: #0b0b0d;
+  color: #f9f9f9;
+  border-radius: 18px;
+  padding: 24px 22px 20px;
+  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.6);
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
+    "Segoe UI", sans-serif;
+}
+
+.ccm-title {
+  margin: 0 0 10px;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.ccm-text {
+  margin: 0 0 18px;
+  font-size: 14px;
+  line-height: 1.5;
+  color: #d4d4d4;
+}
+
+.ccm-link {
+  color: #4ea8ff;
+  text-decoration: underline;
+}
+
+.ccm-link:hover {
+  text-decoration: none;
+}
+
+/* Toggle row */
+.ccm-toggle-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 18px;
+}
+
+.ccm-label-left,
+.ccm-label-right {
+  font-size: 13px;
+  color: #e5e5e5;
+}
+
+/* Slider-pil jak w iOS, trochę większy */
+.ccm-toggle {
+  position: relative;
+  width: 80px;
+  height: 34px;
+  border-radius: 999px;
+  border: 1px solid #444;
+  background: #111;
+  padding: 2px;
+  cursor: none;
+  display: inline-flex;
+  align-items: center;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.ccm-toggle-accept {
+  background: #ffffff;
+  border-color: #ffffff;
+}
+
+.ccm-toggle-decline {
+  background: #000000;
+  border-color: #777777;
+}
+
+.ccm-toggle-pill {
+  position: relative;
+  width: 30px;
+  height: 30px;
+  border-radius: 999px;
+  background: #000000;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.45);
+  transform: translateX(0);
+  transition: transform 0.22s ease, background 0.22s ease;
+}
+
+/* Gdy Accept (biały background) – pil przesuwa się w prawo i jest czarny */
+.ccm-toggle-accept .ccm-toggle-pill {
+  transform: translateX(44px);
+  background: #000000;
+}
+
+/* Gdy Decline (czarny background) – pil zostaje po lewej, biały */
+.ccm-toggle-decline .ccm-toggle-pill {
+  transform: translateX(0);
+  background: #ffffff;
+}
+
+/* Buttons */
+.ccm-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.ccm-btn {
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 500;
+  padding: 8px 16px;
+  border: 1px solid transparent;
+  cursor: none;
+  transition: background 0.18s ease, color 0.18s ease, border-color 0.18s ease,
+    transform 0.08s ease;
+}
+
+.ccm-btn:active {
+  transform: scale(0.97);
+}
+
+.ccm-btn-accept {
+  background: #ffffff;
+  color: #000000;
+}
+
+.ccm-btn-accept:hover {
+  background: #f3f3f3;
+}
+
+.ccm-btn-decline {
+  background: transparent;
+  color: #f5f5f5;
+  border-color: #555;
+}
+
+.ccm-btn-decline:hover {
+  background: #1a1a1a;
+}

@@ -1,0 +1,214 @@
+/* Contact section layout */
+
+.contact-section {
+  height: 100vh;
+  width: 100vw;
+  box-sizing: border-box;
+  background: transparent;
+  margin-bottom: 4rem;
+}
+
+.contact-container {
+  height: 90vh;
+    display: flex;
+    flex-direction: row;
+    padding: 3rem 2rem;
+}
+
+.contact-left {
+  width: 50%;
+  min-height: 100vh;
+  display: flex;
+  align-items: start;
+  background: transparent;
+}
+
+.contact-title {
+  font-size: 4.4rem;
+  font-weight: 600;
+  color: #222;
+  display: block;
+  letter-spacing: -0.01em;
+  line-height: 1.1;
+  text-align: left;
+  margin: 0;
+}
+
+.contact-right {
+  width: 50%;
+  min-height: 100vh;
+  display: flex;
+  align-items: start;
+  background: transparent;
+}
+
+/* Contact form styles */
+.contact-form {
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  gap: 2.2rem;
+  margin: 20px 0;
+}
+
+.contact-form label {
+  font-size: 1.1rem;
+  color: #222;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+}
+
+.contact-form input,
+.contact-form select,
+.contact-form textarea {
+  font-size: 2rem;
+  color: #888;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid #ddd;
+  outline: none;
+  margin-bottom: 1.2rem;
+  font-weight: 400;
+  padding: 0.2rem 0;
+  resize: none;
+}
+
+.contact-form input:focus,
+.contact-form input:hover,
+.contact-form select:hover,
+.contact-form textarea:hover {
+  border-bottom: 1px solid #333;
+}
+
+.contact-form textarea:focus {
+  background-color: #fff;
+  border-radius: 8px;
+}
+
+.contact-form textarea {
+  min-height: 120px;
+  margin: 0;
+}
+
+.contact-submit {
+  font-size: 2rem;
+  color: #111;
+  background: transparent;
+  border: none;
+  border-radius: 8px;
+  border-bottom: 2px solid #111;
+  font-weight: 500;
+  cursor: none;
+  align-self: flex-start;
+  margin-left: 1rem;
+  padding: 0.5rem 1rem;
+  transition: all 0.3s;
+
+
+  /* position: relative; */
+}
+
+.contact-submit:hover,
+.contact-submit:focus {
+  color: #fff;
+  border-bottom: none;
+  background: rgba(60, 60, 60, 0.97);
+  box-shadow: -2px 5px 0px 0px #111;
+}
+
+
+
+/* .contact-submit.accent-lit {
+  background: #e74c3c !important;
+  color: #fff !important;
+  border-bottom: none !important;
+  box-shadow: -2px 5px 0px 0px #111;
+}
+
+.contact-submit.accent-lit::after {
+  content: "";
+  position: absolute;
+  left: 8%;
+  right: 8%;
+  bottom: -8px;
+  height: 12px;
+  pointer-events: none;
+  border-radius: 8px;
+  background: linear-gradient(0deg, rgba(231,76,60,0.28), rgba(231,76,60,0.06) 40%, rgba(231,76,60,0));
+  filter: blur(8px);
+  transform: translateY(6px);
+  transition: opacity 0.18s ease, transform 0.18s ease;
+  opacity: 1;
+  mix-blend-mode: screen;
+} */
+
+
+
+
+
+
+.success {
+  max-width: 150px;
+  text-align: center;
+  color: #0f5132;                   /* tekst zielony */
+  background: #d1e7dd;              /* jasne tło */
+  border: 1px solid #badbcc;
+  padding: 0.5rem 0.75rem;
+  border-radius: 6px;
+  margin-top: 12px;
+  display: inline-block;
+  transition: background .2s, color .2s;
+}
+
+.error {
+  max-width: 200px;
+  text-align: center;
+  color: #842029;                   /* tekst czerwony */
+  background: #f8d7da;              /* jasne różowe tło */
+  border: 1px solid #f5c2c7;
+  padding: 0.5rem 0.75rem;
+  border-radius: 6px;
+  margin-top: 12px;
+  display: inline-block;
+  transition: background .2s, color .2s;
+}
+
+@media (max-width: 900px) {
+  .contact-section {
+    height: 80vh;
+    width: 100vw;
+    box-sizing: border-box;
+    background: transparent;
+    margin-bottom: 2rem;
+  }
+  .contact-container {
+    flex-direction: column;
+    padding: 3rem 1rem 5rem 1rem;
+    align-items: center;
+  }
+  .contact-left, .contact-right {
+    width: 100%;
+    min-height: auto;
+    align-items: center;
+    text-align: center;
+  }
+  .contact-left {
+    margin-bottom: 0;
+  }
+  .contact-title {
+    font-size: clamp(2.5rem, 10vw, 4rem);
+    text-align: center;
+  }
+  .contact-form {
+    width: 100%;
+    max-width: 500px;
+  }
+  .contact-form input,
+  .contact-form select,
+  .contact-form textarea {
+    font-size: 1.5rem;
+  }
+  .contact-form textarea {
+    min-height: 80px;
+}
+}

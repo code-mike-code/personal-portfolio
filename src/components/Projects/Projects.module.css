@@ -1,0 +1,243 @@
+/* Project section styles */
+
+.projectsSection {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: transparent;
+  padding: 20px;
+  margin-bottom: 4rem;
+}
+
+.selectedHeading {
+  font-size: 2.8rem;
+  font-family: 'Oswald', 'Inter', sans-serif;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #222;
+  margin-bottom: 3.5rem;
+  margin-left: 0;
+  text-align: left;
+  width: 100%;
+  max-width: 1200px;
+  box-sizing: border-box;
+}
+
+.heading {
+  font-size: 2.2rem;
+  font-weight: 700;
+  margin: 2rem 0 2.5rem 0;
+  letter-spacing: -0.02em;
+  color: #24292f;
+}
+
+.projectsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2.5rem;
+  width: 100%;
+  max-width: 1100px;
+  margin-bottom: 3rem;
+}
+
+.projectCard {
+  background: transparent;
+  border: 1px solid #e74c3c;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px 0 rgba(27,31,35,0.04);
+  padding: 2rem 1.5rem 2rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  color: #24292f;
+  transition: box-shadow 0.2s, border 0.2s, transform 0.15s;
+  position: relative;
+  min-height: 220px;
+}
+
+.projectCard:hover {
+  border: 1.5px solid #0366d6;
+  box-shadow: 0 4px 16px 0 rgba(3,102,214,0.08);
+  transform: translateY(-2px) scale(1.012);
+  background: #fff;
+}
+
+.cardHeader {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.7rem;
+  font-size: 0.98rem;
+  color: #586069;
+}
+
+.languageDot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  display: inline-block;
+  margin-right: 0.5em;
+  border: 1px solid #e1e4e8;
+  background: #ccc;
+}
+
+.languageName {
+  font-size: 0.98em;
+  color: #586069;
+}
+
+.projectName {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin: 0 0 0.5rem 0;
+  color: #0366d6;
+  word-break: break-word;
+}
+
+.projectDesc {
+  font-size: 1.05rem;
+  color: #24292f;
+  margin-bottom: auto;
+  margin-top: 0.2rem;
+  line-height: 1.5;
+  min-height: 48px;
+}
+
+.cardFooter {
+  display: flex;
+  gap: 1.2em;
+  font-size: 1.02em;
+  color: #586069;
+  margin-top: 1.2rem;
+  align-items: center;
+}
+
+.loading, .error {
+  color: #586069;
+  font-size: 1.1rem;
+  margin: 2rem 0;
+}
+
+.projectsList {
+  display: flex;
+  flex-direction: column;
+  gap: 3.5rem;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.projectRow {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  background: transparent;
+  min-height: 320px;
+  align-items: stretch;
+  border: none;
+  box-shadow: none;
+  border-radius: 0.5rem;
+  overflow: visible;
+}
+
+.projectInfo {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 2.5rem 2.5rem 2.5rem 3vw;
+  background: transparent;
+}
+
+.projectTitle {
+  font-size: 3.2rem;
+  font-family: 'Oswald', 'Inter', sans-serif;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  margin-bottom: 0.7rem;
+  text-transform: uppercase;
+  line-height: 1.05;
+  color: #222;
+}
+
+.projectSubtitle {
+  font-size: 1.15rem;
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  letter-spacing: 0.01em;
+  margin-bottom: 0.7rem;
+  color: #222;
+}
+
+.projectThumb {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  min-height: 320px;
+}
+
+.projectImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  max-height: 320px;
+  border: none;
+  border-radius: 0;
+  background: #eee;
+}
+
+.projectsButtons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 2rem;
+  width: 100%;
+  max-width: 1200px;
+  margin: 2.5rem auto 0 auto;
+  padding-right: 3vw;
+  position: relative;
+  top: 2.5rem;
+}
+
+@media (max-width: 900px) {
+  .projectRow {
+    grid-template-columns: 1fr;
+    min-height: 220px;
+  }
+  .projectThumb {
+    min-height: 180px;
+  }
+  .projectTitle {
+    font-size: 2.1rem;
+  }
+  .projectInfo {
+    padding: 1.2rem 1.2rem 1.2rem 2vw;
+  }
+  .selectedHeading {
+    font-size: 1.5rem;
+    margin-left: 2vw;
+  }
+  .projectsButtons {
+    padding-right: 2vw;
+    gap: 1rem;
+    top: 1.2rem;
+  }
+  .heroBtn {
+    padding: 0.8rem 1.5rem;
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 700px) {
+  .projectsGrid {
+    grid-template-columns: 1fr;
+    gap: 1.2rem;
+  }
+  .projectCard {
+    padding: 1.2rem 1rem 1rem 1rem;
+    min-height: 180px;
+  }
+  .heading {
+    font-size: 1.5rem;
+  }
+}

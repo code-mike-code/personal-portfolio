@@ -1,0 +1,81 @@
+/* Button element styles */
+
+.btn {
+  display: inline-block;
+  padding: 1.2rem 2.8rem;
+  font-size: 1.3rem;
+  font-weight: 600;
+  border-radius: 2rem;
+  border: none;
+  outline: none;
+  /* cursor: pointer; */
+  text-decoration: none;
+  transition: transform 0.18s cubic-bezier(0.4, 2, 0.6, 1), box-shadow 0.18s,
+    color 0.18s, opacity 0.3s;
+  box-shadow: 0 2px 16px 0 rgba(0, 0, 0, 0.04);
+  will-change: transform, box-shadow;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  background: none;
+}
+
+.primary {
+  background: #222;
+  border: 2px solid transparent;
+  color: #f5f5dc;
+}
+
+.secondary {
+  background: transparent;
+  color: #222;
+  border: 2px solid #222;
+}
+
+.btn::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 0%;
+  height: 100%;
+  z-index: -1;
+  transition: width 0.6s cubic-bezier(0.4, 2, 0.6, 1);
+  border-radius: 2rem;
+}
+
+.primary::before {
+  background: #f5f5dc;
+}
+
+.secondary::before {
+  background: #222;
+}
+
+.btn:hover::before,
+.btn:focus::before {
+  width: 100%;
+}
+
+.primary:hover,
+.primary:focus {
+  color: #222;
+  border: 2px solid #222;
+}
+
+.secondary:hover,
+.secondary:focus {
+  color: #f5f5dc;
+}
+
+.btn:hover,
+.btn:focus {
+  box-shadow: 0 8px 32px 0 rgba(179, 173, 142, 0.18);
+}
+
+.btn:not(:hover):not(:focus)::before {
+  right: 0;
+  left: auto;
+  width: 0%;
+  transition: width 0.5s cubic-bezier(0.4, 2, 0.6, 1);
+}
