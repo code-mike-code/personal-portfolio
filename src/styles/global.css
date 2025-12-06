@@ -1,0 +1,129 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background-color: #F5F5DC; /* Ecru */
+  font-family: 'Inter', sans-serif;
+  color: #222;
+  position: relative;
+}
+
+#root {
+  flex: 1 0 auto;
+  display: block;
+}
+
+/* Grid lines: 4 vertical, 1 horizontal for header */
+body::before,
+body::after {
+  content: '';
+  position: fixed;
+  pointer-events: none;
+  z-index: -1;
+}
+
+body::before {
+  /* 4 vertical grid lines, sharp and thin */
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: none;
+}
+
+body::before {
+  /* Draw 4 sharp vertical lines using box-shadow on a 1px wide div */
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 25vw;
+  width: 1px;
+  height: 100vh;
+  background: #b3ad8e;
+  box-shadow:
+    25vw 0 0 0 #b3ad8e,
+    50vw 0 0 0 #b3ad8e,
+    75vw 0 0 0 #b3ad8e;
+  opacity: 0.7;
+  z-index: -1;
+}
+
+body::after {
+  /* Horizontal grid line for header */
+  top: 80px; /* adjust to header height */
+  left: 0;
+  width: 100vw;
+  height: 0;
+  border-top: 1.5px solid #b3ad8e;
+  opacity: 0.7;
+  z-index: 10000;
+}
+
+body.hide-header-grid::after {
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+header {
+  background: transparent;
+  position: relative;
+  z-index: 1;
+}
+
+footer {
+  background: #111;
+  color: #fff;
+  text-align: center;
+  padding: 2rem 0 1rem 0;
+  font-size: 1rem;
+  z-index: 1;
+  width: 100vw;
+  min-height: 80px;
+  letter-spacing: 0.02em;
+  position: static;
+}
+
+/* main {
+  padding-bottom: 80px; 
+} */
+
+section {
+  min-height: 100vh;
+  width: 100vw;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.contact-section {
+  min-height: 100vh;
+  width: 100vw;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 0;
+}
+
+body.no-scroll {
+  overflow: hidden;
+}
+
+@media (max-width: 900px) {
+  body::before {
+    left: 50%;
+    width: 1px;
+    background: #b3ad8e;
+    box-shadow: none;
+  }
+}
