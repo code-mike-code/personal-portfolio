@@ -1,0 +1,13 @@
+# Environment variables
+.env
+.env.local
+
+# Ignore secret GitHub token file
+src/components/Projects/github.secret.js
+
+# Ignore test tokens
+src/components/Projects/config/token.js
+
+dist/
+
+node_modules/
