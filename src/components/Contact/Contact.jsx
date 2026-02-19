@@ -65,22 +65,12 @@ export default function Contact() {
     const TEMPLATE_ID = process.env.REACT_APP_EMAILJS_TEMPLATE_ID;
     const PUBLIC_KEY = process.env.REACT_APP_EMAILJS_PUBLIC_KEY;
 
-    // Validate credentials
-    if (!SERVICE_ID || !TEMPLATE_ID || !PUBLIC_KEY) {
-      console.error('Missing EmailJS configuration:', { SERVICE_ID, TEMPLATE_ID, PUBLIC_KEY });
-      setStatus({ ok: false, message: 'Configuration error. Check console.' });
-      setSending(false);
-      return;
-    }
-
-
-
     try {
       await emailjs.sendForm(SERVICE_ID, TEMPLATE_ID, formRef.current, PUBLIC_KEY);
       setStatus({ ok: true, message: 'Message sent.' });
       formRef.current.reset();
     } catch (err) {
-      console.error('EmailJS Error:', err);
+      console.error(err);
       setStatus({ ok: false, message: 'Message sent error!' });
     } finally {
       setSending(false);

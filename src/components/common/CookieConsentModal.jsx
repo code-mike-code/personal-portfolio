@@ -11,20 +11,17 @@ export function CookieConsentModal({ onAccept, onDecline }) {
     return !stored; // true jeśli brak zgody (nie ma stored), false jeśli jest zgoda
   });
   
-  const [isAccepted, setIsAccepted] = useState(true); // true = Accept all (white), false = Decline all (black)
+  const [isAccepted, setIsAccepted] = useState(true);
 
-  const handleAcceptAll = () => {
-    setIsAccepted(true);
-    window.localStorage.setItem(COOKIE_CONSENT_KEY, "accepted");
+  const handleConfirm = () => {
+    const status = isAccepted ? "accepted" : "declined";
+    window.localStorage.setItem(COOKIE_CONSENT_KEY, status);
     setIsOpen(false);
-    if (typeof onAccept === "function") onAccept();
-  };
-
-  const handleDeclineAll = () => {
-    setIsAccepted(false);
-    window.localStorage.setItem(COOKIE_CONSENT_KEY, "declined");
-    setIsOpen(false);
-    if (typeof onDecline === "function") onDecline();
+    if (isAccepted) {
+      if (typeof onAccept === "function") onAccept();
+    } else {
+      if (typeof onDecline === "function") onDecline();
+    }
   };
 
   if (!isOpen) return null;
@@ -44,11 +41,10 @@ export function CookieConsentModal({ onAccept, onDecline }) {
           >
             Privacy & Cookies Policy
           </Link>.
-
         </p>
 
         <div className="ccm-toggle-row">
-          <span className="ccm-label-left">Accept all</span>
+          <span className="ccm-label-left">Decline all</span>
           <button
             type="button"
             className={`ccm-toggle ${isAccepted ? "ccm-toggle-accept" : "ccm-toggle-decline"}`}
@@ -58,23 +54,16 @@ export function CookieConsentModal({ onAccept, onDecline }) {
           >
             <span className="ccm-toggle-pill" />
           </button>
-          <span className="ccm-label-right">Decline all</span>
+          <span className="ccm-label-right">Accept all</span>
         </div>
 
         <div className="ccm-actions">
           <button
             type="button"
-            className="ccm-btn ccm-btn-accept"
-            onClick={handleAcceptAll}
+            className="ccm-btn ccm-btn-confirm"
+            onClick={handleConfirm}
           >
             Confirm
-          </button>
-          <button
-            type="button"
-            className="ccm-btn ccm-btn-decline"
-            onClick={handleDeclineAll}
-          >
-            Cancel
           </button>
         </div>
       </div>

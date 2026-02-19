@@ -50,7 +50,7 @@
   align-items: center;
   justify-content: center;
   gap: 12px;
-  margin-bottom: 18px;
+  margin-bottom: 22px;
 }
 
 .ccm-label-left,
@@ -110,40 +110,31 @@
 /* Buttons */
 .ccm-actions {
   display: flex;
-  justify-content: flex-end;
-  gap: 10px;
+  justify-content: center;
 }
 
 .ccm-btn {
+  width: 100%;
   border-radius: 999px;
-  font-size: 13px;
-  font-weight: 500;
-  padding: 8px 16px;
+  font-size: 15px;
+  font-weight: 600;
+  padding: 12px 24px;
   border: 1px solid transparent;
   cursor: none;
-  transition: background 0.18s ease, color 0.18s ease, border-color 0.18s ease,
-    transform 0.08s ease;
+  transition: all 0.18s ease;
 }
 
 .ccm-btn:active {
-  transform: scale(0.97);
+  transform: scale(0.98);
 }
 
-.ccm-btn-accept {
+.ccm-btn-confirm {
   background: #ffffff;
   color: #000000;
 }
 
-.ccm-btn-accept:hover {
-  background: #f3f3f3;
+.ccm-btn-confirm:hover {
+  background: #f0f0f0;
+  transform: translateY(-1px);
 }
 
-.ccm-btn-decline {
-  background: transparent;
-  color: #f5f5f5;
-  border-color: #555;
-}
-
-.ccm-btn-decline:hover {
-  background: #1a1a1a;
-}

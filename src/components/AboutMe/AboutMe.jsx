@@ -15,7 +15,7 @@ export default function AboutMe() {
           baseRotation={5}
           blurStrength={10}
         >
-          Front-End Developer passionate about building efficient, user-friendly interfaces. With over 500 hours of intensive, mentor-led training,specialize in modern React development. Focusing on writing high-quality code and using modern practices to ensure every project is robust and reliable.
+          Front-End Developer passionate about building efficient, user-friendly interfaces. With over 500 hours of intensive, mentor-led training, specialize in modern React development. Focusing on writing high-quality code and using modern practices to ensure every project is robust and reliable.
         </ScrollReveal>
         </div>
         <div

@@ -2,9 +2,9 @@
 
 .tech-banner {
   width: 100%;
-  height: 24vh;
+  height: 20vh;
   min-height: 0;
-  margin: 2rem auto;
+  margin: 0 auto;
   background-color: #000000;
   padding: 4rem 0;
   overflow: hidden;
@@ -12,7 +12,6 @@
 
 .banner-container {
   position: relative;
-  margin: 2rem 0;
 }
 
 .gradient-left {
@@ -37,19 +36,12 @@
 
 .carousel {
   display: flex;
-  width: max-content; /* Ensure width fits all items for correct scrolling calculation */
-  cursor: grab;
-  /* animation: scroll 30s linear infinite; */ /* Removed CSS animation */
-  /* padding: 2rem 0; */
+  animation: scroll 30s linear infinite;
 }
 
-.carousel:active {
-  cursor: grabbing;
-}
-
-/* .carousel:hover {
+.carousel:hover {
   animation-play-state: paused;
-} */ /* Removed CSS hover pause */
+}
 
 .tech-item {
   flex-shrink: 0;
@@ -57,7 +49,6 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  user-select: none; /* Prevent text selection while dragging */
 }
 
 .icon-container {
@@ -71,25 +62,25 @@
 }
 
 .tech-icon {
-  width: 3.6rem;
-  height: 3.6rem;
+  width: 3.4rem;
+  height: 3.4rem;
 }
 
 .tech-name {
   color: #ffffff;
-  font-size: 1rem;
+  font-size: 0.875rem;
   font-weight: 500;
   letter-spacing: 0.025em;
 }
 
-/* @keyframes scroll {
+@keyframes scroll {
   0% {
     transform: translateX(0);
   }
   100% {
     transform: translateX(-50%);
   }
-} */ /* Removed keyframes */
+}
 
 @media (max-width: 768px) {
   .tech-banner {

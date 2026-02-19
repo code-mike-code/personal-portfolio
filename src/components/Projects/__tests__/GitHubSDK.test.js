@@ -1,7 +1,7 @@
-import GitHubSDK from '../GitHubSDK';
-import nodeFetch from 'node-fetch';
+const GitHubSDK = require('../GitHubSDK');
+const nodeFetch = require('node-fetch');
 global.fetch = nodeFetch;
-import { USERNAME, SECRET_TOKEN } from '../config/token';
+const { USERNAME, SECRET_TOKEN } = require('../config/token');
 
 describe('GitHubSDK', () => {
     it ('should create instance with username and token', () => {
@@ -27,16 +27,15 @@ describe('GitHubSDK', () => {
     //     expect(response.status === 201 || response.status === 204).toBe(true)
     // })
 
-    // Method getUserInfo does not exist in the current SDK implementation
-    // it ('should fetch user information', async () => {
-    //     const sdk = new GitHubSDK(USERNAME, SECRET_TOKEN)
-    //     const response = await sdk.getUserInfo('code-mike-code')
-    //     
-    //     expect(response.status).toBe(200)
-    //
-    //     const data = await response.json()
-    //     expect(data.login).toBe('code-mike-code')
-    // })
+    it ('should fetch user information', async () => {
+        const sdk = new GitHubSDK(USERNAME, SECRET_TOKEN)
+        const response = await sdk.getUserInfo('code-mike-code')
+        
+        expect(response.status).toBe(200)
+
+        const data = await response.json()
+        expect(data.login).toBe('code-mike-code')
+    })
 
     it('should fetch pinned repositories', async () => {
         const sdk = new GitHubSDK(USERNAME, SECRET_TOKEN);

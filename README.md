@@ -91,20 +91,8 @@ To create an optimized production build in the `dist/` directory:
 npm run build
 ```
 
-### Code Quality and Testing
+### Code Quality
 
-**Running Tests:**
-To run the test suite (Jest + React Testing Library):
-```sh
-npm test
-```
-
-To run tests in watch mode (re-runs on file save):
-```sh
-npm test -- --watch
-```
-
-**Linting:**
 Run ESLint to check code quality:
 ```sh
 npm run lint
@@ -113,6 +101,11 @@ npm run lint
 Auto-fix linting issues:
 ```sh
 npm run lint:fix
+```
+
+Run tests:
+```sh
+npm test
 ```
 
 ## Troubleshooting
