@@ -19,6 +19,9 @@
   "license": "ISC",
   "dependencies": {
     "@emailjs/browser": "^4.4.1",
+    "@studio-freight/lenis": "^1.0.42",
+    "gsap": "^3.14.2",
+    "lenis": "^1.3.17",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "react-router-dom": "^7.9.6"

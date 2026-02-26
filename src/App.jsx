@@ -3,6 +3,7 @@ import { HashRouter, Routes, Route } from "react-router-dom";
 import Header from './components/Header/Header';
 import BottomNav from './components/Header/BottomNav';
 import Hero from './components/Hero/Hero';
+import PrivateProjects from './components/PrivateProjects/PrivateProjects';
 import Projects from './components/Projects/Projects';
 import AboutMe from './components/AboutMe/AboutMe';
 import TechBanner from './components/Banner/TechBanner';
@@ -29,6 +30,7 @@ function MainLayout() {
       <Header />
       <BottomNav />
       <Hero />
+      <PrivateProjects />
       <Projects />
       <AboutMe />
       <TechBanner />

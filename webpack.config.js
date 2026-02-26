@@ -36,6 +36,10 @@ module.exports = {
         exclude: /\.module\.css$/,
         use: ['style-loader', 'css-loader'],
       },
+      {
+        test: /\.(png|jpg|jpeg|gif|svg)$/,
+        type: 'asset/resource',
+      },
     ],
   },
   resolve: {

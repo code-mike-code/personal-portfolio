@@ -96,8 +96,8 @@ const Header = () => {
             onMouseLeave={handleMouseLeave}
           >
             <a 
-            onClick={() => scrollToSection('projects')}
-            aria-label="Scroll to projects section"
+            onClick={() => scrollToSection('private-projects')}
+            aria-label="Scroll to work section"
             >
               <span className="menu-text">Work</span>
             </a>

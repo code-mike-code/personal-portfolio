@@ -1,0 +1,25 @@
+.private-projects-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 60px 20px;
+    margin-bottom: 4rem;
+}
+
+.private-projects-content {
+    max-width: 1280px;
+    width: 100%;
+}
+
+.private-projects-title {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    text-align: center;
+    /* color: black; */
+}
+
+.private-projects-container {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}

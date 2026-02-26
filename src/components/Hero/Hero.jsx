@@ -2,7 +2,7 @@ import React, { useEffect, useState, useRef } from 'react';
 import './Hero.css';
 import Button from '../common/Button';
 
-function AnimatedHeadlinePart({ text, start }) {
+export function AnimatedHeadlinePart({ text, start }) {
   const [revealed, setRevealed] = useState(() => Array(text.length).fill(false));
   const timeoutsRef = useRef([]);
 
@@ -103,7 +103,7 @@ export default function Hero() {
           </h1>
           <div className="hero-buttons hero-buttons--left">
             <Button
-              onClick={() => scrollToSection('projects')}
+              onClick={() => scrollToSection('private-projects')}
               variant="primary"
               className={`hero-btn-fade ${showButtons ? 'hero-btn--visible' : ''}`}
               tabIndex={showButtons ? 0 : -1}
