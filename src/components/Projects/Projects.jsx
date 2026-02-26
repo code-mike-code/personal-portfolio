@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import GitHubSDK from './GitHubSDK';
 import { GITHUB_TOKEN, GITHUB_USERNAME } from './github.secret';
 import styles from './Projects.module.css';
@@ -8,6 +8,8 @@ export default function Projects() {
   const [repos, setRepos] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [screenSize, setScreenSize] = useState('desktop');
+  const cardRefs = useRef([]);
 
   useEffect(() => {
     const sdk = new GitHubSDK(GITHUB_USERNAME, GITHUB_TOKEN);
@@ -24,19 +26,77 @@ export default function Projects() {
       .finally(() => setLoading(false));
   }, []);
 
+  // Detect screen size for animation strategy
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth < 700) {
+        setScreenSize('mobile');
+      } else if (window.innerWidth < 900) {
+        setScreenSize('tablet');
+      } else {
+        setScreenSize('desktop');
+      }
+    };
+
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  // Setup Intersection Observer for animations
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add(styles.animated);
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    cardRefs.current.forEach((card) => {
+      if (card) observer.observe(card);
+    });
+
+    return () => {
+      cardRefs.current.forEach((card) => {
+        if (card) observer.unobserve(card);
+      });
+    };
+  }, [repos]);
+
+  const getCardAnimationClass = (index) => {
+    if (screenSize === 'mobile') {
+      return styles.slideFromTop;
+    }
+
+    const columnsPerRow = screenSize === 'tablet' ? 2 : 3;
+    const row = Math.floor(index / columnsPerRow);
+    const isEvenRow = row % 2 === 0;
+
+    return isEvenRow ? styles.slideFromLeft : styles.slideFromRight;
+  };
+
   return (
     <section id='projects' className={styles.projectsSection}>
       <h2 className={styles.selectedHeading}>SELECTED CASES</h2>
       {loading && <div className={styles.loading}>Loading...</div>}
       {error && <div className={styles.error}>{error}</div>}
       <div className={styles.projectsGrid}>
-        {repos.map((repo) => (
+        {repos.map((repo, index) => (
           <a
             key={repo.id}
+            ref={(el) => (cardRefs.current[index] = el)}
             href={repo.url}
             target="_blank"
             rel="noopener noreferrer"
-            className={styles.projectCard}
+            className={`${styles.projectCard} ${getCardAnimationClass(index)}`}
+            style={{
+              '--animation-delay': `${index * 0.1}s`,
+            }}
           >
             <div className={styles.cardHeader}>
               {repo.primaryLanguage && (
