@@ -6,6 +6,7 @@ import './ScrollCards.css';
 // import cardFrontImg from '../../assets/card-front.png';
 // import '../Hero/Hero.css';
 import AnimatedCardBackground from '../common/AnimatedCardBackground';
+import ScrollReveal from '../common/ScrollReveal';
 
 
 
@@ -146,13 +147,37 @@ const ScrollCards = () => {
       </section>
       
       {/* Domknięcie */}
-      <div ref={closingRef} style={{ height: '50vh', background: '#f0f0f0' }}>
-        <h2>
-          Transforming Ideas into Digital Reality
-        </h2>
-        <p>
-          The projects above demonstrate my commitment to building high-performance web applications with a focus on clean code and user experience. If you are looking for a reliable developer to bring your vision to life or optimize your current digital presence, I am ready to help. Let's connect and discuss how we can build something exceptional for your business.
-        </p>
+      <div ref={closingRef} className="section-closure" >
+
+        <ScrollReveal
+          baseOpacity={0}
+          enableBlur={true}
+          baseRotation={0}
+          blurStrength={20}
+          containerClassName = 'section-closure-title'
+          textClassName = 'section-closure-title-part1'
+        >Transforming Ideas
+        </ScrollReveal>
+        
+        <ScrollReveal
+          baseOpacity={0}
+          enableBlur={true}
+          baseRotation={0}
+          blurStrength={20}
+          containerClassName = 'section-closure-title'
+          textClassName = 'section-closure-title-part2'
+        >into Digital Reality
+        </ScrollReveal>
+
+        <ScrollReveal
+          baseOpacity={0}
+          enableBlur={true}
+          baseRotation={0}
+          blurStrength={20}
+          
+          textClassName = 'section-closure-text'
+        >The projects above demonstrate my commitment to building high-performance web applications with a focus on clean code and user experience. If you are looking for a reliable developer to bring your vision to life or optimize your current digital presence, I am ready to help. Let's connect and discuss how we can build something exceptional for your business.
+        </ScrollReveal>
       </div>
     </div>
   );
