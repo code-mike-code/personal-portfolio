@@ -1,0 +1,234 @@
+/* Project Modal - Backdrop */
+.project-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.85);
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(4px);
+}
+
+/* Project Modal - Container */
+.project-modal {
+  position: relative;
+  width: 90vw;
+  max-width: 900px;
+  max-height: 90vh;
+  background-color: #f5f5dc;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+}
+
+/* Video Container */
+.project-modal-video-container {
+  position: relative;
+  width: 100%;
+  padding-top: 56.25%; /* 16:9 aspect ratio */
+  overflow: hidden;
+  background-color: #000;
+}
+
+.project-modal-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.65);
+}
+
+/* Content Section */
+.project-modal-content {
+  flex: 1;
+  padding: 2rem;
+  overflow-y: auto;
+  overflow-x: hidden;
+  scrollbar-width: thin;
+  scrollbar-color: #b3ad8e #f5f5dc;
+}
+
+/* Webkit scrollbar styling (Chrome, Safari) */
+.project-modal-content::-webkit-scrollbar {
+  width: 8px;
+}
+
+.project-modal-content::-webkit-scrollbar-track {
+  background: #f5f5dc;
+}
+
+.project-modal-content::-webkit-scrollbar-thumb {
+  background: #b3ad8e;
+  border-radius: 4px;
+}
+
+.project-modal-content::-webkit-scrollbar-thumb:hover {
+  background: #a39978;
+}
+
+/* Title */
+.project-modal-title {
+  font-size: 2.2rem;
+  font-weight: 600;
+  color: #0b0b0d;
+  margin: 0 0 1.5rem 0;
+  padding: 0;
+  font-family: 'Inter', sans-serif;
+}
+
+/* Description */
+.project-modal-description {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: #333;
+  margin: 0 0 2rem 0;
+  padding: 0;
+  font-family: 'Inter', sans-serif;
+}
+
+/* Tech Stack */
+.project-modal-tech-stack {
+  margin-top: 2rem;
+  padding-top: 2rem;
+  border-top: 1px solid #b3ad8e;
+}
+
+.project-modal-tech-title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #0b0b0d;
+  margin: 0 0 1rem 0;
+  padding: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-family: 'Inter', sans-serif;
+}
+
+.project-modal-tech-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.project-modal-tech-tag {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  background-color: #e74c3c;
+  color: #fff;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  font-family: 'Inter', sans-serif;
+  transition: all 0.3s ease;
+}
+
+.project-modal-tech-tag:hover {
+  background-color: #c0392b;
+  transform: translateY(-2px);
+}
+
+/* Close Button */
+.project-modal-close-btn {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  width: 40px;
+  height: 40px;
+  background-color: rgba(255, 255, 255, 0.95);
+  border: none;
+  border-radius: 50%;
+  font-size: 1.5rem;
+  color: #0b0b0d;
+  cursor: pointer;
+  z-index: 10001;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  font-family: 'Inter', sans-serif;
+}
+
+.project-modal-close-btn:hover {
+  background-color: #fff;
+  transform: scale(1.1) rotate(90deg);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+}
+
+.project-modal-close-btn:active {
+  transform: scale(0.95) rotate(90deg);
+}
+
+/* Responsive - Tablet */
+@media (max-width: 768px) {
+  .project-modal {
+    width: calc(100vw - 2rem);
+    max-height: calc(100vh - 2rem);
+  }
+
+  .project-modal-content {
+    padding: 1.5rem;
+    scrollbar-width: thin;
+  }
+
+  .project-modal-title {
+    font-size: 1.8rem;
+  }
+
+  .project-modal-description {
+    font-size: 1rem;
+  }
+
+  .project-modal-close-btn {
+    width: 36px;
+    height: 36px;
+    font-size: 1.3rem;
+  }
+}
+
+/* Responsive - Mobile */
+@media (max-width: 480px) {
+  .project-modal-backdrop {
+    padding: 1rem;
+    align-items: flex-end;
+  }
+
+  .project-modal {
+    width: 100%;
+    max-height: 85vh;
+    border-radius: 20px 20px 0 0;
+  }
+
+  .project-modal-content {
+    padding: 1.25rem;
+  }
+
+  .project-modal-title {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .project-modal-description {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+  }
+
+  .project-modal-tech-tag {
+    font-size: 0.85rem;
+    padding: 0.4rem 0.8rem;
+  }
+
+  .project-modal-close-btn {
+    width: 32px;
+    height: 32px;
+    font-size: 1.2rem;
+    top: 0.75rem;
+    right: 0.75rem;
+  }
+}

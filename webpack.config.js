@@ -40,6 +40,13 @@ module.exports = {
         test: /\.(png|jpg|jpeg|gif|svg)$/,
         type: 'asset/resource',
       },
+      {
+        test: /\.(mp4|webm|ogg|mp3|wav|flac|aac)(\?.*)?$/,
+        type: 'asset/resource',
+        generator: {
+          filename: 'static/media/[name].[hash][ext][query]'
+        }
+      },
     ],
   },
   resolve: {

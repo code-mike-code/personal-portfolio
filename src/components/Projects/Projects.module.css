@@ -261,6 +261,11 @@
   transform: translateY(-40px);
 }
 
+/* Ensure animated class is exported correctly */
+.animated {
+  /* Placeholder to ensure class generation */
+}
+
 /* Animation triggered by animated class */
 .slideFromLeft.animated {
   animation: slideInLeft 0.6s ease-out forwards;

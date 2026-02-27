@@ -7,6 +7,8 @@ import './ScrollCards.css';
 // import '../Hero/Hero.css';
 import AnimatedCardBackground from '../common/AnimatedCardBackground';
 import ScrollReveal from '../common/ScrollReveal';
+import ProjectModal from './ProjectModal';
+import { privateProjects } from './private-projects';
 
 
 
@@ -18,6 +20,7 @@ const ScrollCards = () => {
   const cardsRef = useRef([]);
   const closingRef = useRef(null);
   const [showClosing, setShowClosing] = useState(false);
+  const [expandedCard, setExpandedCard] = useState(null);
 
   // Intersection Observer dla sekcji Domknięcie
   useEffect(() => {
@@ -54,7 +57,7 @@ const ScrollCards = () => {
     const ctx = gsap.context(() => {
       const cards = cardsRef.current;
       const totalScrollHeight = window.innerHeight * 3;
-      const positions = [14, 38, 62, 86];
+      const positions = [25, 41, 59, 75];
       const rotations = [-15, -7.5, 7.5, 15];
 
       // 1. Przypięcie sekcji (Pinning)
@@ -77,6 +80,7 @@ const ScrollCards = () => {
             start: "top top",
             end: () => `+=${window.innerHeight}`,
             scrub: 0.5,
+            invalidateOnRefresh: true,
             id: `spread-${index}`,
           },
         });
@@ -124,12 +128,13 @@ const ScrollCards = () => {
   return (
     <div className="scroll-cards-wrapper">
       <section className="cards-container" ref={containerRef}>
-        {[0, 1, 2, 3].map((index) => (
+        {privateProjects.map((project, index) => (
           <div
-            key={index}
+            key={project.id}
             className="card"
-            id={`card-${index + 1}`}
+            id={`card-${project.id}`}
             ref={(el) => (cardsRef.current[index] = el)}
+            onClick={() => setExpandedCard(project)}
           >
             <div className="card-wrapper">
               <div className="flip-card-inner">
@@ -137,8 +142,21 @@ const ScrollCards = () => {
                   <AnimatedCardBackground index={index} />
                 </div>
                 <div className="flip-card-back">
-                  <p>Karta {index + 1}</p>
-                  <p className="card-desc">Opis pojedyńczej karty</p>
+                  <div className="card-back-video-container">
+                    <video 
+                      src={project.thumbnailVideo} 
+                      autoPlay 
+                      muted 
+                      loop 
+                      playsInline 
+                      className="card-back-video"
+                    />
+                    <div className="card-back-overlay"></div>
+                  </div>
+                  <div className="card-back-content">
+                    <p>{project.title}</p>
+                    <p className="card-desc">{project.shortDescription}</p>
+                  </div>
                 </div>
               </div>
             </div>
@@ -179,6 +197,13 @@ const ScrollCards = () => {
         >The projects above demonstrate my commitment to building high-performance web applications with a focus on clean code and user experience. If you are looking for a reliable developer to bring your vision to life or optimize your current digital presence, I am ready to help. Let's connect and discuss how we can build something exceptional for your business.
         </ScrollReveal>
       </div>
+
+      {/* Project Modal - Popover dla wybranego projektu */}
+      <ProjectModal 
+        isOpen={expandedCard !== null}
+        project={expandedCard}
+        onClose={() => setExpandedCard(null)}
+      />
     </div>
   );
 };

@@ -9,6 +9,7 @@ export default function Projects() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [screenSize, setScreenSize] = useState('desktop');
+  const [visibleRepos, setVisibleRepos] = useState({});
   const cardRefs = useRef([]);
 
   useEffect(() => {
@@ -49,7 +50,10 @@ export default function Projects() {
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            entry.target.classList.add(styles.animated);
+            const index = entry.target.getAttribute('data-index');
+            if (index !== null) {
+              setVisibleRepos((prev) => ({ ...prev, [index]: true }));
+            }
             observer.unobserve(entry.target);
           }
         });
@@ -89,11 +93,12 @@ export default function Projects() {
         {repos.map((repo, index) => (
           <a
             key={repo.id}
+            data-index={index}
             ref={(el) => (cardRefs.current[index] = el)}
             href={repo.url}
             target="_blank"
             rel="noopener noreferrer"
-            className={`${styles.projectCard} ${getCardAnimationClass(index)}`}
+            className={`${styles.projectCard} ${getCardAnimationClass(index)} ${visibleRepos[index] ? styles.animated : ''}`}
             style={{
               '--animation-delay': `${index * 0.1}s`,
             }}
@@ -112,7 +117,7 @@ export default function Projects() {
             <div className={styles.projectName}>{repo.name}</div>
             <div className={styles.projectDesc}>{repo.description || 'UX/UI DESIGN, DEVELOPMENT'}</div>
             <div className={styles.cardFooter}>
-              <span>★ {repo.stargazerCount}</span>
+              {/* <span>★ {repo.stargazerCount}</span> */}
               {repo.forkCount > 0 && <span>Forks: {repo.forkCount}</span>}
             </div>
           </a>
