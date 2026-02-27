@@ -11,7 +11,7 @@
 
 .hero-section-projects {
   position: relative;
-  width: 100vw;
+  width: 100%;
   height: 30vh;
   display: flex;
   align-items: center;
@@ -28,18 +28,22 @@
 .cards-container {
   position: relative;
   width: 100%;
-  height: 100vh;
+  height: 100vh; /* Fallback */
+  height: 100svh; /* Stabilna wysokość na mobile (bez paska adresu) */
   /* background-color: #3b82f6; Kolor z oryginału (blue) */
-  overflow: hidden;
+  overflow: visible; /* Zmienione z hidden na visible */
+  /* Zapobiega poziomemu przewijaniu (0), ale pozwala elementom wystawać w pionie (-100vh) */
+  clip-path: inset(-100vh 0 -100vh 0);
 }
 
 .card {
   position: absolute;
-  top: 50%;
+  top: 40%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 300px;
-  max-width: 22vw;
+  /* Zwiększenie rozmiaru na desktopie o ~10% */
+  width: 330px;
+  max-width: 25vw;
   height: auto;
   aspect-ratio: 2/3;
   perspective: 1000px;
@@ -48,8 +52,23 @@
   cursor: pointer;
 }
 
-/* Unosi kartę ponad inne po najechaniu */
-.card:hover {
+/* Media query dla tabletów */
+@media (max-width: 900px) {
+  .card {
+    max-width: 40vw;
+  }
+}
+
+/* Media query dla telefonów */
+@media (max-width: 600px) {
+  .card {
+    max-width: 70vw;
+  }
+}
+
+/* Unosi kartę ponad inne po najechaniu lub dotknięciu */
+.card:hover,
+.card.is-touched {
   z-index: 1000 !important;
 }
 
@@ -86,8 +105,9 @@
   transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1); /* Płynne powiększanie */
 }
 
-/* Powiększa wnętrze karty po najechaniu na główny kontener */
-.card:hover .flip-card-inner {
+/* Powiększa wnętrze karty po najechaniu lub dotknięciu */
+.card:hover .flip-card-inner,
+.card.is-touched .flip-card-inner {
   transform: scale(1.1) translateY(-10px);
 }
 

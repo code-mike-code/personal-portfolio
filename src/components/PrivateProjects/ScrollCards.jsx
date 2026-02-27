@@ -15,12 +15,17 @@ import { privateProjects } from './private-projects';
 
 gsap.registerPlugin(ScrollTrigger);
 
+// Zapobiega skokom animacji na mobile gdy chowa się pasek adresu
+ScrollTrigger.config({ ignoreMobileResize: true });
+
+
 const ScrollCards = () => {
   const containerRef = useRef(null);
   const cardsRef = useRef([]);
   const closingRef = useRef(null);
   const [showClosing, setShowClosing] = useState(false);
   const [expandedCard, setExpandedCard] = useState(null);
+  const [touchedCard, setTouchedCard] = useState(null);
 
   // Intersection Observer dla sekcji Domknięcie
   useEffect(() => {
@@ -57,64 +62,186 @@ const ScrollCards = () => {
     const ctx = gsap.context(() => {
       const cards = cardsRef.current;
       const totalScrollHeight = window.innerHeight * 3;
-      const positions = [25, 41, 59, 75];
-      const rotations = [-15, -7.5, 7.5, 15];
 
-      // 1. Przypięcie sekcji (Pinning)
+      // 1. Przypięcie sekcji (Pinning) - wspólne dla wszystkich widoków
       ScrollTrigger.create({
         trigger: containerRef.current,
         start: "top top",
         end: () => `+=${totalScrollHeight}`,
         pin: true,
         pinSpacing: true,
+        invalidateOnRefresh: true,
       });
 
-      // 2. Rozsuwanie kart (Spread)
-      cards.forEach((card, index) => {
-        gsap.to(card, {
-          left: `${positions[index]}%`,
-          rotation: `${rotations[index]}`,
-          ease: "none",
+      // Użycie matchMedia do responsywnych animacji
+      let mm = gsap.matchMedia();
+
+      // --- DESKTOP (min-width: 901px) ---
+      mm.add("(min-width: 901px)", () => {
+        const positions = [20, 40, 60, 80]; // Szerszy rozstaw
+        const rotations = [-15, -7.5, 7.5, 15];
+
+        cards.forEach((card, index) => {
+          // 2. Rozsuwanie kart (Spread)
+          gsap.to(card, {
+            left: `${positions[index]}%`,
+            // top: '50%', // USUNIĘTE: Redundantne, top jest już 50% w CSS. Zapobiega skokom.
+            rotation: rotations[index],
+            ease: "none",
+            scrollTrigger: {
+              trigger: containerRef.current,
+              start: "top top",
+              end: () => `+=${window.innerHeight}`,
+              scrub: 0.5,
+              invalidateOnRefresh: true,
+            },
+          });
+
+          // 3. Obrót i flip kart (Rotate & Flip)
+          const frontEl = card.querySelector(".flip-card-front");
+          const backEl = card.querySelector(".flip-card-back");
+          const staggerOffset = index * 0.05;
+          const startOffset = 1 / 3 + staggerOffset;
+          const endOffset = 2 / 3 + staggerOffset;
+
+          ScrollTrigger.create({
+            trigger: containerRef.current,
+            start: "top top",
+            end: () => `+=${totalScrollHeight}`,
+            scrub: 1,
+            invalidateOnRefresh: true,
+            onUpdate: (self) => {
+              const progress = self.progress;
+              if (progress >= startOffset && progress <= endOffset) {
+                const animationProgress = (progress - startOffset) / (1 / 3);
+                const frontRotation = -180 * animationProgress;
+                const backRotation = 180 - 180 * animationProgress;
+                const cardRotation = rotations[index] * (1 - animationProgress);
+
+                if (frontEl) frontEl.style.transform = `rotateY(${frontRotation}deg)`;
+                if (backEl) backEl.style.transform = `rotateY(${backRotation}deg)`;
+                card.style.transform = `translate(-50%, -50%) rotate(${cardRotation}deg)`;
+              }
+            },
+          });
+        });
+      });
+
+      // --- TABLET (601px to 900px) ---
+      mm.add("(max-width: 900px) and (min-width: 601px)", () => {
+        const positions = [
+          { top: '35%', left: '30%' },
+          { top: '35%', left: '70%' },
+          { top: '65%', left: '30%' },
+          { top: '65%', left: '70%' },
+        ];
+        const rotations = [-5, 5, -5, 5];
+
+        cards.forEach((card, index) => {
+          gsap.to(card, {
+            left: positions[index].left,
+            top: positions[index].top,
+            rotation: rotations[index],
+            ease: "none",
+            scrollTrigger: {
+              trigger: containerRef.current,
+              start: "top top",
+              end: () => `+=${window.innerHeight}`,
+              scrub: 0.5,
+              invalidateOnRefresh: true,
+            },
+          });
+
+          // Flip logic is the same, just uses the new rotations array
+          const frontEl = card.querySelector(".flip-card-front");
+          const backEl = card.querySelector(".flip-card-back");
+          const staggerOffset = index * 0.05;
+          const startOffset = 1 / 3 + staggerOffset;
+          const endOffset = 2 / 3 + staggerOffset;
+
+          ScrollTrigger.create({
+            trigger: containerRef.current,
+            start: "top top",
+            end: () => `+=${totalScrollHeight}`,
+            scrub: 1,
+            invalidateOnRefresh: true,
+            onUpdate: (self) => {
+              const progress = self.progress;
+              if (progress >= startOffset && progress <= endOffset) {
+                const animationProgress = (progress - startOffset) / (1 / 3);
+                const frontRotation = -180 * animationProgress;
+                const backRotation = 180 - 180 * animationProgress;
+                const cardRotation = rotations[index] * (1 - animationProgress);
+
+                if (frontEl) frontEl.style.transform = `rotateY(${frontRotation}deg)`;
+                if (backEl) backEl.style.transform = `rotateY(${backRotation}deg)`;
+                card.style.transform = `translate(-50%, -50%) rotate(${cardRotation}deg)`;
+              }
+            },
+          });
+        });
+      });
+
+      // --- MOBILE (max-width: 600px) ---
+      mm.add("(max-width: 600px)", () => {
+        // Jawne ustawienie stanu początkowego, aby uniknąć konfliktów z animacjami
+        gsap.set(cards, { opacity: 1, yPercent: 0, top: '15%', left: '50%', rotation: 0 });
+
+        const positions = [7, 55, 105, 155]; // Korekta pozycji: niżej, aby pierwsza karta nie była ucięta
+        
+        // Używamy Timeline dla pełnej kontroli sekwencji (Rozsuwanie -> Czyszczenie)
+        const tl = gsap.timeline({
           scrollTrigger: {
             trigger: containerRef.current,
             start: "top top",
-            end: () => `+=${window.innerHeight}`,
+            end: () => `+=${totalScrollHeight}`,
             scrub: 0.5,
             invalidateOnRefresh: true,
-            id: `spread-${index}`,
-          },
+          }
         });
-      });
 
-      // 3. Obrót i flip kart (Rotate & Flip)
-      cards.forEach((card, index) => {
-        const frontEl = card.querySelector(".flip-card-front");
-        const backEl = card.querySelector(".flip-card-back");
+        cards.forEach((card, index) => {
+          // 1. Rozsuwanie (Spread) - dodajemy do timeline w czasie 0
+          tl.to(card, {
+            top: `${positions[index]}%`,
+            ease: "none",
+            duration: 1 // Skrócenie relatywnego czasu rozsuwania (50% timeline'u)
+          }, 0);
 
-        const staggerOffset = index * 0.05;
-        const startOffset = 1 / 3 + staggerOffset;
-        const endOffset = 2 / 3 + staggerOffset;
+          // Flip logic without card rotation
+          const frontEl = card.querySelector(".flip-card-front");
+          const backEl = card.querySelector(".flip-card-back");
+          const staggerOffset = index * 0.05;
+          const startOffset = 1 / 3 + staggerOffset;
+          const endOffset = 2 / 3 + staggerOffset;
 
-        ScrollTrigger.create({
-          trigger: containerRef.current,
-          start: "top top",
-          end: () => `+=${totalScrollHeight}`,
-          scrub: 1,
-          id: `rotate-flip-${index}`,
-          onUpdate: (self) => {
-            const progress = self.progress;
-            if (progress >= startOffset && progress <= endOffset) {
-              const animationProgress = (progress - startOffset) / (1 / 3);
-              const frontRotation = -180 * animationProgress;
-              const backRotation = 180 - 180 * animationProgress;
-              const cardRotation = rotations[index] * (1 - animationProgress);
+          ScrollTrigger.create({
+            trigger: containerRef.current,
+            start: "top top",
+            end: () => `+=${totalScrollHeight}`,
+            scrub: 1,
+            invalidateOnRefresh: true,
+            onUpdate: (self) => {
+              const progress = self.progress;
+              if (progress >= startOffset && progress <= endOffset) {
+                const animationProgress = (progress - startOffset) / (1 / 3);
+                const frontRotation = -180 * animationProgress;
+                const backRotation = 180 - 180 * animationProgress;
 
-              if (frontEl) frontEl.style.transform = `rotateY(${frontRotation}deg)`;
-              if (backEl) backEl.style.transform = `rotateY(${backRotation}deg)`;
-              card.style.transform = `translate(-50%, -50%) rotate(${cardRotation}deg)`;
-            }
-          },
+                if (frontEl) frontEl.style.transform = `rotateY(${frontRotation}deg)`;
+                if (backEl) backEl.style.transform = `rotateY(${backRotation}deg)`;
+              }
+            },
+          });
         });
+
+        // 2. Animacja czyszcząca (Clean) - dodajemy na końcu timeline
+        tl.to(cards, {
+          yPercent: -460, // Przesuń w górę
+          opacity: 0,     // Ukryj
+          ease: "power1.in",
+          duration: 1     // Krótsza faza końcowa (25% timeline'u)
+        }, ">+2");        // Dłuższa pauza (50% timeline'u), aby karty zdążyły się w pełni obrócić
       });
     }, containerRef);
 
@@ -131,10 +258,12 @@ const ScrollCards = () => {
         {privateProjects.map((project, index) => (
           <div
             key={project.id}
-            className="card"
+            className={`card ${touchedCard === project.id ? 'is-touched' : ''}`}
             id={`card-${project.id}`}
             ref={(el) => (cardsRef.current[index] = el)}
             onClick={() => setExpandedCard(project)}
+            onTouchStart={() => setTouchedCard(project.id)}
+            onTouchEnd={() => setTouchedCard(null)}
           >
             <div className="card-wrapper">
               <div className="flip-card-inner">
