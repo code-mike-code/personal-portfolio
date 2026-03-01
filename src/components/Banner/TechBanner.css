@@ -8,6 +8,12 @@
   background-color: #000000;
   padding: 4rem 0;
   overflow: hidden;
+  cursor: grab;
+  user-select: none;
+}
+
+.tech-banner.is-dragging {
+  cursor: grabbing;
 }
 
 .banner-container {
@@ -36,11 +42,6 @@
 
 .carousel {
   display: flex;
-  animation: scroll 30s linear infinite;
-}
-
-.carousel:hover {
-  animation-play-state: paused;
 }
 
 .tech-item {
@@ -71,15 +72,6 @@
   font-size: 0.875rem;
   font-weight: 500;
   letter-spacing: 0.025em;
-}
-
-@keyframes scroll {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-50%);
-  }
 }
 
 @media (max-width: 768px) {

@@ -1,4 +1,5 @@
 import corDentMobile from '../../assets/videos/cor-dent-mobile.mp4';
+import corDentTablet from '../../assets/videos/cor-dent-tablet.mp4';
 import corDentDesktop from '../../assets/videos/cor-dent-desktop.mp4';
 
 export const privateProjects = [
@@ -8,7 +9,7 @@ export const privateProjects = [
     shortDescription: "A modern, responsive web application for a premium cardiology and dental care clinic. Built with React, TypeScript, and Tailwind CSS.",
     fullDescription: "A modern, responsive web application for a premium cardiology and dental care clinic. Built with React, TypeScript, and Tailwind CSS. Cor-Dent is a professional medical services platform offering: \n\nCardiology Services - Professional cardiovascular care and diagnostics. Dental Services - Comprehensive dental care and prosthetics. Online Booking - Easy appointment scheduling system. Multilingual Support - Support for multiple languages. Tech Stack: Frontend Framework: React 18 with TypeScript, Build Tool: Vite, Styling: Tailwind CSS, UI Components: shadcn-ui (Radix UI + Tailwind), Routing**: React Router v6, Form Management**: React Hook Form + Zod validation, Icons**: Lucide React, Internationalization: Custom i18n hooks, \nState Management: TanStack React Query",
     thumbnailVideo: corDentMobile,
-    tabletVideo: corDentDesktop,
+    tabletVideo: corDentTablet,
     fullVideo: corDentDesktop,
     techStack: ["React", "Node.js", "MongoDB", "Stripe API", "GSAP"]
   },
