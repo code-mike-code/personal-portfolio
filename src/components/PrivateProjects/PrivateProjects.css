@@ -9,6 +9,7 @@
 .private-projects-content {
     max-width: 1280px;
     width: 100%;
+    overflow: hidden; /* Zapobiega przepełnieniu zawartości i poziomemu przewijaniu na mobile */
 }
 
 .private-projects-title {

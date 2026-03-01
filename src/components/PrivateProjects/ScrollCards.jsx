@@ -23,6 +23,7 @@ const ScrollCards = () => {
   const containerRef = useRef(null);
   const cardsRef = useRef([]);
   const closingRef = useRef(null);
+  const lenisRef = useRef(null);
   const [showClosing, setShowClosing] = useState(false);
   const [expandedCard, setExpandedCard] = useState(null);
   const [touchedCard, setTouchedCard] = useState(null);
@@ -48,6 +49,7 @@ const ScrollCards = () => {
   useLayoutEffect(() => {
     // Inicjalizacja Lenis (Smooth Scroll)
     const lenis = new Lenis();
+    lenisRef.current = lenis;
 
     lenis.on('scroll', ScrollTrigger.update);
 
@@ -185,7 +187,7 @@ const ScrollCards = () => {
       // --- MOBILE (max-width: 600px) ---
       mm.add("(max-width: 600px)", () => {
         // Jawne ustawienie stanu początkowego, aby uniknąć konfliktów z animacjami
-        gsap.set(cards, { opacity: 1, yPercent: 0, top: '15%', left: '50%', rotation: 0 });
+        gsap.set(cards, { opacity: 1, yPercent: 0, xPercent: -50, top: '10%', left: '50%', rotation: 0 });
 
         const positions = [7, 55, 105, 155]; // Korekta pozycji: niżej, aby pierwsza karta nie była ucięta
         
@@ -249,8 +251,18 @@ const ScrollCards = () => {
       ctx.revert();
       gsap.ticker.remove(tickerCallback);
       lenis.destroy();
+      lenisRef.current = null;
     };
   }, []);
+
+  // Zatrzymywanie Lenis gdy modal jest otwarty, aby umożliwić przewijanie jego zawartości
+  useEffect(() => {
+    if (expandedCard) {
+      lenisRef.current?.stop();
+    } else {
+      lenisRef.current?.start();
+    }
+  }, [expandedCard]);
 
   return (
     <div className="scroll-cards-wrapper">
