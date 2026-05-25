@@ -75,14 +75,26 @@
 
 .contact-form input:focus,
 .contact-form input:hover,
+.contact-form select:focus,
 .contact-form select:hover,
 .contact-form textarea:hover {
   border-bottom: 1px solid #333;
 }
 
+.contact-form input:focus,
+.contact-form select:focus,
 .contact-form textarea:focus {
   background-color: #fff;
   border-radius: 8px;
+  padding: 0.2rem 0.5rem;
+}
+
+.contact-form input:-webkit-autofill,
+.contact-form input:-webkit-autofill:hover,
+.contact-form input:-webkit-autofill:focus {
+  -webkit-box-shadow: 0 0 0px 1000px transparent inset;
+  transition: background-color 5000s ease-in-out 0s;
+  -webkit-text-fill-color: #888;
 }
 
 .contact-form textarea {
