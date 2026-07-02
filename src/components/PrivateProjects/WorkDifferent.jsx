@@ -1,6 +1,10 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useLayoutEffect, useRef } from 'react';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import ScrollReveal from '../common/ScrollReveal';
 import './WorkDifferent.css';
+
+gsap.registerPlugin(ScrollTrigger);
 
 const items = [
   {
@@ -49,27 +53,65 @@ const items = [
 ];
 
 export default function WorkDifferent() {
+  const containerRef = useRef(null);
   const rowsRef = useRef([]);
 
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('is-visible');
-            observer.unobserve(entry.target);
-          }
-        });
-      },
-      { rootMargin: '0px 0px -120px 0px', threshold: 0 }
-    );
+  // Animacje sprzężone ze scrollem (scrub), jak reszta sekcji
+  useLayoutEffect(() => {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return undefined;
 
-    rowsRef.current.forEach((row) => row && observer.observe(row));
-    return () => observer.disconnect();
+    const ctx = gsap.context(() => {
+      rowsRef.current.forEach((row) => {
+        if (!row) return;
+
+        const blob = row.querySelector('.work-different-blob');
+        const heading = row.querySelector('.work-different-heading');
+        const body = row.querySelector('.work-different-body');
+        const tags = row.querySelectorAll('.work-different-tag');
+
+        const tl = gsap.timeline({
+          scrollTrigger: {
+            trigger: row,
+            start: 'top 90%',
+            end: 'top 40%',
+            scrub: 0.5,
+            invalidateOnRefresh: true,
+          },
+        });
+
+        tl.fromTo(row, { opacity: 0, y: 40 }, { opacity: 1, y: 0, ease: 'none' })
+          .fromTo(
+            blob,
+            { opacity: 0, scale: 0.8 },
+            { opacity: 1, scale: 1, ease: 'none' },
+            '<0.1'
+          )
+          .fromTo(
+            heading,
+            { opacity: 0, y: 16 },
+            { opacity: 1, y: 0, ease: 'none' },
+            '<0.1'
+          )
+          .fromTo(
+            body,
+            { opacity: 0, y: 16 },
+            { opacity: 1, y: 0, ease: 'none' },
+            '<0.1'
+          )
+          .fromTo(
+            tags,
+            { opacity: 0, y: 8 },
+            { opacity: 1, y: 0, stagger: 0.08, ease: 'none' },
+            '<0.1'
+          );
+      });
+    }, containerRef);
+
+    return () => ctx.revert();
   }, []);
 
   return (
-    <div className="work-different">
+    <div className="work-different" ref={containerRef}>
       <ScrollReveal
         baseOpacity={0}
         enableBlur={true}
