@@ -14,14 +14,14 @@ import Cursor from './components/Cursor/Cursor';
 // import PrivacyPolicy from "./components/PrivacyPolicy/PrivacyPolicy";
 import { CookieConsentModal } from "./components/common/CookieConsentModal";
 import ErrorBoundary from './components/common/ErrorBoundary';
+import { initGoogleAnalytics } from './utils/analytics';
 
 
 function MainLayout() {
   useEffect(() => {
     const consent = window.localStorage.getItem("devmike_cookie_consent");
     if (consent === "accepted") {
-      // tutaj inicjalizujesz Google Analytics (gtag/GA4)
-      // initGoogleAnalytics();
+      initGoogleAnalytics();
     }
     // jeśli "declined" – nie ładujesz GA
   }, []);
@@ -38,10 +38,10 @@ function MainLayout() {
       <Footer />
        <CookieConsentModal
         onAccept={() => {
-          // initGoogleAnalytics();
+          initGoogleAnalytics();
         }}
         onDecline={() => {
-          // opcjonalnie: upewnij się, że GA nie jest ładowane
+          // brak zgody — GA nie jest ładowane
         }}
       />
     </>

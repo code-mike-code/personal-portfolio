@@ -62,6 +62,7 @@ module.exports = {
       'process.env.REACT_APP_EMAILJS_PUBLIC_KEY': JSON.stringify(process.env.REACT_APP_EMAILJS_PUBLIC_KEY),
       'process.env.REACT_APP_GITHUB_USERNAME': JSON.stringify(process.env.REACT_APP_GITHUB_USERNAME),
       'process.env.REACT_APP_GITHUB_TOKEN': JSON.stringify(process.env.REACT_APP_GITHUB_TOKEN),
+      'process.env.REACT_APP_GA_MEASUREMENT_ID': JSON.stringify(process.env.REACT_APP_GA_MEASUREMENT_ID),
     }),
   ],
   devServer: {

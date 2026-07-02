@@ -1,39 +1,47 @@
-# Personal Portfolio (Code Mike Dev)
+# Personal Portfolio (Code Mike)
 
-This is a personal portfolio website built with React to showcase projects, skills, and provide contact information.
+Personal portfolio website built with React — scroll-driven project showcase, GitHub repositories, about section with photo gallery, and a contact form.
 
-##  Security Note & Important Changes
+## Sections
 
-**The Problem:** The original implementation loaded project data directly from the GitHub API in the browser, using a `GITHUB_TOKEN` that was stored in the client-side code. This created a **critical security vulnerability**, as the secret token was visible to any visitor of the website.
-
-**The Solution:**
-1.  **API Call Removed:** The direct API call to GitHub from the front end has been removed.
-2.  **Secret Token Deleted:** The `github.secret.js` file containing the token has been removed from the project to eliminate the exposure.
-3.  **Mock Data Used:** The project now uses `mock-repos.js` to display sample data for the project list. This ensures the website is fully functional and secure.
-
-**Future Recommendation:**
-To load real, dynamic data securely, a backend solution (like a serverless function on Vercel/Netlify or a small Node.js server) should be implemented. This backend would store the API key safely and make the requests to the GitHub API, never exposing the key in the browser.
-
----
+*   **Hero** — animated headline with a subtle orbit graphic element.
+*   **Selected Work** — GSAP-pinned, scroll-driven showcase of client projects (video/placeholder media, live links, details modal), "What makes my work different" block, and section closure.
+*   **GitHub** — pinned repositories rendered as physics-driven bouncing orbs (elastic collisions, size pulse, collision edge glow) linking to the repos.
+*   **About** — bio, personal interests, and a masonry photo gallery with hover captions.
+*   **Contact** — EmailJS-powered contact form.
 
 ## Technologies Used
 
-*   **React:** The core UI library.
-*   **Webpack:** For module bundling and code transpilation.
-*   **Babel:** For compiling modern JavaScript (ES6+) and JSX.
-*   **Jest:** For component testing.
-*   **ESLint:** For code quality and consistency.
-*   **CSS Modules:** For locally-scoped component styling.
-*   **EmailJS:** For handling form submissions (contact form).
+*   **React 18** — core UI library (HashRouter for routing).
+*   **GSAP + ScrollTrigger** — scroll-driven and pinned animations.
+*   **Lenis** — smooth scrolling.
+*   **Webpack 5 / Babel** — bundling and transpilation.
+*   **Jest** — component testing.
+*   **ESLint** — code quality.
+*   **CSS + CSS Modules** — styling (ecru palette, page grid lines, coral `#d96a55` / teal `#2b9dad` accents).
+*   **EmailJS** — contact form submissions.
+*   **Google Analytics 4** — consent-gated analytics (see below).
 
+## Google Analytics
+
+GA4 is integrated with privacy-first defaults:
+
+*   The gtag script is **loaded only after the user accepts cookies** in the consent modal (`CookieConsentModal`). Consent choice (`accepted`/`declined`) is stored in `localStorage`.
+*   On repeat visits GA initializes automatically only if consent was previously accepted.
+*   `anonymize_ip` is enabled.
+*   The Measurement ID comes from the `REACT_APP_GA_MEASUREMENT_ID` env variable — no ID configured (e.g. local dev) means GA is never loaded.
+
+Implementation: `src/utils/analytics.js` (loader) + wiring in `src/App.jsx`.
+
+## Security Note
+
+The GitHub section fetches pinned repositories via the GitHub GraphQL API using a token from `src/components/Projects/github.secret.js`. This file is **gitignored**, but any token bundled into a client-side app is extractable by visitors. Use a fine-grained token with **read-only, public-repo scope only**, or better — proxy the request through a serverless function (Vercel/Netlify) so no token ships in the browser. `mock-repos.js` is available as a token-free fallback.
 
 ## Getting Started
 
-To run the project locally, follow these steps.
-
 ### Prerequisites
 
-You will need [Node.js](https://nodejs.org/) (version 14 or higher) and npm on your system.
+[Node.js](https://nodejs.org/) 14+ and npm.
 
 ### Installation
 
@@ -49,92 +57,86 @@ You will need [Node.js](https://nodejs.org/) (version 14 or higher) and npm on y
     ```sh
     npm install
     ```
-
-4.  **Configure Environment Variables:**
-    
-    Create a `.env` file in the project root directory:
+4.  **Configure environment variables:**
     ```sh
     cp .env.example .env
     ```
-    
-    Then edit `.env` and add your credentials:
+    Then edit `.env`:
     ```env
-    # EmailJS Configuration (required for contact form)
+    # EmailJS (required for the contact form)
     REACT_APP_EMAILJS_SERVICE_ID=your_service_id_here
     REACT_APP_EMAILJS_TEMPLATE_ID=your_template_id_here
     REACT_APP_EMAILJS_PUBLIC_KEY=your_public_key_here
 
-    # GitHub Configuration (optional, for Projects component)
+    # GitHub (optional, for the GitHub section)
     REACT_APP_GITHUB_USERNAME=your_github_username
     REACT_APP_GITHUB_TOKEN=your_github_token_here
+
+    # Google Analytics 4 (optional, loaded only after cookie consent)
+    REACT_APP_GA_MEASUREMENT_ID=G-XXXXXXXXXX
     ```
-    
-    **How to get EmailJS credentials:**
-    - Sign up at [EmailJS](https://www.emailjs.com/)
-    - Create a new email service
-    - Create an email template
-    - Copy your Service ID, Template ID, and Public Key
-    
-    **Note:** The `.env` file is gitignored and will not be committed to version control.
+    **EmailJS credentials:** sign up at [EmailJS](https://www.emailjs.com/), create a service and a template, copy the Service ID, Template ID and Public Key.
+
+    **Note:** `.env` is gitignored and will not be committed.
 
 ### Running the Project
 
-To start the development server (usually on `http://localhost:8080`):
+Development server (usually `http://localhost:8080`):
 ```sh
 npm start
 ```
 
 ### Building the Project
 
-To create an optimized production build in the `dist/` directory:
+Optimized production build in `dist/`:
 ```sh
 npm run build
 ```
 
 ### Code Quality
 
-Run ESLint to check code quality:
 ```sh
-npm run lint
-```
-
-Auto-fix linting issues:
-```sh
-npm run lint:fix
-```
-
-Run tests:
-```sh
-npm test
+npm run lint      # ESLint check
+npm run lint:fix  # auto-fix
+npm test          # Jest tests
 ```
 
 ## Troubleshooting
 
 **Contact form not working:**
-- Ensure you have created a `.env` file with valid EmailJS credentials
-- Check the browser console for any error messages about missing environment variables
+- Ensure `.env` exists with valid EmailJS credentials.
+- Check the browser console for missing env variable errors.
+
+**Analytics not reporting:**
+- GA loads only after accepting cookies and only when `REACT_APP_GA_MEASUREMENT_ID` is set at build time.
 
 **Build errors:**
-- Delete `node_modules` and `package-lock.json`, then run `npm install` again
-- Ensure you're using Node.js version 14 or higher
+- Delete `node_modules` and `package-lock.json`, then `npm install` again.
+- Restart the dev server after changing `webpack.config.js` or `.env`.
 
 ## Project Structure
 
 ```
 /
 ├── public/
-│   └── index.html      # HTML template
+│   └── index.html          # HTML template
 ├── src/
-│   ├── components/     # Reusable React components
-│   │   ├── AboutMe/
-│   │   ├── Contact/
-│   │   ├── Header/
-│   │   ├── Hero/
-│   │   ├── Projects/     # Project list component (now using mock data)
-│   │   └── ...
-│   ├── styles/         # Global styles
-│   ├── App.jsx         # Main app component
-│   └── index.js        # Application entry point
-├── package.json        # Project dependencies and scripts
-└── webpack.config.js   # Webpack configuration
+│   ├── components/
+│   │   ├── AboutMe/        # Bio, interests, photo gallery
+│   │   ├── Banner/         # Tech banner
+│   │   ├── Contact/        # Contact form (EmailJS)
+│   │   ├── Header/         # Header + bottom nav
+│   │   ├── Hero/           # Hero with orbit element
+│   │   ├── PrivateProjects/# Selected Work showcase (GSAP pinned)
+│   │   ├── Projects/       # GitHub section (physics orbs)
+│   │   └── common/         # Button, ScrollReveal, CookieConsentModal, ...
+│   ├── assets/             # Images (webp) and videos
+│   ├── styles/             # Global styles (grid lines, palette)
+│   ├── utils/
+│   │   └── analytics.js    # Consent-gated GA4 loader
+│   ├── App.jsx             # Main app component
+│   └── index.js            # Entry point
+├── .env.example            # Env template
+├── package.json
+└── webpack.config.js
 ```

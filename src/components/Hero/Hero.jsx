@@ -94,6 +94,16 @@ export default function Hero() {
 
   return (
     <section className="hero-section">
+      {/* Subtelny element graficzny — orbitujące punkty w palecie strony */}
+      <div className="hero-orbit" aria-hidden="true">
+        <span className="hero-orbit-ring hero-orbit-ring--outer">
+          <span className="hero-orbit-dot hero-orbit-dot--coral"></span>
+        </span>
+        <span className="hero-orbit-ring hero-orbit-ring--inner">
+          <span className="hero-orbit-dot hero-orbit-dot--teal"></span>
+        </span>
+        <span className="hero-orbit-core"></span>
+      </div>
       <div className="hero-content-wrapper">
         <div className="hero-title-container hero-title-container--left">
           <h1 className="hero-title hero-title--left">

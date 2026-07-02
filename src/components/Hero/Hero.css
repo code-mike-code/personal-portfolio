@@ -199,3 +199,90 @@
     
   }
 } */
+/* --- Hero orbit — subtelny element techniczny po prawej stronie --- */
+
+.hero-section {
+  position: relative;
+}
+
+.hero-orbit {
+  position: absolute;
+  top: 50%;
+  right: 9vw;
+  width: 180px;
+  height: 180px;
+  transform: translateY(-50%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.hero-orbit-ring {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  border: 1px solid #b3ad8e;
+  border-radius: 50%;
+  opacity: 0.8;
+}
+
+.hero-orbit-ring--outer {
+  width: 180px;
+  height: 180px;
+  margin: -90px 0 0 -90px;
+  animation: hero-orbit-spin 14s linear infinite;
+}
+
+.hero-orbit-ring--inner {
+  width: 104px;
+  height: 104px;
+  margin: -52px 0 0 -52px;
+  animation: hero-orbit-spin 9s linear infinite reverse;
+}
+
+.hero-orbit-dot {
+  position: absolute;
+  top: -4.5px;
+  left: 50%;
+  width: 9px;
+  height: 9px;
+  margin-left: -4.5px;
+  border-radius: 50%;
+}
+
+.hero-orbit-dot--coral {
+  background: #d96a55;
+}
+
+.hero-orbit-dot--teal {
+  background: #2b9dad;
+}
+
+.hero-orbit-core {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 6px;
+  height: 6px;
+  margin: -3px 0 0 -3px;
+  border-radius: 50%;
+  background: #222;
+}
+
+@keyframes hero-orbit-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-orbit-ring--outer,
+  .hero-orbit-ring--inner {
+    animation: none;
+  }
+}
+
+@media (max-width: 900px) {
+  .hero-orbit {
+    display: none;
+  }
+}
