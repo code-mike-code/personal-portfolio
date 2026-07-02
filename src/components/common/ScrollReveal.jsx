@@ -11,6 +11,9 @@ const ScrollReveal = ({
   blurStrength = 4,
   containerClassName = '',
   textClassName = '',
+  // Offset (px od góry viewportu), przy którym reveal jest w 100% ukończony.
+  // Domyślnie null = oryginalne zachowanie (koniec, gdy element opuszcza viewport)
+  completeAt = null,
   // rotationEnd = 'bottom bottom', // TODO: Implement custom rotation end
   // wordAnimationEnd = 'bottom bottom' // TODO: Implement custom word animation end
 }) => {
@@ -39,7 +42,10 @@ const ScrollReveal = ({
       const windowHeight = window.innerHeight;
       
       // calculate scroll progress
-      const scrollProgress = Math.max(0, Math.min(1, (windowHeight - rect.top) / (windowHeight + rect.height)));
+      const denominator = completeAt == null
+        ? windowHeight + rect.height
+        : Math.max(1, windowHeight - completeAt);
+      const scrollProgress = Math.max(0, Math.min(1, (windowHeight - rect.top) / denominator));
       
       // apply rotation
       const rotation = baseRotation * (1 - scrollProgress);
@@ -67,7 +73,7 @@ const ScrollReveal = ({
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
-  }, [enableBlur, baseRotation, baseOpacity, blurStrength]);
+  }, [enableBlur, baseRotation, baseOpacity, blurStrength, completeAt]);
 
   return (
     <h2 ref={containerRef} className={`scroll-reveal ${containerClassName}`}>

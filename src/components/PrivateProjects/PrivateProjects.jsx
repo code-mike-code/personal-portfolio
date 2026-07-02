@@ -82,11 +82,14 @@ export default function PrivateProjects() {
         >into Digital Reality
         </ScrollReveal>
 
+        {/* completeAt: pełny reveal zanim heading dojedzie do góry —
+            24px zapasu + wysokość dwóch nagłówków nad tekstem (~264px) */}
         <ScrollReveal
           baseOpacity={0}
           enableBlur={true}
           baseRotation={0}
           blurStrength={20}
+          completeAt={320}
           textClassName="section-closure-text"
         >The projects above demonstrate my commitment to building high-performance web applications with a focus on clean code and user experience. If you are looking for a reliable developer to bring your vision to life or optimize your current digital presence, I am ready to help. Let's connect and discuss how we can build something exceptional for your business.
         </ScrollReveal>
