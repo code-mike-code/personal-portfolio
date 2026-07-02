@@ -1,0 +1,100 @@
+.repo-orbs {
+  position: relative;
+  width: 100%;
+  height: min(65vh, 640px);
+  overflow: hidden;
+}
+
+.repo-orb {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.25rem;
+  border-radius: 50%;
+  text-decoration: none;
+  text-align: center;
+  padding: 0.75rem;
+  will-change: transform;
+  transition: background-color 0.25s ease, border-color 0.25s ease;
+}
+
+.repo-orb-name {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #222;
+  max-width: 100%;
+  overflow-wrap: break-word;
+}
+
+.repo-orb-lang {
+  font-size: 0.75rem;
+  color: #6b654a;
+}
+
+/* Paleta koral / morski / ecru */
+.orb-coral {
+  background: rgba(217, 106, 85, 0.16);
+  border: 1px solid rgba(217, 106, 85, 0.75);
+}
+
+.orb-teal {
+  background: rgba(43, 157, 173, 0.16);
+  border: 1px solid rgba(43, 157, 173, 0.75);
+}
+
+.orb-olive {
+  background: rgba(179, 173, 142, 0.22);
+  border: 1px solid #b3ad8e;
+}
+
+.repo-orb:hover,
+.repo-orb:focus-visible {
+  background: #222;
+  border-color: #222;
+}
+
+.repo-orb:hover .repo-orb-name,
+.repo-orb:focus-visible .repo-orb-name {
+  color: #f5f5dc;
+}
+
+.repo-orb:hover .repo-orb-lang,
+.repo-orb:focus-visible .repo-orb-lang {
+  color: #b3ad8e;
+}
+
+/* Fallback bez animacji (prefers-reduced-motion) — statyczna siatka kółek */
+.repo-orbs-static {
+  height: auto;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  padding: 2rem 1rem;
+  overflow: visible;
+}
+
+.repo-orbs-static .repo-orb {
+  position: static;
+  width: 150px;
+  height: 150px;
+}
+
+@media (max-width: 700px) {
+  .repo-orbs {
+    height: 55vh;
+  }
+
+  .repo-orb-name {
+    font-size: 0.8rem;
+  }
+
+  .repo-orb-lang {
+    font-size: 0.65rem;
+  }
+}
