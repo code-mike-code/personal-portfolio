@@ -19,7 +19,7 @@ const items = [
     tagline: 'No templates — tailored, custom websites',
     description:
       'Every project starts with understanding the business and its audience, then building a UX and visual system that feels specific, intentional, and alive.',
-    tags: ['Figma', 'React', 'CSS'],
+    tags: ['Figma', 'React', 'CSS', 'TailwindCSS'],
   },
   {
     number: '02',
@@ -34,7 +34,7 @@ const items = [
     tagline: 'Responsive websites that feel multidimensional',
     description:
       'I use animation and scroll-based interaction to guide attention, tell stories, and bring interfaces to life — from subtle transitions to more expressive, immersive moments.',
-    tags: ['GSAP', 'ScrollTrigger', 'Lenis'],
+    tags: ['GSAP', 'ScrollTrigger', 'Lenis', 'MUI'],
   },
   {
     number: '03',
@@ -48,7 +48,7 @@ const items = [
     tagline: 'Fast, visible, measurable',
     description:
       'Clean, semantic code and performance budgets from day one — websites that load fast, rank well, and score high in Core Web Vitals.',
-    tags: ['Lighthouse', 'Core Web Vitals', 'SEO'],
+    tags: ['Lighthouse', 'Core Web Vitals', 'SEO', 'WCAG'],
   },
 ];
 
