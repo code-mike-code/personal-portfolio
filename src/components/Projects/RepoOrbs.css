@@ -24,15 +24,15 @@
 
 /* Poświata obwodu — łuk conic-gradient sterowany z pętli rAF,
    maska zostawia tylko pierścień przy krawędzi */
+/* Nakładka leży dokładnie na obrysie kuli — świeci sama krawędź (1px border) */
 .repo-orb-glow {
   position: absolute;
-  inset: -6px;
+  inset: 0;
   border-radius: 50%;
   pointer-events: none;
   opacity: 0;
-  filter: blur(2px);
-  -webkit-mask: radial-gradient(closest-side, transparent 94%, #000 98%, #000 100%);
-  mask: radial-gradient(closest-side, transparent 94%, #000 98%, #000 100%);
+  -webkit-mask: radial-gradient(closest-side, transparent calc(100% - 2px), #000 calc(100% - 1px), #000 100%);
+  mask: radial-gradient(closest-side, transparent calc(100% - 2px), #000 calc(100% - 1px), #000 100%);
   transition: opacity 0.3s ease;
 }
 
