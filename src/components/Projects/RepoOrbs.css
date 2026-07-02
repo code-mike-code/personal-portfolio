@@ -22,6 +22,20 @@
   transition: background-color 0.25s ease, border-color 0.25s ease;
 }
 
+/* Poświata obwodu — łuk conic-gradient sterowany z pętli rAF,
+   maska zostawia tylko pierścień przy krawędzi */
+.repo-orb-glow {
+  position: absolute;
+  inset: -6px;
+  border-radius: 50%;
+  pointer-events: none;
+  opacity: 0;
+  filter: blur(4px);
+  -webkit-mask: radial-gradient(closest-side, transparent 72%, #000 86%, #000 100%);
+  mask: radial-gradient(closest-side, transparent 72%, #000 86%, #000 100%);
+  transition: opacity 0.3s ease;
+}
+
 .repo-orb-name {
   font-size: 0.95rem;
   font-weight: 600;

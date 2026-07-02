@@ -44,7 +44,9 @@ export default function RepoOrbs({ repos }) {
         oscSpeed: 0.3 + Math.random() * 0.4,
         frozen: false,
         glow: GLOW[i % GLOW.length],
+        glowEl: orbRefs.current[i].querySelector('.repo-orb-glow'),
         flash: -1,
+        flashAngle: 0,
       };
     });
 
@@ -87,10 +89,10 @@ export default function RepoOrbs({ repos }) {
           o.x += o.vx * dt;
           o.y += o.vy * dt;
         }
-        if (o.x - o.r < 0) { o.x = o.r; o.vx = Math.abs(o.vx); o.flash = t; }
-        if (o.x + o.r > bounds.width) { o.x = bounds.width - o.r; o.vx = -Math.abs(o.vx); o.flash = t; }
-        if (o.y - o.r < 0) { o.y = o.r; o.vy = Math.abs(o.vy); o.flash = t; }
-        if (o.y + o.r > bounds.height) { o.y = bounds.height - o.r; o.vy = -Math.abs(o.vy); o.flash = t; }
+        if (o.x - o.r < 0) { o.x = o.r; o.vx = Math.abs(o.vx); o.flash = t; o.flashAngle = Math.PI; }
+        if (o.x + o.r > bounds.width) { o.x = bounds.width - o.r; o.vx = -Math.abs(o.vx); o.flash = t; o.flashAngle = 0; }
+        if (o.y - o.r < 0) { o.y = o.r; o.vy = Math.abs(o.vy); o.flash = t; o.flashAngle = -Math.PI / 2; }
+        if (o.y + o.r > bounds.height) { o.y = bounds.height - o.r; o.vy = -Math.abs(o.vy); o.flash = t; o.flashAngle = Math.PI / 2; }
       });
 
       // Zderzenia sprężyste (masa ~ r^2)
@@ -125,6 +127,9 @@ export default function RepoOrbs({ repos }) {
               b.vy += impulse * m1 * ny;
               a.flash = t;
               b.flash = t;
+              // Punkt uderzenia: dla a w stronę b, dla b w stronę a
+              a.flashAngle = Math.atan2(ny, nx);
+              b.flashAngle = Math.atan2(-ny, -nx);
             }
           }
         }
@@ -134,14 +139,22 @@ export default function RepoOrbs({ repos }) {
       orbs.forEach((o) => {
         o.el.style.transform = `translate3d(${o.x - o.base}px, ${o.y - o.base}px, 0) scale(${o.r / o.base})`;
 
-        // Poświata obwodu: miękki attack, potem powolne wygasanie (smoothstep)
+        // Poświata rozchodząca się po obwodzie od punktu uderzenia:
+        // łuk conic-gradient rośnie wokół kuli, jasność wg obwiedni smoothstep
         const p = o.flash >= 0 ? (t - o.flash) / FLASH_DURATION : 1;
         if (p < 1) {
           const raw = p < FLASH_ATTACK ? p / FLASH_ATTACK : 1 - (p - FLASH_ATTACK) / (1 - FLASH_ATTACK);
           const ease = raw * raw * (3 - 2 * raw);
-          o.el.style.boxShadow = `0 0 ${20 * ease}px ${2 * ease}px ${o.glow}${(0.5 * ease).toFixed(3)})`;
-        } else if (o.el.style.boxShadow) {
-          o.el.style.boxShadow = '';
+
+          const spreadT = Math.min(1, p / 0.7);
+          const spread = 40 + 320 * (spreadT * spreadT * (3 - 2 * spreadT));
+          const fromDeg = 90 + (o.flashAngle * 180) / Math.PI - spread / 2;
+          const alpha = (0.85 * ease).toFixed(3);
+
+          o.glowEl.style.background = `conic-gradient(from ${fromDeg}deg, ${o.glow}0) 0deg, ${o.glow}${alpha}) ${spread / 2}deg, ${o.glow}0) ${spread}deg, ${o.glow}0) 360deg)`;
+          o.glowEl.style.opacity = 1;
+        } else if (o.glowEl.style.opacity !== '0') {
+          o.glowEl.style.opacity = 0;
         }
       });
 
@@ -207,6 +220,7 @@ export default function RepoOrbs({ repos }) {
           onFocus={() => freeze(index, true)}
           onBlur={() => freeze(index, false)}
         >
+          <span className="repo-orb-glow" aria-hidden="true"></span>
           <span className="repo-orb-name">{repo.name}</span>
           {repo.primaryLanguage && (
             <span className="repo-orb-lang">{repo.primaryLanguage.name}</span>
