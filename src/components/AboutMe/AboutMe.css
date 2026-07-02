@@ -1,16 +1,292 @@
 .about-section {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 20px;
-    margin-bottom: 4rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  width: 100%;
+  padding: clamp(4rem, 10vh, 8rem) 0;
+  gap: clamp(4rem, 10vh, 8rem);
 }
-.about-content {
-    max-width: 1280px;
+
+/* --- Nagłówek --- */
+
+.about-header {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  min-height: 55vh;
+  padding: 2rem 1.5rem;
 }
-.text-1 {
-    text-align: start;
+
+.about-header-blob {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: min(60vw, 700px);
+  height: min(60vw, 700px);
+  transform: translate(-50%, -50%);
+  background:
+    radial-gradient(circle at 40% 35%, rgba(217, 106, 85, 0.32), transparent 60%),
+    radial-gradient(circle at 62% 60%, rgba(43, 157, 173, 0.3), transparent 60%);
+  filter: blur(40px);
+  pointer-events: none;
+  z-index: 0;
 }
-.text-2 {
-    text-align: end;
+
+.about-header-title {
+  position: relative;
+  z-index: 1;
+  font-size: clamp(2.6rem, 7vw, 6rem);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  color: #222;
+  margin: 0;
+}
+
+/* --- Intro: zdjęcie + bio --- */
+
+.about-intro {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: clamp(2rem, 5vw, 5rem);
+  align-items: center;
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 clamp(1.25rem, 4vw, 3rem);
+}
+
+.about-photo-wrap {
+  position: relative;
+  justify-self: center;
+}
+
+.about-photo {
+  position: relative;
+  z-index: 1;
+  display: block;
+  width: min(360px, 80vw);
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: 24px;
+}
+
+/* Kształty dekoracyjne w palecie koral + morski */
+.about-shape-circle {
+  position: absolute;
+  top: -12%;
+  left: -18%;
+  width: 42%;
+  aspect-ratio: 1 / 1;
+  border: 18px solid #d96a55;
+  border-radius: 50%;
+  z-index: 0;
+}
+
+.about-shape-star {
+  position: absolute;
+  bottom: -10%;
+  left: -14%;
+  width: 38%;
+  color: #2b9dad;
+  opacity: 0.85;
+  z-index: 2;
+  transform: rotate(-12deg);
+}
+
+.about-bio-heading-container {
+  margin: 0 0 1.5rem 0;
+  padding: 0;
+}
+
+.about-bio-heading {
+  font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+  font-weight: 600;
+  color: #222;
+  margin: 0;
+}
+
+.about-bio-text {
+  font-size: 1.05rem;
+  line-height: 1.65;
+  color: #4a4738;
+  margin: 0 0 1.25rem 0;
+  max-width: 560px;
+}
+
+.about-bio-tagline {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: #222;
+  margin: 0 0 2rem 0;
+}
+
+.about-stats {
+  display: flex;
+  gap: clamp(2rem, 6vw, 5rem);
+}
+
+.about-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.about-stat-number {
+  font-size: clamp(2.4rem, 4vw, 3.4rem);
+  font-weight: 300;
+  line-height: 1;
+  color: #222;
+}
+
+.about-stat-label {
+  font-size: 1rem;
+  color: #6b654a;
+}
+
+/* --- Personal interests --- */
+
+.about-interests {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 clamp(1.25rem, 4vw, 3rem);
+}
+
+.about-interests-dot {
+  display: block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #d96a55;
+  margin-bottom: 1.5rem;
+}
+
+.about-interests-heading-container {
+  text-align: left;
+  margin: 0 0 1.5rem 0;
+  padding: 0;
+}
+
+.about-interests-heading {
+  font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+  font-weight: 600;
+  color: #222;
+  margin: 0;
+}
+
+.about-interests-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+  max-width: 560px;
+}
+
+.about-interests-list li {
+  font-size: 1.05rem;
+  line-height: 1.5;
+  color: #4a4738;
+}
+
+/* --- Galeria --- */
+
+.about-gallery {
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 clamp(1.25rem, 4vw, 3rem);
+  column-count: 3;
+  column-gap: clamp(1.5rem, 3vw, 2.5rem);
+}
+
+.about-gallery-item {
+  position: relative;
+  margin: 0 0 clamp(1.5rem, 3vw, 2.5rem) 0;
+  break-inside: avoid;
+  border-radius: 12px;
+  overflow: hidden;
+  transform: rotate(var(--rot, 0deg));
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  box-shadow: 0 12px 32px rgba(34, 34, 34, 0.12);
+  cursor: pointer;
+}
+
+.about-gallery-item img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* Podpis w dolnym lewym rogu — widoczny na hover */
+.about-gallery-item figcaption {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 2rem 1rem 0.9rem;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #f5f5dc;
+  background: linear-gradient(transparent, rgba(34, 34, 34, 0.72));
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 0.35s ease, transform 0.35s ease;
+}
+
+/* Hover: wyprostowanie + lekkie powiększenie + podpis */
+.about-gallery-item:hover,
+.about-gallery-item:focus-within {
+  transform: rotate(0deg) scale(1.04);
+  z-index: 2;
+}
+
+.about-gallery-item:hover figcaption,
+.about-gallery-item:focus-within figcaption {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .about-gallery-item,
+  .about-gallery-item figcaption {
+    transition: none;
+  }
+}
+
+/* --- Mobile / tablet --- */
+
+@media (max-width: 900px) {
+  .about-header {
+    min-height: 40vh;
+  }
+
+  .about-intro {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+
+  .about-photo-wrap {
+    justify-self: start;
+    margin-left: 8%;
+  }
+
+  .about-gallery {
+    column-count: 2;
+  }
+}
+
+@media (max-width: 600px) {
+  .about-gallery {
+    column-count: 1;
+  }
+
+  .about-gallery-item figcaption {
+    opacity: 1;
+    transform: none;
+  }
 }
