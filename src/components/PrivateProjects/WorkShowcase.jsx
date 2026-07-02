@@ -135,26 +135,32 @@ const WorkShowcase = ({ projects, onDetails }) => {
         const endWidth = vw * 0.48; // docelowo do linii 50vw
         const endHeight = Math.min(vh * 0.56, 600);
 
-        // Pozycja layoutowa liczona przed nałożeniem transformów
+        // Pozycja layoutowa liczona przed nałożeniem transformów.
+        // Dwa shifty trzymają kartę idealnie na środku podczas wzrostu
+        // (szerokość rośnie od lewej krawędzi, więc x musi kompensować)
         const mediaRect = mediaEl.getBoundingClientRect();
-        const centerShift = vw / 2 - (mediaRect.left + startWidth / 2);
+        const centerShiftStart = vw / 2 - (mediaRect.left + startWidth / 2);
+        const centerShiftEnd = vw / 2 - (mediaRect.left + endWidth / 2);
 
         gsap.set(mediaEl, {
-          x: centerShift,
+          x: centerShiftStart,
           y: -vh * 0.1,
           width: startWidth,
           height: startHeight,
         });
 
         introTl
+          // Faza 1: wzrost do pełnego rozmiaru, karta nie rusza się ze środka
           .to(mediaEl, {
+            x: centerShiftEnd,
             y: 0,
             width: endWidth,
             height: endHeight,
             duration: 1,
             ease: 'none',
           })
-          .to(mediaEl, { x: 0, duration: 1, ease: 'none' })
+          // Faza 2: dopiero po pełnym wzroście (plus pauza) zjazd w lewo
+          .to(mediaEl, { x: 0, duration: 1, ease: 'none' }, '>+0.25')
           .fromTo(
             infoEl,
             { x: vw * 0.12, opacity: 0 },
