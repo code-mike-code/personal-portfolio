@@ -1,5 +1,5 @@
 import React, { useEffect, lazy, Suspense } from 'react';
-import { HashRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Header from './components/Header/Header';
 import BottomNav from './components/Header/BottomNav';
 import Hero from './components/Hero/Hero';
@@ -54,7 +54,7 @@ const PrivacyPolicy = lazy(() => import('./components/PrivacyPolicy/PrivacyPolic
 export default function App() {
   return (
     <ErrorBoundary> 
-    <HashRouter>
+    <BrowserRouter>
     <Cursor />
       <Routes>
         <Route path="/" element={<MainLayout />} />
@@ -67,7 +67,7 @@ export default function App() {
           } 
         />
       </Routes>
-    </HashRouter>
+    </BrowserRouter>
     </ErrorBoundary>
   );
 }
