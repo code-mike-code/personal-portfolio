@@ -73,13 +73,6 @@ export default function AboutMe() {
             frontend tools.
           </p>
           <p className="about-bio-text">
-            My extensive experience as a supervisor and manager in international
-            environments has equipped me with business maturity, which I now
-            transfer to new technologies: I understand product priorities,
-            communicate with clients without jargon, and take responsibility for
-            the outcome of the entire project, not just the code.
-          </p>
-          <p className="about-bio-text">
             Good software requires both logic and empathy. I am a proactive
             problem-solver who values organized workflows and collaboration to
             deliver clean, impactful solutions.
