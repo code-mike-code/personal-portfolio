@@ -9,10 +9,12 @@ import photoLemur from '../../assets/img/img-4.webp';
 import photoSnow from '../../assets/img/img-5.webp';
 
 const interests = [
-  'Skateboarding, snowboarding, kitesurfing',
+  'Gravity & enduro mountain biking',
+  'Boardsports — skate, snowboard, travel with wind',
+  'Boxing, freediving — sport freak in general',
+  'Outdoors, tech, travel',
+  'Electronic music, hip-hop, festivals & friends',
   'Cats (the fluffy boss lives with me)',
-  'Travel and wildlife encounters',
-  'Good music and better coffee',
 ];
 
 const galleryPhotos = [
@@ -33,7 +35,7 @@ export default function AboutMe() {
         <h2 className="about-header-title">
           The story behind
           <br />
-          DevMike
+          Code Mike
         </h2>
       </div>
 
@@ -41,16 +43,7 @@ export default function AboutMe() {
       <div className="about-intro">
         <div className="about-photo-wrap">
           <span className="about-shape-circle" aria-hidden="true"></span>
-          <svg
-            className="about-shape-star"
-            viewBox="0 0 100 100"
-            aria-hidden="true"
-          >
-            <path
-              d="M50 5 L58 38 L95 42 L64 60 L74 95 L50 72 L26 95 L36 60 L5 42 L42 38 Z"
-              fill="currentColor"
-            />
-          </svg>
+          <span className="about-shape-circle-teal" aria-hidden="true"></span>
           <img
             className="about-photo"
             src={photoPortrait}
@@ -71,16 +64,25 @@ export default function AboutMe() {
           </ScrollReveal>
 
           <p className="about-bio-text">
-            Front-End Developer passionate about building efficient, user-friendly
-            interfaces. With over 500 hours of intensive, mentor-led training,
-            I specialize in modern React development — writing high-quality code
-            and using modern practices to make every project robust and reliable.
+            AI-Augmented Frontend Developer specializing in building efficient and
+            responsive interfaces in React and TypeScript. I support the coding
+            process with advanced AI tools such as Claude Code and AI Agents, which
+            translates into higher-quality delivered solutions and shorter
+            turnaround times. I built a solid technical foundation through
+            independent practice in the React ecosystem, JavaScript, and modern
+            frontend tools.
           </p>
           <p className="about-bio-text">
-            Good software requires both logic and empathy. My background in client
-            services honed my communication skills, allowing me to truly understand
-            user needs. I am a proactive problem-solver who values organized
-            workflows and collaboration to deliver clean, impactful solutions.
+            My extensive experience as a supervisor and manager in international
+            environments has equipped me with business maturity, which I now
+            transfer to new technologies: I understand product priorities,
+            communicate with clients without jargon, and take responsibility for
+            the outcome of the entire project, not just the code.
+          </p>
+          <p className="about-bio-text">
+            Good software requires both logic and empathy. I am a proactive
+            problem-solver who values organized workflows and collaboration to
+            deliver clean, impactful solutions.
           </p>
           <p className="about-bio-tagline">
             Independent by nature, collaborative by choice.
@@ -88,12 +90,12 @@ export default function AboutMe() {
 
           <div className="about-stats">
             <div className="about-stat">
-              <span className="about-stat-number">500+</span>
-              <span className="about-stat-label">hours of training</span>
-            </div>
-            <div className="about-stat">
               <span className="about-stat-number">5+</span>
               <span className="about-stat-label">client projects</span>
+            </div>
+            <div className="about-stat">
+              <span className="about-stat-number">2×</span>
+              <span className="about-stat-label">faster delivery with AI tools</span>
             </div>
           </div>
         </div>
