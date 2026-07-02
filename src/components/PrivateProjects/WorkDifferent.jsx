@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from 'react';
+import ScrollReveal from '../common/ScrollReveal';
 import './WorkDifferent.css';
 
 const items = [
@@ -69,7 +70,15 @@ export default function WorkDifferent() {
 
   return (
     <div className="work-different">
-      <h2 className="work-different-title">What makes my work different.</h2>
+      <ScrollReveal
+        baseOpacity={0}
+        enableBlur={true}
+        baseRotation={0}
+        blurStrength={10}
+        containerClassName="work-different-title-container"
+        textClassName="work-different-title"
+      >What makes my work different.
+      </ScrollReveal>
       <div className="work-different-rows">
         {items.map((item, index) => (
           <div
