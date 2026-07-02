@@ -82,11 +82,6 @@ const WorkShowcase = ({ projects, onDetails }) => {
       const total = projects.length;
       const introFraction = INTRO_VIEWPORTS / (INTRO_VIEWPORTS + total);
 
-      // Przesunięcie potrzebne, aby karta media startowała na środku okna
-      // (liczone przed nałożeniem transformów)
-      const mediaRect = mediaEl.getBoundingClientRect();
-      const centerShift = window.innerWidth / 2 - (mediaRect.left + mediaRect.width / 2);
-
       // Pin całej sekcji: intro + 1 viewport na każdy projekt
       ScrollTrigger.create({
         trigger: sectionRef.current,
@@ -111,33 +106,78 @@ const WorkShowcase = ({ projects, onDetails }) => {
         },
       });
 
-      // Intro: karta rośnie na środku, potem zjeżdża w lewo,
-      // a panel info wsuwa się z prawej z niewidoczności
-      const introTl = gsap.timeline({
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: 'top top',
-          end: () => `+=${window.innerHeight * INTRO_VIEWPORTS}`,
-          scrub: 0.5,
-          onUpdate: () => {
-            infoEl.style.pointerEvents = introTl.progress() > 0.9 ? 'auto' : 'none';
+      // Intro: karta startuje wyżej jako płaski prostokąt rozpięty między
+      // liniami gridu (25vw–75vw), rośnie do pełnego rozmiaru, potem zjeżdża
+      // w lewo, a panel info wsuwa się z prawej z niewidoczności
+      const createIntroTl = () => {
+        const tl = gsap.timeline({
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: 'top top',
+            end: () => `+=${window.innerHeight * INTRO_VIEWPORTS}`,
+            scrub: 0.5,
+            onUpdate: () => {
+              infoEl.style.pointerEvents = tl.progress() > 0.9 ? 'auto' : 'none';
+            },
           },
-        },
+        });
+        return tl;
+      };
+
+      const mm = gsap.matchMedia();
+
+      mm.add('(min-width: 901px)', () => {
+        const introTl = createIntroTl();
+        const vw = window.innerWidth;
+        const vh = window.innerHeight;
+        const startWidth = vw * 0.5; // od linii 25vw do 75vw
+        const startHeight = Math.min(vh * 0.28, 320);
+        const endWidth = vw * 0.48; // docelowo do linii 50vw
+        const endHeight = Math.min(vh * 0.56, 600);
+
+        // Pozycja layoutowa liczona przed nałożeniem transformów
+        const mediaRect = mediaEl.getBoundingClientRect();
+        const centerShift = vw / 2 - (mediaRect.left + startWidth / 2);
+
+        gsap.set(mediaEl, {
+          x: centerShift,
+          y: -vh * 0.1,
+          width: startWidth,
+          height: startHeight,
+        });
+
+        introTl
+          .to(mediaEl, {
+            y: 0,
+            width: endWidth,
+            height: endHeight,
+            duration: 1,
+            ease: 'none',
+          })
+          .to(mediaEl, { x: 0, duration: 1, ease: 'none' })
+          .fromTo(
+            infoEl,
+            { x: vw * 0.12, opacity: 0 },
+            { x: 0, opacity: 1, duration: 1, ease: 'none' },
+            '<'
+          );
       });
 
-      introTl
-        .fromTo(
-          mediaEl,
-          { x: centerShift, scale: 0.55 },
-          { x: centerShift, scale: 1, duration: 1, ease: 'none' }
-        )
-        .to(mediaEl, { x: 0, duration: 1, ease: 'none' })
-        .fromTo(
-          infoEl,
-          { x: () => window.innerWidth * 0.12, opacity: 0 },
-          { x: 0, opacity: 1, duration: 1, ease: 'none' },
-          '<'
-        );
+      mm.add('(max-width: 900px)', () => {
+        const introTl = createIntroTl();
+        const vh = window.innerHeight;
+
+        gsap.set(mediaEl, { scale: 0.7, y: -vh * 0.05, transformOrigin: '50% 50%' });
+
+        introTl
+          .to(mediaEl, { scale: 1, y: 0, duration: 1, ease: 'none' })
+          .fromTo(
+            infoEl,
+            { x: () => window.innerWidth * 0.12, opacity: 0 },
+            { x: 0, opacity: 1, duration: 1, ease: 'none' },
+            '>'
+          );
+      });
     }, sectionRef);
 
     return () => ctx.revert();

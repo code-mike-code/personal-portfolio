@@ -107,11 +107,12 @@
   inset: 0;
   display: grid;
   grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr auto 1fr;
   grid-template-areas:
-    'head desc'
-    'actions actions';
-  align-content: center;
-  row-gap: clamp(2rem, 6vh, 4rem);
+    'head head'
+    'actions actions'
+    '. desc';
+  row-gap: clamp(1.5rem, 4vh, 3rem);
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
@@ -133,9 +134,10 @@
     visibility 0s;
 }
 
-/* Lewa kolumna: numer + nagłówek */
+/* Numer + nagłówek — górny lewy róg panelu */
 .work-info-head {
   grid-area: head;
+  align-self: start;
   padding-right: 2vw;
 }
 
@@ -167,10 +169,10 @@
   margin: 0;
 }
 
-/* Prawa kolumna: opis */
+/* Opis — pod przyciskami, w prawej kolumnie (za linią 75vw) */
 .work-project-desc {
   grid-area: desc;
-  align-self: center;
+  align-self: start;
   font-size: clamp(1rem, 1.5vw, 1.15rem);
   line-height: 1.6;
   color: #4a4738;
