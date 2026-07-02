@@ -61,6 +61,11 @@ module.exports = (env, argv) => {
     plugins: [
       new HtmlWebpackPlugin({
         template: './public/index.html',
+        // CSP tylko w produkcji — dev-server (HMR) wymaga eval i połączeń ws:,
+        // które produkcyjna polityka słusznie blokuje
+        cspMeta: isProd
+          ? `<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: https://www.googletagmanager.com https://*.google-analytics.com; media-src 'self'; connect-src 'self' https://api.github.com https://api.emailjs.com https://*.google-analytics.com; object-src 'none'; base-uri 'self'">`
+          : '',
       }),
       new CopyPlugin({
         patterns: [
