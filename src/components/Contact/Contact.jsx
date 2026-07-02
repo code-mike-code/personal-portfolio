@@ -65,13 +65,22 @@ export default function Contact() {
     const TEMPLATE_ID = process.env.REACT_APP_EMAILJS_TEMPLATE_ID;
     const PUBLIC_KEY = process.env.REACT_APP_EMAILJS_PUBLIC_KEY;
 
+    // Honeypot: pole niewidoczne dla ludzi — wypełnione tylko przez boty.
+    // Cichy "sukces" nie zdradza botowi, że został odfiltrowany.
+    if (formRef.current.elements.website?.value) {
+      setStatus({ ok: true, message: 'Message sent.' });
+      formRef.current.reset();
+      setSending(false);
+      return;
+    }
+
     try {
       await emailjs.sendForm(SERVICE_ID, TEMPLATE_ID, formRef.current, PUBLIC_KEY);
       setStatus({ ok: true, message: 'Message sent.' });
       formRef.current.reset();
     } catch (err) {
       console.error(err);
-      setStatus({ ok: false, message: 'Message sent error!' });
+      setStatus({ ok: false, message: 'Failed to send message. Please try again.' });
     } finally {
       setSending(false);
     }
@@ -95,19 +104,34 @@ export default function Contact() {
         </div>
         <div className="contact-right">
           <form ref={formRef} className="contact-form" onSubmit={handleSubmit}>
+            <label htmlFor="name" className="sr-only">Name</label>
             <input name="from_name" id="name" type="text" placeholder=" Name" required />
+            <label htmlFor="email" className="sr-only">Email</label>
             <input name="reply_to" id="email" type="email" placeholder=" Email" required />
+            <label htmlFor="subject" className="sr-only">Subject</label>
             <select name="subject" id="subject">
               <option value=""> Subject...</option>
               <option value="project">Project</option>
               <option value="collaboration">Collaboration</option>
               <option value="other">Other</option>
             </select>
+            <label htmlFor="message" className="sr-only">Message</label>
             <textarea name="message" id="message" placeholder="Write a message..." required />
+            {/* Honeypot antyspamowy — ukryty przed ludźmi i czytnikami ekranu */}
+            <input
+              type="text"
+              name="website"
+              className="contact-hp"
+              tabIndex={-1}
+              autoComplete="off"
+              aria-hidden="true"
+            />
             <button type="submit" className="contact-submit" disabled={sending}>
               {sending ? 'Sending…' : 'Submit Request'}
             </button>
-            {status && <p className={status.ok ? 'success' : 'error'}>{status.message}</p>}
+            <p role="status" aria-live="polite" className={status ? (status.ok ? 'success' : 'error') : 'sr-only'}>
+              {status ? status.message : ''}
+            </p>
           </form>
         </div>
       </div>
