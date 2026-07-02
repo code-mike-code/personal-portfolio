@@ -26,6 +26,20 @@ export default function WorkHeader() {
           invalidateOnRefresh: true,
         },
       });
+
+      // Nagłówek z opisem znikają, gdy karta media dojeżdża do środka
+      // (pierwsza faza intro pinowanego showcase poniżej)
+      gsap.to(headerRef.current, {
+        autoAlpha: 0,
+        ease: 'none',
+        scrollTrigger: {
+          trigger: '.work-showcase',
+          start: 'top top',
+          end: '+=70%',
+          scrub: true,
+          invalidateOnRefresh: true,
+        },
+      });
     }, headerRef);
 
     return () => ctx.revert();
