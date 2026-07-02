@@ -4,7 +4,9 @@ import './ScrollReveal.css';
 
 const ScrollReveal = ({
   children,
-  // scrollContainerRef, // TODO: Implement custom scroll container
+  // Tag semantyczny wrappera — domyślnie neutralny div; nagłówki (h2/h3)
+  // przekazywać tylko tam, gdzie tekst faktycznie pełni rolę nagłówka
+  as: Tag = 'div',
   enableBlur = true,
   baseOpacity = 0.1,
   baseRotation = 3,
@@ -76,9 +78,9 @@ const ScrollReveal = ({
   }, [enableBlur, baseRotation, baseOpacity, blurStrength, completeAt]);
 
   return (
-    <h2 ref={containerRef} className={`scroll-reveal ${containerClassName}`}>
-      <p className={`scroll-reveal-text ${textClassName}`}>{splitText}</p>
-    </h2>
+    <Tag ref={containerRef} className={`scroll-reveal ${containerClassName}`}>
+      <span className={`scroll-reveal-text ${textClassName}`}>{splitText}</span>
+    </Tag>
   );
 };
 

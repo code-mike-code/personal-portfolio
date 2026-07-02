@@ -81,11 +81,13 @@ export default function Contact() {
     <section id="contact" ref={sectionRef} className="contact-section">
       <div className="contact-container">
         <div className="contact-left">
-          <h1 className="hero-title hero-title--left contact-title">
-            <AnimatedHeadlinePart text="Let's work" start={showHeadline} />
-            <br />
-            <AnimatedHeadlinePart text="together." start={showHeadline} />
-          </h1>
+          <h2 className="hero-title hero-title--left contact-title" aria-label="Let's work together.">
+            <span aria-hidden="true">
+              <AnimatedHeadlinePart text="Let's work" start={showHeadline} />
+              <br />
+              <AnimatedHeadlinePart text="together." start={showHeadline} />
+            </span>
+          </h2>
           <p className="contact-intro-text">
             I'm always looking for new projects and collaborations. If you have
             a project in mind, or just want to say hello, please get in touch.

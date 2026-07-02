@@ -27,14 +27,17 @@ function MainLayout() {
   }, []);
   return (
     <>
+      <a href="#main" className="skip-link">Skip to main content</a>
       <Header />
       <BottomNav />
-      <Hero />
-      <PrivateProjects />
-      <Projects />
-      <AboutMe />
-      <TechBanner />
-      <Contact />
+      <main id="main">
+        <Hero />
+        <PrivateProjects />
+        <Projects />
+        <AboutMe />
+        <TechBanner />
+        <Contact />
+      </main>
       <Footer />
        <CookieConsentModal
         onAccept={() => {

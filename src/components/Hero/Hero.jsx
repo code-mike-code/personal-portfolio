@@ -106,10 +106,11 @@ export default function Hero() {
       </div>
       <div className="hero-content-wrapper">
         <div className="hero-title-container hero-title-container--left">
-          <h1 className="hero-title hero-title--left">
-            <div><AnimatedHeadlinePart text="Code Mike" start={true} /></div>
-            <div><AnimatedHeadlinePart text="Modern Web" start={showSecond} /></div>
-            <div><AnimatedHeadlinePart text="Development" start={showThird} /></div>
+          {/* aria-label: czytniki dostają pełny tekst od razu, animacja liter jest czysto wizualna */}
+          <h1 className="hero-title hero-title--left" aria-label="Code Mike — Modern Web Development">
+            <div aria-hidden="true"><AnimatedHeadlinePart text="Code Mike" start={true} /></div>
+            <div aria-hidden="true"><AnimatedHeadlinePart text="Modern Web" start={showSecond} /></div>
+            <div aria-hidden="true"><AnimatedHeadlinePart text="Development" start={showThird} /></div>
           </h1>
           <div className="hero-buttons hero-buttons--left">
             <Button

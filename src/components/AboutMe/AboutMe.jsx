@@ -54,6 +54,7 @@ export default function AboutMe() {
 
         <div className="about-bio">
           <ScrollReveal
+            as="h3"
             baseOpacity={0}
             enableBlur={true}
             baseRotation={0}
@@ -98,6 +99,7 @@ export default function AboutMe() {
       <div className="about-interests">
         <span className="about-interests-dot" aria-hidden="true"></span>
         <ScrollReveal
+          as="h3"
           baseOpacity={0}
           enableBlur={true}
           baseRotation={0}
