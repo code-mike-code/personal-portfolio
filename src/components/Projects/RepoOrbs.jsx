@@ -4,6 +4,12 @@ import './RepoOrbs.css';
 // Paleta koral (#d96a55) + morski (#2b9dad) + ecru — spójna z resztą strony
 const PALETTE = ['orb-coral', 'orb-teal', 'orb-olive'];
 
+// Kolory poświaty obwodu przy zderzeniu (rgba bez kanału alpha)
+const GLOW = ['rgba(217, 106, 85, ', 'rgba(43, 157, 173, ', 'rgba(179, 173, 142, '];
+
+// Czas wygasania poświaty po zderzeniu (s)
+const FLASH_DURATION = 0.45;
+
 const prefersReducedMotion = () =>
   typeof window !== 'undefined' &&
   window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -36,6 +42,8 @@ export default function RepoOrbs({ repos }) {
         phase: Math.random() * Math.PI * 2,
         oscSpeed: 0.3 + Math.random() * 0.4,
         frozen: false,
+        glow: GLOW[i % GLOW.length],
+        flash: -1,
       };
     });
 
@@ -78,10 +86,10 @@ export default function RepoOrbs({ repos }) {
           o.x += o.vx * dt;
           o.y += o.vy * dt;
         }
-        if (o.x - o.r < 0) { o.x = o.r; o.vx = Math.abs(o.vx); }
-        if (o.x + o.r > bounds.width) { o.x = bounds.width - o.r; o.vx = -Math.abs(o.vx); }
-        if (o.y - o.r < 0) { o.y = o.r; o.vy = Math.abs(o.vy); }
-        if (o.y + o.r > bounds.height) { o.y = bounds.height - o.r; o.vy = -Math.abs(o.vy); }
+        if (o.x - o.r < 0) { o.x = o.r; o.vx = Math.abs(o.vx); o.flash = t; }
+        if (o.x + o.r > bounds.width) { o.x = bounds.width - o.r; o.vx = -Math.abs(o.vx); o.flash = t; }
+        if (o.y - o.r < 0) { o.y = o.r; o.vy = Math.abs(o.vy); o.flash = t; }
+        if (o.y + o.r > bounds.height) { o.y = bounds.height - o.r; o.vy = -Math.abs(o.vy); o.flash = t; }
       });
 
       // Zderzenia sprężyste (masa ~ r^2)
@@ -114,6 +122,8 @@ export default function RepoOrbs({ repos }) {
               a.vy -= impulse * m2 * ny;
               b.vx += impulse * m1 * nx;
               b.vy += impulse * m1 * ny;
+              a.flash = t;
+              b.flash = t;
             }
           }
         }
@@ -122,6 +132,15 @@ export default function RepoOrbs({ repos }) {
       // Render
       orbs.forEach((o) => {
         o.el.style.transform = `translate3d(${o.x - o.base}px, ${o.y - o.base}px, 0) scale(${o.r / o.base})`;
+
+        // Poświata obwodu wygasająca po zderzeniu
+        const k = o.flash >= 0 ? Math.max(0, 1 - (t - o.flash) / FLASH_DURATION) : 0;
+        if (k > 0) {
+          const ease = k * k;
+          o.el.style.boxShadow = `0 0 ${18 * ease}px ${2 * ease}px ${o.glow}${(0.55 * ease).toFixed(3)})`;
+        } else if (o.el.style.boxShadow) {
+          o.el.style.boxShadow = '';
+        }
       });
 
       if (running) raf = requestAnimationFrame(tick);
