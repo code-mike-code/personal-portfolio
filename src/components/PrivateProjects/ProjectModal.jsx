@@ -116,15 +116,21 @@ const ProjectModal = ({ isOpen, project, onClose }) => {
         >
           {/* Video tło - Sticky sprawia, że wideo stoi w miejscu jak tło, podczas gdy kontener się przewija */}
           <div className="project-modal-video-container" style={{ position: 'sticky', top: 0, left: 0, width: '100%', height: '70vh', zIndex: 0, paddingTop: 0 }}>
-            <video
-              className="project-modal-video"
-              src={videoSrc}
-              autoPlay
-              muted
-              loop
-              playsInline
-              style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'top' }}
-            />
+            {videoSrc ? (
+              <video
+                className="project-modal-video"
+                src={videoSrc}
+                autoPlay
+                muted
+                loop
+                playsInline
+                style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'top' }}
+              />
+            ) : (
+              <div className="project-modal-media-placeholder">
+                <span>{project.title}</span>
+              </div>
+            )}
           </div>
 
           {/* Content */}

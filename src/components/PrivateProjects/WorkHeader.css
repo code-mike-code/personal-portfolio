@@ -1,0 +1,52 @@
+.work-header {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  min-height: 70vh;
+  padding: 4rem 1.5rem 2rem;
+}
+
+/* Soft gradient blob behind the title, tuned to the ecru palette */
+.work-header-blob {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: min(60vw, 700px);
+  height: min(60vw, 700px);
+  transform: translate(-50%, -50%);
+  background:
+    radial-gradient(circle at 35% 40%, rgba(160, 190, 255, 0.35), transparent 60%),
+    radial-gradient(circle at 65% 55%, rgba(235, 170, 220, 0.28), transparent 60%),
+    radial-gradient(circle at 50% 70%, rgba(179, 173, 142, 0.30), transparent 65%);
+  filter: blur(40px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.work-header-title {
+  position: relative;
+  z-index: 1;
+  font-size: clamp(3rem, 8vw, 6.75rem);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: #222;
+  margin: 0 0 1.5rem 0;
+}
+
+.work-header-subtitle-container {
+  position: relative;
+  z-index: 1;
+  margin: 0;
+  max-width: 640px;
+}
+
+.work-header-subtitle {
+  font-size: clamp(1.1rem, 2vw, 1.4rem);
+  font-weight: 400;
+  line-height: 1.5;
+  color: #4a4738;
+  margin: 0;
+}

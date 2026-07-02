@@ -1,0 +1,274 @@
+.work-showcase {
+  width: 100%;
+  height: 100vh;
+  height: 100svh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.work-showcase-inner {
+  display: flex;
+  align-items: center;
+  gap: clamp(2rem, 5vw, 5rem);
+  width: 100%;
+  max-width: 1280px;
+  height: 100%;
+  padding: 2rem clamp(1rem, 4vw, 3rem);
+}
+
+/* --- Media (left) --- */
+
+.work-showcase-media {
+  position: relative;
+  flex: 1.4;
+  height: min(72vh, 640px);
+}
+
+.work-media-card {
+  position: absolute;
+  inset: 0;
+  border-radius: 24px;
+  overflow: hidden;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(40px) scale(0.97);
+  transition:
+    opacity 0.6s ease,
+    transform 0.6s ease,
+    visibility 0s linear 0.6s;
+  box-shadow: 0 20px 60px rgba(34, 34, 34, 0.12);
+}
+
+.work-media-card.active {
+  opacity: 1;
+  visibility: visible;
+  transform: none;
+  transition:
+    opacity 0.6s ease,
+    transform 0.6s ease,
+    visibility 0s;
+}
+
+.work-media-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+  display: block;
+}
+
+.work-media-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.work-media-placeholder-label {
+  font-size: clamp(1.4rem, 2.5vw, 2.2rem);
+  font-weight: 600;
+  color: rgba(34, 34, 34, 0.55);
+  letter-spacing: -0.01em;
+}
+
+/* Placeholder gradients tuned to the ecru palette */
+.work-media-placeholder-0 {
+  background: linear-gradient(135deg, #dfe8f5 0%, #f0ead8 55%, #d9d3b8 100%);
+}
+.work-media-placeholder-1 {
+  background: linear-gradient(135deg, #e9e2cf 0%, #f3d9c8 55%, #d9c2b0 100%);
+}
+.work-media-placeholder-2 {
+  background: linear-gradient(135deg, #e3e7d6 0%, #ece5cd 55%, #c9cbb0 100%);
+}
+.work-media-placeholder-3 {
+  background: linear-gradient(135deg, #e8ddea 0%, #ede6d5 55%, #cfc6ba 100%);
+}
+.work-media-placeholder-4 {
+  background: linear-gradient(135deg, #dcebe3 0%, #efe9d4 55%, #c9d1bb 100%);
+}
+
+/* --- Info (right) --- */
+
+.work-showcase-info {
+  position: relative;
+  flex: 1;
+  height: min(72vh, 640px);
+}
+
+.work-info-panel {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateY(30px);
+  transition:
+    opacity 0.5s ease 0.1s,
+    transform 0.5s ease 0.1s,
+    visibility 0s linear 0.6s;
+}
+
+.work-info-panel.active {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: none;
+  transition:
+    opacity 0.5s ease 0.15s,
+    transform 0.5s ease 0.15s,
+    visibility 0s;
+}
+
+.work-counter {
+  display: flex;
+  align-items: baseline;
+  gap: 0.4rem;
+  margin-bottom: clamp(1.5rem, 4vh, 3rem);
+  color: #222;
+}
+
+.work-counter-current {
+  font-size: clamp(2.2rem, 4vw, 3.2rem);
+  font-weight: 300;
+  line-height: 1;
+}
+
+.work-counter-total {
+  font-size: 1rem;
+  font-weight: 400;
+  color: #8a8468;
+}
+
+.work-project-title {
+  font-size: clamp(1.8rem, 3.5vw, 3rem);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: #222;
+  margin: 0 0 1.75rem 0;
+}
+
+.work-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-bottom: clamp(1.5rem, 5vh, 3.5rem);
+}
+
+.work-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.7rem 1.6rem;
+  border: 1px solid #222;
+  border-radius: 999px;
+  background: transparent;
+  color: #222;
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: 500;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background 0.25s ease, color 0.25s ease;
+}
+
+.work-btn:hover,
+.work-btn:focus-visible {
+  background: #222;
+  color: #f5f5dc;
+}
+
+.work-btn-details {
+  border-color: #b3ad8e;
+  color: #6b654a;
+}
+
+.work-btn-details:hover,
+.work-btn-details:focus-visible {
+  background: #b3ad8e;
+  border-color: #b3ad8e;
+  color: #fff;
+}
+
+.work-project-desc {
+  font-size: clamp(1rem, 1.5vw, 1.15rem);
+  line-height: 1.6;
+  color: #4a4738;
+  max-width: 420px;
+  margin: 0;
+}
+
+/* --- Static fallback (prefers-reduced-motion) --- */
+
+.work-showcase-static {
+  height: auto;
+  flex-direction: column;
+  gap: 4rem;
+  padding: 2rem 0;
+}
+
+.work-showcase-static .work-showcase-inner {
+  height: auto;
+}
+
+.work-showcase-static .work-showcase-media,
+.work-showcase-static .work-showcase-info {
+  height: auto;
+}
+
+.work-showcase-static .work-media-card,
+.work-showcase-static .work-info-panel {
+  position: relative;
+  inset: auto;
+}
+
+.work-showcase-static .work-media-card {
+  aspect-ratio: 4 / 3;
+}
+
+/* --- Mobile / tablet --- */
+
+@media (max-width: 900px) {
+  .work-showcase-inner {
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: center;
+    gap: 1.5rem;
+    padding: 1.25rem;
+  }
+
+  .work-showcase-media {
+    flex: none;
+    height: 42svh;
+  }
+
+  .work-showcase-info {
+    flex: none;
+    height: 44svh;
+  }
+
+  .work-info-panel {
+    justify-content: flex-start;
+  }
+
+  .work-counter {
+    margin-bottom: 1rem;
+  }
+
+  .work-project-title {
+    margin-bottom: 1rem;
+  }
+
+  .work-actions {
+    margin-bottom: 1.25rem;
+  }
+
+  .work-showcase-static .work-showcase-inner {
+    margin-bottom: 3rem;
+  }
+}

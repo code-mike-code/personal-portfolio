@@ -1,26 +1,61 @@
 .private-projects-section {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    padding: 80px 20px;
+    align-items: stretch;
+    justify-content: flex-start;
+    width: 100%;
+    padding: 0;
     margin-bottom: 4rem;
 }
 
-.private-projects-content {
-    max-width: 1280px;
-    width: 100%;
-    overflow: hidden; /* Zapobiega przepełnieniu zawartości i poziomemu przewijaniu na mobile */
+/* Domknięcie sekcji */
+.section-closure {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 50vh;
+  padding: 10px;
 }
 
-.private-projects-title {
-    font-size: 2rem;
-    margin-bottom: 2rem;
-    text-align: center;
-    /* color: black; */
+.section-closure-title {
+  font-size: 2.8rem;
+  text-align: center;
+  margin: 0;
+  padding: 0;
 }
 
-.private-projects-container {
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
+.section-closure-title-part1,
+.section-closure-title-part2 {
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
+.section-closure-text {
+  font-size: 1.8rem;
+  text-align: center;
+  margin-bottom: 80px;
+}
+
+/* Style Lenis (wymagane dla płynnego scrolla) */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-smooth iframe {
+  pointer-events: none;
 }

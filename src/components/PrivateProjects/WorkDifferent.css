@@ -1,0 +1,135 @@
+.work-different {
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: clamp(4rem, 10vh, 8rem) clamp(1rem, 4vw, 3rem);
+}
+
+.work-different-title {
+  font-size: clamp(2.2rem, 5vw, 4rem);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: #222;
+  text-align: center;
+  margin: 0 0 clamp(3rem, 8vh, 6rem) 0;
+}
+
+.work-different-rows {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(3rem, 8vh, 6rem);
+}
+
+.work-different-row {
+  display: grid;
+  grid-template-columns: 3rem 140px 1fr 1.2fr;
+  align-items: start;
+  gap: clamp(1.5rem, 4vw, 4rem);
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.work-different-row.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+.work-different-number {
+  font-size: 1rem;
+  color: #8a8468;
+  padding-top: 0.3rem;
+}
+
+.work-different-blob {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #3f3d30;
+  filter: blur(0);
+}
+
+.work-different-blob svg {
+  width: 48px;
+  height: 48px;
+}
+
+.blob-warm {
+  background: radial-gradient(circle at 40% 35%, rgba(240, 130, 70, 0.55), rgba(200, 120, 190, 0.25) 60%, transparent 75%);
+}
+
+.blob-cool {
+  background: radial-gradient(circle at 40% 35%, rgba(150, 160, 245, 0.5), rgba(200, 150, 230, 0.28) 60%, transparent 75%);
+}
+
+.blob-green {
+  background: radial-gradient(circle at 40% 35%, rgba(140, 200, 150, 0.5), rgba(170, 210, 220, 0.28) 60%, transparent 75%);
+}
+
+.work-different-heading h3 {
+  font-size: clamp(1.4rem, 2.5vw, 1.9rem);
+  font-weight: 600;
+  color: #222;
+  margin: 0 0 0.75rem 0;
+}
+
+.work-different-heading p {
+  font-size: 1.05rem;
+  line-height: 1.5;
+  color: #4a4738;
+  margin: 0;
+}
+
+.work-different-body p {
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: #4a4738;
+  margin: 0 0 1.25rem 0;
+}
+
+.work-different-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+.work-different-tag {
+  padding: 0.35rem 0.9rem;
+  border: 1px solid #b3ad8e;
+  border-radius: 999px;
+  font-size: 0.9rem;
+  color: #6b654a;
+}
+
+@media (max-width: 900px) {
+  .work-different-row {
+    grid-template-columns: 2rem 90px 1fr;
+    grid-template-areas:
+      'number blob heading'
+      'number blob body';
+    row-gap: 1rem;
+  }
+
+  .work-different-number { grid-area: number; }
+  .work-different-blob { grid-area: blob; width: 80px; height: 80px; }
+  .work-different-blob svg { width: 34px; height: 34px; }
+  .work-different-heading { grid-area: heading; }
+  .work-different-body { grid-area: body; }
+}
+
+@media (max-width: 600px) {
+  .work-different-row {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      'blob'
+      'heading'
+      'body';
+  }
+
+  .work-different-number {
+    display: none;
+  }
+}
