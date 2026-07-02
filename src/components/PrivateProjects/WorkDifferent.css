@@ -55,16 +55,17 @@
   height: 48px;
 }
 
+/* Blob-ikony w palecie koral (#d96a55) + morski (#2b9dad) */
 .blob-warm {
-  background: radial-gradient(circle at 40% 35%, rgba(240, 130, 70, 0.55), rgba(200, 120, 190, 0.25) 60%, transparent 75%);
+  background: radial-gradient(circle at 40% 35%, rgba(217, 106, 85, 0.55), rgba(43, 157, 173, 0.22) 60%, transparent 75%);
 }
 
 .blob-cool {
-  background: radial-gradient(circle at 40% 35%, rgba(150, 160, 245, 0.5), rgba(200, 150, 230, 0.28) 60%, transparent 75%);
+  background: radial-gradient(circle at 40% 35%, rgba(43, 157, 173, 0.5), rgba(217, 106, 85, 0.24) 60%, transparent 75%);
 }
 
 .blob-green {
-  background: radial-gradient(circle at 40% 35%, rgba(140, 200, 150, 0.5), rgba(170, 210, 220, 0.28) 60%, transparent 75%);
+  background: radial-gradient(circle at 40% 35%, rgba(217, 106, 85, 0.4), rgba(43, 157, 173, 0.35) 65%, transparent 78%);
 }
 
 .work-different-heading h3 {
