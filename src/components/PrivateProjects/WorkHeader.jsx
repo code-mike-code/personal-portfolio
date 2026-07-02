@@ -1,7 +1,6 @@
 import React, { useLayoutEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import ScrollReveal from '../common/ScrollReveal';
 import './WorkHeader.css';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -10,11 +9,11 @@ export default function WorkHeader() {
   const headerRef = useRef(null);
   const titleRef = useRef(null);
 
-  // Tytuł zmniejsza się wędrując w górę — od 60% wysokości okna do góry
   useLayoutEffect(() => {
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return undefined;
 
     const ctx = gsap.context(() => {
+      // Tytuł zmniejsza się wędrując w górę — od 60% wysokości okna do góry
       gsap.to(titleRef.current, {
         scale: 0.55,
         ease: 'none',
@@ -27,15 +26,15 @@ export default function WorkHeader() {
         },
       });
 
-      // Nagłówek z opisem znikają, gdy karta media dojeżdża do środka
-      // (pierwsza faza intro pinowanego showcase poniżej)
+      // Nagłówek z opisem znikają dopiero, gdy karta media dojeżdża do środka
+      // — fade zaczyna się 25vh po starcie pinu i kończy wraz z końcem wzrostu
       gsap.to(headerRef.current, {
         autoAlpha: 0,
         ease: 'none',
         scrollTrigger: {
           trigger: '.work-showcase',
-          start: 'top top',
-          end: '+=70%',
+          start: 'top+=25% top',
+          end: '+=60%',
           scrub: true,
           invalidateOnRefresh: true,
         },
@@ -49,15 +48,9 @@ export default function WorkHeader() {
     <div className="work-header" ref={headerRef}>
       <div className="work-header-blob" aria-hidden="true"></div>
       <h2 className="work-header-title" ref={titleRef}>Selected Work</h2>
-      <ScrollReveal
-        baseOpacity={0}
-        enableBlur={true}
-        baseRotation={0}
-        blurStrength={8}
-        containerClassName="work-header-subtitle-container"
-        textClassName="work-header-subtitle"
-      >Every project is shaped around the client — not a template — with a focus on clarity, performance, and craft.
-      </ScrollReveal>
+      <p className="work-header-subtitle">
+        Every project is shaped around the client — not a template — with a focus on clarity, performance, and craft.
+      </p>
     </div>
   );
 }
