@@ -30,9 +30,9 @@
   border-radius: 50%;
   pointer-events: none;
   opacity: 0;
-  filter: blur(4px);
-  -webkit-mask: radial-gradient(closest-side, transparent 72%, #000 86%, #000 100%);
-  mask: radial-gradient(closest-side, transparent 72%, #000 86%, #000 100%);
+  filter: blur(3px);
+  -webkit-mask: radial-gradient(closest-side, transparent 89%, #000 95%, #000 100%);
+  mask: radial-gradient(closest-side, transparent 89%, #000 95%, #000 100%);
   transition: opacity 0.3s ease;
 }
 
