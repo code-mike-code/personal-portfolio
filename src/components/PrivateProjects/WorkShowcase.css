@@ -76,21 +76,21 @@
   letter-spacing: -0.01em;
 }
 
-/* Placeholder gradients tuned to the ecru palette */
+/* Placeholder gradients — paleta koral (#d96a55) + morski (#2b9dad) na tle ecru */
 .work-media-placeholder-0 {
-  background: linear-gradient(135deg, #dfe8f5 0%, #f0ead8 55%, #d9d3b8 100%);
+  background: linear-gradient(135deg, #eda28f 0%, #f2e9d5 50%, #8ec7d1 100%);
 }
 .work-media-placeholder-1 {
-  background: linear-gradient(135deg, #e9e2cf 0%, #f3d9c8 55%, #d9c2b0 100%);
+  background: linear-gradient(135deg, #a9d4db 0%, #efe8d6 55%, #e5a795 100%);
 }
 .work-media-placeholder-2 {
-  background: linear-gradient(135deg, #e3e7d6 0%, #ece5cd 55%, #c9cbb0 100%);
+  background: linear-gradient(135deg, #f0b3a3 0%, #f4ead6 55%, #d98d78 100%);
 }
 .work-media-placeholder-3 {
-  background: linear-gradient(135deg, #e8ddea 0%, #ede6d5 55%, #cfc6ba 100%);
+  background: linear-gradient(135deg, #7fbdc8 0%, #ece6d2 55%, #4da4b2 100%);
 }
 .work-media-placeholder-4 {
-  background: linear-gradient(135deg, #dcebe3 0%, #efe9d4 55%, #c9d1bb 100%);
+  background: linear-gradient(135deg, #e8a08c 0%, #cfe0dd 50%, #6fb4c0 100%);
 }
 
 /* --- Info (right) --- */

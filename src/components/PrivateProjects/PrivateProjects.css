@@ -10,12 +10,35 @@
 
 /* Domknięcie sekcji — odsunięte od work-different, spójne odstępy */
 .section-closure {
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   min-height: 50vh;
   padding: clamp(4rem, 10vh, 8rem) 1.5rem;
+}
+
+/* Podświetlenie za nagłówkiem — te same kolory co blob w work-header */
+.section-closure::before {
+  content: '';
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  width: min(55vw, 640px);
+  height: min(50vh, 480px);
+  transform: translate(-50%, -50%);
+  background:
+    radial-gradient(circle at 38% 42%, rgba(217, 106, 85, 0.30), transparent 62%),
+    radial-gradient(circle at 64% 58%, rgba(43, 157, 173, 0.28), transparent 62%);
+  filter: blur(40px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.section-closure .scroll-reveal {
+  position: relative;
+  z-index: 1;
 }
 
 .section-closure-title {

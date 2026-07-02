@@ -34,9 +34,9 @@
   height: min(60vw, 700px);
   transform: translate(-50%, -50%);
   background:
-    radial-gradient(circle at 35% 40%, rgba(160, 190, 255, 0.35), transparent 60%),
-    radial-gradient(circle at 65% 55%, rgba(235, 170, 220, 0.28), transparent 60%),
-    radial-gradient(circle at 50% 70%, rgba(179, 173, 142, 0.30), transparent 65%);
+    radial-gradient(circle at 35% 40%, rgba(217, 106, 85, 0.35), transparent 60%),
+    radial-gradient(circle at 65% 55%, rgba(43, 157, 173, 0.32), transparent 60%),
+    radial-gradient(circle at 50% 70%, rgba(179, 173, 142, 0.22), transparent 65%);
   filter: blur(40px);
   pointer-events: none;
   z-index: 0;
