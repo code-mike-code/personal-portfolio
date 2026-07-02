@@ -209,8 +209,8 @@
   position: absolute;
   top: 50%;
   right: 9vw;
-  width: 180px;
-  height: 180px;
+  width: 230px;
+  height: 230px;
   transform: translateY(-50%);
   pointer-events: none;
   z-index: 0;
@@ -226,34 +226,39 @@
 }
 
 .hero-orbit-ring--outer {
-  width: 180px;
-  height: 180px;
-  margin: -90px 0 0 -90px;
+  width: 230px;
+  height: 230px;
+  margin: -115px 0 0 -115px;
   animation: hero-orbit-spin 14s linear infinite;
 }
 
 .hero-orbit-ring--inner {
-  width: 104px;
-  height: 104px;
-  margin: -52px 0 0 -52px;
+  width: 132px;
+  height: 132px;
+  margin: -66px 0 0 -66px;
   animation: hero-orbit-spin 9s linear infinite reverse;
 }
 
 .hero-orbit-dot {
   position: absolute;
-  top: -4.5px;
   left: 50%;
-  width: 9px;
-  height: 9px;
-  margin-left: -4.5px;
   border-radius: 50%;
 }
 
+/* Kropki w różnych rozmiarach */
 .hero-orbit-dot--coral {
+  top: -7px;
+  width: 14px;
+  height: 14px;
+  margin-left: -7px;
   background: #d96a55;
 }
 
 .hero-orbit-dot--teal {
+  top: -4px;
+  width: 8px;
+  height: 8px;
+  margin-left: -4px;
   background: #2b9dad;
 }
 
