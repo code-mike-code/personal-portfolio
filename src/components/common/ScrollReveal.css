@@ -15,6 +15,7 @@
 
 .word {
   display: inline-block;
+  will-change: opacity, filter;
 }
 
 .container {

@@ -1,0 +1,37 @@
+.lang-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25em;
+  background: none;
+  border: none;
+  padding: 0.25em 0.5em;
+  cursor: pointer;
+  font: inherit;
+  font-size: 1rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  color: inherit;
+}
+
+.lang-toggle__option {
+  opacity: 0.45;
+  transition: opacity 0.2s ease, color 0.2s ease;
+}
+
+.lang-toggle__option--active {
+  opacity: 1;
+  color: #d96a55;
+  font-weight: 700;
+}
+
+.lang-toggle__separator {
+  opacity: 0.45;
+}
+
+.lang-toggle:hover .lang-toggle__option {
+  opacity: 0.8;
+}
+
+.lang-toggle:hover .lang-toggle__option--active {
+  opacity: 1;
+}

@@ -1,4 +1,5 @@
 import React, { useLayoutEffect, useRef } from 'react';
+import { useTranslation } from 'react-i18next';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import ScrollReveal from '../common/ScrollReveal';
@@ -15,10 +16,6 @@ const items = [
         <path d="M12 3l2 6 6 2-6 2-2 6-2-6-6-2 6-2 2-6z" />
       </svg>
     ),
-    title: 'Custom digital experiences',
-    tagline: 'No templates — tailored, custom websites',
-    description:
-      'Every project starts with understanding the business and its audience, then building a UX and visual system that feels specific, intentional, and alive.',
     tags: ['Figma', 'React', 'CSS', 'TailwindCSS'],
   },
   {
@@ -30,10 +27,6 @@ const items = [
         <circle cx="17" cy="8" r="2.5" />
       </svg>
     ),
-    title: 'Motion & interaction',
-    tagline: 'Responsive websites that feel multidimensional',
-    description:
-      'I use animation and scroll-based interaction to guide attention, tell stories, and bring interfaces to life — from subtle transitions to more expressive, immersive moments.',
     tags: ['GSAP', 'ScrollTrigger', 'Lenis', 'MUI'],
   },
   {
@@ -44,15 +37,14 @@ const items = [
         <path d="M5 19V10M12 19V5M19 19v-7" />
       </svg>
     ),
-    title: 'Performance & SEO',
-    tagline: 'Fast, visible, measurable',
-    description:
-      'Clean, semantic code and performance budgets from day one — websites that load fast, rank well, and score high in Core Web Vitals.',
     tags: ['Lighthouse', 'Core Web Vitals', 'SEO', 'WCAG'],
   },
 ];
 
 export default function WorkDifferent() {
+  const { t } = useTranslation();
+  // Teksty (title/tagline/description) per pozycja — z i18n, równolegle do items
+  const itemTexts = t('work.different.items', { returnObjects: true });
   const containerRef = useRef(null);
   const rowsRef = useRef([]);
 
@@ -119,7 +111,7 @@ export default function WorkDifferent() {
         blurStrength={10}
         containerClassName="work-different-title-container"
         textClassName="work-different-title"
-      >What makes my work different.
+      >{t('work.different.title')}
       </ScrollReveal>
       <div className="work-different-rows">
         {items.map((item, index) => (
@@ -133,11 +125,11 @@ export default function WorkDifferent() {
               <div className={`work-different-blob ${item.blob}`}>{item.icon}</div>
             </div>
             <div className="work-different-heading">
-              <h3>{item.title}</h3>
-              <p>{item.tagline}</p>
+              <h3>{itemTexts[index].title}</h3>
+              <p>{itemTexts[index].tagline}</p>
             </div>
             <div className="work-different-body">
-              <p>{item.description}</p>
+              <p>{itemTexts[index].description}</p>
               <div className="work-different-tags">
                 {item.tags.map((tag) => (
                   <span className="work-different-tag" key={tag}>

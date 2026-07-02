@@ -249,3 +249,31 @@
     right: 0.75rem;
   }
 }
+
+/* Kontrolka pauzy wideo w modalu (WCAG 2.2.2) */
+.project-modal-video-pause {
+  position: absolute;
+  right: 16px;
+  bottom: 16px;
+  z-index: 10;
+  width: 40px;
+  height: 40px;
+  border: none;
+  border-radius: 50%;
+  background: rgba(34, 34, 34, 0.75);
+  color: #F5F5DC;
+  font-size: 0.9rem;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s ease;
+}
+
+.project-modal-video-pause:hover,
+.project-modal-video-pause:focus-visible {
+  background: rgba(217, 106, 85, 0.9);
+  outline: 2px solid #F5F5DC;
+  outline-offset: 2px;
+}

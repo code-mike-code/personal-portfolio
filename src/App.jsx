@@ -1,5 +1,6 @@
 import React, { useEffect, lazy, Suspense } from 'react';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { useTranslation } from 'react-i18next';
 import Header from './components/Header/Header';
 import BottomNav from './components/Header/BottomNav';
 import Hero from './components/Hero/Hero';
@@ -55,19 +56,22 @@ const PrivacyPolicy = lazy(() => import('./components/PrivacyPolicy/PrivacyPolic
 
 
 export default function App() {
+  // key = język: zmiana przemontowuje layout, więc animacje GSAP/Lenis
+  // i stany pochodne od długości tekstu (Hero) startują czysto
+  const { t, i18n } = useTranslation();
   return (
-    <ErrorBoundary> 
+    <ErrorBoundary>
     <BrowserRouter>
     <Cursor />
       <Routes>
-        <Route path="/" element={<MainLayout />} />
-        <Route 
-          path="/privacy-policy" 
+        <Route path="/" element={<MainLayout key={i18n.resolvedLanguage} />} />
+        <Route
+          path="/privacy-policy"
           element={
-            <Suspense fallback={<div>Loading...</div>}>
+            <Suspense fallback={<div>{t('common.loading')}</div>}>
               <PrivacyPolicy />
             </Suspense>
-          } 
+          }
         />
       </Routes>
     </BrowserRouter>

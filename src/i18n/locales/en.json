@@ -1,0 +1,163 @@
+{
+  "meta": {
+    "title": "Code Mike — Frontend Developer | React & TypeScript",
+    "description": "AI-augmented frontend developer building fast, accessible websites with React, TypeScript and GSAP."
+  },
+  "language": {
+    "switchAria": "Switch language to Polish"
+  },
+  "common": {
+    "loading": "Loading..."
+  },
+  "header": {
+    "logoAria": "Scroll to about section",
+    "github": "GitHub",
+    "githubAria": "GitHub Profile",
+    "work": "Work",
+    "workAria": "Scroll to work section",
+    "contact": "Contact",
+    "contactAria": "Scroll to contact section",
+    "menuAria": "Toggle menu",
+    "mobileNavAria": "Mobile Navigation"
+  },
+  "hero": {
+    "line1": "Code Mike",
+    "line2": "Modern Web",
+    "line3": "Development",
+    "projects": "Projects",
+    "contact": "Contact"
+  },
+  "work": {
+    "title": "Selected Work",
+    "subtitle": "Every project is shaped around the client — not a template — with a focus on clarity, performance, and craft.",
+    "counterAria": "Project {{current}} of {{total}}",
+    "viewLive": "View live",
+    "details": "Details",
+    "techStack": "Tech Stack",
+    "closeModalAria": "Close modal",
+    "closeModalTitle": "Close (ESC)",
+    "videoPlayAria": "Play project video",
+    "videoPauseAria": "Pause project video",
+    "closure": {
+      "line1": "Transforming Ideas",
+      "line2": "into Digital Reality",
+      "text": "The projects above demonstrate my commitment to building high-performance web applications with a focus on clean code and user experience. If you are looking for a reliable developer to bring your vision to life or optimize your current digital presence, I am ready to help. Let's connect and discuss how we can build something exceptional for your business."
+    },
+    "different": {
+      "title": "What makes my work different.",
+      "items": [
+        {
+          "title": "Custom digital experiences",
+          "tagline": "No templates — tailored, custom websites",
+          "description": "Every project starts with understanding the business and its audience, then building a UX and visual system that feels specific, intentional, and alive."
+        },
+        {
+          "title": "Motion & interaction",
+          "tagline": "Responsive websites that feel multidimensional",
+          "description": "I use animation and scroll-based interaction to guide attention, tell stories, and bring interfaces to life — from subtle transitions to more expressive, immersive moments."
+        },
+        {
+          "title": "Performance & SEO",
+          "tagline": "Fast, visible, measurable",
+          "description": "Clean, semantic code and performance budgets from day one — websites that load fast, rank well, and score high in Core Web Vitals."
+        }
+      ]
+    },
+    "projects": {
+      "1": {
+        "short": "A modern website for a specialist cardiology clinic — clear service presentation, doctor profiles and easy appointment contact.",
+        "full": "Klinika Vitalis is a specialist medical clinic based in Trzebinia, Poland. The website presents the clinic's cardiology services, medical team and patient information in a clean, trustworthy layout. \n\nKey features: service and specialist listings, clinic contact and location details, responsive layout optimized for patients browsing on mobile, and a structure prepared for online appointment booking. Focus on accessibility, fast load times and a calm visual language appropriate for healthcare."
+      },
+      "2": {
+        "short": "B2B website for a Warsaw-based leasing and rental company — offer presentation, lead generation and contact flows for business clients.",
+        "full": "Pewny Leasing provides leasing and long-term rental solutions for companies. The website acts as the company's primary digital presence: it presents the offer, builds trust with business clients and converts visitors into leads. \n\nKey features: structured offer sections for leasing and rental products, clear calls to action, contact and inquiry forms, responsive design and SEO-friendly architecture targeting the Polish B2B market."
+      },
+      "3": {
+        "short": "Website for a fleet partner connecting drivers with Uber, Bolt and FreeNow — driver onboarding, earnings info and contact.",
+        "full": "Drago Partner is a Warsaw-based fleet partner for ride-hailing drivers. The website explains the partnership model, presents earnings and settlement conditions, and guides drivers through the onboarding process for platforms such as Uber, Bolt and FreeNow. \n\nKey features: clear step-by-step onboarding sections, FAQ for drivers, contact and signup flows, mobile-first layout — most visitors are drivers browsing on phones."
+      },
+      "4": {
+        "short": "A modern, responsive web application for a premium cardiology and dental care clinic. Built with React, TypeScript and Tailwind CSS.",
+        "full": "A modern, responsive web application for a premium cardiology and dental care clinic. Built with React, TypeScript, and Tailwind CSS. Cor-Dent is a professional medical services platform offering: \n\nCardiology Services - Professional cardiovascular care and diagnostics. Dental Services - Comprehensive dental care and prosthetics. Online Booking - Easy appointment scheduling system. Multilingual Support - Support for multiple languages. \n\nTech Stack: Frontend Framework: React 18 with TypeScript, Build Tool: Vite, Styling: Tailwind CSS, UI Components: shadcn-ui (Radix UI + Tailwind), Routing: React Router v6, Form Management: React Hook Form + Zod validation, Icons: Lucide React, Internationalization: Custom i18n hooks, State Management: TanStack React Query"
+      },
+      "5": {
+        "short": "E-commerce presentation for eco-friendly flowerpots made of hemp composite with CO2 absorption — product story and brand identity.",
+        "full": "Cudowna Doniczka is an eco-conscious brand producing biodegradable flowerpots made of natural hemp composite that absorbs CO2. The website tells the product story, explains the environmental benefits and presents the product line in a warm, nature-inspired visual language. \n\nKey features: storytelling product sections, benefit-driven copy layout, photo-focused presentation, responsive design and a structure prepared for online sales."
+      }
+    }
+  },
+  "projects": {
+    "heading": "GITHUB",
+    "loading": "Loading...",
+    "profileButton": "GitHub Profile"
+  },
+  "about": {
+    "headingLine1": "The story behind",
+    "headingLine2": "Code Mike",
+    "photoAlt": "Michał with his cat",
+    "bioHeading": "Hey, I'm Michał",
+    "bio1": "AI-Augmented Frontend Developer specializing in building efficient and responsive interfaces in React and TypeScript. I support the coding process with advanced AI tools such as Claude Code and AI Agents, which translates into higher-quality delivered solutions and shorter turnaround times. I built a solid technical foundation through independent practice in the React ecosystem, JavaScript, and modern frontend tools.",
+    "bio2": "Good software requires both logic and empathy. I am a proactive problem-solver who values organized workflows and collaboration to deliver clean, impactful solutions.",
+    "tagline": "Independent by nature, collaborative by choice.",
+    "statProjects": "client projects",
+    "statDelivery": "faster delivery with AI tools",
+    "interestsHeading": "Personal interests",
+    "interests": [
+      "Gravity & enduro mountain biking",
+      "Boardsports — skate, snowboard, travel with wind",
+      "Boxing, freediving — sport freak in general",
+      "Outdoors, tech, travel",
+      "Electronic music, hip-hop, festivals & friends",
+      "Cats (the fluffy boss lives with me)"
+    ],
+    "gallery": [
+      "Skatepark session",
+      "Chasing wind",
+      "Project manager on duty",
+      "Making new friends",
+      "Above the clouds",
+      "Me & the boss"
+    ]
+  },
+  "contact": {
+    "titleLine1": "Let's work",
+    "titleLine2": "together.",
+    "intro": "I'm always looking for new projects and collaborations. If you have a project in mind, or just want to say hello, please get in touch.",
+    "form": {
+      "labelName": "Name",
+      "labelEmail": "Email",
+      "labelSubject": "Subject",
+      "labelMessage": "Message",
+      "name": " Name",
+      "email": " Email",
+      "subjectPlaceholder": " Subject...",
+      "subjectProject": "Project",
+      "subjectCollaboration": "Collaboration",
+      "subjectOther": "Other",
+      "message": "Write a message...",
+      "sending": "Sending…",
+      "submit": "Submit Request",
+      "success": "Message sent.",
+      "error": "Failed to send message. Please try again."
+    }
+  },
+  "footer": {
+    "copyright": "Code Mike - Modern Web Development",
+    "topAria": "Scroll back to top",
+    "privacyLink": "Privacy Policy & Cookies"
+  },
+  "cookies": {
+    "title": "Privacy policy and cookies",
+    "text": "This site uses cookies (including Google Analytics) to analyze traffic. You can accept or decline all optional cookies. For details see our",
+    "policyLink": "Privacy & Cookies Policy",
+    "declineAll": "Decline all",
+    "acceptAll": "Accept all",
+    "toggleAcceptAria": "Accept all cookies",
+    "toggleDeclineAria": "Decline all cookies",
+    "confirm": "Confirm"
+  },
+  "errors": {
+    "title": "Something went wrong.",
+    "reload": "Reload page"
+  }
+}

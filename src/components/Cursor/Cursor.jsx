@@ -21,38 +21,11 @@ export default function Cursor() {
       setVisible(true);
 
       const elem = document.elementFromPoint(x, y);
-  //     const accentEl = elem && elem.closest('.contact-submit');
-  //     const headerEl = elem && elem.closest('.header__menu a, .header__logo a, .menu-text, .pill');
       
-  //     if (prevAccentRef.current !== accentEl) {
-  //       if (prevAccentRef.current) prevAccentRef.current.classList.remove('accent-lit');
-  //       if (accentEl) accentEl.classList.add('accent-lit');
-  //       prevAccentRef.current = accentEl;
-  //     }
 
-  //     if (cursorRef.current) {
-  //       cursorRef.current.classList.add('custom-cursor--invert');
-  //       cursorRef.current.classList.remove('custom-cursor--accent');
-  //       if (accentEl) cursorRef.current.classList.add('custom-cursor--accent');
-  //     }
       
-  //     // header bottom-light highlight
-  //     if (prevLitRef.current !== headerEl) {
-  //       if (prevLitRef.current) prevLitRef.current.classList.remove('header-lit');
-  //       if (headerEl) headerEl.classList.add('header-lit');
-  //       prevLitRef.current = headerEl;
-  //     }
 
-  //   };
 
-  //   document.addEventListener('mousemove', moveCursor, { passive: true });
-  //   return () => {
-  //     document.removeEventListener('mousemove', moveCursor);
-  //     if (prevLitRef.current) prevLitRef.current.classList.remove('header-lit');
-  //     if (prevAccentRef.current) prevAccentRef.current.classList.remove('accent-lit');
-  //     if (cursorRef.current) cursorRef.current.classList.remove('custom-cursor--invert', 'custom-cursor--accent');
-  //   };
-  // }, []);
 
 
       const accentEl = elem?.closest('.contact-submit, .contact-form button');
@@ -115,6 +88,5 @@ export default function Cursor() {
     />
   );
 
-  // render as portal to document.body to avoid stacking-context issues
   return typeof document !== 'undefined' ? ReactDOM.createPortal(cursorEl, document.body) : cursorEl;
 }

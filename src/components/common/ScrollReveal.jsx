@@ -38,8 +38,8 @@ const ScrollReveal = ({
     if (!el) return;
 
     const wordElements = el.querySelectorAll('.word');
-    
-    const handleScroll = () => {
+
+    const update = () => {
       const rect = el.getBoundingClientRect();
       const windowHeight = window.innerHeight;
       
@@ -58,10 +58,9 @@ const ScrollReveal = ({
       wordElements.forEach((word, index) => {
         const wordProgress = Math.max(0, scrollProgress - (index * 0.01));
         const opacity = baseOpacity + (1 - baseOpacity) * Math.min(1, wordProgress * 3);
-        
+
         word.style.opacity = opacity;
-        word.style.willChange = 'opacity';
-        
+
         if (enableBlur) {
           const blur = blurStrength * (1 - Math.min(1, wordProgress * 4));
           word.style.filter = `blur(${blur}px)`;
@@ -69,9 +68,20 @@ const ScrollReveal = ({
       });
     };
 
-    window.addEventListener('scroll', handleScroll);
-    handleScroll(); // initial call
-    
+    // rAF-throttle: max jeden update na klatkę zamiast na każde zdarzenie scroll
+    let ticking = false;
+    const handleScroll = () => {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(() => {
+        update();
+        ticking = false;
+      });
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    update(); // initial call
+
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };

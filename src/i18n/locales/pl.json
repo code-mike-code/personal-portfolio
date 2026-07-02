@@ -1,0 +1,163 @@
+{
+  "meta": {
+    "title": "Code Mike — Frontend Developer | React i TypeScript",
+    "description": "Frontend developer wspierany przez AI — szybkie i dostępne strony internetowe w React, TypeScript i GSAP."
+  },
+  "language": {
+    "switchAria": "Zmień język na angielski"
+  },
+  "common": {
+    "loading": "Wczytywanie..."
+  },
+  "header": {
+    "logoAria": "Przewiń do sekcji o mnie",
+    "github": "GitHub",
+    "githubAria": "Profil GitHub",
+    "work": "Realizacje",
+    "workAria": "Przewiń do sekcji realizacji",
+    "contact": "Kontakt",
+    "contactAria": "Przewiń do sekcji kontakt",
+    "menuAria": "Otwórz lub zamknij menu",
+    "mobileNavAria": "Nawigacja mobilna"
+  },
+  "hero": {
+    "line1": "Code Mike",
+    "line2": "Nowoczesne strony",
+    "line3": "internetowe",
+    "projects": "Projekty",
+    "contact": "Kontakt"
+  },
+  "work": {
+    "title": "Wybrane realizacje",
+    "subtitle": "Każdy projekt powstaje z myślą o kliencie — bez szablonów — z naciskiem na przejrzystość, wydajność i dopracowanie.",
+    "counterAria": "Projekt {{current}} z {{total}}",
+    "viewLive": "Zobacz stronę",
+    "details": "Szczegóły",
+    "techStack": "Technologie",
+    "closeModalAria": "Zamknij okno",
+    "closeModalTitle": "Zamknij (ESC)",
+    "videoPlayAria": "Odtwórz wideo projektu",
+    "videoPauseAria": "Zatrzymaj wideo projektu",
+    "closure": {
+      "line1": "Zamieniam pomysły",
+      "line2": "w cyfrową rzeczywistość",
+      "text": "Powyższe projekty pokazują moje zaangażowanie w tworzenie wydajnych aplikacji internetowych z naciskiem na czysty kod i doświadczenie użytkownika. Jeśli szukasz rzetelnego developera, który ożywi Twoją wizję lub zoptymalizuje obecną obecność w sieci — chętnie pomogę. Skontaktuj się ze mną i porozmawiajmy, jak możemy zbudować coś wyjątkowego dla Twojego biznesu."
+    },
+    "different": {
+      "title": "Co wyróżnia moje projekty.",
+      "items": [
+        {
+          "title": "Autorskie doświadczenia cyfrowe",
+          "tagline": "Bez szablonów — strony szyte na miarę",
+          "description": "Każdy projekt zaczyna się od zrozumienia biznesu i jego odbiorców, a następnie zbudowania UX i systemu wizualnego, który jest konkretny, przemyślany i żywy."
+        },
+        {
+          "title": "Ruch i interakcja",
+          "tagline": "Responsywne strony, które czuć w wielu wymiarach",
+          "description": "Używam animacji i interakcji opartych na scrollu, by kierować uwagę, opowiadać historie i ożywiać interfejsy — od subtelnych przejść po bardziej wyraziste, immersyjne momenty."
+        },
+        {
+          "title": "Wydajność i SEO",
+          "tagline": "Szybko, widocznie, mierzalnie",
+          "description": "Czysty, semantyczny kod i budżety wydajnościowe od pierwszego dnia — strony, które szybko się ładują, dobrze pozycjonują i osiągają wysokie wyniki w Core Web Vitals."
+        }
+      ]
+    },
+    "projects": {
+      "1": {
+        "short": "Nowoczesna strona specjalistycznej kliniki kardiologicznej — czytelna prezentacja usług, profile lekarzy i łatwy kontakt w sprawie wizyt.",
+        "full": "Klinika Vitalis to specjalistyczna placówka medyczna z Trzebini. Strona prezentuje usługi kardiologiczne, zespół lekarzy i informacje dla pacjentów w przejrzystym, budzącym zaufanie układzie. \n\nNajważniejsze funkcje: listy usług i specjalistów, dane kontaktowe i lokalizacja kliniki, responsywny układ zoptymalizowany dla pacjentów przeglądających na telefonie oraz struktura przygotowana pod rejestrację wizyt online. Nacisk na dostępność, szybkie ładowanie i spokojny język wizualny odpowiedni dla ochrony zdrowia."
+      },
+      "2": {
+        "short": "Strona B2B warszawskiej firmy leasingowej i wynajmu — prezentacja oferty, generowanie leadów i ścieżki kontaktu dla klientów biznesowych.",
+        "full": "Pewny Leasing dostarcza firmom rozwiązania leasingu i wynajmu długoterminowego. Strona pełni rolę głównej cyfrowej wizytówki firmy: prezentuje ofertę, buduje zaufanie klientów biznesowych i zamienia odwiedzających w leady. \n\nNajważniejsze funkcje: uporządkowane sekcje oferty leasingu i wynajmu, czytelne wezwania do działania, formularze kontaktowe i zapytań, responsywny design oraz architektura przyjazna SEO nastawiona na polski rynek B2B."
+      },
+      "3": {
+        "short": "Strona partnera flotowego łączącego kierowców z Uber, Bolt i FreeNow — onboarding kierowców, informacje o zarobkach i kontakt.",
+        "full": "Drago Partner to warszawski partner flotowy dla kierowców aplikacji przewozowych. Strona wyjaśnia model współpracy, prezentuje zarobki i warunki rozliczeń oraz prowadzi kierowców przez proces dołączenia do platform takich jak Uber, Bolt i FreeNow. \n\nNajważniejsze funkcje: czytelne sekcje onboardingu krok po kroku, FAQ dla kierowców, ścieżki kontaktu i zapisu, układ mobile-first — większość odwiedzających to kierowcy przeglądający na telefonach."
+      },
+      "4": {
+        "short": "Nowoczesna, responsywna aplikacja webowa dla kliniki kardiologiczno-stomatologicznej klasy premium. Zbudowana w React, TypeScript i Tailwind CSS.",
+        "full": "Nowoczesna, responsywna aplikacja webowa dla kliniki kardiologiczno-stomatologicznej klasy premium. Zbudowana w React, TypeScript i Tailwind CSS. Cor-Dent to profesjonalna platforma usług medycznych oferująca: \n\nUsługi kardiologiczne — profesjonalna opieka i diagnostyka kardiologiczna. Usługi stomatologiczne — kompleksowa opieka dentystyczna i protetyka. Rezerwacja online — prosty system umawiania wizyt. Wielojęzyczność — obsługa wielu języków. \n\nStack technologiczny: framework: React 18 z TypeScript, build tool: Vite, style: Tailwind CSS, komponenty UI: shadcn-ui (Radix UI + Tailwind), routing: React Router v6, formularze: React Hook Form + walidacja Zod, ikony: Lucide React, internacjonalizacja: własne hooki i18n, zarządzanie stanem: TanStack React Query"
+      },
+      "5": {
+        "short": "Prezentacja e-commerce ekologicznych doniczek z kompozytu konopnego pochłaniającego CO2 — historia produktu i identyfikacja marki.",
+        "full": "Cudowna Doniczka to ekologiczna marka produkująca biodegradowalne doniczki z naturalnego kompozytu konopnego, który pochłania CO2. Strona opowiada historię produktu, wyjaśnia korzyści środowiskowe i prezentuje linię produktów w ciepłym, inspirowanym naturą języku wizualnym. \n\nNajważniejsze funkcje: storytellingowe sekcje produktowe, układ treści oparty na korzyściach, prezentacja skoncentrowana na zdjęciach, responsywny design i struktura przygotowana pod sprzedaż online."
+      }
+    }
+  },
+  "projects": {
+    "heading": "GITHUB",
+    "loading": "Wczytywanie...",
+    "profileButton": "Profil GitHub"
+  },
+  "about": {
+    "headingLine1": "Historia, która stoi za",
+    "headingLine2": "Code Mike",
+    "photoAlt": "Michał ze swoim kotem",
+    "bioHeading": "Cześć, jestem Michał",
+    "bio1": "Frontend Developer wspierany przez AI, specjalizujący się w budowaniu wydajnych i responsywnych interfejsów w React i TypeScript. Proces kodowania wspieram zaawansowanymi narzędziami AI, takimi jak Claude Code i agenci AI, co przekłada się na wyższą jakość dostarczanych rozwiązań i krótszy czas realizacji. Solidne fundamenty techniczne zbudowałem przez samodzielną praktykę w ekosystemie React, JavaScript i nowoczesnych narzędziach frontendowych.",
+    "bio2": "Dobre oprogramowanie wymaga zarówno logiki, jak i empatii. Jestem proaktywnym problem-solverem, który ceni uporządkowane procesy i współpracę, by dostarczać czyste, wartościowe rozwiązania.",
+    "tagline": "Samodzielny z natury, zespołowy z wyboru.",
+    "statProjects": "projektów dla klientów",
+    "statDelivery": "szybsza realizacja dzięki narzędziom AI",
+    "interestsHeading": "Zainteresowania",
+    "interests": [
+      "Kolarstwo grawitacyjne i enduro",
+      "Sporty deskowe — skate, snowboard, podróże z wiatrem",
+      "Boks, freediving — ogólnie świr sportowy",
+      "Outdoor, technologia, podróże",
+      "Muzyka elektroniczna, hip-hop, festiwale i znajomi",
+      "Koty (puchaty szef mieszka ze mną)"
+    ],
+    "gallery": [
+      "Sesja na skateparku",
+      "W pogoni za wiatrem",
+      "Project manager na służbie",
+      "Nowe znajomości",
+      "Ponad chmurami",
+      "Ja i szef"
+    ]
+  },
+  "contact": {
+    "titleLine1": "Zróbmy coś",
+    "titleLine2": "razem.",
+    "intro": "Zawsze szukam nowych projektów i możliwości współpracy. Jeśli masz w głowie projekt albo chcesz po prostu się przywitać — napisz do mnie.",
+    "form": {
+      "labelName": "Imię",
+      "labelEmail": "E-mail",
+      "labelSubject": "Temat",
+      "labelMessage": "Wiadomość",
+      "name": " Imię",
+      "email": " E-mail",
+      "subjectPlaceholder": " Temat...",
+      "subjectProject": "Projekt",
+      "subjectCollaboration": "Współpraca",
+      "subjectOther": "Inne",
+      "message": "Napisz wiadomość...",
+      "sending": "Wysyłanie…",
+      "submit": "Wyślij wiadomość",
+      "success": "Wiadomość wysłana.",
+      "error": "Nie udało się wysłać wiadomości. Spróbuj ponownie."
+    }
+  },
+  "footer": {
+    "copyright": "Code Mike - Nowoczesne strony internetowe",
+    "topAria": "Wróć na górę strony",
+    "privacyLink": "Polityka prywatności i cookies"
+  },
+  "cookies": {
+    "title": "Polityka prywatności i cookies",
+    "text": "Ta strona używa plików cookies (w tym Google Analytics) do analizy ruchu. Możesz zaakceptować lub odrzucić wszystkie opcjonalne cookies. Szczegóły znajdziesz w naszej",
+    "policyLink": "Polityce prywatności i cookies",
+    "declineAll": "Odrzuć wszystkie",
+    "acceptAll": "Akceptuj wszystkie",
+    "toggleAcceptAria": "Akceptuj wszystkie cookies",
+    "toggleDeclineAria": "Odrzuć wszystkie cookies",
+    "confirm": "Potwierdź"
+  },
+  "errors": {
+    "title": "Coś poszło nie tak.",
+    "reload": "Odśwież stronę"
+  }
+}

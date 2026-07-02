@@ -1,12 +1,29 @@
 import React, { useEffect, useRef, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import gsap from 'gsap';
 import useFocusTrap from '../../utils/useFocusTrap';
 import './ProjectModal.css';
 
 const ProjectModal = ({ isOpen, project, onClose }) => {
+  const { t } = useTranslation();
   const modalRef = useRef(null);
   const backdropRef = useRef(null);
+  const videoRef = useRef(null);
   const [videoSrc, setVideoSrc] = useState('');
+  // WCAG 2.2.2: możliwość zatrzymania ruchu; przy reduced-motion start w pauzie
+  const [videoPaused, setVideoPaused] = useState(
+    () => typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches
+  );
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+    if (videoPaused) {
+      video.pause();
+    } else {
+      video.play().catch(() => {});
+    }
+  }, [videoPaused, videoSrc, isOpen]);
 
   useFocusTrap(modalRef, isOpen);
 
@@ -111,8 +128,8 @@ const ProjectModal = ({ isOpen, project, onClose }) => {
         <button
           className="project-modal-close-btn"
           onClick={onClose}
-          aria-label="Close modal"
-          title="Close (ESC)"
+          aria-label={t('work.closeModalAria')}
+          title={t('work.closeModalTitle')}
           style={{ position: 'absolute', top: '20px', right: '20px', zIndex: 20 }}
         >
           ✕
@@ -127,15 +144,25 @@ const ProjectModal = ({ isOpen, project, onClose }) => {
           {/* Video tło - Sticky sprawia, że wideo stoi w miejscu jak tło, podczas gdy kontener się przewija */}
           <div className="project-modal-video-container" style={{ position: 'sticky', top: 0, left: 0, width: '100%', height: '70vh', zIndex: 0, paddingTop: 0 }}>
             {videoSrc ? (
-              <video
-                className="project-modal-video"
-                src={videoSrc}
-                autoPlay
-                muted
-                loop
-                playsInline
-                style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'top' }}
-              />
+              <>
+                <video
+                  ref={videoRef}
+                  className="project-modal-video"
+                  src={videoSrc}
+                  muted
+                  loop
+                  playsInline
+                  style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'top' }}
+                />
+                <button
+                  type="button"
+                  className="project-modal-video-pause"
+                  onClick={() => setVideoPaused((p) => !p)}
+                  aria-label={videoPaused ? t('work.videoPlayAria') : t('work.videoPauseAria')}
+                >
+                  {videoPaused ? '▶' : '❚❚'}
+                </button>
+              </>
             ) : (
               <div className="project-modal-media-placeholder">
                 <span>{project.title}</span>
@@ -147,12 +174,12 @@ const ProjectModal = ({ isOpen, project, onClose }) => {
           <div className="project-modal-content" style={{ position: 'relative', zIndex: 1, backgroundColor: '#fff', minHeight: '100%' }}>
             <h2 className="project-modal-title" id="project-modal-title">{project.title}</h2>
 
-            <p className="project-modal-description">{project.fullDescription}</p>
+            <p className="project-modal-description">{t(`work.projects.${project.id}.full`)}</p>
 
             {/* Tech Stack */}
             {project.techStack && project.techStack.length > 0 && (
               <div className="project-modal-tech-stack">
-                <h3 className="project-modal-tech-title">Tech Stack</h3>
+                <h3 className="project-modal-tech-title">{t('work.techStack')}</h3>
                 <div className="project-modal-tech-tags">
                   {project.techStack.map((tech, index) => (
                     <span key={index} className="project-modal-tech-tag">

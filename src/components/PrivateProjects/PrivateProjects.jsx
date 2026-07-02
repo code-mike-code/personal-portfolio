@@ -1,4 +1,5 @@
 import React, { useEffect, useLayoutEffect, useRef, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Lenis from 'lenis';
@@ -16,6 +17,7 @@ gsap.registerPlugin(ScrollTrigger);
 ScrollTrigger.config({ ignoreMobileResize: true });
 
 export default function PrivateProjects() {
+  const { t } = useTranslation();
   const lenisRef = useRef(null);
   const [expandedProject, setExpandedProject] = useState(null);
 
@@ -69,7 +71,7 @@ export default function PrivateProjects() {
           blurStrength={20}
           containerClassName="section-closure-title"
           textClassName="section-closure-title-part1"
-        >Transforming Ideas
+        >{t('work.closure.line1')}
         </ScrollReveal>
 
         <ScrollReveal
@@ -79,7 +81,7 @@ export default function PrivateProjects() {
           blurStrength={20}
           containerClassName="section-closure-title"
           textClassName="section-closure-title-part2"
-        >into Digital Reality
+        >{t('work.closure.line2')}
         </ScrollReveal>
 
         {/* completeAt: pełny reveal zanim heading dojedzie do góry —
@@ -91,7 +93,7 @@ export default function PrivateProjects() {
           blurStrength={20}
           completeAt={320}
           textClassName="section-closure-text"
-        >The projects above demonstrate my commitment to building high-performance web applications with a focus on clean code and user experience. If you are looking for a reliable developer to bring your vision to life or optimize your current digital presence, I am ready to help. Let's connect and discuss how we can build something exceptional for your business.
+        >{t('work.closure.text')}
         </ScrollReveal>
       </div>
 
