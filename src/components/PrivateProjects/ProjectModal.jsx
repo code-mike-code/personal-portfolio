@@ -1,11 +1,14 @@
 import React, { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
+import useFocusTrap from '../../utils/useFocusTrap';
 import './ProjectModal.css';
 
 const ProjectModal = ({ isOpen, project, onClose }) => {
   const modalRef = useRef(null);
   const backdropRef = useRef(null);
   const [videoSrc, setVideoSrc] = useState('');
+
+  useFocusTrap(modalRef, isOpen);
 
   // Zamknięcie na ESC key
   useEffect(() => {
@@ -96,7 +99,14 @@ const ProjectModal = ({ isOpen, project, onClose }) => {
       onClick={handleBackdropClick}
       style={{ opacity: 0 }}
     >
-      <div ref={modalRef} className="project-modal" style={{ opacity: 0, display: 'block', position: 'relative', overflow: 'hidden' }}>
+      <div
+        ref={modalRef}
+        className="project-modal"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="project-modal-title"
+        style={{ opacity: 0, display: 'block', position: 'relative', overflow: 'hidden' }}
+      >
         {/* Close button */}
         <button
           className="project-modal-close-btn"
@@ -135,7 +145,7 @@ const ProjectModal = ({ isOpen, project, onClose }) => {
 
           {/* Content */}
           <div className="project-modal-content" style={{ position: 'relative', zIndex: 1, backgroundColor: '#fff', minHeight: '100%' }}>
-            <h2 className="project-modal-title">{project.title}</h2>
+            <h2 className="project-modal-title" id="project-modal-title">{project.title}</h2>
 
             <p className="project-modal-description">{project.fullDescription}</p>
 

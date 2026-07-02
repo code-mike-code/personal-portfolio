@@ -1,6 +1,7 @@
 // CookieConsentModal.jsx
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import { Link } from "react-router-dom";
+import useFocusTrap from "../../utils/useFocusTrap";
 import "./CookieConsentModal.css";
 
 const COOKIE_CONSENT_KEY = "devmike_cookie_consent"; // 'accepted' | 'declined'
@@ -11,7 +12,11 @@ export function CookieConsentModal({ onAccept, onDecline }) {
     return !stored; // true jeśli brak zgody (nie ma stored), false jeśli jest zgoda
   });
   
-  const [isAccepted, setIsAccepted] = useState(true);
+  // RODO: zgoda nie może być domyślnie zaznaczona — start od "decline"
+  const [isAccepted, setIsAccepted] = useState(false);
+  const modalRef = useRef(null);
+
+  useFocusTrap(modalRef, isOpen);
 
   const handleConfirm = () => {
     const status = isAccepted ? "accepted" : "declined";
@@ -28,8 +33,14 @@ export function CookieConsentModal({ onAccept, onDecline }) {
 
   return (
     <div className="ccm-backdrop">
-      <div className="ccm-modal">
-        <h2 className="ccm-title">Privacy policy and cookies</h2>
+      <div
+        className="ccm-modal"
+        ref={modalRef}
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="ccm-title"
+      >
+        <h2 className="ccm-title" id="ccm-title">Privacy policy and cookies</h2>
         <p className="ccm-text">
           This site uses cookies (including Google Analytics) to analyze traffic.
           You can accept or decline all optional cookies. For details see our{" "}
