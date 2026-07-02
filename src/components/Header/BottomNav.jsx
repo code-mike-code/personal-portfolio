@@ -67,8 +67,8 @@ export default function BottomNav() {
         <li><a href="https://github.com/code-mike-code"
           target="_blank"
           rel="noopener noreferrer">GitHub</a></li>
-        <li><a onClick={() => scrollToSection('private-projects')}>Work</a></li>
-        <li><a onClick={() => scrollToSection('contact')}>Contact</a></li>
+        <li><a href="#private-projects" onClick={(e) => { e.preventDefault(); scrollToSection('private-projects'); }}>Work</a></li>
+        <li><a href="#contact" onClick={(e) => { e.preventDefault(); scrollToSection('contact'); }}>Contact</a></li>
       </ul>
     </nav>
   );

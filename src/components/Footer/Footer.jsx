@@ -10,14 +10,15 @@ export default function Footer() {
 
   return (
     <footer className="footer">
-      {/* <span className='footer__copyright'>{new Date().getFullYear()} | &copy; Code Mike - Modern Web Development</span> */}
       <div className="footer-content">
-        <span 
+        <button
+          type="button"
           className='footer__copyright'
           onClick={scrollToTop}
+          aria-label="Scroll back to top"
         >
           {new Date().getFullYear()} | &copy; Code Mike - Modern Web Development
-        </span>
+        </button>
         <div className="footer-links">
           <Link 
             to="/privacy-policy" 

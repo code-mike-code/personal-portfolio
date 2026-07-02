@@ -62,17 +62,11 @@ const Header = () => {
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
         >
-          {/* <a 
-          onClick={() => scrollToSection('about')} 
-          aria-label="Scroll to about section"
-          role="button"
-          >
-            Code Mike
-          </a> */}
-          <a 
-            onClick={() => scrollToSection('about')} 
+          <a
+            href="#about"
+            onClick={(e) => { e.preventDefault(); scrollToSection('about'); }}
             aria-label="Scroll to about section"
-            className="header__logo-button"  // TODO: styling w CSS
+            className="header__logo-button"
           >
             Code Mike
           </a>
@@ -95,8 +89,9 @@ const Header = () => {
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
           >
-            <a 
-            onClick={() => scrollToSection('private-projects')}
+            <a
+            href="#private-projects"
+            onClick={(e) => { e.preventDefault(); scrollToSection('private-projects'); }}
             aria-label="Scroll to work section"
             >
               <span className="menu-text">Work</span>
@@ -106,8 +101,9 @@ const Header = () => {
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
           >
-            <a 
-            onClick={() => scrollToSection('contact')}
+            <a
+            href="#contact"
+            onClick={(e) => { e.preventDefault(); scrollToSection('contact'); }}
             aria-label="Scroll to contact section"
             >
               <span className="menu-text">Contact</span>
