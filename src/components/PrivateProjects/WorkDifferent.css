@@ -1,8 +1,8 @@
+/* Sekcja pełnej szerokości — kolumny wierszy mapują się na linie gridu strony
+   (25vw / 50vw / 75vw) */
 .work-different {
   width: 100%;
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: clamp(4rem, 10vh, 8rem) clamp(1rem, 4vw, 3rem);
+  padding: clamp(4rem, 10vh, 8rem) 0;
 }
 
 .work-different-title-container {
@@ -25,18 +25,28 @@
   gap: clamp(3rem, 8vh, 6rem);
 }
 
-/* Stany animacji wierszy nadaje GSAP (scrub ze scrollem) — bez CSS transitions */
+/* Stany animacji wierszy nadaje GSAP (scrub ze scrollem) — bez CSS transitions.
+   Kolumny: 0–25vw meta, 25–50vw heading, 50–100vw opis (środek na linii 75vw) */
 .work-different-row {
   display: grid;
-  grid-template-columns: 3rem 140px 1fr 1.2fr;
-  align-items: start;
-  gap: clamp(1.5rem, 4vw, 4rem);
+  grid-template-columns: 25vw 25vw 1fr;
+  grid-template-areas: 'meta heading body';
+  align-items: center;
+  gap: 0;
+}
+
+/* Kolumna 1: numer + ikona */
+.work-different-meta {
+  grid-area: meta;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(1rem, 2vw, 2rem);
 }
 
 .work-different-number {
   font-size: 1rem;
   color: #8a8468;
-  padding-top: 0.3rem;
 }
 
 .work-different-blob {
@@ -47,7 +57,6 @@
   align-items: center;
   justify-content: center;
   color: #3f3d30;
-  filter: blur(0);
 }
 
 .work-different-blob svg {
@@ -68,6 +77,12 @@
   background: radial-gradient(circle at 40% 35%, rgba(217, 106, 85, 0.4), rgba(43, 157, 173, 0.35) 65%, transparent 78%);
 }
 
+/* Kolumna 2: heading z krótkim opisem */
+.work-different-heading {
+  grid-area: heading;
+  padding: 0 2vw;
+}
+
 .work-different-heading h3 {
   font-size: clamp(1.4rem, 2.5vw, 1.9rem);
   font-weight: 600;
@@ -80,6 +95,15 @@
   line-height: 1.5;
   color: #4a4738;
   margin: 0;
+}
+
+/* Kolumny 3–4: pełny opis z tagami, blok wyśrodkowany na linii 75vw */
+.work-different-body {
+  grid-area: body;
+  justify-self: center;
+  width: 100%;
+  max-width: min(40vw, 520px);
+  padding: 0 1rem;
 }
 
 .work-different-body p {
@@ -104,31 +128,42 @@
 }
 
 @media (max-width: 900px) {
-  .work-different-row {
-    grid-template-columns: 2rem 90px 1fr;
-    grid-template-areas:
-      'number blob heading'
-      'number blob body';
-    row-gap: 1rem;
+  .work-different {
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
   }
 
-  .work-different-number { grid-area: number; }
-  .work-different-blob { grid-area: blob; width: 80px; height: 80px; }
-  .work-different-blob svg { width: 34px; height: 34px; }
-  .work-different-heading { grid-area: heading; }
-  .work-different-body { grid-area: body; }
-}
-
-@media (max-width: 600px) {
   .work-different-row {
     grid-template-columns: 1fr;
     grid-template-areas:
-      'blob'
+      'meta'
       'heading'
       'body';
+    row-gap: 1.25rem;
+    align-items: start;
   }
 
-  .work-different-number {
-    display: none;
+  .work-different-meta {
+    justify-content: flex-start;
+  }
+
+  .work-different-blob {
+    width: 80px;
+    height: 80px;
+  }
+
+  .work-different-blob svg {
+    width: 34px;
+    height: 34px;
+  }
+
+  .work-different-heading {
+    padding: 0;
+  }
+
+  .work-different-body {
+    justify-self: start;
+    max-width: none;
+    padding: 0;
   }
 }

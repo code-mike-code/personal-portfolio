@@ -128,8 +128,10 @@ export default function WorkDifferent() {
             key={item.number}
             ref={(el) => (rowsRef.current[index] = el)}
           >
-            <span className="work-different-number">{item.number}</span>
-            <div className={`work-different-blob ${item.blob}`}>{item.icon}</div>
+            <div className="work-different-meta">
+              <span className="work-different-number">{item.number}</span>
+              <div className={`work-different-blob ${item.blob}`}>{item.icon}</div>
+            </div>
             <div className="work-different-heading">
               <h3>{item.title}</h3>
               <p>{item.tagline}</p>
