@@ -35,7 +35,7 @@ Implementation: `src/utils/analytics.js` (loader) + wiring in `src/App.jsx`.
 
 ## Security Note
 
-The GitHub section fetches pinned repositories via the GitHub GraphQL API using a token from `src/components/Projects/github.secret.js`. This file is **gitignored**, but any token bundled into a client-side app is extractable by visitors. Use a fine-grained token with **read-only, public-repo scope only**, or better — proxy the request through a serverless function (Vercel/Netlify) so no token ships in the browser. `mock-repos.js` is available as a token-free fallback.
+The GitHub section uses the **public GitHub REST API with no authentication** — no token exists in the codebase or the bundle. Repositories are selected by the `portfolio` topic (add the topic to a repo on GitHub to feature it); when no repo carries the topic, the top-starred public repos are shown instead. The unauthenticated rate limit (60 requests/hour per visitor IP) is more than enough for a portfolio site.
 
 ## Getting Started
 
@@ -68,9 +68,8 @@ The GitHub section fetches pinned repositories via the GitHub GraphQL API using 
     REACT_APP_EMAILJS_TEMPLATE_ID=your_template_id_here
     REACT_APP_EMAILJS_PUBLIC_KEY=your_public_key_here
 
-    # GitHub (optional, for the GitHub section)
+    # GitHub (optional; public REST API, no token needed)
     REACT_APP_GITHUB_USERNAME=your_github_username
-    REACT_APP_GITHUB_TOKEN=your_github_token_here
 
     # Google Analytics 4 (optional, loaded only after cookie consent)
     REACT_APP_GA_MEASUREMENT_ID=G-XXXXXXXXXX

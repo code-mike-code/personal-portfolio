@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import GitHubSDK from './GitHubSDK';
-import { GITHUB_TOKEN, GITHUB_USERNAME } from './github.secret';
 import styles from './Projects.module.css';
 import Button from '../common/Button.jsx';
 import RepoOrbs from './RepoOrbs';
+
+const GITHUB_USERNAME = process.env.REACT_APP_GITHUB_USERNAME || 'code-mike-code';
 
 export default function Projects() {
   const [repos, setRepos] = useState([]);
@@ -11,14 +12,9 @@ export default function Projects() {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    const sdk = new GitHubSDK(GITHUB_USERNAME, GITHUB_TOKEN);
-    sdk.getPinnedRepos()
-      .then(async (res) => {
-        if (!res.ok) throw new Error('Failed to fetch repos');
-        const data = await res.json();
-        const nodes = data.data?.user?.pinnedItems?.nodes || [];
-        setRepos(nodes);
-      })
+    const sdk = new GitHubSDK(GITHUB_USERNAME);
+    sdk.getPortfolioRepos()
+      .then(setRepos)
       .catch((err) => {
         setError(err.message);
       })
