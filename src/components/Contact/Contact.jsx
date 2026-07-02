@@ -82,10 +82,14 @@ export default function Contact() {
       <div className="contact-container">
         <div className="contact-left">
           <h1 className="hero-title hero-title--left contact-title">
-            <AnimatedHeadlinePart text="Let's" start={showHeadline} />
+            <AnimatedHeadlinePart text="Let's work" start={showHeadline} />
             <br />
-            <AnimatedHeadlinePart text="Connect" start={showHeadline} />
+            <AnimatedHeadlinePart text="together." start={showHeadline} />
           </h1>
+          <p className="contact-intro-text">
+            I'm always looking for new projects and collaborations. If you have
+            a project in mind, or just want to say hello, please get in touch.
+          </p>
         </div>
         <div className="contact-right">
           <form ref={formRef} className="contact-form" onSubmit={handleSubmit}>
