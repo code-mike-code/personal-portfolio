@@ -7,8 +7,9 @@ const PALETTE = ['orb-coral', 'orb-teal', 'orb-olive'];
 // Kolory poświaty obwodu przy zderzeniu (rgba bez kanału alpha)
 const GLOW = ['rgba(217, 106, 85, ', 'rgba(43, 157, 173, ', 'rgba(179, 173, 142, '];
 
-// Czas wygasania poświaty po zderzeniu (s)
-const FLASH_DURATION = 0.45;
+// Czas życia poświaty po zderzeniu (s) — miękkie narastanie i długie wygasanie
+const FLASH_DURATION = 1.4;
+const FLASH_ATTACK = 0.18; // część czasu na narastanie
 
 const prefersReducedMotion = () =>
   typeof window !== 'undefined' &&
@@ -133,11 +134,12 @@ export default function RepoOrbs({ repos }) {
       orbs.forEach((o) => {
         o.el.style.transform = `translate3d(${o.x - o.base}px, ${o.y - o.base}px, 0) scale(${o.r / o.base})`;
 
-        // Poświata obwodu wygasająca po zderzeniu
-        const k = o.flash >= 0 ? Math.max(0, 1 - (t - o.flash) / FLASH_DURATION) : 0;
-        if (k > 0) {
-          const ease = k * k;
-          o.el.style.boxShadow = `0 0 ${18 * ease}px ${2 * ease}px ${o.glow}${(0.55 * ease).toFixed(3)})`;
+        // Poświata obwodu: miękki attack, potem powolne wygasanie (smoothstep)
+        const p = o.flash >= 0 ? (t - o.flash) / FLASH_DURATION : 1;
+        if (p < 1) {
+          const raw = p < FLASH_ATTACK ? p / FLASH_ATTACK : 1 - (p - FLASH_ATTACK) / (1 - FLASH_ATTACK);
+          const ease = raw * raw * (3 - 2 * raw);
+          o.el.style.boxShadow = `0 0 ${20 * ease}px ${2 * ease}px ${o.glow}${(0.5 * ease).toFixed(3)})`;
         } else if (o.el.style.boxShadow) {
           o.el.style.boxShadow = '';
         }
