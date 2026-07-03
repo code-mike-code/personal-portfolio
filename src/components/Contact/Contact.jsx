@@ -1,32 +1,12 @@
 import React, { useEffect, useState, useRef } from 'react';
+import { useTranslation } from 'react-i18next';
 import './Contact.css';
 import '../Hero/Hero.css';
 import emailjs from '@emailjs/browser';
-
-function AnimatedHeadlinePart({ text, start }) {
-  const [visibleCount, setVisibleCount] = useState(0);
-  useEffect(() => {
-    if (start && visibleCount < text.length) {
-      const timeout = setTimeout(() => setVisibleCount(visibleCount + 1), 38);
-      return () => clearTimeout(timeout);
-    }
-  }, [visibleCount, text.length, start]);
-  return (
-    <span className="hero-title-part">
-      {text.split('').map((char, i) => (
-        <span
-          className={'hero-title__char' + (i < visibleCount ? ' hero-title__char--visible' : '')}
-          key={i}
-          aria-hidden={i >= visibleCount}
-        >
-          {char === ' ' ? '\u00A0' : char}
-        </span>
-      ))}
-    </span>
-  );
-}
+import AnimatedHeadlinePart from '../common/AnimatedHeadlinePart';
 
 export default function Contact() {
+  const { t } = useTranslation();
   const [showHeadline, setShowHeadline] = useState(false);
   const [sending, setSending] = useState(false);
   const [status, setStatus] = useState(null);
@@ -65,13 +45,22 @@ export default function Contact() {
     const TEMPLATE_ID = process.env.REACT_APP_EMAILJS_TEMPLATE_ID;
     const PUBLIC_KEY = process.env.REACT_APP_EMAILJS_PUBLIC_KEY;
 
+    // Honeypot: pole niewidoczne dla ludzi — wypełnione tylko przez boty.
+    // Cichy "sukces" nie zdradza botowi, że został odfiltrowany.
+    if (formRef.current.elements.website?.value) {
+      setStatus({ ok: true, message: t('contact.form.success') });
+      formRef.current.reset();
+      setSending(false);
+      return;
+    }
+
     try {
       await emailjs.sendForm(SERVICE_ID, TEMPLATE_ID, formRef.current, PUBLIC_KEY);
-      setStatus({ ok: true, message: 'Message sent.' });
+      setStatus({ ok: true, message: t('contact.form.success') });
       formRef.current.reset();
     } catch (err) {
       console.error(err);
-      setStatus({ ok: false, message: 'Message sent error!' });
+      setStatus({ ok: false, message: t('contact.form.error') });
     } finally {
       setSending(false);
     }
@@ -81,31 +70,50 @@ export default function Contact() {
     <section id="contact" ref={sectionRef} className="contact-section">
       <div className="contact-container">
         <div className="contact-left">
-          <h1 className="hero-title hero-title--left contact-title">
-            <AnimatedHeadlinePart text="Let's work" start={showHeadline} />
-            <br />
-            <AnimatedHeadlinePart text="together." start={showHeadline} />
-          </h1>
+          <h2
+            className="hero-title hero-title--left contact-title"
+            aria-label={`${t('contact.titleLine1')} ${t('contact.titleLine2')}`}
+          >
+            <span aria-hidden="true">
+              <AnimatedHeadlinePart text={t('contact.titleLine1')} start={showHeadline} mode="sequential" />
+              <br />
+              <AnimatedHeadlinePart text={t('contact.titleLine2')} start={showHeadline} mode="sequential" />
+            </span>
+          </h2>
           <p className="contact-intro-text">
-            I'm always looking for new projects and collaborations. If you have
-            a project in mind, or just want to say hello, please get in touch.
+            {t('contact.intro')}
           </p>
         </div>
         <div className="contact-right">
           <form ref={formRef} className="contact-form" onSubmit={handleSubmit}>
-            <input name="from_name" id="name" type="text" placeholder=" Name" required />
-            <input name="reply_to" id="email" type="email" placeholder=" Email" required />
+            <label htmlFor="name" className="sr-only">{t('contact.form.labelName')}</label>
+            <input name="from_name" id="name" type="text" placeholder={t('contact.form.name')} required />
+            <label htmlFor="email" className="sr-only">{t('contact.form.labelEmail')}</label>
+            <input name="reply_to" id="email" type="email" placeholder={t('contact.form.email')} required />
+            <label htmlFor="subject" className="sr-only">{t('contact.form.labelSubject')}</label>
             <select name="subject" id="subject">
-              <option value=""> Subject...</option>
-              <option value="project">Project</option>
-              <option value="collaboration">Collaboration</option>
-              <option value="other">Other</option>
+              <option value="">{t('contact.form.subjectPlaceholder')}</option>
+              <option value="project">{t('contact.form.subjectProject')}</option>
+              <option value="collaboration">{t('contact.form.subjectCollaboration')}</option>
+              <option value="other">{t('contact.form.subjectOther')}</option>
             </select>
-            <textarea name="message" id="message" placeholder="Write a message..." required />
+            <label htmlFor="message" className="sr-only">{t('contact.form.labelMessage')}</label>
+            <textarea name="message" id="message" placeholder={t('contact.form.message')} required />
+            {/* Honeypot antyspamowy — ukryty przed ludźmi i czytnikami ekranu */}
+            <input
+              type="text"
+              name="website"
+              className="contact-hp"
+              tabIndex={-1}
+              autoComplete="off"
+              aria-hidden="true"
+            />
             <button type="submit" className="contact-submit" disabled={sending}>
-              {sending ? 'Sending…' : 'Submit Request'}
+              {sending ? t('contact.form.sending') : t('contact.form.submit')}
             </button>
-            {status && <p className={status.ok ? 'success' : 'error'}>{status.message}</p>}
+            <p role="status" aria-live="polite" className={status ? (status.ok ? 'success' : 'error') : 'sr-only'}>
+              {status ? status.message : ''}
+            </p>
           </form>
         </div>
       </div>

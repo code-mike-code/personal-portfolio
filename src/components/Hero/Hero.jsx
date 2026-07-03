@@ -1,73 +1,11 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import './Hero.css';
 import Button from '../common/Button';
-
-export function AnimatedHeadlinePart({ text, start }) {
-  const [revealed, setRevealed] = useState(() => Array(text.length).fill(false));
-  const timeoutsRef = useRef([]);
-
-  useEffect(() => {
-    // clear previous timeouts and reset state
-    timeoutsRef.current.forEach(t => clearTimeout(t));
-    timeoutsRef.current = [];
-    setRevealed(Array(text.length).fill(false));
-
-    if (!start || !text) return;
-
-    const chars = text.split('');
-    const indices = Array.from({ length: chars.length }, (_, i) => i);
-   
-    for (let i = indices.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [indices[i], indices[j]] = [indices[j], indices[i]];
-    }
-
-    const baseDelay = 20;
-    const step = 28;
-
-    indices.forEach((idx, order) => {
-      const jitter = Math.floor(Math.random() * 25);
-      const delay = baseDelay + order * step + jitter;
-      const t = setTimeout(() => {
-        setRevealed(prev => {
-          const copy = prev.slice();
-          copy[idx] = true;
-          return copy;
-        });
-      }, delay);
-      timeoutsRef.current.push(t);
-    });
-
-    // fallback 
-    const finalTimeout = setTimeout(() => {
-      setRevealed(Array(chars.length).fill(true));
-    }, baseDelay + indices.length * step + 200);
-    timeoutsRef.current.push(finalTimeout);
-
-    return () => {
-      timeoutsRef.current.forEach(t => clearTimeout(t));
-      timeoutsRef.current = [];
-    };
-  }, [text, start]);
-
-  return (
-    <span className="hero-title-part">
-      {text.split('').map((char, i) => (
-        <span
-          className={
-            'hero-title__char' + (revealed[i] ? ' hero-title__char--visible' : '')
-          }
-          key={i}
-          aria-hidden={!revealed[i]}
-        >
-          {char === ' ' ? '\u00A0' : char}
-        </span>
-      ))}
-    </span>
-  );
-}
+import AnimatedHeadlinePart from '../common/AnimatedHeadlinePart';
 
 export default function Hero() {
+  const { t } = useTranslation();
   const [showSecond, setShowSecond] = useState(false);
   const [showThird, setShowThird] = useState(false);
   const [showButtons, setShowButtons] = useState(false);
@@ -94,22 +32,16 @@ export default function Hero() {
 
   return (
     <section className="hero-section">
-      {/* Subtelny element graficzny — orbitujące punkty w palecie strony */}
-      <div className="hero-orbit" aria-hidden="true">
-        <span className="hero-orbit-ring hero-orbit-ring--outer">
-          <span className="hero-orbit-dot hero-orbit-dot--coral"></span>
-        </span>
-        <span className="hero-orbit-ring hero-orbit-ring--inner">
-          <span className="hero-orbit-dot hero-orbit-dot--teal"></span>
-        </span>
-        <span className="hero-orbit-core"></span>
-      </div>
       <div className="hero-content-wrapper">
         <div className="hero-title-container hero-title-container--left">
-          <h1 className="hero-title hero-title--left">
-            <div><AnimatedHeadlinePart text="Code Mike" start={true} /></div>
-            <div><AnimatedHeadlinePart text="Modern Web" start={showSecond} /></div>
-            <div><AnimatedHeadlinePart text="Development" start={showThird} /></div>
+          {/* aria-label: czytniki dostają pełny tekst od razu, animacja liter jest czysto wizualna */}
+          <h1
+            className="hero-title hero-title--left"
+            aria-label={`${t('hero.line1')} — ${t('hero.line2')} ${t('hero.line3')}`}
+          >
+            <div aria-hidden="true"><AnimatedHeadlinePart text={t('hero.line1')} start={true} /></div>
+            <div aria-hidden="true"><AnimatedHeadlinePart text={t('hero.line2')} start={showSecond} /></div>
+            <div aria-hidden="true"><AnimatedHeadlinePart text={t('hero.line3')} start={showThird} /></div>
           </h1>
           <div className="hero-buttons hero-buttons--left">
             <Button
@@ -119,15 +51,26 @@ export default function Hero() {
               tabIndex={showButtons ? 0 : -1}
               aria-hidden={!showButtons}
             >
-              Projects
+              {t('hero.projects')}
             </Button>
             <Button 
               onClick={() => scrollToSection('contact')} 
               variant="secondary" 
               className={`hero-btn-fade ${showButtons ? 'hero-btn--visible' : ''}`} tabIndex={showButtons ? 0 : -1} aria-hidden={!showButtons}
             >
-              Contact
+              {t('hero.contact')}
             </Button>
+          </div>
+          {/* Orbitujące punkty: desktop — absolutnie, środek na linii gridu 75vw,
+              mobile — w przepływie, wyśrodkowane pod przyciskami */}
+          <div className="hero-orbit" aria-hidden="true">
+            <span className="hero-orbit-ring hero-orbit-ring--outer">
+              <span className="hero-orbit-dot hero-orbit-dot--coral"></span>
+            </span>
+            <span className="hero-orbit-ring hero-orbit-ring--inner">
+              <span className="hero-orbit-dot hero-orbit-dot--teal"></span>
+            </span>
+            <span className="hero-orbit-core"></span>
           </div>
         </div>
       </div>

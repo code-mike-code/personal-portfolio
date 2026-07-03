@@ -4,6 +4,9 @@
 }
 
 .scroll-reveal-text {
+  /* Blok jak dawny <p> — wrapper zmienił się na neutralny tag */
+  display: block;
+  margin: 1em 0;
   font-size: clamp(1.6rem, 4vw, 3rem);
   line-height: 1.5;
   font-weight: 600;
@@ -12,6 +15,7 @@
 
 .word {
   display: inline-block;
+  will-change: opacity, filter;
 }
 
 .container {

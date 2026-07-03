@@ -1,4 +1,5 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import ScrollReveal from '../common/ScrollReveal';
 import './AboutMe.css';
 import photoPortrait from '../../assets/img/img-6.webp';
@@ -8,34 +9,29 @@ import photoCat from '../../assets/img/img-3.webp';
 import photoLemur from '../../assets/img/img-4.webp';
 import photoSnow from '../../assets/img/img-5.webp';
 
-const interests = [
-  'Gravity & enduro mountain biking',
-  'Boardsports — skate, snowboard, travel with wind',
-  'Boxing, freediving — sport freak in general',
-  'Outdoors, tech, travel',
-  'Electronic music, hip-hop, festivals & friends',
-  'Cats (the fluffy boss lives with me)',
-];
-
 const galleryPhotos = [
-  { src: photoSkate, caption: 'Skatepark session', rot: -3 },
-  { src: photoKite, caption: 'Chasing wind', rot: 2 },
-  { src: photoCat, caption: 'Project manager on duty', rot: -2 },
-  { src: photoLemur, caption: 'Making new friends', rot: 2.5 },
-  { src: photoSnow, caption: 'Above the clouds', rot: -2 },
-  { src: photoPortrait, caption: 'Me & the boss', rot: 3 },
+  { src: photoSkate, rot: -3 },
+  { src: photoKite, rot: 2 },
+  { src: photoCat, rot: -2 },
+  { src: photoLemur, rot: 2.5 },
+  { src: photoSnow, rot: -2 },
+  { src: photoPortrait, rot: 3 },
 ];
 
 export default function AboutMe() {
+  const { t } = useTranslation();
+  const interests = t('about.interests', { returnObjects: true });
+  const galleryCaptions = t('about.gallery', { returnObjects: true });
+
   return (
     <section id='about' className="about-section">
       {/* Nagłówek */}
       <div className="about-header">
         <div className="about-header-blob" aria-hidden="true"></div>
         <h2 className="about-header-title">
-          The story behind
+          {t('about.headingLine1')}
           <br />
-          Code Mike
+          {t('about.headingLine2')}
         </h2>
       </div>
 
@@ -47,48 +43,42 @@ export default function AboutMe() {
           <img
             className="about-photo"
             src={photoPortrait}
-            alt="Michał with his cat"
+            alt={t('about.photoAlt')}
             loading="lazy"
+            decoding="async"
           />
         </div>
 
         <div className="about-bio">
           <ScrollReveal
+            as="h3"
             baseOpacity={0}
             enableBlur={true}
             baseRotation={0}
             blurStrength={10}
             containerClassName="about-bio-heading-container"
             textClassName="about-bio-heading"
-          >Hey, I'm Michał
+          >{t('about.bioHeading')}
           </ScrollReveal>
 
           <p className="about-bio-text">
-            AI-Augmented Frontend Developer specializing in building efficient and
-            responsive interfaces in React and TypeScript. I support the coding
-            process with advanced AI tools such as Claude Code and AI Agents, which
-            translates into higher-quality delivered solutions and shorter
-            turnaround times. I built a solid technical foundation through
-            independent practice in the React ecosystem, JavaScript, and modern
-            frontend tools.
+            {t('about.bio1')}
           </p>
           <p className="about-bio-text">
-            Good software requires both logic and empathy. I am a proactive
-            problem-solver who values organized workflows and collaboration to
-            deliver clean, impactful solutions.
+            {t('about.bio2')}
           </p>
           <p className="about-bio-tagline">
-            Independent by nature, collaborative by choice.
+            {t('about.tagline')}
           </p>
 
           <div className="about-stats">
             <div className="about-stat">
               <span className="about-stat-number">5+</span>
-              <span className="about-stat-label">client projects</span>
+              <span className="about-stat-label">{t('about.statProjects')}</span>
             </div>
             <div className="about-stat">
               <span className="about-stat-number">2×</span>
-              <span className="about-stat-label">faster delivery with AI tools</span>
+              <span className="about-stat-label">{t('about.statDelivery')}</span>
             </div>
           </div>
         </div>
@@ -98,13 +88,14 @@ export default function AboutMe() {
       <div className="about-interests">
         <span className="about-interests-dot" aria-hidden="true"></span>
         <ScrollReveal
+          as="h3"
           baseOpacity={0}
           enableBlur={true}
           baseRotation={0}
           blurStrength={10}
           containerClassName="about-interests-heading-container"
           textClassName="about-interests-heading"
-        >Personal interests
+        >{t('about.interestsHeading')}
         </ScrollReveal>
         <ul className="about-interests-list">
           {interests.map((item) => (
@@ -115,14 +106,14 @@ export default function AboutMe() {
 
       {/* Galeria */}
       <div className="about-gallery">
-        {galleryPhotos.map((photo) => (
+        {galleryPhotos.map((photo, index) => (
           <figure
             className="about-gallery-item"
-            key={photo.caption}
+            key={galleryCaptions[index]}
             style={{ '--rot': `${photo.rot}deg` }}
           >
-            <img src={photo.src} alt={photo.caption} loading="lazy" />
-            <figcaption>{photo.caption}</figcaption>
+            <img src={photo.src} alt={galleryCaptions[index]} loading="lazy" />
+            <figcaption>{galleryCaptions[index]}</figcaption>
           </figure>
         ))}
       </div>

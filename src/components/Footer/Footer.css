@@ -14,6 +14,12 @@ footer {
 .footer__copyright {
     font-size: 1.4rem;
     transition: color 0.3s ease-in;
+    background: none;
+    border: none;
+    padding: 0;
+    font-family: inherit;
+    color: inherit;
+    cursor: pointer;
 }
 .footer__copyright:hover {
   color: #e74c3c;

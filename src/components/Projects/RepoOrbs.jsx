@@ -27,22 +27,27 @@ export default function RepoOrbs({ repos }) {
     const container = containerRef.current;
     let bounds = container.getBoundingClientRect();
 
-    const isMobile = bounds.width < 700;
+    const isMobile = bounds.width < 900;
     const orbs = repos.map((repo, i) => {
       const base = isMobile
-        ? 44 + Math.random() * 16
+        ? 36 + Math.random() * 14
         : 68 + Math.random() * 36;
+      const vx = (24 + Math.random() * 32) * (Math.random() < 0.5 ? -1 : 1);
+      const vy = (24 + Math.random() * 32) * (Math.random() < 0.5 ? -1 : 1);
       return {
         el: orbRefs.current[i],
         base,
         r: base,
         x: 0,
         y: 0,
-        vx: (24 + Math.random() * 32) * (Math.random() < 0.5 ? -1 : 1),
-        vy: (24 + Math.random() * 32) * (Math.random() < 0.5 ? -1 : 1),
+        vx,
+        vy,
+        // Docelowa (stała) szybkość — zderzenia zmieniają tylko kierunek
+        speed: Math.hypot(vx, vy),
         phase: Math.random() * Math.PI * 2,
         oscSpeed: 0.3 + Math.random() * 0.4,
         frozen: false,
+        hoverT: 0,
         glow: GLOW[i % GLOW.length],
         glowEl: orbRefs.current[i].querySelector('.repo-orb-glow'),
         flash: -1,
@@ -135,9 +140,24 @@ export default function RepoOrbs({ repos }) {
         }
       }
 
+      // Normalizacja szybkości do wartości startowej. Masa ~ r², a r pulsuje,
+      // więc impulsy zderzeń nie zachowują energii między klatkami — bez tego
+      // kule stopniowo się rozpędzają. Zderzenia zmieniają tylko kierunek.
+      orbs.forEach((o) => {
+        const s = Math.hypot(o.vx, o.vy);
+        if (s > 0) {
+          const k = o.speed / s;
+          o.vx *= k;
+          o.vy *= k;
+        }
+      });
+
       // Render
       orbs.forEach((o) => {
-        o.el.style.transform = `translate3d(${o.x - o.base}px, ${o.y - o.base}px, 0) scale(${o.r / o.base})`;
+        // Płynne powiększenie na hover/focus (frozen) — lerp do 1 lub 0
+        o.hoverT += ((o.frozen ? 1 : 0) - o.hoverT) * Math.min(1, dt * 8);
+        const scale = (o.r / o.base) * (1 + 0.3 * o.hoverT);
+        o.el.style.transform = `translate3d(${o.x - o.base}px, ${o.y - o.base}px, 0) scale(${scale})`;
 
         // Poświata rozchodząca się po obwodzie od punktu uderzenia:
         // łuk conic-gradient rośnie wokół kuli, jasność wg obwiedni smoothstep
@@ -221,6 +241,12 @@ export default function RepoOrbs({ repos }) {
           onBlur={() => freeze(index, false)}
         >
           <span className="repo-orb-glow" aria-hidden="true"></span>
+          {/* Mobile/tablet: domyślnie ikona GitHuba, nazwa + technologia po hover/focus */}
+          <span className="repo-orb-icon" aria-hidden="true">
+            <svg viewBox="0 0 16 16" fill="currentColor">
+              <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z" />
+            </svg>
+          </span>
           <span className="repo-orb-name">{repo.name}</span>
           {repo.primaryLanguage && (
             <span className="repo-orb-lang">{repo.primaryLanguage.name}</span>

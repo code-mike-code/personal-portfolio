@@ -4,7 +4,9 @@ import './ScrollReveal.css';
 
 const ScrollReveal = ({
   children,
-  // scrollContainerRef, // TODO: Implement custom scroll container
+  // Tag semantyczny wrappera — domyślnie neutralny div; nagłówki (h2/h3)
+  // przekazywać tylko tam, gdzie tekst faktycznie pełni rolę nagłówka
+  as: Tag = 'div',
   enableBlur = true,
   baseOpacity = 0.1,
   baseRotation = 3,
@@ -14,6 +16,9 @@ const ScrollReveal = ({
   // Offset (px od góry viewportu), przy którym reveal jest w 100% ukończony.
   // Domyślnie null = oryginalne zachowanie (koniec, gdy element opuszcza viewport)
   completeAt = null,
+  // Mnożnik tempa reveal — mniejsza wartość = słowa pojawiają się przez dłuższy
+  // odcinek scrolla (3 = dotychczasowe zachowanie)
+  speed = 3,
   // rotationEnd = 'bottom bottom', // TODO: Implement custom rotation end
   // wordAnimationEnd = 'bottom bottom' // TODO: Implement custom word animation end
 }) => {
@@ -36,8 +41,16 @@ const ScrollReveal = ({
     if (!el) return;
 
     const wordElements = el.querySelectorAll('.word');
-    
-    const handleScroll = () => {
+
+    // Opóźnienie między słowami skalowane tak, aby OSTATNIE słowo osiągnęło
+    // pełną widoczność zanim scrollProgress dojdzie do 1 — przy długim tekście
+    // i niskim speed stały krok 0.01 zostawiał końcowe słowa rozmazane
+    const maxTotalDelay = Math.max(0, 1 - 1 / speed) * 0.9;
+    const staggerStep = wordElements.length > 1
+      ? Math.min(0.01, maxTotalDelay / (wordElements.length - 1))
+      : 0;
+
+    const update = () => {
       const rect = el.getBoundingClientRect();
       const windowHeight = window.innerHeight;
       
@@ -54,31 +67,42 @@ const ScrollReveal = ({
       
       // apply opacity and blur to words
       wordElements.forEach((word, index) => {
-        const wordProgress = Math.max(0, scrollProgress - (index * 0.01));
-        const opacity = baseOpacity + (1 - baseOpacity) * Math.min(1, wordProgress * 3);
-        
+        const wordProgress = Math.max(0, scrollProgress - (index * staggerStep));
+        const opacity = baseOpacity + (1 - baseOpacity) * Math.min(1, wordProgress * speed);
+
         word.style.opacity = opacity;
-        word.style.willChange = 'opacity';
-        
+
         if (enableBlur) {
-          const blur = blurStrength * (1 - Math.min(1, wordProgress * 4));
+          // Blur znika nieco szybciej niż rośnie opacity (proporcja 4:3 jak w oryginale)
+          const blur = blurStrength * (1 - Math.min(1, wordProgress * speed * (4 / 3)));
           word.style.filter = `blur(${blur}px)`;
         }
       });
     };
 
-    window.addEventListener('scroll', handleScroll);
-    handleScroll(); // initial call
-    
+    // rAF-throttle: max jeden update na klatkę zamiast na każde zdarzenie scroll
+    let ticking = false;
+    const handleScroll = () => {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(() => {
+        update();
+        ticking = false;
+      });
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    update(); // initial call
+
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
-  }, [enableBlur, baseRotation, baseOpacity, blurStrength, completeAt]);
+  }, [enableBlur, baseRotation, baseOpacity, blurStrength, completeAt, speed]);
 
   return (
-    <h2 ref={containerRef} className={`scroll-reveal ${containerClassName}`}>
-      <p className={`scroll-reveal-text ${textClassName}`}>{splitText}</p>
-    </h2>
+    <Tag ref={containerRef} className={`scroll-reveal ${containerClassName}`}>
+      <span className={`scroll-reveal-text ${textClassName}`}>{splitText}</span>
+    </Tag>
   );
 };
 

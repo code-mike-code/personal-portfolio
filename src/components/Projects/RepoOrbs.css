@@ -36,6 +36,20 @@
   transition: opacity 0.3s ease;
 }
 
+/* Ikona GitHuba — widoczna tylko na mobile/tablet zamiast tekstu */
+.repo-orb-icon {
+  display: none;
+  width: 42%;
+  height: 42%;
+  color: #222;
+}
+
+.repo-orb-icon svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
 .repo-orb-name {
   font-size: 0.95rem;
   font-weight: 600;
@@ -66,17 +80,22 @@
 }
 
 .repo-orb:hover,
+.repo-orb:focus,
 .repo-orb:focus-visible {
   background: #222;
   border-color: #222;
+  /* Powiększona kula ponad sąsiadkami */
+  z-index: 2;
 }
 
 .repo-orb:hover .repo-orb-name,
+.repo-orb:focus .repo-orb-name,
 .repo-orb:focus-visible .repo-orb-name {
   color: #f5f5dc;
 }
 
 .repo-orb:hover .repo-orb-lang,
+.repo-orb:focus .repo-orb-lang,
 .repo-orb:focus-visible .repo-orb-lang {
   color: #b3ad8e;
 }
@@ -99,16 +118,45 @@
   height: 150px;
 }
 
-@media (max-width: 700px) {
+@media (max-width: 900px) {
+  /* Wypełnia wolną przestrzeń sekcji (flex rodzica) — sekcja zajmuje pełne okno */
   .repo-orbs {
-    height: 55vh;
+    height: auto;
+    flex: 1 1 auto;
+    align-self: stretch;
+    min-height: 50svh;
+  }
+
+  /* Domyślnie ikona GitHuba; nazwa + technologia dopiero po hover/tap/focus */
+  .repo-orb-icon {
+    display: block;
+  }
+
+  .repo-orb-name,
+  .repo-orb-lang {
+    display: none;
   }
 
   .repo-orb-name {
-    font-size: 0.8rem;
+    font-size: 0.7rem;
   }
 
   .repo-orb-lang {
-    font-size: 0.65rem;
+    font-size: 0.6rem;
+  }
+
+  .repo-orb:hover .repo-orb-icon,
+  .repo-orb:focus-visible .repo-orb-icon,
+  .repo-orb:focus .repo-orb-icon {
+    display: none;
+  }
+
+  .repo-orb:hover .repo-orb-name,
+  .repo-orb:hover .repo-orb-lang,
+  .repo-orb:focus-visible .repo-orb-name,
+  .repo-orb:focus-visible .repo-orb-lang,
+  .repo-orb:focus .repo-orb-name,
+  .repo-orb:focus .repo-orb-lang {
+    display: block;
   }
 }

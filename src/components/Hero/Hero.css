@@ -53,6 +53,13 @@
   height: 100%;
   padding-top: 0;
   padding-bottom: 0;
+  /* Nagłówek dosunięty do lewej (nie centrowany) — dłuższy tytuł PL
+     nachodził na orbitę po prawej. margin-right: auto przypina kontener
+     do lewej mimo justify-content: center na wrapperze.
+     Margines zamiast transform/position — oba tworzyłyby containing block
+     dla absolutnie pozycjonowanej orbity (dziecko tego kontenera) */
+  margin-left: 3vw;
+  margin-right: auto;
 }
 
 .hero-3d-container {
@@ -133,11 +140,13 @@
 }
 
 @media (max-width: 900px) {
+  /* Nagłówek u góry, orbita wyśrodkowana pod nim, przyciski na dole */
   .hero-content-wrapper {
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     height: auto;
-    padding: 10vh 1rem 5vh 1rem;
+    min-height: 100svh;
+    padding: calc(80px + 4vh) 1rem 6vh 1rem;
   }
 
   .hero-title-container.hero-title-container--left,
@@ -147,6 +156,13 @@
     height: auto;
     text-align: center;
     align-items: center;
+  }
+
+  .hero-title-container.hero-title-container--left {
+    margin-left: auto;
+    margin-right: auto;
+    flex: 1;
+    justify-content: flex-start;
   }
 
   .hero-3d-container {
@@ -159,10 +175,14 @@
     font-size: clamp(2.5rem, 10vw, 4rem);
   }
 
+  .hero-title--left {
+    margin-top: 0;
+  }
+
   .hero-buttons.hero-buttons--left {
     justify-content: center;
     margin-left: 0;
-
+    margin-top: 2.5rem;
   }
 }
 
@@ -208,10 +228,11 @@
 .hero-orbit {
   position: absolute;
   top: 50%;
-  right: 9vw;
+  /* Środek animacji dokładnie na linii gridu strony (75vw) */
+  left: 75vw;
   width: 230px;
   height: 230px;
-  transform: translateY(-50%);
+  transform: translate(-50%, -50%);
   pointer-events: none;
   z-index: 0;
 }
@@ -287,7 +308,13 @@
 }
 
 @media (max-width: 900px) {
+  /* Orbita w przepływie dokumentu — pod przyciskami, wyśrodkowana (linia gridu 50vw).
+     position: relative (nie static), bo pierścienie pozycjonują się względem niej */
   .hero-orbit {
-    display: none;
+    position: relative;
+    top: auto;
+    left: auto;
+    transform: none;
+    margin: auto;
   }
 }

@@ -82,3 +82,14 @@
     max-width: none;
   }
 }
+.bottom-nav__lang-toggle {
+  width: 100%;
+  justify-content: center;
+  font-size: 1.1rem;
+  padding: 0.5rem 1rem;
+  color: #F5F5DC;
+}
+
+.bottom-nav--over-banner .bottom-nav__lang-toggle {
+  color: #222;
+}

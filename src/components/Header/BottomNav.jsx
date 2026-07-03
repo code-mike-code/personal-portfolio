@@ -1,14 +1,23 @@
 import React, { useEffect, useState, useRef } from 'react';
+import { useTranslation } from 'react-i18next';
+import LanguageToggle from '../common/LanguageToggle';
 import './BottomNav.css';
 
 export default function BottomNav() {
+  const { t } = useTranslation();
   const [visible, setVisible] = useState(false);
   const [hideForFooter, setHideForFooter] = useState(false);
   const [overTechBanner, setOverTechBanner] = useState(false);
   const lastScrollY = useRef(0);
 
   useEffect(() => {
-    const handleScroll = () => {
+    // Przybliżona wysokość nav — do detekcji nakładania z banerem
+    const NAV_OFFSET = 60;
+    // Refy DOM cachowane raz — bez querySelector przy każdym scrollu
+    const footer = document.querySelector('.footer');
+    const techBanner = document.querySelector('.tech-banner');
+
+    const update = () => {
       const currentY = window.scrollY;
 
       // Show nav if scrolling down past the initial viewport
@@ -20,36 +29,31 @@ export default function BottomNav() {
       lastScrollY.current = currentY;
 
       // Hide nav if near footer
-      const footer = document.querySelector('.footer');
       if (footer) {
         const footerRect = footer.getBoundingClientRect();
-        const windowHeight = window.innerHeight;
-        if (footerRect.top < windowHeight && footerRect.top > 0) {
-          setHideForFooter(true);
-        } else {
-          setHideForFooter(false);
-        }
+        setHideForFooter(footerRect.top < window.innerHeight && footerRect.top > 0);
       }
-
 
       // Check if nav overlaps with tech banner
-      const techBanner = document.querySelector('.tech-banner');
       if (techBanner) {
         const bannerRect = techBanner.getBoundingClientRect();
-        const navHeight = 60; // przybliżona wysokość nav
-        const navBottom = window.innerHeight - 60;
-        
-        if (bannerRect.bottom > navBottom && bannerRect.top < navBottom) {
-          setOverTechBanner(true);
-        } else {
-          setOverTechBanner(false);
-        }
+        const navBottom = window.innerHeight - NAV_OFFSET;
+        setOverTechBanner(bannerRect.bottom > navBottom && bannerRect.top < navBottom);
       }
-
-
-
     };
-    window.addEventListener('scroll', handleScroll);
+
+    // rAF-throttle: max jeden update na klatkę
+    let ticking = false;
+    const handleScroll = () => {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(() => {
+        update();
+        ticking = false;
+      });
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -62,13 +66,14 @@ export default function BottomNav() {
 
   return (
     <nav className={`bottom-nav${visible && !hideForFooter ? ' bottom-nav--visible' : ''}${overTechBanner ? ' bottom-nav--over-banner' : ''}`} 
-      aria-label="Mobile Navigation">
+      aria-label={t('header.mobileNavAria')}>
       <ul className="bottom-nav__menu">
         <li><a href="https://github.com/code-mike-code"
           target="_blank"
-          rel="noopener noreferrer">GitHub</a></li>
-        <li><a onClick={() => scrollToSection('private-projects')}>Work</a></li>
-        <li><a onClick={() => scrollToSection('contact')}>Contact</a></li>
+          rel="noopener noreferrer">{t('header.github')}</a></li>
+        <li><a href="#private-projects" onClick={(e) => { e.preventDefault(); scrollToSection('private-projects'); }}>{t('header.work')}</a></li>
+        <li><a href="#contact" onClick={(e) => { e.preventDefault(); scrollToSection('contact'); }}>{t('header.contact')}</a></li>
+        <li><LanguageToggle className="bottom-nav__lang-toggle" /></li>
       </ul>
     </nav>
   );

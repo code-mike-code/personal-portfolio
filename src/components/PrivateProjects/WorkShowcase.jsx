@@ -1,4 +1,5 @@
-import React, { useLayoutEffect, useRef, useState } from 'react';
+import React, { useEffect, useLayoutEffect, useRef, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import './WorkShowcase.css';
@@ -12,19 +13,44 @@ const prefersReducedMotion = () =>
   typeof window !== 'undefined' &&
   window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-const ProjectMedia = ({ project, index }) => {
+const ProjectMedia = ({ project, index, isActive = true }) => {
+  const { t } = useTranslation();
   const videoSrc = project.fullVideo || project.tabletVideo || project.thumbnailVideo;
+  const videoRef = useRef(null);
+  // WCAG 2.2.2: użytkownik może zatrzymać ruch; przy reduced-motion start w pauzie
+  const [paused, setPaused] = useState(prefersReducedMotion);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+    if (isActive && !paused) {
+      video.play().catch(() => {});
+    } else {
+      video.pause();
+    }
+  }, [isActive, paused]);
 
   if (videoSrc) {
     return (
-      <video
-        src={videoSrc}
-        autoPlay
-        muted
-        loop
-        playsInline
-        className="work-media-video"
-      />
+      <div className="work-media-video-wrap">
+        <video
+          ref={videoRef}
+          src={videoSrc}
+          muted
+          loop
+          playsInline
+          preload={isActive ? 'auto' : 'none'}
+          className="work-media-video"
+        />
+        <button
+          type="button"
+          className="work-media-pause"
+          onClick={() => setPaused((p) => !p)}
+          aria-label={paused ? t('work.videoPlayAria') : t('work.videoPauseAria')}
+        >
+          {paused ? '▶' : '❚❚'}
+        </button>
+      </div>
     );
   }
 
@@ -35,16 +61,18 @@ const ProjectMedia = ({ project, index }) => {
   );
 };
 
-const ProjectInfo = ({ project, index, total, onDetails }) => (
+const ProjectInfo = ({ project, index, total, onDetails }) => {
+  const { t } = useTranslation();
+  return (
   <>
     <div className="work-info-head">
-      <div className="work-counter" aria-label={`Project ${index + 1} of ${total}`}>
+      <div className="work-counter" aria-label={t('work.counterAria', { current: index + 1, total })}>
         <span className="work-counter-current">{String(index + 1).padStart(2, '0')}</span>
         <span className="work-counter-total">/{String(total).padStart(2, '0')}</span>
       </div>
       <h3 className="work-project-title">{project.title}</h3>
     </div>
-    <p className="work-project-desc">{project.shortDescription}</p>
+    <p className="work-project-desc">{t(`work.projects.${project.id}.short`)}</p>
     <div className="work-actions">
       <a
         className="work-btn work-btn-live"
@@ -52,18 +80,19 @@ const ProjectInfo = ({ project, index, total, onDetails }) => (
         target="_blank"
         rel="noopener noreferrer"
       >
-        View live
+        {t('work.viewLive')}
       </a>
       <button
         type="button"
         className="work-btn work-btn-details"
         onClick={() => onDetails(project)}
       >
-        Details
+        {t('work.details')}
       </button>
     </div>
   </>
-);
+  );
+};
 
 const WorkShowcase = ({ projects, onDetails }) => {
   const sectionRef = useRef(null);
@@ -225,8 +254,9 @@ const WorkShowcase = ({ projects, onDetails }) => {
               key={project.id}
               className={`work-media-card ${index === activeIndex ? 'active' : ''}`}
               aria-hidden={index !== activeIndex}
+              inert={index !== activeIndex}
             >
-              <ProjectMedia project={project} index={index} />
+              <ProjectMedia project={project} index={index} isActive={index === activeIndex} />
             </div>
           ))}
         </div>
@@ -236,6 +266,7 @@ const WorkShowcase = ({ projects, onDetails }) => {
               key={project.id}
               className={`work-info-panel ${index === activeIndex ? 'active' : ''}`}
               aria-hidden={index !== activeIndex}
+              inert={index !== activeIndex}
             >
               <ProjectInfo
                 project={project}
