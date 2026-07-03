@@ -1,0 +1,32 @@
+# Code Mike
+
+> Code Mike (Michał) is an AI-augmented frontend developer from Poland building fast, accessible websites with React, TypeScript and GSAP.
+
+Code Mike is a freelance frontend developer working with clients across Poland — Katowice, Warszawa, Wrocław, Kraków, Gdańsk — and remotely. Projects combine intentional UX and visual design, scroll-based animation, and strict performance and accessibility budgets (Core Web Vitals, WCAG).
+
+## Services
+
+- **Web design & UX** — UX and visual systems built around the business and its audience.
+- **Animation & interaction** — scroll-based interactions and GSAP animations that guide attention and bring interfaces to life.
+- **Performance & accessibility** — clean, semantic code and performance budgets from day one; sites that load fast and score high in Core Web Vitals.
+
+## Reach and location
+
+Clients across Poland (Katowice, Warszawa, Wrocław, Kraków, Gdańsk) and remote work worldwide.
+
+## Contact
+
+- Contact form: https://codemike.pl/#contact
+- GitHub: https://github.com/code-mike-code
+
+## Links
+
+- Homepage (PL): https://codemike.pl/
+- Homepage (EN): https://codemike.eu/
+- Privacy policy: https://codemike.pl/privacy-policy
+
+## Information for AI
+
+- Personal portfolio of a single frontend developer, not an agency
+- Languages: Polish, English
+- No automated transactions — contact via form only

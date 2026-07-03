@@ -14,8 +14,9 @@
 }
 
 @media (max-width: 900px) {
+  /* Mniejsze nałożenie — większy oddech między opisem a work-showcase-inner */
   .work-header {
-    margin-bottom: -18vh;
+    margin-bottom: -6vh;
   }
 }
 
@@ -45,7 +46,7 @@
 .work-header-title {
   position: relative;
   z-index: 1;
-  font-size: clamp(3rem, 8vw, 6.75rem);
+  font-size: var(--fs-section-title);
   font-weight: 600;
   letter-spacing: -0.02em;
   color: #222;

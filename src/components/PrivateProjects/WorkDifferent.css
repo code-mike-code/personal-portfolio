@@ -12,7 +12,7 @@
 }
 
 .work-different-title {
-  font-size: clamp(2.2rem, 5vw, 4rem);
+  font-size: var(--fs-section-subtitle);
   font-weight: 600;
   letter-spacing: -0.02em;
   color: #222;
@@ -129,8 +129,15 @@
 
 @media (max-width: 900px) {
   .work-different {
-    padding-left: 1.25rem;
-    padding-right: 1.25rem;
+    padding: 3rem 1.25rem;
+  }
+
+  .work-different-title-container {
+    margin-bottom: 2.5rem;
+  }
+
+  .work-different-rows {
+    gap: 2.5rem;
   }
 
   .work-different-row {

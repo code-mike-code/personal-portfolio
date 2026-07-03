@@ -32,16 +32,6 @@ export default function Hero() {
 
   return (
     <section className="hero-section">
-      {/* Subtelny element graficzny — orbitujące punkty w palecie strony */}
-      <div className="hero-orbit" aria-hidden="true">
-        <span className="hero-orbit-ring hero-orbit-ring--outer">
-          <span className="hero-orbit-dot hero-orbit-dot--coral"></span>
-        </span>
-        <span className="hero-orbit-ring hero-orbit-ring--inner">
-          <span className="hero-orbit-dot hero-orbit-dot--teal"></span>
-        </span>
-        <span className="hero-orbit-core"></span>
-      </div>
       <div className="hero-content-wrapper">
         <div className="hero-title-container hero-title-container--left">
           {/* aria-label: czytniki dostają pełny tekst od razu, animacja liter jest czysto wizualna */}
@@ -70,6 +60,17 @@ export default function Hero() {
             >
               {t('hero.contact')}
             </Button>
+          </div>
+          {/* Orbitujące punkty: desktop — absolutnie, środek na linii gridu 75vw,
+              mobile — w przepływie, wyśrodkowane pod przyciskami */}
+          <div className="hero-orbit" aria-hidden="true">
+            <span className="hero-orbit-ring hero-orbit-ring--outer">
+              <span className="hero-orbit-dot hero-orbit-dot--coral"></span>
+            </span>
+            <span className="hero-orbit-ring hero-orbit-ring--inner">
+              <span className="hero-orbit-dot hero-orbit-dot--teal"></span>
+            </span>
+            <span className="hero-orbit-core"></span>
           </div>
         </div>
       </div>

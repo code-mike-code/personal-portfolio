@@ -1,0 +1,6 @@
+/* Fluid typography — wspólna skala dla nagłówków sekcji.
+   Jedna zmienna = identyczny rozmiar we wszystkich sekcjach na każdej szerokości. */
+:root {
+  --fs-section-title: clamp(3rem, 8vw, 6.75rem);
+  --fs-section-subtitle: clamp(2.4rem, 5.5vw, 4.4rem);
+}

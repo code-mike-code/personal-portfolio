@@ -29,12 +29,14 @@ export default function WorkHeader() {
       });
 
       // Nagłówek z opisem znikają dopiero, gdy karta media dojeżdża do środka
-      // — fade zaczyna się 25vh po starcie pinu i kończy wraz z końcem wzrostu
+      // — fade zaczyna się 25vh po starcie pinu i kończy wraz z końcem wzrostu.
+      // Element zamiast selektora: gsap.context scope'uje selektory do headerRef,
+      // a '.work-showcase' leży poza nim (warning "not found" w konsoli)
       gsap.to(headerRef.current, {
         autoAlpha: 0,
         ease: 'none',
         scrollTrigger: {
-          trigger: '.work-showcase',
+          trigger: document.querySelector('.work-showcase'),
           start: 'top+=25% top',
           end: '+=60%',
           scrub: true,

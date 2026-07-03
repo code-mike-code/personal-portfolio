@@ -45,6 +45,7 @@ export default function AboutMe() {
             src={photoPortrait}
             alt={t('about.photoAlt')}
             loading="lazy"
+            decoding="async"
           />
         </div>
 

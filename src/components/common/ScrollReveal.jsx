@@ -16,6 +16,9 @@ const ScrollReveal = ({
   // Offset (px od góry viewportu), przy którym reveal jest w 100% ukończony.
   // Domyślnie null = oryginalne zachowanie (koniec, gdy element opuszcza viewport)
   completeAt = null,
+  // Mnożnik tempa reveal — mniejsza wartość = słowa pojawiają się przez dłuższy
+  // odcinek scrolla (3 = dotychczasowe zachowanie)
+  speed = 3,
   // rotationEnd = 'bottom bottom', // TODO: Implement custom rotation end
   // wordAnimationEnd = 'bottom bottom' // TODO: Implement custom word animation end
 }) => {
@@ -39,6 +42,14 @@ const ScrollReveal = ({
 
     const wordElements = el.querySelectorAll('.word');
 
+    // Opóźnienie między słowami skalowane tak, aby OSTATNIE słowo osiągnęło
+    // pełną widoczność zanim scrollProgress dojdzie do 1 — przy długim tekście
+    // i niskim speed stały krok 0.01 zostawiał końcowe słowa rozmazane
+    const maxTotalDelay = Math.max(0, 1 - 1 / speed) * 0.9;
+    const staggerStep = wordElements.length > 1
+      ? Math.min(0.01, maxTotalDelay / (wordElements.length - 1))
+      : 0;
+
     const update = () => {
       const rect = el.getBoundingClientRect();
       const windowHeight = window.innerHeight;
@@ -56,13 +67,14 @@ const ScrollReveal = ({
       
       // apply opacity and blur to words
       wordElements.forEach((word, index) => {
-        const wordProgress = Math.max(0, scrollProgress - (index * 0.01));
-        const opacity = baseOpacity + (1 - baseOpacity) * Math.min(1, wordProgress * 3);
+        const wordProgress = Math.max(0, scrollProgress - (index * staggerStep));
+        const opacity = baseOpacity + (1 - baseOpacity) * Math.min(1, wordProgress * speed);
 
         word.style.opacity = opacity;
 
         if (enableBlur) {
-          const blur = blurStrength * (1 - Math.min(1, wordProgress * 4));
+          // Blur znika nieco szybciej niż rośnie opacity (proporcja 4:3 jak w oryginale)
+          const blur = blurStrength * (1 - Math.min(1, wordProgress * speed * (4 / 3)));
           word.style.filter = `blur(${blur}px)`;
         }
       });
@@ -85,7 +97,7 @@ const ScrollReveal = ({
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
-  }, [enableBlur, baseRotation, baseOpacity, blurStrength, completeAt]);
+  }, [enableBlur, baseRotation, baseOpacity, blurStrength, completeAt, speed]);
 
   return (
     <Tag ref={containerRef} className={`scroll-reveal ${containerClassName}`}>

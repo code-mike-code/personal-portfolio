@@ -1,13 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+
   <url>
-    <loc>https://code-mike-code.github.io/personal-portfolio/</loc>
+    <loc>https://codemike.pl/</loc>
+    <lastmod>2026-07-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://codemike.pl/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://codemike.eu/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://codemike.eu/" />
   </url>
+
   <url>
-    <loc>https://code-mike-code.github.io/personal-portfolio/privacy-policy</loc>
+    <loc>https://codemike.eu/</loc>
+    <lastmod>2026-07-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://codemike.pl/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://codemike.eu/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://codemike.eu/" />
+  </url>
+
+  <url>
+    <loc>https://codemike.pl/privacy-policy</loc>
+    <lastmod>2026-07-02</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://codemike.pl/privacy-policy" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://codemike.eu/privacy-policy" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://codemike.eu/privacy-policy" />
   </url>
+
+  <url>
+    <loc>https://codemike.eu/privacy-policy</loc>
+    <lastmod>2026-07-02</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.2</priority>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://codemike.pl/privacy-policy" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://codemike.eu/privacy-policy" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://codemike.eu/privacy-policy" />
+  </url>
+
 </urlset>

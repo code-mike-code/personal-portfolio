@@ -60,6 +60,8 @@ export default function PrivateProjects() {
         onDetails={(project) => setExpandedProject(project)}
       />
 
+      <span className="section-divider-dot section-divider-dot--coral" aria-hidden="true"></span>
+
       <WorkDifferent />
 
       {/* Domknięcie */}
@@ -85,13 +87,15 @@ export default function PrivateProjects() {
         </ScrollReveal>
 
         {/* completeAt: pełny reveal zanim heading dojedzie do góry —
-            24px zapasu + wysokość dwóch nagłówków nad tekstem (~264px) */}
+            24px zapasu + wysokość dwóch nagłówków nad tekstem (~264px).
+            speed: wolniejsze tempo, żeby efekt pojawiania był widoczny */}
         <ScrollReveal
           baseOpacity={0}
           enableBlur={true}
           baseRotation={0}
           blurStrength={20}
           completeAt={320}
+          speed={1.2}
           textClassName="section-closure-text"
         >{t('work.closure.text')}
         </ScrollReveal>

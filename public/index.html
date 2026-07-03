@@ -8,25 +8,52 @@
     content="width=device-width, initial-scale=1.0"
   />
   <%= htmlWebpackPlugin.options.cspMeta %>
+
+  <!-- Primary SEO -->
   <title>Code Mike — Frontend Developer | React &amp; TypeScript</title>
   <meta
     name="description"
     content="Portfolio of Code Mike (Michał) — AI-augmented frontend developer building fast, accessible websites with React, TypeScript and GSAP. See selected client work and get in touch."
   />
-  <link rel="canonical" href="https://code-mike-code.github.io/personal-portfolio/" />
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <meta name="keywords" content="frontend developer, React developer, TypeScript developer, GSAP animations, accessible websites, Core Web Vitals, freelance frontend developer Poland, web developer Katowice, web developer Warsaw, web developer Wrocław, web developer Kraków, web developer Gdańsk, JavaScript developer, web performance optimization" />
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+  <meta name="author" content="Code Mike (Michał)" />
+  <meta name="geo.region" content="PL" />
+  <meta name="geo.placename" content="Polska" />
+  <link rel="canonical" href="https://codemike.pl/" />
+  <link rel="alternate" hreflang="pl" href="https://codemike.pl/" />
+  <link rel="alternate" hreflang="en" href="https://codemike.eu/" />
+  <link rel="alternate" hreflang="x-default" href="https://codemike.eu/" />
 
+  <!-- Open Graph -->
   <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://codemike.pl/" />
   <meta property="og:title" content="Code Mike — Frontend Developer | React &amp; TypeScript" />
   <meta property="og:description" content="AI-augmented frontend developer building fast, accessible websites with React, TypeScript and GSAP." />
-  <meta property="og:url" content="https://code-mike-code.github.io/personal-portfolio/" />
+  <meta property="og:image" content="https://codemike.pl/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Code Mike — Frontend Developer portfolio" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:locale:alternate" content="pl_PL" />
   <meta property="og:site_name" content="Code Mike Portfolio" />
-  <meta name="twitter:card" content="summary" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:url" content="https://codemike.pl/" />
   <meta name="twitter:title" content="Code Mike — Frontend Developer | React &amp; TypeScript" />
   <meta name="twitter:description" content="AI-augmented frontend developer building fast, accessible websites with React, TypeScript and GSAP." />
+  <meta name="twitter:image" content="https://codemike.pl/og-image.png" />
 
+  <!-- Favicons -->
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="manifest" href="/site.webmanifest" />
+  <meta name="theme-color" content="#F5F5DC" />
+
+  <!-- Fonts + Performance -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="dns-prefetch" href="//www.google-analytics.com" />
   <link
     href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap"
     rel="stylesheet"
@@ -36,12 +63,77 @@
     {
       "@context": "https://schema.org",
       "@type": "Person",
+      "@id": "https://codemike.pl/#person",
       "name": "Michał",
       "alternateName": "Code Mike",
       "jobTitle": "Frontend Developer",
-      "url": "https://code-mike-code.github.io/personal-portfolio/",
+      "description": "AI-augmented frontend developer building fast, accessible websites with React, TypeScript and GSAP. Working with clients across Poland — Katowice, Warszawa, Wrocław, Kraków, Gdańsk — and remotely.",
+      "url": "https://codemike.pl/",
       "sameAs": ["https://github.com/code-mike-code"],
-      "knowsAbout": ["React", "TypeScript", "JavaScript", "GSAP", "Frontend Development"]
+      "knowsAbout": ["React", "TypeScript", "JavaScript", "GSAP", "Frontend Development", "Web Accessibility", "Core Web Vitals"],
+      "workLocation": [
+        { "@type": "Place", "name": "Katowice" },
+        { "@type": "Place", "name": "Warszawa" },
+        { "@type": "Place", "name": "Wrocław" },
+        { "@type": "Place", "name": "Kraków" },
+        { "@type": "Place", "name": "Gdańsk" },
+        { "@type": "Country", "name": "Polska" }
+      ]
+    }
+  </script>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "@id": "https://codemike.pl/#website",
+      "name": "Code Mike Portfolio",
+      "url": "https://codemike.pl/",
+      "inLanguage": ["pl", "en"],
+      "publisher": { "@id": "https://codemike.pl/#person" }
+    }
+  </script>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "serviceType": "Frontend Development",
+      "provider": { "@id": "https://codemike.pl/#person" },
+      "areaServed": { "@type": "Country", "name": "Polska" },
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Code Mike — services",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "name": "Web design & UX",
+            "description": "UX and visual systems built around the business and its audience."
+          },
+          {
+            "@type": "Offer",
+            "name": "Animation & interaction",
+            "description": "Scroll-based interactions and GSAP animations that guide attention."
+          },
+          {
+            "@type": "Offer",
+            "name": "Performance & accessibility",
+            "description": "Semantic code, performance budgets, high Core Web Vitals scores."
+          }
+        ]
+      }
+    }
+  </script>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://codemike.pl/"
+        }
+      ]
     }
   </script>
 </head>

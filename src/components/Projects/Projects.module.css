@@ -11,7 +11,7 @@
 }
 
 .selectedHeading {
-  font-size: 2.8rem;
+  font-size: var(--fs-section-title);
   font-family: 'Oswald', 'Inter', sans-serif;
   font-weight: 900;
   letter-spacing: 0.08em;
@@ -214,13 +214,24 @@
     padding: 1.2rem 1.2rem 1.2rem 2vw;
   }
   .selectedHeading {
-    font-size: 1.5rem;
     margin-left: 2vw;
+    margin-bottom: 2rem;
+  }
+  .projectsSection {
+    min-height: 100svh;
+    margin-bottom: 2rem;
   }
   .projectsButtons {
     padding-right: 2vw;
     gap: 1rem;
     top: 1.2rem;
+  }
+  /* Mniejszy przycisk „Profil GitHub" — mieści się w prawej kolumnie gridu (za linią 50vw) */
+  .projectsButtons a,
+  .projectsButtons button {
+    padding: 0.75rem 1.4rem;
+    font-size: 1rem;
+    max-width: calc(50vw - 2rem);
   }
   .heroBtn {
     padding: 0.8rem 1.5rem;

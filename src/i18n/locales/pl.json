@@ -1,7 +1,8 @@
 {
   "meta": {
     "title": "Code Mike — Frontend Developer | React i TypeScript",
-    "description": "Frontend developer wspierany przez AI — szybkie i dostępne strony internetowe w React, TypeScript i GSAP."
+    "description": "Frontend developer wspierany przez AI — szybkie i dostępne strony internetowe w React, TypeScript i GSAP.",
+    "keywords": "frontend developer, programista frontend, React developer, TypeScript, tworzenie stron internetowych, strony internetowe Katowice, frontend developer Warszawa, strony www Wrocław, frontend developer Kraków, strony internetowe Gdańsk, animacje GSAP, dostępność WCAG, Core Web Vitals, freelancer frontend Polska"
   },
   "language": {
     "switchAria": "Zmień język na angielski"
@@ -96,8 +97,8 @@
     "headingLine2": "Code Mike",
     "photoAlt": "Michał ze swoim kotem",
     "bioHeading": "Cześć, jestem Michał",
-    "bio1": "Frontend Developer wspierany przez AI, specjalizujący się w budowaniu wydajnych i responsywnych interfejsów w React i TypeScript. Proces kodowania wspieram zaawansowanymi narzędziami AI, takimi jak Claude Code i agenci AI, co przekłada się na wyższą jakość dostarczanych rozwiązań i krótszy czas realizacji. Solidne fundamenty techniczne zbudowałem przez samodzielną praktykę w ekosystemie React, JavaScript i nowoczesnych narzędziach frontendowych.",
-    "bio2": "Dobre oprogramowanie wymaga zarówno logiki, jak i empatii. Jestem proaktywnym problem-solverem, który ceni uporządkowane procesy i współpracę, by dostarczać czyste, wartościowe rozwiązania.",
+    "bio1": "AI-Augmented Frontend Developer specjalizujący się w budowaniu wydajnych i responsywnych interfejsów w React i TypeScript. Proces tworzenia kodu wspieram zaawansowanymi narzędziami AI tj. Claude Code i AI Agents co przekłada się na wyższą jakość dostarczanych rozwiązań i krótszy czas realizacji. Solidne fundamenty techniczne zbudowałem poprzez indywidualny mentoring i samodzielną praktykę w ekosystemie React, JavaScript i nowoczesnych narzędziach frontendowych.",
+    "bio2": "Wieloletnie doświadczenie na stanowiskach Supervisora i Managera w środowiskach międzynarodowych wyposażyło mnie w dojrzałość biznesową, którą dziś przenoszę na grunt nowych technologii: rozumiem priorytety produktowe, komunikuję się z klientem bez żargonu i biorę odpowiedzialność za wynik całego projektu, a nie tylko za kod.",
     "tagline": "Samodzielny z natury, zespołowy z wyboru.",
     "statProjects": "projektów dla klientów",
     "statDelivery": "szybsza realizacja dzięki narzędziom AI",

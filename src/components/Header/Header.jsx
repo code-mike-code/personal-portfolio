@@ -32,11 +32,15 @@ const Header = () => {
   };
 
   const scrollToSection = (sectionId) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
     setMenuOpen(false);
+    // Scroll dopiero po zamknięciu menu — przy otwartym menu body ma
+    // overflow:hidden i scrollIntoView nie zadziała
+    setTimeout(() => {
+      const element = document.getElementById(sectionId);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
+    }, 0);
   };
 
   const handleMouseEnter = (event) => {
@@ -115,6 +119,7 @@ const Header = () => {
           className="header__burger"
           onClick={() => setMenuOpen(!menuOpen)}
           aria-label={t('header.menuAria')}
+          aria-expanded={menuOpen}
         >
           <span></span><span></span><span></span>
         </button>

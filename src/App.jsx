@@ -33,10 +33,16 @@ function MainLayout() {
       <BottomNav />
       <main id="main">
         <Hero />
+        <span className="section-divider-dot section-divider-dot--teal" aria-hidden="true"></span>
+        {/* kolejna kropka (coral) jest wewnątrz PrivateProjects, pod work-showcase */}
         <PrivateProjects />
+        <span className="section-divider-dot section-divider-dot--teal" aria-hidden="true"></span>
         <Projects />
+        <span className="section-divider-dot section-divider-dot--coral" aria-hidden="true"></span>
         <AboutMe />
+        <span className="section-divider-dot section-divider-dot--teal" aria-hidden="true"></span>
         <TechBanner />
+        <span className="section-divider-dot section-divider-dot--coral" aria-hidden="true"></span>
         <Contact />
       </main>
       <Footer />

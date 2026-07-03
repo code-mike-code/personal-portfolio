@@ -8,6 +8,17 @@
     margin-bottom: 4rem;
 }
 
+@media (max-width: 900px) {
+  .private-projects-section {
+    margin-bottom: 2rem;
+  }
+
+  .section-closure {
+    min-height: 40vh;
+    padding: 3rem 1.25rem;
+  }
+}
+
 /* Domknięcie sekcji — odsunięte od work-different, spójne odstępy */
 .section-closure {
   position: relative;
@@ -42,7 +53,10 @@
 }
 
 .section-closure-title {
-  font-size: 2.8rem;
+  font-size: var(--fs-section-title);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
   text-align: center;
   margin: 0;
   padding: 0;
@@ -56,9 +70,12 @@
 }
 
 .section-closure-text {
-  font-size: 1.8rem;
+  display: block;
+  font-size: clamp(1.15rem, 2vw, 1.4rem);
+  line-height: 1.6;
+  max-width: 640px;
   text-align: center;
-  margin-bottom: 0;
+  margin: 2.5rem auto 0;
 }
 
 /* Style Lenis (wymagane dla płynnego scrolla) */

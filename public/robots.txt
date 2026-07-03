@@ -1,4 +1,17 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://code-mike-code.github.io/personal-portfolio/sitemap.xml
+User-agent: GPTBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+Sitemap: https://codemike.pl/sitemap.xml
+Sitemap: https://codemike.eu/sitemap.xml

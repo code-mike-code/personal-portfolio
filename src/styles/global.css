@@ -15,6 +15,10 @@ body {
   font-family: 'Inter', sans-serif;
   color: #222;
   position: relative;
+  /* clip (nie hidden): ucina poziomy overflow animacji wjazdowych
+     (np. panel info work-showcase startuje z x:+12vw) bez tworzenia
+     scroll containera — pinowanie ScrollTriggera działa bez zmian */
+  overflow-x: clip;
 }
 
 #root {
@@ -125,6 +129,37 @@ body.no-scroll {
     width: 1px;
     background: #b3ad8e;
     box-shadow: none;
+  }
+
+  /* Mniejsze odstępy między sekcjami — wysokość z treści, nie z viewportu
+     (sekcje pełnoekranowe: hero, github i contact mają własne min-height) */
+  section {
+    min-height: auto;
+  }
+}
+
+/* Kropka-separator między sekcjami — widoczna tylko na mobile,
+   kolory naprzemiennie teal / coral (wzór: .about-interests-dot) */
+.section-divider-dot {
+  display: none;
+}
+
+@media (max-width: 900px) {
+  .section-divider-dot {
+    display: block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    /* Środek dokładnie na mobilnej linii gridu (50vw), jak .about-interests-dot */
+    margin: 1.5rem 0 1.5rem calc(50vw - 5px);
+  }
+
+  .section-divider-dot--teal {
+    background: #2b9dad;
+  }
+
+  .section-divider-dot--coral {
+    background: #d96a55;
   }
 }
 /* Accessibility utilities */

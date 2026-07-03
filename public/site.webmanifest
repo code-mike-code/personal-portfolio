@@ -1,0 +1,12 @@
+{
+  "name": "Code Mike Portfolio",
+  "short_name": "Code Mike",
+  "description": "AI-augmented frontend developer — fast, accessible websites with React, TypeScript and GSAP.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#F5F5DC",
+  "theme_color": "#F5F5DC",
+  "icons": [
+    { "src": "/favicon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }
+  ]
+}
