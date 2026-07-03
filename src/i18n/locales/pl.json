@@ -19,7 +19,13 @@
     "contact": "Kontakt",
     "contactAria": "Przewiń do sekcji kontakt",
     "menuAria": "Otwórz lub zamknij menu",
-    "mobileNavAria": "Nawigacja mobilna"
+    "mobileNavAria": "Nawigacja mobilna",
+    "about": "O mnie",
+    "aboutAria": "Przewiń do sekcji o mnie",
+    "menuOpen": "Menu",
+    "menuClose": "Zamknij",
+    "socials": "Socials",
+    "linkedinAria": "Profil LinkedIn"
   },
   "hero": {
     "line1": "Code Mike",

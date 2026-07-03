@@ -13,9 +13,32 @@ const prefersReducedMotion = () =>
   typeof window !== 'undefined' &&
   window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+// Źródło wideo: telefon (≤600px) gra pionowe, tablet i desktop poziome.
+// Układ kolumnowy (wideo nad panelem) obowiązuje do 900px — patrz CSS
+const MOBILE_QUERY = '(max-width: 600px)';
+
+const useIsMobile = () => {
+  const [isMobile, setIsMobile] = useState(
+    () => typeof window !== 'undefined' && window.matchMedia(MOBILE_QUERY).matches
+  );
+
+  useEffect(() => {
+    const mq = window.matchMedia(MOBILE_QUERY);
+    const onChange = (e) => setIsMobile(e.matches);
+    mq.addEventListener('change', onChange);
+    return () => mq.removeEventListener('change', onChange);
+  }, []);
+
+  return isMobile;
+};
+
 const ProjectMedia = ({ project, index, isActive = true }) => {
   const { t } = useTranslation();
-  const videoSrc = project.fullVideo || project.tabletVideo || project.thumbnailVideo;
+  const isMobile = useIsMobile();
+  // Mobile: pionowe wideo (thumbnailVideo, 400x866), desktop: poziome (fullVideo)
+  const videoSrc = isMobile
+    ? project.thumbnailVideo || project.fullVideo
+    : project.fullVideo || project.tabletVideo || project.thumbnailVideo;
   const videoRef = useRef(null);
   // WCAG 2.2.2: użytkownik może zatrzymać ruch; przy reduced-motion start w pauzie
   const [paused, setPaused] = useState(prefersReducedMotion);
@@ -161,8 +184,10 @@ const WorkShowcase = ({ projects, onDetails }) => {
         const vh = window.innerHeight;
         const startWidth = vw * 0.5; // od linii 25vw do 75vw
         const startHeight = Math.min(vh * 0.28, 320);
-        const endWidth = vw * 0.48; // docelowo do linii 50vw
-        const endHeight = Math.min(vh * 0.56, 600);
+        // Wysokość trzyma proporcje wideo (2:1),
+        // limity spójne z width w .work-showcase-media
+        const endWidth = Math.min(vw * 0.65, vh * 1.12, 1200);
+        const endHeight = endWidth / 2;
 
         // Pozycja layoutowa liczona przed nałożeniem transformów.
         // Dwa shifty trzymają kartę idealnie na środku podczas wzrostu

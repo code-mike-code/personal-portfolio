@@ -19,7 +19,13 @@
     "contact": "Contact",
     "contactAria": "Scroll to contact section",
     "menuAria": "Toggle menu",
-    "mobileNavAria": "Mobile Navigation"
+    "mobileNavAria": "Mobile Navigation",
+    "about": "About",
+    "aboutAria": "Scroll to about section",
+    "menuOpen": "Menu",
+    "menuClose": "Close",
+    "socials": "Socials",
+    "linkedinAria": "LinkedIn Profile"
   },
   "hero": {
     "line1": "Code Mike",

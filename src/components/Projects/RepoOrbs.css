@@ -50,6 +50,42 @@
   height: 100%;
 }
 
+/* Wrapper tekstu — bez wpływu na layout (display: contents),
+   rola zaczyna się dopiero w stanie rozwiniętym */
+.repo-orb-label {
+  display: contents;
+}
+
+/* Rozwinięta kula (mobile, 45vw): tekst w kontr-skali 1/scale —
+   nie rośnie razem z transformem kuli (bez rozmycia), a pole 30vw
+   mieści się w kole wpisanym w 45vw (45/√2 ≈ 31.8vw) */
+.repo-orb--expanded .repo-orb-label {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.3rem;
+  position: absolute;
+  /* left/top 50% + translate(-50%): inset+margin:auto nie centruje,
+     gdy label jest szerszy niż layoutowy box kuli (kotwiczy do lewej).
+     28vw: narożniki pola mieszczą się w kole 45vw także przy pulsie -12% */
+  left: 50%;
+  top: 50%;
+  width: 28vw;
+  height: 28vw;
+  transform: translate(-50%, -50%) scale(calc(1 / var(--orb-scale, 1)));
+  /* Tekst pojawia się z opóźnieniem — kula najpierw urośnie,
+     inaczej pełnowymiarowy tekst wystawałby z małego jeszcze koła */
+  opacity: 0;
+  animation: repo-orb-label-in 0.2s ease 0.25s forwards;
+}
+
+@keyframes repo-orb-label-in {
+  to {
+    opacity: 1;
+  }
+}
+
 .repo-orb-name {
   font-size: 0.95rem;
   font-weight: 600;
@@ -79,25 +115,43 @@
   border: 1px solid #b3ad8e;
 }
 
-.repo-orb:hover,
-.repo-orb:focus,
-.repo-orb:focus-visible {
+/* Celowo :focus-visible (nie :focus) — tap na mobile zostawia focus na kuli
+   i po zwinięciu wisiałaby w ciemnym stanie */
+.repo-orb:focus-visible,
+.repo-orb--expanded {
   background: #222;
   border-color: #222;
   /* Powiększona kula ponad sąsiadkami */
   z-index: 2;
 }
 
-.repo-orb:hover .repo-orb-name,
-.repo-orb:focus .repo-orb-name,
-.repo-orb:focus-visible .repo-orb-name {
+.repo-orb:focus-visible .repo-orb-name,
+.repo-orb--expanded .repo-orb-name {
   color: #f5f5dc;
 }
 
-.repo-orb:hover .repo-orb-lang,
-.repo-orb:focus .repo-orb-lang,
-.repo-orb:focus-visible .repo-orb-lang {
+.repo-orb:focus-visible .repo-orb-lang,
+.repo-orb--expanded .repo-orb-lang {
   color: #b3ad8e;
+}
+
+/* Hover tylko dla urządzeń z prawdziwym kursorem — na dotyku przeglądarka
+   trzyma :hover po tapnięciu (sticky) i kula nie wracała do pierwotnego
+   wyglądu po zwinięciu */
+@media (hover: hover) {
+  .repo-orb:hover {
+    background: #222;
+    border-color: #222;
+    z-index: 2;
+  }
+
+  .repo-orb:hover .repo-orb-name {
+    color: #f5f5dc;
+  }
+
+  .repo-orb:hover .repo-orb-lang {
+    color: #b3ad8e;
+  }
 }
 
 /* Fallback bez animacji (prefers-reduced-motion) — statyczna siatka kółek */
@@ -127,6 +181,12 @@
     min-height: 50svh;
   }
 
+  /* Element ma layout rozwiniętej kuli (45vw) pokazywany w skali <1 —
+     2px bordera daje wizualnie ~1px w stanie spoczynkowym */
+  .repo-orb {
+    border-width: 2px;
+  }
+
   /* Domyślnie ikona GitHuba; nazwa + technologia dopiero po hover/tap/focus */
   .repo-orb-icon {
     display: block;
@@ -145,18 +205,37 @@
     font-size: 0.6rem;
   }
 
-  .repo-orb:hover .repo-orb-icon,
   .repo-orb:focus-visible .repo-orb-icon,
-  .repo-orb:focus .repo-orb-icon {
+  .repo-orb--expanded .repo-orb-icon {
+    display: none;
+  }
+
+  .repo-orb:focus-visible .repo-orb-name,
+  .repo-orb:focus-visible .repo-orb-lang,
+  .repo-orb--expanded .repo-orb-name,
+  .repo-orb--expanded .repo-orb-lang {
+    display: block;
+  }
+
+  /* Tekst w kontr-skali nie jest już powiększany transformem kuli —
+     rozmiary ustawione wprost, czytelne w kole 45vw */
+  .repo-orb--expanded .repo-orb-name {
+    font-size: 1rem;
+  }
+
+  .repo-orb--expanded .repo-orb-lang {
+    font-size: 0.8rem;
+  }
+}
+
+/* Tablet z myszą (≤900px + hover) — hover odsłania tekst jak focus */
+@media (max-width: 900px) and (hover: hover) {
+  .repo-orb:hover .repo-orb-icon {
     display: none;
   }
 
   .repo-orb:hover .repo-orb-name,
-  .repo-orb:hover .repo-orb-lang,
-  .repo-orb:focus-visible .repo-orb-name,
-  .repo-orb:focus-visible .repo-orb-lang,
-  .repo-orb:focus .repo-orb-name,
-  .repo-orb:focus .repo-orb-lang {
+  .repo-orb:hover .repo-orb-lang {
     display: block;
   }
 }

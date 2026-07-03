@@ -56,7 +56,9 @@
   left: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  /* contain: całe wideo widoczne (letterbox na czarnym tle kontenera),
+     cover ucinał boki — proporcje wideo (2:1) ≠ proporcje kontenera */
+  object-fit: contain;
   /* filter: brightness(0.65); */
 }
 

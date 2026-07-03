@@ -21,7 +21,7 @@ const TechBanner = () => {
 
     const tween = gsap.to(carousel, {
       x: -loopWidth, // Animujemy do ujemnej wartości szerokości pętli w pikselach
-      duration: 30, // Czas trwania jednego cyklu
+      duration: 50, // Czas trwania jednego cyklu
       ease: 'none',
       repeat: -1,
     });

@@ -5,10 +5,15 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  /* Panel info startuje z x:+12vw (animacja wjazdowa) — clip na osi X
+     ucina go na krawędzi sekcji. Sam body::overflow-x:clip nie wystarcza:
+     mobilny viewport i tak rozszerza się do treści (poziomy suwak,
+     rozjechany fixed BottomNav) */
+  overflow-x: clip;
 }
 
-/* Szerokości dobrane do linii gridu strony (25/50/75vw):
-   media konczy się na linii 50vw, granica kolumn panelu info wypada na 75vw */
+/* Grid strony: 4 kolumny, linie na 25/50/75vw.
+   Media zajmuje 65vw; przyciski i opis centrowane w 4. kolumnie (75–100vw) */
 .work-showcase-inner {
   display: flex;
   align-items: center;
@@ -23,8 +28,11 @@
 .work-showcase-media {
   position: relative;
   flex: none;
-  width: 48vw;
-  height: min(56vh, 600px);
+  /* Proporcje karty = proporcje wideo (1918x962 ≈ 2:1) — object-fit: cover
+     nie ucina wtedy boków. Na niskich viewportach szerokość ogranicza 112vh
+     (wysokość karty ≤ 56vh), na wielkich 1200px (wysokość ≤ 600px) */
+  width: min(65vw, 112vh, 1200px);
+  aspect-ratio: 2 / 1;
   will-change: transform;
 }
 
@@ -106,12 +114,12 @@
   position: absolute;
   inset: 0;
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr;
   grid-template-rows: 1fr auto 1fr;
   grid-template-areas:
-    'head head'
-    'actions actions'
-    '. desc';
+    'head'
+    'actions'
+    'desc';
   row-gap: clamp(1.5rem, 4vh, 3rem);
   opacity: 0;
   visibility: hidden;
@@ -169,23 +177,36 @@
   margin: 0;
 }
 
-/* Opis — pod przyciskami, w prawej kolumnie (za linią 75vw) */
+/* Opis — bezpośrednio pod przyciskami, ta sama kotwica do 4. kolumny */
 .work-project-desc {
   grid-area: desc;
   align-self: start;
+  justify-self: end;
+  width: 25vw;
+  margin-right: -2vw;
+  padding-inline: 1vw;
+  text-align: center;
   font-size: clamp(1rem, 1.5vw, 1.15rem);
   line-height: 1.6;
   color: #4a4738;
-  max-width: 420px;
-  margin: 0;
-  padding-left: 2vw;
+  margin-block: 0;
 }
 
-/* Przyciski rozstawione tak, aby linia gridu (75vw) przechodziła między nimi */
+/* Przyciski i opis wyśrodkowane w 4. kolumnie gridu strony (75vw–100vw).
+   Panel nie zaczyna się na linii 75vw, więc kotwica do prawej krawędzi:
+   szerokość 25vw, margin-right -2vw znosi padding .work-showcase-inner,
+   prawa krawędź elementu = 100vw, zawartość centrowana w środku (87.5vw) */
 .work-actions {
   grid-area: actions;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+  justify-self: end;
+  width: 25vw;
+  margin-right: -2vw;
+  display: flex;
+  /* wrap: na wąskiej kolumnie (tablet) przyciski układają się w pion */
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 0.75rem 2vw;
 }
 
 .work-btn {
@@ -205,11 +226,6 @@
   transition: background 0.25s ease, color 0.25s ease;
 }
 
-.work-btn-live {
-  justify-self: end;
-  margin-right: 1.5vw;
-}
-
 .work-btn:hover,
 .work-btn:focus-visible {
   background: #222;
@@ -217,8 +233,6 @@
 }
 
 .work-btn-details {
-  justify-self: start;
-  margin-left: 1.5vw;
   border-color: #b3ad8e;
   color: #6b654a;
 }
@@ -255,11 +269,14 @@
 }
 
 .work-showcase-static .work-media-card {
-  aspect-ratio: 16 / 10;
+  aspect-ratio: 2 / 1;
 }
 
 /* --- Mobile / tablet --- */
 
+/* Wspólny układ kolumnowy dla telefonu i tabletu: wideo na górze,
+   panel info pod spodem. Różni się tylko karta wideo:
+   tablet gra poziome wideo desktopowe (2:1), telefon pionowe (400/866) */
 @media (max-width: 900px) {
   .work-showcase-inner {
     flex-direction: column;
@@ -269,15 +286,20 @@
     padding: 1.25rem;
   }
 
+  /* Tablet: karta desktopowa 2:1, na całą szerokość z limitem wysokości
+     (90svh szerokości = 45svh wysokości), żeby zmieściła się z panelem
+     w pinowanej sekcji 100svh */
   .work-showcase-media {
     flex: none;
-    width: 100%;
-    height: 40svh;
+    aspect-ratio: 2 / 1;
+    width: min(88vw, 90svh);
+    height: auto;
+    margin-inline: auto;
   }
 
   .work-showcase-info {
     flex: none;
-    height: 46svh;
+    height: 40svh;
   }
 
   .work-info-panel {
@@ -298,22 +320,37 @@
     margin-bottom: 0.75rem;
   }
 
+  /* Mobile: layout 1-kolumnowy, kotwica do 4. kolumny nie obowiązuje */
   .work-project-desc {
     align-self: start;
-    padding-left: 0;
+    justify-self: stretch;
+    width: auto;
+    margin-right: 0;
   }
 
-  /* Na mobile linia gridu biegnie środkiem (50vw) — przyciski nadal po jej bokach */
-  .work-btn-live {
-    margin-right: 3vw;
-  }
-
-  .work-btn-details {
-    margin-left: 3vw;
+  .work-actions {
+    justify-self: stretch;
+    width: auto;
+    margin-right: 0;
+    gap: 6vw;
   }
 
   .work-showcase-static .work-showcase-inner {
     margin-bottom: 3rem;
+  }
+}
+
+/* Telefon: pionowe wideo (400x866) — karta w proporcjach telefonu,
+   maksymalnie duża: do 85vw szerokości, ale ograniczona wysokością
+   (24svh szerokości ≈ 52svh wysokości przy proporcjach 400/866) */
+@media (max-width: 600px) {
+  .work-showcase-media {
+    aspect-ratio: 400 / 866;
+    width: min(85vw, 24svh);
+  }
+
+  .work-showcase-static .work-media-card {
+    aspect-ratio: 400 / 866;
   }
 }
 

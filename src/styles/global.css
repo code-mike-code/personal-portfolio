@@ -77,6 +77,13 @@ body.hide-header-grid::after {
   transition: opacity 0.3s;
 }
 
+/* Pozioma linia gridu (z-index 10000) nie może ciąć otwartego menu
+   mobilnego — no-scroll ustawia tylko Header przy otwartym menu */
+body.no-scroll::after {
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
 header {
   background: transparent;
   position: relative;
@@ -120,7 +127,11 @@ section {
 }
 
 body.no-scroll {
+  /* position:fixed = jedyny pewny scroll-lock na iOS; top ustawia
+     Header.jsx (-scrollY), żeby tło zostało w miejscu */
   overflow: hidden;
+  position: fixed;
+  width: 100%;
 }
 
 @media (max-width: 900px) {

@@ -5,6 +5,9 @@
   width: 100%;
   padding: clamp(4rem, 10vh, 8rem) 0;
   gap: clamp(4rem, 10vh, 8rem);
+  /* Dekoracyjne kółka wystają poza zdjęcie (right/left ujemne) — na wąskim
+     ekranie przekraczały krawędź viewportu i rozszerzały go (poziomy suwak) */
+  overflow-x: clip;
 }
 
 /* --- Nagłówek --- */
@@ -52,15 +55,15 @@
 
 /* --- Intro: zdjęcie + bio --- */
 
+/* Pełna szerokość, granica kolumn = 2. linia gridu strony (50vw):
+   zdjęcie w lewej połowie, bio w prawej */
 .about-intro {
   display: grid;
-  grid-template-columns: 1fr 1.2fr;
-  gap: clamp(2rem, 5vw, 5rem);
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
   align-items: center;
   width: 100%;
-  max-width: 1100px;
   margin: 0 auto;
-  padding: 0 clamp(1.25rem, 4vw, 3rem);
 }
 
 .about-photo-wrap {
@@ -101,6 +104,12 @@
   z-index: 0;
 }
 
+/* Odsunięcie tekstu od linii gridu 50vw */
+.about-bio {
+  padding-left: 3vw;
+  padding-right: 2vw;
+}
+
 .about-bio-heading-container {
   margin: 0 0 1.5rem 0;
   padding: 0;
@@ -128,9 +137,14 @@
   margin: 0 0 2rem 0;
 }
 
+/* Statsy wyśrodkowane w 3. kolumnie gridu strony (50–75vw):
+   margin-left znosi padding .about-bio, blok 25vw zaczyna się na linii 50vw */
 .about-stats {
   display: flex;
-  gap: clamp(2rem, 6vw, 5rem);
+  justify-content: center;
+  gap: clamp(2rem, 4vw, 4rem);
+  width: 25vw;
+  margin-left: -3vw;
 }
 
 .about-stat {
@@ -190,17 +204,37 @@
   list-style: none;
   margin: 0 0 0 25vw;
   padding: 0 2vw;
-  width: 25vw;
-  min-width: 280px;
+  /* max-content: itemy z nowrap nie są ucinane, lista startuje na linii 25vw */
+  width: max-content;
+  min-width: min(25vw, 280px);
   display: flex;
   flex-direction: column;
   gap: 0.9rem;
 }
 
 .about-interests-list li {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
   font-size: 1.05rem;
   line-height: 1.5;
   color: #4a4738;
+  /* Punkt listy nie łamie tekstu do nowej linii */
+  white-space: nowrap;
+}
+
+/* Punktatory — kropki w palecie strony, naprzemiennie koral / morski */
+.about-interests-list li::before {
+  content: '';
+  flex: none;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #d96a55;
+}
+
+.about-interests-list li:nth-child(even)::before {
+  background: #2b9dad;
 }
 
 /* --- Galeria --- */
@@ -283,6 +317,12 @@
   .about-intro {
     grid-template-columns: 1fr;
     gap: 3rem;
+    padding: 0 1.25rem;
+  }
+
+  .about-bio {
+    padding-left: 0;
+    padding-right: 0;
   }
 
   /* Staty: każda liczba w swojej kolumnie gridu strony (linia na 50vw),
@@ -292,6 +332,8 @@
     grid-template-columns: 1fr 1fr;
     gap: 0;
     justify-items: center;
+    width: auto;
+    margin-left: 0;
   }
 
   .about-stat {
@@ -299,9 +341,20 @@
     text-align: center;
   }
 
+  /* Zdjęcie i bio wyśrodkowane na linii gridu (50vw); staty bez zmian */
   .about-photo-wrap {
-    justify-self: start;
-    margin-left: 8%;
+    justify-self: center;
+  }
+
+  .about-bio-heading,
+  .about-bio-tagline {
+    text-align: center;
+  }
+
+  .about-bio-text {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   .about-interests-dot {
@@ -317,6 +370,11 @@
     width: auto;
     max-width: 560px;
     padding: 0 1.25rem;
+  }
+
+  /* Wąski ekran: nowrap uciąłby dłuższe pozycje */
+  .about-interests-list li {
+    white-space: normal;
   }
 
   .about-gallery {

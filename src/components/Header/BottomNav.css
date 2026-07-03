@@ -8,9 +8,6 @@
   width: 60vw;
   max-width: 600px;
   min-width: 260px;
-  background: rgba(0, 0, 0, 0.97);
-  border-radius: 2rem;
-  box-shadow: 0 8px 32px rgba(0,0,0,0.18);
   z-index: 100;
   opacity: 0;
   pointer-events: none;
@@ -18,6 +15,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  gap: 0.6rem;
 }
 
 .bottom-nav--visible {
@@ -26,15 +24,28 @@
   pointer-events: auto;
 }
 
+/* Otwarte menu mobilne (body.no-scroll ustawia tylko Header) — BottomNav
+   schowany, nawet gdy scroll listener ustawi --visible */
+body.no-scroll .bottom-nav {
+  opacity: 0;
+  transform: translateX(-50%) translateY(100%);
+  pointer-events: none;
+}
+
+/* Pigułka z linkami — tło i kształt na menu, żeby kółko języka
+   mogło stać obok jako osobny element */
 .bottom-nav__menu {
+  flex: 1 1 auto;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 100%;
   height: 100%;
   list-style: none;
   margin: 0;
   padding: 0.3rem;
+  background: rgba(0, 0, 0, 0.97);
+  border-radius: 2rem;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.18);
 }
 
 .bottom-nav__menu li {
@@ -54,14 +65,18 @@
   transition: background 0.2s, color 0.2s;
 }
 
-.bottom-nav__menu a:hover {
+.bottom-nav__menu a:hover,
+.bottom-nav__menu a.is-active {
   background: #F5F5DC;
   color: #222;
 }
 
+/* Okrągły przycisk zmiany języka obok pigułki — tylko na mobile */
+.bottom-nav__lang-circle {
+  display: none;
+}
 
-
-.bottom-nav--over-banner {
+.bottom-nav--over-banner .bottom-nav__menu {
   background: rgba(245, 245, 220, 0.97);
 }
 
@@ -69,19 +84,47 @@
   color: #222;
 }
 
-.bottom-nav--over-banner .bottom-nav__menu a:hover {
+.bottom-nav--over-banner .bottom-nav__menu a:hover,
+.bottom-nav--over-banner .bottom-nav__menu a.is-active {
   background: #222;
   color: #F5F5DC;
 }
-
-
 
 @media (max-width: 768px) {
   .bottom-nav {
     width: 90vw;
     max-width: none;
   }
+
+  /* Toggle języka wypada z paska — chowamy pozycję w menu... */
+  .bottom-nav__lang-item {
+    display: none;
+  }
+
+  /* ...i pokazujemy kółko obok pigułki */
+  .bottom-nav__lang-circle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 auto;
+    width: 3rem;
+    height: 3rem;
+    padding: 0;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.97);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+    color: #F5F5DC;
+    font-size: 0.95rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+  }
+
+  .bottom-nav--over-banner .bottom-nav__lang-circle {
+    background: rgba(245, 245, 220, 0.97);
+    color: #222;
+  }
 }
+
 .bottom-nav__lang-toggle {
   width: 100%;
   justify-content: center;

@@ -139,48 +139,109 @@
   transition: color 0.2s, transform 0.3s ease-in-out;
 }
 
-.header__burger {
+/* Tekstowy toggle "Menu +" / "Zamknij ×" — tylko mobile */
+.header__menu-toggle {
   display: none;
   grid-column: 4 / 5;
   justify-self: center;
+  align-items: center;
+  gap: 0.4em;
   background: none;
   border: none;
-  padding: 1rem;
+  padding: 0.5rem 0.75rem;
   z-index: 1001;
+  font-family: inherit;
+  font-size: 1.15rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: #222;
+  line-height: 1;
 }
 
-.header__burger span {
+/* Track = okno przycinające; labele rolują się pionowo przy przełączeniu */
+.header__menu-toggle-track {
   display: block;
-  width: 28px;
-  height: 3px;
-  background-color: #222;
-  margin: 5px 0;
-  transition: all 0.3s ease-in-out;
+  height: 1.2em;
+  overflow: hidden;
 }
 
-/* Overlay menu jest w kolorze ecru — logo i burger zostają ciemne */
+.header__menu-toggle-label {
+  display: block;
+  height: 1.2em;
+  line-height: 1.2;
+  white-space: nowrap;
+  transition: transform 0.45s cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+.header--menu-open .header__menu-toggle-label {
+  transform: translateY(-100%);
+}
+
+/* "+" obraca się o 135° i czyta jako "×" — obrót zsynchronizowany
+   z rolowaniem labela */
+.header__menu-toggle-icon {
+  display: inline-block;
+  color: #2b9dad;
+  font-weight: 700;
+  font-size: 1.2em;
+  transition: transform 0.45s cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+.header--menu-open .header__menu-toggle-icon {
+  transform: rotate(135deg);
+}
+
+/* Overlay menu jest w kolorze ecru — logo zostaje ciemne */
 .header--menu-open .header__logo a {
   color: #222;
   transition-delay: 0.3s;
 }
 
-.header--menu-open .header__burger span {
-  background-color: #222;
-}
-
-.header--menu-open .header__burger span:nth-child(1) {
-  transform: translateY(8px) rotate(45deg);
-}
-.header--menu-open .header__burger span:nth-child(2) {
-  opacity: 0;
-}
-.header--menu-open .header__burger span:nth-child(3) {
-  transform: translateY(-8px) rotate(-45deg);
+/* Mobilne menu (fullscreen overlay) — poza media query tylko ukryte */
+.mobile-menu {
+  display: none;
 }
 
 @media (max-width: 900px) {
-  /* Overlay w palecie strony: ecru + linia gridu + koral/teal */
+  /* Desktopowe menu w rzędzie znika — mobile ma własny overlay */
   .header__menu {
+    display: none;
+  }
+
+  .header__menu-toggle {
+    display: inline-flex;
+    /* Toggle ("Zamknij ×" ~123px) jest szerszy niż kolumna gridu (25vw);
+       centrowanie wypychało go poza prawą krawędź → poziomy overflow
+       rozszerzał mobilny viewport (suwak, zgubiony fixed BottomNav) */
+    justify-self: end;
+    margin-right: 1rem;
+  }
+
+  /* Przy otwartym menu header przypięty do viewportu — overlay jest fixed,
+     więc logo i toggle nie mogą odjechać z przewijanym dokumentem
+     (iOS ignoruje overflow:hidden na body przy dotyku).
+     z-index: header tworzy stacking context (bazowo 2) — overlay z z-index
+     1000 liczy się tylko WEWNĄTRZ niego; bez podbicia BottomNav (100)
+     i pinowane sekcje (np. work-showcase, 5) malują się nad menu */
+  .header--menu-open {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+  }
+
+  /* Fixed header wypada z przepływu dokumentu — bez kompensacji hero
+     (i cała treść pod headerem) podjeżdża o 80px do góry przy otwieraniu
+     menu. no-scroll jest na body tylko przy otwartym menu (Header.jsx) */
+  body.no-scroll {
+    padding-top: 80px;
+  }
+
+  /* Fullscreen panel wjeżdżający z prawej — wzór: nagranie w assets */
+  .mobile-menu {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     position: fixed;
     top: 0;
     left: 0;
@@ -188,82 +249,169 @@
     height: 100vh;
     height: 100svh;
     background-color: #f5f5dc;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 0.5rem;
-    transform: translateY(100%);
-    transition: transform 0.5s cubic-bezier(0.77, 0, 0.175, 1);
-    padding: 0;
+    padding: calc(80px + 1.5rem) 1.5rem 2.5rem;
     z-index: 1000;
-    grid-column: 1 / 5;
+    transform: translateX(100%);
+    visibility: hidden;
+    transition:
+      transform 0.6s cubic-bezier(0.77, 0, 0.175, 1),
+      visibility 0s linear 0.6s;
     /* Gesty przewijania nie przechodzą przez otwarte menu */
     touch-action: none;
     overscroll-behavior: contain;
   }
 
-  /* Pionowa linia gridu — jak na reszcie strony (50vw) */
-  .header__menu::before {
+  /* Tealowa krawędź prowadząca — wystaje z lewej, więc widać ją
+     tylko podczas wjazdu; w spoczynku ląduje poza viewportem */
+  .mobile-menu::before {
     content: '';
     position: absolute;
     top: 0;
-    left: 50%;
-    width: 1px;
+    left: -14px;
+    width: 14px;
     height: 100%;
-    background: #b3ad8e;
-    opacity: 0.7;
-  }
-
-  .header__menu--open {
-    transform: translateY(0);
-  }
-
-  .header__menu li {
-    width: 100%;
-    height: auto;
-    padding: 1.25rem 0;
-    /* Bez efektu radial-hover z desktopu — flat, spójnie z resztą mobile */
-    overflow: visible;
-  }
-
-  .header__menu li::before {
-    display: none;
-  }
-
-  .header__menu a {
-    position: relative;
-    z-index: 1;
-    color: #222;
-    font-size: clamp(2.2rem, 9vw, 3.25rem);
-    font-weight: 600;
-    letter-spacing: -0.02em;
-    transition: color 0.3s;
-  }
-
-  /* Kropki-markery w rytmie strony: naprzemiennie teal / coral */
-  .header__menu a .menu-text::after {
-    content: '';
-    display: inline-block;
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    margin-left: 0.9rem;
-    vertical-align: middle;
     background: #2b9dad;
   }
 
-  .header__menu li:nth-child(even) a .menu-text::after {
-    background: #d96a55;
+  .mobile-menu--open {
+    transform: translateX(0);
+    visibility: visible;
+    transition: transform 0.6s cubic-bezier(0.77, 0, 0.175, 1);
   }
 
-  .header__menu a:hover,
-  .header__menu li:hover a {
-    color: #d96a55;
-    transform: none;
+  .mobile-menu__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
   }
 
-  .header__burger {
+  /* Maska mask-reveal: li przycina, inner wjeżdża od dołu */
+  .mobile-menu__item {
+    overflow: hidden;
+  }
+
+  .mobile-menu__item a {
     display: block;
+    color: #222;
+    text-decoration: none;
+  }
+
+  .mobile-menu__item-inner {
+    display: block;
+    font-size: clamp(2.8rem, 13vw, 4.5rem);
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: -0.03em;
+    line-height: 1.2;
+    transform: translateY(120%);
+    /* Bez delaya w stanie bazowym — przy zamykaniu pozycje chowają się
+       od razu, gdy panel zjeżdża */
+    transition: transform 0.5s cubic-bezier(0.77, 0, 0.175, 1);
+  }
+
+  .mobile-menu--open .mobile-menu__item-inner {
+    transform: translateY(0);
+  }
+
+  .mobile-menu--open .mobile-menu__item:nth-child(1) .mobile-menu__item-inner {
+    transition-delay: 0.25s;
+  }
+  .mobile-menu--open .mobile-menu__item:nth-child(2) .mobile-menu__item-inner {
+    transition-delay: 0.33s;
+  }
+  .mobile-menu--open .mobile-menu__item:nth-child(3) .mobile-menu__item-inner {
+    transition-delay: 0.41s;
+  }
+
+  .mobile-menu__num {
+    font-size: 0.3em;
+    font-weight: 600;
+    letter-spacing: 0;
+    line-height: 0;
+    color: #2b9dad;
+    margin-left: 0.4em;
+    vertical-align: 1.6em;
+  }
+
+  .mobile-menu__socials {
+    display: flex;
+    flex-direction: column;
+    gap: 0.9rem;
+  }
+
+  .mobile-menu__socials-label,
+  .mobile-menu__socials-links a,
+  .mobile-menu__lang-toggle {
+    opacity: 0;
+    transform: translateY(10px);
+    transition:
+      opacity 0.4s ease,
+      transform 0.4s cubic-bezier(0.77, 0, 0.175, 1);
+  }
+
+  .mobile-menu--open .mobile-menu__socials-label,
+  .mobile-menu--open .mobile-menu__socials-links a,
+  .mobile-menu--open .mobile-menu__lang-toggle {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .mobile-menu--open .mobile-menu__socials-label {
+    transition-delay: 0.5s;
+  }
+  .mobile-menu--open .mobile-menu__socials-links a:nth-child(1) {
+    transition-delay: 0.57s;
+  }
+  .mobile-menu--open .mobile-menu__socials-links a:nth-child(2) {
+    transition-delay: 0.64s;
+  }
+  .mobile-menu--open .mobile-menu__lang-toggle {
+    transition-delay: 0.71s;
+  }
+
+  .mobile-menu__socials-label {
+    color: #2b9dad;
+    font-size: 0.95rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+  }
+
+  .mobile-menu__socials-links {
+    display: flex;
+    align-items: center;
+    gap: 1.75rem;
+  }
+
+  .mobile-menu__socials-links a {
+    color: #222;
+    text-decoration: none;
+    font-size: 1.15rem;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+  }
+
+  .mobile-menu__lang-toggle {
+    font-size: 1.05rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mobile-menu,
+  .mobile-menu--open,
+  .mobile-menu__item-inner,
+  .mobile-menu__socials-label,
+  .mobile-menu__socials-links a,
+  .mobile-menu__lang-toggle,
+  .header__menu-toggle-label,
+  .header__menu-toggle-icon {
+    transition: none;
+  }
+
+  .mobile-menu--open .mobile-menu__item-inner,
+  .mobile-menu--open .mobile-menu__socials-label,
+  .mobile-menu--open .mobile-menu__socials-links a,
+  .mobile-menu--open .mobile-menu__lang-toggle {
+    transition-delay: 0s;
   }
 }
 

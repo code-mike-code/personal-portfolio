@@ -11,6 +11,11 @@ const GLOW = ['rgba(217, 106, 85, ', 'rgba(43, 157, 173, ', 'rgba(179, 173, 142,
 const FLASH_DURATION = 1.4;
 const FLASH_ATTACK = 0.18; // część czasu na narastanie
 
+// Powiększenie na hover (desktop) i docelowa średnica po tapnięciu (mobile)
+const HOVER_SCALE = 1.3;
+const TAP_DIAMETER_VW = 0.45;
+const TAP_COLLAPSE_MS = 3000;
+
 const prefersReducedMotion = () =>
   typeof window !== 'undefined' &&
   window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -20,6 +25,10 @@ export default function RepoOrbs({ repos }) {
   const orbRefs = useRef([]);
   const orbsRef = useRef([]);
   const [staticMode] = useState(prefersReducedMotion);
+  // Kula rozwinięta tapnięciem (mobile): stan do klasy CSS, ref do handlerów
+  const [expandedIndex, setExpandedIndex] = useState(-1);
+  const expandedRef = useRef(-1);
+  const collapseTimerRef = useRef(null);
 
   useEffect(() => {
     if (staticMode || !repos.length) return undefined;
@@ -32,11 +41,18 @@ export default function RepoOrbs({ repos }) {
       const base = isMobile
         ? 36 + Math.random() * 14
         : 68 + Math.random() * 36;
+      // Mobile: element ma od razu rozmiar rozwiniętej kuli (45vw), a stan
+      // spoczynkowy to skala <1. Downscale rastruje ostro; upscale małego
+      // layoutu dawał piksele na krawędzi po tapnięciu
+      const k = isMobile
+        ? Math.max(1, (window.innerWidth * TAP_DIAMETER_VW) / (base * 2))
+        : 1;
       const vx = (24 + Math.random() * 32) * (Math.random() < 0.5 ? -1 : 1);
       const vy = (24 + Math.random() * 32) * (Math.random() < 0.5 ? -1 : 1);
       return {
         el: orbRefs.current[i],
         base,
+        k,
         r: base,
         x: 0,
         y: 0,
@@ -48,6 +64,7 @@ export default function RepoOrbs({ repos }) {
         oscSpeed: 0.3 + Math.random() * 0.4,
         frozen: false,
         hoverT: 0,
+        targetScale: 1,
         glow: GLOW[i % GLOW.length],
         glowEl: orbRefs.current[i].querySelector('.repo-orb-glow'),
         flash: -1,
@@ -68,8 +85,8 @@ export default function RepoOrbs({ repos }) {
     });
 
     orbs.forEach((orb) => {
-      orb.el.style.width = `${orb.base * 2}px`;
-      orb.el.style.height = `${orb.base * 2}px`;
+      orb.el.style.width = `${orb.base * 2 * orb.k}px`;
+      orb.el.style.height = `${orb.base * 2 * orb.k}px`;
     });
 
     orbsRef.current = orbs;
@@ -83,9 +100,13 @@ export default function RepoOrbs({ repos }) {
       last = now;
       const t = now / 1000;
 
-      // Pulsowanie rozmiaru
+      // Pulsowanie rozmiaru + płynny wzrost do targetScale (hover/tap).
+      // Wzrost wchodzi do o.r, więc fizyka (zderzenia, ściany) widzi
+      // powiększoną kulę i sąsiadki są odpychane zamiast nachodzić
       orbs.forEach((o) => {
-        o.r = o.base * (1 + 0.12 * Math.sin(t * o.oscSpeed + o.phase));
+        o.hoverT += ((o.frozen ? 1 : 0) - o.hoverT) * Math.min(1, dt * 8);
+        const grow = 1 + (o.targetScale - 1) * o.hoverT;
+        o.r = o.base * (1 + 0.12 * Math.sin(t * o.oscSpeed + o.phase)) * grow;
       });
 
       // Ruch + odbicia od ścian
@@ -154,10 +175,13 @@ export default function RepoOrbs({ repos }) {
 
       // Render
       orbs.forEach((o) => {
-        // Płynne powiększenie na hover/focus (frozen) — lerp do 1 lub 0
-        o.hoverT += ((o.frozen ? 1 : 0) - o.hoverT) * Math.min(1, dt * 8);
-        const scale = (o.r / o.base) * (1 + 0.3 * o.hoverT);
-        o.el.style.transform = `translate3d(${o.x - o.base}px, ${o.y - o.base}px, 0) scale(${scale})`;
+        // Skala względem powiększonego layoutu (base*2*k) — środek kuli
+        // zostaje w (x, y), transform-origin domyślnie 50% 50%
+        const scale = o.r / (o.base * o.k);
+        o.el.style.transform = `translate3d(${o.x - o.base * o.k}px, ${o.y - o.base * o.k}px, 0) scale(${scale})`;
+        // Kontr-skala dla tekstu w rozwiniętej kuli — tekst nie rośnie
+        // razem z transformem (ostry render, stały rozmiar)
+        o.el.style.setProperty('--orb-scale', scale.toFixed(4));
 
         // Poświata rozchodząca się po obwodzie od punktu uderzenia:
         // łuk conic-gradient rośnie wokół kuli, jasność wg obwiedni smoothstep
@@ -217,9 +241,58 @@ export default function RepoOrbs({ repos }) {
     };
   }, [repos, staticMode]);
 
+  // Timer zwijania nie może przeżyć odmontowania (np. zmiana języka)
+  useEffect(() => () => clearTimeout(collapseTimerRef.current), []);
+
+  const collapseOrb = () => {
+    clearTimeout(collapseTimerRef.current);
+    collapseTimerRef.current = null;
+    orbsRef.current.forEach((o) => {
+      o.frozen = false;
+      o.targetScale = 1;
+    });
+    expandedRef.current = -1;
+    setExpandedIndex(-1);
+  };
+
+  const expandOrb = (index) => {
+    clearTimeout(collapseTimerRef.current);
+    orbsRef.current.forEach((o, i) => {
+      o.frozen = i === index;
+      // Docelowa średnica 35vw — targetScale przelicza ją na mnożnik bazy
+      o.targetScale = i === index
+        ? Math.max(1, (window.innerWidth * TAP_DIAMETER_VW) / (o.base * 2))
+        : 1;
+    });
+    expandedRef.current = index;
+    setExpandedIndex(index);
+    collapseTimerRef.current = setTimeout(collapseOrb, TAP_COLLAPSE_MS);
+  };
+
   const freeze = (index, value) => {
     const orb = orbsRef.current[index];
-    if (orb) orb.frozen = value;
+    if (!orb) return;
+    // Blur rozwiniętej kuli (tap poza nią) = wcześniejsze zwinięcie
+    if (!value && expandedRef.current === index) {
+      collapseOrb();
+      return;
+    }
+    orb.frozen = value;
+    if (value && orb.targetScale === 1) orb.targetScale = HOVER_SCALE;
+    if (!value) orb.targetScale = 1;
+  };
+
+  const handleOrbClick = (event, index) => {
+    if (staticMode) return;
+    if (!window.matchMedia('(max-width: 900px)').matches) return;
+    if (expandedRef.current === index) {
+      // Drugi tap: nawigacja do repo (default) + natychmiastowe zwinięcie
+      collapseOrb();
+      return;
+    }
+    // Pierwszy tap: tylko podgląd — powiększenie i info zamiast nawigacji
+    event.preventDefault();
+    expandOrb(index);
   };
 
   return (
@@ -234,11 +307,12 @@ export default function RepoOrbs({ repos }) {
           href={repo.url}
           target="_blank"
           rel="noopener noreferrer"
-          className={`repo-orb ${PALETTE[index % PALETTE.length]}`}
+          className={`repo-orb ${PALETTE[index % PALETTE.length]} ${expandedIndex === index ? 'repo-orb--expanded' : ''}`}
           onMouseEnter={() => freeze(index, true)}
           onMouseLeave={() => freeze(index, false)}
           onFocus={() => freeze(index, true)}
           onBlur={() => freeze(index, false)}
+          onClick={(e) => handleOrbClick(e, index)}
         >
           <span className="repo-orb-glow" aria-hidden="true"></span>
           {/* Mobile/tablet: domyślnie ikona GitHuba, nazwa + technologia po hover/focus */}
@@ -247,10 +321,12 @@ export default function RepoOrbs({ repos }) {
               <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z" />
             </svg>
           </span>
-          <span className="repo-orb-name">{repo.name}</span>
-          {repo.primaryLanguage && (
-            <span className="repo-orb-lang">{repo.primaryLanguage.name}</span>
-          )}
+          <span className="repo-orb-label">
+            <span className="repo-orb-name">{repo.name}</span>
+            {repo.primaryLanguage && (
+              <span className="repo-orb-lang">{repo.primaryLanguage.name}</span>
+            )}
+          </span>
         </a>
       ))}
     </div>
