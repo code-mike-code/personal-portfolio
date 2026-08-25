@@ -39,30 +39,55 @@ const ProjectMedia = ({ project, index, isActive = true }) => {
   const videoSrc = isMobile
     ? project.thumbnailVideo || project.fullVideo
     : project.fullVideo || project.tabletVideo || project.thumbnailVideo;
+  const posterSrc = isMobile
+    ? project.thumbnailPoster || project.fullPoster
+    : project.fullPoster || project.thumbnailPoster;
+  const wrapRef = useRef(null);
   const videoRef = useRef(null);
+  // Sekcja w polu widzenia — wideo (kilka MB) dobiera się dopiero wtedy;
+  // poza viewportem widać tylko lekki poster
+  const [inView, setInView] = useState(false);
   // WCAG 2.2.2: użytkownik może zatrzymać ruch; przy reduced-motion start w pauzie
   const [paused, setPaused] = useState(prefersReducedMotion);
 
   useEffect(() => {
+    const el = wrapRef.current;
+    if (!el) return undefined;
+    if (typeof IntersectionObserver === 'undefined') {
+      setInView(true);
+      return undefined;
+    }
+    const io = new IntersectionObserver(
+      ([entry]) => setInView(entry.isIntersecting),
+      { rootMargin: '200px' }
+    );
+    io.observe(el);
+    return () => io.disconnect();
+  }, []);
+
+  useEffect(() => {
     const video = videoRef.current;
     if (!video) return;
-    if (isActive && !paused) {
+    if (isActive && inView && !paused) {
       video.play().catch(() => {});
     } else {
       video.pause();
     }
-  }, [isActive, paused]);
+  }, [isActive, inView, paused]);
 
   if (videoSrc) {
     return (
-      <div className="work-media-video-wrap">
+      <div className="work-media-video-wrap" ref={wrapRef}>
         <video
           ref={videoRef}
           src={videoSrc}
+          poster={posterSrc}
           muted
           loop
           playsInline
-          preload={isActive ? 'auto' : 'none'}
+          // Pełny plik ściągamy dopiero dla aktywnego wideo w viewport;
+          // reszta czeka (poster wystarcza wizualnie)
+          preload={isActive && inView ? 'metadata' : 'none'}
           className="work-media-video"
         />
         <button

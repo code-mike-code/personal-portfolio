@@ -9,6 +9,20 @@ import dragoPartnerDesktop from '../../assets/videos/drago-partner-desktop.mp4';
 import cudownaDoniczkaMobile from '../../assets/videos/cudowna-doniczka-mobile.mp4';
 import cudownaDoniczkaDesktop from '../../assets/videos/cudowna-doniczka-desktop.mp4';
 
+// Postery (pierwsza klatka wideo) — pokazywane natychmiast; wideo dobiera się
+// dopiero gdy sekcja wjedzie w viewport (patrz WorkShowcase). Bez posterów
+// aktywne wideo z preload="auto" ściągało 4–6 MB od razu na starcie strony.
+import corDentMobilePoster from '../../assets/videos/posters/cor-dent-mobile.webp';
+import corDentDesktopPoster from '../../assets/videos/posters/cor-dent-desktop.webp';
+import vitalisCardioMobilePoster from '../../assets/videos/posters/vitalis-cardio-mobile.webp';
+import vitalisCardioDesktopPoster from '../../assets/videos/posters/vitalis-cardio-desktop.webp';
+import pewnyLeasingMobilePoster from '../../assets/videos/posters/pewny-leasing24-mobile.webp';
+import pewnyLeasingDesktopPoster from '../../assets/videos/posters/pewny-leasing24-desktop.webp';
+import dragoPartnerMobilePoster from '../../assets/videos/posters/drago-partner-mobile.webp';
+import dragoPartnerDesktopPoster from '../../assets/videos/posters/drago-partner-desktop.webp';
+import cudownaDoniczkaMobilePoster from '../../assets/videos/posters/cudowna-doniczka-mobile.webp';
+import cudownaDoniczkaDesktopPoster from '../../assets/videos/posters/cudowna-doniczka-desktop.webp';
+
 // Tylko dane nietłumaczalne — opisy żyją w src/i18n/locales/*.json
 // pod kluczami work.projects.<id>.short / .full
 export const privateProjects = [
@@ -19,6 +33,8 @@ export const privateProjects = [
     thumbnailVideo: vitalisCardioMobile,
     tabletVideo: null,
     fullVideo: vitalisCardioDesktop,
+    thumbnailPoster: vitalisCardioMobilePoster,
+    fullPoster: vitalisCardioDesktopPoster,
     techStack: ["React", "Tailwind CSS", "Vite", "SEO"]
   },
   {
@@ -28,6 +44,8 @@ export const privateProjects = [
     thumbnailVideo: pewnyLeasingMobile,
     tabletVideo: null,
     fullVideo: pewnyLeasingDesktop,
+    thumbnailPoster: pewnyLeasingMobilePoster,
+    fullPoster: pewnyLeasingDesktopPoster,
     techStack: ["React", "GSAP", "Responsive Design", "SEO"]
   },
   {
@@ -37,6 +55,8 @@ export const privateProjects = [
     thumbnailVideo: dragoPartnerMobile,
     tabletVideo: null,
     fullVideo: dragoPartnerDesktop,
+    thumbnailPoster: dragoPartnerMobilePoster,
+    fullPoster: dragoPartnerDesktopPoster,
     techStack: ["React", "Responsive Design", "SEO", "Performance"]
   },
   {
@@ -46,6 +66,8 @@ export const privateProjects = [
     thumbnailVideo: corDentMobile,
     tabletVideo: null,
     fullVideo: corDentDesktop,
+    thumbnailPoster: corDentMobilePoster,
+    fullPoster: corDentDesktopPoster,
     techStack: ["React", "TypeScript", "Vite", "Tailwind CSS", "shadcn/ui"]
   },
   {
@@ -55,6 +77,8 @@ export const privateProjects = [
     thumbnailVideo: cudownaDoniczkaMobile,
     tabletVideo: null,
     fullVideo: cudownaDoniczkaDesktop,
+    thumbnailPoster: cudownaDoniczkaMobilePoster,
+    fullPoster: cudownaDoniczkaDesktopPoster,
     techStack: ["React", "GSAP", "Responsive Design", "E-commerce"]
   }
 ];
