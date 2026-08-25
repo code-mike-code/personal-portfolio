@@ -11,9 +11,9 @@ html, body {
 body {
   margin: 0;
   min-height: 100vh;
-  background-color: #F5F5DC; /* Ecru */
+  background-color: var(--color-ecru); /* Ecru */
   font-family: 'Inter', sans-serif;
-  color: #222;
+  color: var(--color-ink);
   position: relative;
   /* clip (nie hidden): ucina poziomy overflow animacji wjazdowych
      (np. panel info work-showcase startuje z x:+12vw) bez tworzenia
@@ -52,11 +52,11 @@ body::before {
   left: 25vw;
   width: 1px;
   height: 100vh;
-  background: #b3ad8e;
+  background: var(--color-grid);
   box-shadow:
-    25vw 0 0 0 #b3ad8e,
-    50vw 0 0 0 #b3ad8e,
-    75vw 0 0 0 #b3ad8e;
+    25vw 0 0 0 var(--color-grid),
+    50vw 0 0 0 var(--color-grid),
+    75vw 0 0 0 var(--color-grid);
   opacity: 0.7;
   z-index: -1;
 }
@@ -67,7 +67,7 @@ body::after {
   left: 0;
   width: 100vw;
   height: 0;
-  border-top: 1.5px solid #b3ad8e;
+  border-top: 1.5px solid var(--color-grid);
   opacity: 0.7;
   z-index: 10000;
 }
@@ -91,7 +91,7 @@ header {
 }
 
 footer {
-  background: #111;
+  background: var(--color-ink-strong);
   color: #fff;
   text-align: center;
   padding: 2rem 0 1rem 0;
@@ -138,7 +138,7 @@ body.no-scroll {
   body::before {
     left: 50%;
     width: 1px;
-    background: #b3ad8e;
+    background: var(--color-grid);
     box-shadow: none;
   }
 
@@ -166,11 +166,11 @@ body.no-scroll {
   }
 
   .section-divider-dot--teal {
-    background: #2b9dad;
+    background: var(--color-teal);
   }
 
   .section-divider-dot--coral {
-    background: #d96a55;
+    background: var(--color-coral);
   }
 }
 /* Accessibility utilities */
@@ -192,8 +192,8 @@ body.no-scroll {
   left: 1rem;
   z-index: 10000;
   padding: 0.75rem 1.25rem;
-  background: #222;
-  color: #F5F5DC;
+  background: var(--color-ink);
+  color: var(--color-ecru);
   border-radius: 4px;
   text-decoration: none;
   transition: top 0.2s ease;

@@ -41,7 +41,7 @@
   display: none;
   width: 42%;
   height: 42%;
-  color: #222;
+  color: var(--color-ink);
 }
 
 .repo-orb-icon svg {
@@ -89,7 +89,7 @@
 .repo-orb-name {
   font-size: 0.95rem;
   font-weight: 600;
-  color: #222;
+  color: var(--color-ink);
   max-width: 100%;
   overflow-wrap: break-word;
 }
@@ -112,27 +112,27 @@
 
 .orb-olive {
   background: rgba(179, 173, 142, 0.22);
-  border: 1px solid #b3ad8e;
+  border: 1px solid var(--color-grid);
 }
 
 /* Celowo :focus-visible (nie :focus) — tap na mobile zostawia focus na kuli
    i po zwinięciu wisiałaby w ciemnym stanie */
 .repo-orb:focus-visible,
 .repo-orb--expanded {
-  background: #222;
-  border-color: #222;
+  background: var(--color-ink);
+  border-color: var(--color-ink);
   /* Powiększona kula ponad sąsiadkami */
   z-index: 2;
 }
 
 .repo-orb:focus-visible .repo-orb-name,
 .repo-orb--expanded .repo-orb-name {
-  color: #f5f5dc;
+  color: var(--color-ecru);
 }
 
 .repo-orb:focus-visible .repo-orb-lang,
 .repo-orb--expanded .repo-orb-lang {
-  color: #b3ad8e;
+  color: var(--color-grid);
 }
 
 /* Hover tylko dla urządzeń z prawdziwym kursorem — na dotyku przeglądarka
@@ -140,17 +140,17 @@
    wyglądu po zwinięciu */
 @media (hover: hover) {
   .repo-orb:hover {
-    background: #222;
-    border-color: #222;
+    background: var(--color-ink);
+    border-color: var(--color-ink);
     z-index: 2;
   }
 
   .repo-orb:hover .repo-orb-name {
-    color: #f5f5dc;
+    color: var(--color-ecru);
   }
 
   .repo-orb:hover .repo-orb-lang {
-    color: #b3ad8e;
+    color: var(--color-grid);
   }
 }
 

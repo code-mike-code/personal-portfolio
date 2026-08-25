@@ -84,7 +84,7 @@
   letter-spacing: -0.01em;
 }
 
-/* Placeholder gradients — paleta koral (#d96a55) + morski (#2b9dad) na tle ecru */
+/* Placeholder gradients — paleta koral (var(--color-coral)) + morski (var(--color-teal)) na tle ecru */
 .work-media-placeholder-0 {
   background: linear-gradient(135deg, #eda28f 0%, #f2e9d5 50%, #8ec7d1 100%);
 }
@@ -154,7 +154,7 @@
   align-items: baseline;
   gap: 0.4rem;
   margin-bottom: clamp(1rem, 3vh, 2rem);
-  color: #222;
+  color: var(--color-ink);
 }
 
 .work-counter-current {
@@ -173,7 +173,7 @@
   font-size: clamp(1.8rem, 3vw, 2.8rem);
   font-weight: 600;
   letter-spacing: -0.01em;
-  color: #222;
+  color: var(--color-ink);
   margin: 0;
 }
 
@@ -214,10 +214,10 @@
   align-items: center;
   justify-content: center;
   padding: 0.7rem 1.6rem;
-  border: 1px solid #222;
+  border: 1px solid var(--color-ink);
   border-radius: 999px;
   background: transparent;
-  color: #222;
+  color: var(--color-ink);
   font-family: inherit;
   font-size: 1rem;
   font-weight: 500;
@@ -228,19 +228,19 @@
 
 .work-btn:hover,
 .work-btn:focus-visible {
-  background: #222;
-  color: #f5f5dc;
+  background: var(--color-ink);
+  color: var(--color-ecru);
 }
 
 .work-btn-details {
-  border-color: #b3ad8e;
+  border-color: var(--color-grid);
   color: #6b654a;
 }
 
 .work-btn-details:hover,
 .work-btn-details:focus-visible {
-  background: #b3ad8e;
-  border-color: #b3ad8e;
+  background: var(--color-grid);
+  border-color: var(--color-grid);
   color: #fff;
 }
 
@@ -371,7 +371,7 @@
   border: none;
   border-radius: 50%;
   background: rgba(34, 34, 34, 0.75);
-  color: #F5F5DC;
+  color: var(--color-ecru);
   font-size: 0.9rem;
   line-height: 1;
   cursor: pointer;
@@ -384,6 +384,6 @@
 .work-media-pause:hover,
 .work-media-pause:focus-visible {
   background: rgba(217, 106, 85, 0.9);
-  outline: 2px solid #F5F5DC;
+  outline: 2px solid var(--color-ecru);
   outline-offset: 2px;
 }

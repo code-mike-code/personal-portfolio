@@ -15,7 +15,7 @@
   font-size: var(--fs-section-subtitle);
   font-weight: 600;
   letter-spacing: -0.02em;
-  color: #222;
+  color: var(--color-ink);
   margin: 0;
 }
 
@@ -64,7 +64,7 @@
   height: 48px;
 }
 
-/* Blob-ikony w palecie koral (#d96a55) + morski (#2b9dad) */
+/* Blob-ikony w palecie koral (var(--color-coral)) + morski (var(--color-teal)) */
 .blob-warm {
   background: radial-gradient(circle at 40% 35%, rgba(217, 106, 85, 0.55), rgba(43, 157, 173, 0.22) 60%, transparent 75%);
 }
@@ -86,7 +86,7 @@
 .work-different-heading h3 {
   font-size: clamp(1.4rem, 2.5vw, 1.9rem);
   font-weight: 600;
-  color: #222;
+  color: var(--color-ink);
   margin: 0 0 0.75rem 0;
 }
 
@@ -121,7 +121,7 @@
 
 .work-different-tag {
   padding: 0.35rem 0.9rem;
-  border: 1px solid #b3ad8e;
+  border: 1px solid var(--color-grid);
   border-radius: 999px;
   font-size: 0.9rem;
   color: #6b654a;

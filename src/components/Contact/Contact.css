@@ -36,7 +36,7 @@
 .contact-title {
   font-size: 4.4rem;
   font-weight: 600;
-  color: #222;
+  color: var(--color-ink);
   display: block;
   letter-spacing: -0.01em;
   line-height: 1.1;
@@ -63,7 +63,7 @@
 
 .contact-form label {
   font-size: 1.1rem;
-  color: #222;
+  color: var(--color-ink);
   font-weight: 500;
   margin-bottom: 0.5rem;
 }
@@ -114,11 +114,11 @@
 
 .contact-submit {
   font-size: 2rem;
-  color: #111;
+  color: var(--color-ink-strong);
   background: transparent;
   border: none;
   border-radius: 8px;
-  border-bottom: 2px solid #111;
+  border-bottom: 2px solid var(--color-ink-strong);
   font-weight: 500;
   cursor: none;
   align-self: flex-start;
@@ -135,7 +135,7 @@
   color: #fff;
   border-bottom: none;
   background: rgba(60, 60, 60, 0.97);
-  box-shadow: -2px 5px 0px 0px #111;
+  box-shadow: -2px 5px 0px 0px var(--color-ink-strong);
 }
 
 
@@ -144,7 +144,7 @@
   background: #e74c3c !important;
   color: #fff !important;
   border-bottom: none !important;
-  box-shadow: -2px 5px 0px 0px #111;
+  box-shadow: -2px 5px 0px 0px var(--color-ink-strong);
 }
 
 .contact-submit.accent-lit::after {

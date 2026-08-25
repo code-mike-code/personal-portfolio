@@ -8,7 +8,7 @@
   pointer-events: none;
   border-radius: inherit;
   overflow: hidden;
-  background: #f5f5dc;
+  background: var(--color-ecru);
 }
 
 .animated-bg-gradient {
@@ -19,11 +19,11 @@
   height: 100%;
   background: linear-gradient(
     135deg,
-    #f5f5dc 0%,
+    var(--color-ecru) 0%,
     #e8e6d0 25%,
-    #f5f5dc 50%,
+    var(--color-ecru) 50%,
     #e8e6d0 75%,
-    #f5f5dc 100%
+    var(--color-ecru) 100%
   );
   background-size: 400% 400%;
   animation: bgShift 8s ease infinite;
@@ -62,7 +62,7 @@
 .particle-2 {
   width: 332px;
   height: 332px;
-  background: #b3ad8e;
+  background: var(--color-grid);
   top: 60%;
   left: 80%;
   animation: float 7s ease-in-out infinite 1s;

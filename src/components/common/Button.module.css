@@ -21,15 +21,15 @@
 }
 
 .primary {
-  background: #222;
+  background: var(--color-ink);
   border: 2px solid transparent;
-  color: #f5f5dc;
+  color: var(--color-ecru);
 }
 
 .secondary {
   background: transparent;
-  color: #222;
-  border: 2px solid #222;
+  color: var(--color-ink);
+  border: 2px solid var(--color-ink);
 }
 
 .btn::before {
@@ -48,11 +48,11 @@
 }
 
 .primary::before {
-  background: #f5f5dc;
+  background: var(--color-ecru);
 }
 
 .secondary::before {
-  background: #222;
+  background: var(--color-ink);
 }
 
 .btn:hover::before,
@@ -62,13 +62,13 @@
 
 .primary:hover,
 .primary:focus {
-  color: #222;
-  border: 2px solid #222;
+  color: var(--color-ink);
+  border: 2px solid var(--color-ink);
 }
 
 .secondary:hover,
 .secondary:focus {
-  color: #f5f5dc;
+  color: var(--color-ecru);
 }
 
 .btn:hover,
