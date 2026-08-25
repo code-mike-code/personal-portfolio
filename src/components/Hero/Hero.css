@@ -1,7 +1,9 @@
 /* Hero section layout */
 
 .hero-section {
-  min-height: 100vh;
+  /* svh (mały viewport) zamiast vh — na mobile pasek adresu Safari nie chowa
+     już treści pod dolną krawędzią */
+  min-height: 100svh;
   width: 100vw;
   display: flex;
   flex-direction: column;
@@ -14,8 +16,8 @@
   display: flex;
   flex-direction: row;
   width: 100vw;
-  height: 100vh;
-  min-height: 60vh;
+  height: 100svh;
+  min-height: 60svh;
   align-items: center;
   padding: 0 2rem;
   justify-content: center;
@@ -149,7 +151,9 @@
     justify-content: flex-start;
     height: auto;
     min-height: 100svh;
-    padding: calc(80px + 4vh) 1rem 6vh 1rem;
+    /* Mniejszy górny padding — treść (nagłówek/orbita/przyciski) wyżej,
+       dalej od dolnego paska przeglądarki. svh w min-height dba o resztę */
+    padding: calc(72px + 1vh) 1rem 4vh 1rem;
   }
 
   .hero-title-container.hero-title-container--left,

@@ -108,7 +108,9 @@ footer {
 } */
 
 section {
-  min-height: 100vh;
+  /* svh = mały (gwarantowanie widoczny) viewport — na mobile treść nie chowa
+     się pod paskiem przeglądarki; na desktopie svh == vh */
+  min-height: 100svh;
   width: 100vw;
   box-sizing: border-box;
   display: flex;
@@ -117,7 +119,7 @@ section {
 }
 
 .contact-section {
-  min-height: 100vh;
+  min-height: 100svh;
   width: 100vw;
   box-sizing: border-box;
   display: flex;

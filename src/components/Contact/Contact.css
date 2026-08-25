@@ -1,7 +1,7 @@
 /* Contact section layout */
 
 .contact-section {
-  height: 100vh;
+  height: 100svh;
   width: 100vw;
   box-sizing: border-box;
   background: transparent;
@@ -9,7 +9,7 @@
 }
 
 .contact-container {
-  height: 90vh;
+  height: 90svh;
     display: flex;
     flex-direction: row;
     padding: 3rem 2rem;
@@ -17,7 +17,7 @@
 
 .contact-left {
   width: 50%;
-  min-height: 100vh;
+  min-height: 100svh;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -46,7 +46,7 @@
 
 .contact-right {
   width: 50%;
-  min-height: 100vh;
+  min-height: 100svh;
   display: flex;
   align-items: start;
   background: transparent;
@@ -197,7 +197,13 @@
 
 @media (max-width: 900px) {
   .contact-section {
-    height: 80vh;
+    /* Było sztywne height:80vh + justify-content:flex-end (z global.css) —
+       na iPhone dolny pasek Safari wpychał treść, a footer nachodził na
+       przycisk wysyłania. Teraz wysokość z treści, min. pełny WIDOCZNY ekran
+       (svh), zawartość wyśrodkowana; footer ląduje pod spodem z marginesem */
+    height: auto;
+    min-height: 100svh;
+    justify-content: center;
     width: 100vw;
     box-sizing: border-box;
     background: transparent;
