@@ -73,7 +73,10 @@
 }
 
 .hero-title {
-  font-size: clamp(3rem, 8vw, 6.75rem);
+  /* Mniejszy niż wcześniej (było 8vw/6.75rem): dłuższa linia PL "Nowoczesne
+     strony" nachodziła na orbitę przy 75vw. Ten rozmiar utrzymuje nagłówek
+     na lewo od orbity na całym zakresie desktopu (>900px). */
+  font-size: clamp(3rem, 5.4vw, 5rem);
   font-weight: 600;
   font-stretch: 85%;
   color: var(--color-ink);
