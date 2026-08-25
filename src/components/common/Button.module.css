@@ -41,7 +41,10 @@
   height: 100%;
   z-index: -1;
   transition: width 0.6s cubic-bezier(0.4, 2, 0.6, 1);
-  border-radius: 2rem;
+  /* ::before wypełnia padding-box (wsunięty o 2px border), więc jego promień
+     musi być mniejszy o szerokość bordera — inaczej łuki wypełnienia nie są
+     koncentryczne z zaokrągleniem bordera (2rem − 2px = wewnętrzny promień) */
+  border-radius: calc(2rem - 2px);
 }
 
 .primary::before {
