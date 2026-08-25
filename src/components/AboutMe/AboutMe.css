@@ -377,20 +377,26 @@
     white-space: normal;
   }
 
+  /* column-count (masonry) balansował po wysokości — 2 wysokie zdjęcia w
+     prawej kolumnie równały wysokość 4 niższych po lewej (rozkład 4/2, część
+     wypadała z kadru). Grid 2-kolumnowy = deterministycznie 3 lewo / 3 prawo,
+     wszystkie widoczne */
   .about-gallery {
-    column-count: 2;
+    column-count: initial;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(1.5rem, 3vw, 2.5rem);
+    align-items: start;
+  }
+
+  .about-gallery-item {
+    margin: 0;
   }
 }
 
 @media (max-width: 600px) {
-  /* 2 kolumny zamiast 1 — mniejsze zdjęcia */
   .about-gallery {
-    column-count: 2;
-    column-gap: 1rem;
-  }
-
-  .about-gallery-item {
-    margin-bottom: 1rem;
+    gap: 1rem;
   }
 
   .about-gallery-item figcaption {
