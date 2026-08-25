@@ -133,6 +133,13 @@ body.no-scroll .bottom-nav {
   color: #F5F5DC;
 }
 
+/* Aktywny język na ciemnym pasku menu — jasny koral. Domyślny (ciemny)
+   #b8442f jest pod kontrast na ecru w headerze, ale na czerni menu dawałby
+   3.9:1; #d96a55 na ~czerni = 5.7:1 (WCAG AA). */
+.bottom-nav__menu .lang-toggle__option--active {
+  color: #d96a55;
+}
+
 .bottom-nav--over-banner .bottom-nav__lang-toggle {
   color: #222;
 }

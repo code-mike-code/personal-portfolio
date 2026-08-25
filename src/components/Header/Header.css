@@ -181,7 +181,8 @@
    z rolowaniem labela */
 .header__menu-toggle-icon {
   display: inline-block;
-  color: #2b9dad;
+  /* Ciemniejszy morski — tekst/glif na ecru: #2b9dad dawał 2.91:1 (< WCAG AA 4.5) */
+  color: #17727d;
   font-weight: 700;
   font-size: 1.2em;
   transition: transform 0.45s cubic-bezier(0.77, 0, 0.175, 1);
@@ -328,7 +329,8 @@
     font-weight: 600;
     letter-spacing: 0;
     line-height: 0;
-    color: #2b9dad;
+    /* morski na ecru — WCAG AA (było #2b9dad = 2.91:1) */
+    color: #17727d;
     margin-left: 0.4em;
     vertical-align: 1.6em;
   }
@@ -370,7 +372,8 @@
   }
 
   .mobile-menu__socials-label {
-    color: #2b9dad;
+    /* morski na ecru — WCAG AA (było #2b9dad = 2.91:1) */
+    color: #17727d;
     font-size: 0.95rem;
     font-weight: 600;
     letter-spacing: 0.04em;
