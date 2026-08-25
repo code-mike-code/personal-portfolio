@@ -349,10 +349,10 @@
 @media (max-width: 600px) {
   .work-showcase-media {
     aspect-ratio: 400 / 866;
-    /* 20svh (było 24) — przy 24svh wideo miało ~52% wysokości ekranu i razem
-       z panelem info + rezerwą na BottomNav przekraczało 100svh, przez co
-       centrowana treść ucinała górną krawędź wideo */
-    width: min(85vw, 20svh);
+    /* 22svh — kompromis: wideo dostatecznie duże, ale treść (wideo + panel
+       info 36svh + rezerwa na BottomNav) mieści się w 100svh bez ucinania
+       górnej krawędzi wideo */
+    width: min(85vw, 22svh);
   }
 
   .work-showcase-static .work-media-card {
@@ -366,13 +366,19 @@
     padding-bottom: 4rem;
   }
 
+  /* Panel niższy niż na tablecie (36 zamiast 40svh) — zwalnia pion na wyższą
+     kartę wideo (22svh) bez ucinania jej górnej krawędzi */
+  .work-showcase-info {
+    height: 36svh;
+  }
+
   /* Numer projektu w lewej kolumnie gridu, nazwa w prawej — jeden rząd,
-     rozdzielone środkową linią gridu (50vw). Oszczędza pion */
+     rozdzielone środkową linią gridu (50vw). column-gap odsuwa oba od linii */
   .work-info-head {
     display: grid;
     grid-template-columns: 1fr 1fr;
     align-items: baseline;
-    column-gap: 3vw;
+    column-gap: 8vw;
   }
 
   .work-counter {
