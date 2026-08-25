@@ -196,23 +196,31 @@
 }
 
 @media (max-width: 900px) {
-  .contact-section {
+  section.contact-section {
     /* Było sztywne height:80vh + justify-content:flex-end (z global.css) —
        na iPhone dolny pasek Safari wpychał treść, a footer nachodził na
        przycisk wysyłania. Teraz wysokość z treści, min. pełny WIDOCZNY ekran
-       (svh), zawartość wyśrodkowana; footer ląduje pod spodem z marginesem */
+       (svh), zawartość od góry; footer odsunięty marginesem */
     height: auto;
     min-height: 100svh;
-    justify-content: center;
+    /* selektor section.contact-section (wyższa specyficzność) bije flex-end
+       z global.css — inaczej formularz był przyklejany do dołu sekcji */
+    justify-content: flex-start;
     width: 100vw;
     box-sizing: border-box;
     background: transparent;
-    margin-bottom: 2rem;
+    /* footer odsunięty od sekcji kontakt, żeby (z dolnym paskiem Safari)
+       nie nachodził na przycisk wysyłania */
+    margin-bottom: 6rem;
   }
   .contact-container {
+    /* height z treści — bazowe 90svh (desktop) sztywno rozpychało i wpychało
+       submit pod pasek/footer */
+    height: auto;
     flex-direction: column;
-    padding: 3rem 1rem 5rem 1rem;
+    padding: 2rem 1rem 1.5rem 1rem;
     align-items: center;
+    gap: 0.5rem;
   }
   .contact-left, .contact-right {
     width: 100%;
@@ -230,15 +238,18 @@
   .contact-form {
     width: 100%;
     max-width: 500px;
+    gap: 1.2rem;
+    margin: 12px 0;
   }
   .contact-form input,
   .contact-form select,
   .contact-form textarea {
-    font-size: 1.5rem;
+    font-size: 1.4rem;
+    margin-bottom: 0.6rem;
   }
   .contact-form textarea {
-    min-height: 80px;
-}
+    min-height: 70px;
+  }
 }
 /* Honeypot antyspamowy — poza ekranem, niedostępny dla ludzi */
 .contact-hp {
