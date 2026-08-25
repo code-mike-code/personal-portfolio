@@ -304,12 +304,15 @@
 
   .work-info-panel {
     grid-template-columns: 1fr;
+    /* Rzędy do treści (nie 1fr) — inaczej elastyczne tory rozpychały duże
+       puste przerwy między nr/tytułem, przyciskami i opisem */
+    grid-template-rows: auto auto auto;
     grid-template-areas:
       'head'
       'actions'
       'desc';
     align-content: start;
-    row-gap: 1.25rem;
+    row-gap: 1.5rem;
   }
 
   .work-info-head {
@@ -351,6 +354,45 @@
 
   .work-showcase-static .work-media-card {
     aspect-ratio: 400 / 866;
+  }
+
+  /* Fixed BottomNav (48px + 20px offset) zasłaniał ostatnie linie opisu —
+     rezerwa na dole sekcji. Treść pinowana jest centrowana, więc padding
+     unosi ją nad pasek */
+  .work-showcase-inner {
+    padding-bottom: 5.5rem;
+  }
+
+  /* Numer projektu w lewej kolumnie gridu, nazwa w prawej — jeden rząd,
+     rozdzielone środkową linią gridu (50vw). Oszczędza pion */
+  .work-info-head {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: baseline;
+    column-gap: 3vw;
+  }
+
+  .work-counter {
+    justify-self: end;
+    margin-bottom: 0;
+  }
+
+  .work-project-title {
+    justify-self: start;
+    font-size: clamp(1.5rem, 6vw, 2rem);
+  }
+
+  /* Przyciski: równa szerokość, podział dokładnie na środkowej linii gridu */
+  .work-actions {
+    flex-wrap: nowrap;
+    justify-content: stretch;
+    gap: 4vw;
+  }
+
+  .work-actions .work-btn {
+    flex: 1 1 0;
+    min-width: 0;
+    padding-inline: 0.5rem;
   }
 }
 
