@@ -349,7 +349,10 @@
 @media (max-width: 600px) {
   .work-showcase-media {
     aspect-ratio: 400 / 866;
-    width: min(85vw, 24svh);
+    /* 20svh (było 24) — przy 24svh wideo miało ~52% wysokości ekranu i razem
+       z panelem info + rezerwą na BottomNav przekraczało 100svh, przez co
+       centrowana treść ucinała górną krawędź wideo */
+    width: min(85vw, 20svh);
   }
 
   .work-showcase-static .work-media-card {
@@ -360,7 +363,7 @@
      rezerwa na dole sekcji. Treść pinowana jest centrowana, więc padding
      unosi ją nad pasek */
   .work-showcase-inner {
-    padding-bottom: 5.5rem;
+    padding-bottom: 4rem;
   }
 
   /* Numer projektu w lewej kolumnie gridu, nazwa w prawej — jeden rząd,
