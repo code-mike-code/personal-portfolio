@@ -96,7 +96,7 @@
 
 .repo-orb-lang {
   font-size: 0.75rem;
-  color: #6b654a;
+  color: var(--color-muted);
 }
 
 /* Paleta koral / morski / ecru */

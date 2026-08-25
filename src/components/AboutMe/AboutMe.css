@@ -162,7 +162,7 @@
 
 .about-stat-label {
   font-size: 1rem;
-  color: #6b654a;
+  color: var(--color-muted);
 }
 
 /* --- Personal interests ---

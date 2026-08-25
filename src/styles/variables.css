@@ -11,6 +11,7 @@
   --color-coral: #d96a55;       /* koralowy akcent — tła, kropki (dekoracja) */
   --color-teal-ink: #17727d;    /* morski jako TEKST na ecru — WCAG AA (5.07:1) */
   --color-coral-ink: #b8442f;   /* koral jako TEKST na ecru — WCAG AA (4.86:1) */
+  --color-muted: #6b654a;       /* wyciszony tekst (liczniki, tagi, etykiety) — 5.29:1 na ecru */
 
   /* Fluid typography — wspólna skala dla nagłówków sekcji.
      Jedna zmienna = identyczny rozmiar we wszystkich sekcjach na każdej szerokości. */
