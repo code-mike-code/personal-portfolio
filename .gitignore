@@ -17,3 +17,4 @@ node_modules/
 ngrok
 # local docs
 docs/
+.claude/
