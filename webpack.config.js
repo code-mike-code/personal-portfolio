@@ -64,7 +64,7 @@ module.exports = (env, argv) => {
         // CSP tylko w produkcji — dev-server (HMR) wymaga eval i połączeń ws:,
         // które produkcyjna polityka słusznie blokuje
         cspMeta: isProd
-          ? `<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: https://www.googletagmanager.com https://*.google-analytics.com; media-src 'self'; connect-src 'self' https://api.github.com https://api.emailjs.com https://*.google-analytics.com; object-src 'none'; base-uri 'self'">`
+          ? `<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: https://www.googletagmanager.com https://*.google-analytics.com; media-src 'self'; connect-src 'self' https://api.github.com https://*.google-analytics.com; object-src 'none'; base-uri 'self'">`
           : '',
       }),
       new CopyPlugin({
@@ -76,9 +76,6 @@ module.exports = (env, argv) => {
         ],
       }),
       new webpack.DefinePlugin({
-        'process.env.REACT_APP_EMAILJS_SERVICE_ID': JSON.stringify(process.env.REACT_APP_EMAILJS_SERVICE_ID),
-        'process.env.REACT_APP_EMAILJS_TEMPLATE_ID': JSON.stringify(process.env.REACT_APP_EMAILJS_TEMPLATE_ID),
-        'process.env.REACT_APP_EMAILJS_PUBLIC_KEY': JSON.stringify(process.env.REACT_APP_EMAILJS_PUBLIC_KEY),
         'process.env.REACT_APP_GITHUB_USERNAME': JSON.stringify(process.env.REACT_APP_GITHUB_USERNAME),
         'process.env.REACT_APP_GA_MEASUREMENT_ID': JSON.stringify(process.env.REACT_APP_GA_MEASUREMENT_ID),
       }),

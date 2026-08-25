@@ -2,8 +2,10 @@ import React, { useEffect, useState, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import './Contact.css';
 import '../Hero/Hero.css';
-import emailjs from '@emailjs/browser';
 import AnimatedHeadlinePart from '../common/AnimatedHeadlinePart';
+
+// Endpoint po stronie hostingu (hostido/PHP) — mail idzie bezpośrednio na skrzynkę
+const CONTACT_ENDPOINT = '/contact.php';
 
 export default function Contact() {
   const { t } = useTranslation();
@@ -40,11 +42,6 @@ export default function Contact() {
     setSending(true);
     setStatus(null);
 
-    // Get credentials from environment variables
-    const SERVICE_ID = process.env.REACT_APP_EMAILJS_SERVICE_ID;
-    const TEMPLATE_ID = process.env.REACT_APP_EMAILJS_TEMPLATE_ID;
-    const PUBLIC_KEY = process.env.REACT_APP_EMAILJS_PUBLIC_KEY;
-
     // Honeypot: pole niewidoczne dla ludzi — wypełnione tylko przez boty.
     // Cichy "sukces" nie zdradza botowi, że został odfiltrowany.
     if (formRef.current.elements.website?.value) {
@@ -55,7 +52,12 @@ export default function Contact() {
     }
 
     try {
-      await emailjs.sendForm(SERVICE_ID, TEMPLATE_ID, formRef.current, PUBLIC_KEY);
+      const res = await fetch(CONTACT_ENDPOINT, {
+        method: 'POST',
+        body: new FormData(formRef.current),
+      });
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok || !data.ok) throw new Error(data.error || `HTTP ${res.status}`);
       setStatus({ ok: true, message: t('contact.form.success') });
       formRef.current.reset();
     } catch (err) {
