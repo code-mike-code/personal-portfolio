@@ -6,28 +6,40 @@ export default function PolicyContentEn() {
     <>
       <h1>Privacy & Cookies Policy</h1>
       <p>
-        <strong>devMike.pl</strong>
+        <strong>michalmajewski.dev</strong>
       </p>
-      <p>Effective date: 29 November 2025</p>
+      <p>Effective date: 25 August 2026</p>
 
       <hr />
 
       <h2>1. Personal Data Controller</h2>
       <p>
         The controller of personal data processed on the website{' '}
-        <strong>devMike.pl</strong> (hereinafter: the &quot;Website&quot;) is a
-        natural person who owns the website.
+        <strong>michalmajewski.dev</strong> (hereinafter: the
+        &quot;Website&quot;) is:
+      </p>
+      <p>
+        <strong>Michał Majewski</strong>
+        <br />
+        operating as unregistered business activity (Polish: działalność
+        nierejestrowana)
+        <br />
+        ul. Gen. Kazimierza Pułaskiego 44/25
+        <br />
+        40-276 Katowice, Poland
       </p>
       <p>
         <strong>Controller contact details:</strong>
       </p>
       <ul>
-        <li>Website address: https://devMike.pl</li>
+        <li>E-mail: michal@michalmajewski.dev</li>
+        <li>Website address: https://michalmajewski.dev</li>
         <li>Contact form available on the website</li>
       </ul>
       <p>
         If you have any questions about the processing of personal data, please
-        contact us via the form available on the Website.
+        contact us at the e-mail address above or via the form available on the
+        Website.
       </p>
 
       <hr />
@@ -267,8 +279,8 @@ export default function PolicyContentEn() {
         controller via:
       </p>
       <ul>
+        <li>A message to the e-mail address: michal@michalmajewski.dev</li>
         <li>The contact form available on the Website</li>
-        <li>A message to the e-mail address provided in the form</li>
       </ul>
       <p>
         The controller will consider requests within 30 days of receipt; in
@@ -313,7 +325,7 @@ export default function PolicyContentEn() {
         the updated version on the Website. We recommend reviewing this Policy
         regularly to stay up to date with changes.
       </p>
-      <p>Last updated: 29 November 2025</p>
+      <p>Last updated: 25 August 2026</p>
 
       <hr />
 
@@ -324,10 +336,13 @@ export default function PolicyContentEn() {
       </p>
       <ul>
         <li>
-          <strong>Contact form:</strong> https://devMike.pl
+          <strong>E-mail:</strong> michal@michalmajewski.dev
         </li>
         <li>
-          <strong>Website:</strong> https://devMike.pl
+          <strong>Contact form:</strong> https://michalmajewski.dev/#contact
+        </li>
+        <li>
+          <strong>Website:</strong> https://michalmajewski.dev
         </li>
       </ul>
 
@@ -345,7 +360,7 @@ export default function PolicyContentEn() {
       <hr />
 
       <p>
-        <strong>This document takes effect on: 29 November 2025</strong>
+        <strong>This document takes effect on: 25 August 2026</strong>
       </p>
 
       <hr />
@@ -353,7 +368,7 @@ export default function PolicyContentEn() {
       <p>
         <em>
           The Privacy &amp; Cookies Policy is the binding document for the
-          website https://devMike.pl. Violations are subject to legal
+          website https://michalmajewski.dev. Violations are subject to legal
           consequences.
         </em>
       </p>

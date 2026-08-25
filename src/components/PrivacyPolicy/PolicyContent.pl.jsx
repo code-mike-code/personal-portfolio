@@ -6,28 +6,38 @@ export default function PolicyContentPl() {
     <>
       <h1>Polityka Prywatności i Cookies</h1>
       <p>
-        <strong>devMike.pl</strong>
+        <strong>michalmajewski.dev</strong>
       </p>
-      <p>Data wejścia w życie: 29 listopada 2025 r.</p>
+      <p>Data wejścia w życie: 25 sierpnia 2026 r.</p>
 
       <hr />
 
       <h2>1. Administrator Danych Osobowych</h2>
       <p>
         Administratorem danych osobowych przetwarzanych na stronie internetowej{' '}
-        <strong>devMike.pl</strong> (zwana dalej: „Stroną") jest osoba
-        fizyczna będąca właścicielem strony.
+        <strong>michalmajewski.dev</strong> (zwana dalej: „Stroną") jest:
+      </p>
+      <p>
+        <strong>Michał Majewski</strong>
+        <br />
+        prowadzący działalność nierejestrowaną
+        <br />
+        ul. Gen. Kazimierza Pułaskiego 44/25
+        <br />
+        40-276 Katowice
       </p>
       <p>
         <strong>Dane kontaktowe administratora:</strong>
       </p>
       <ul>
-        <li>Adres strony: https://devMike.pl</li>
+        <li>E-mail: michal@michalmajewski.dev</li>
+        <li>Adres strony: https://michalmajewski.dev</li>
         <li>Formularz kontaktowy dostępny na stronie</li>
       </ul>
       <p>
         W przypadku pytań dotyczących przetwarzania danych osobowych prosimy o
-        skontaktowanie się poprzez formularz dostępny na Stronie.
+        kontakt na adres e-mail podany powyżej lub poprzez formularz dostępny na
+        Stronie.
       </p>
 
       <hr />
@@ -271,8 +281,8 @@ export default function PolicyContentPl() {
         prosimy o skontaktowanie się z administratorem poprzez:
       </p>
       <ul>
+        <li>Wiadomość na adres e-mail: michal@michalmajewski.dev</li>
         <li>Formularz kontaktowy dostępny na Stronie</li>
-        <li>Wiadomość na adres e-mail podany w formularzu</li>
       </ul>
       <p>
         Administrator rozpatrzy wnioski w terminie 30 dni od ich otrzymania, a
@@ -319,7 +329,7 @@ export default function PolicyContentPl() {
         Zalecamy regularne zapoznawanie się z niniejszą Polityką, aby być na
         bieżąco ze zmianami.
       </p>
-      <p>Data ostatniej aktualizacji: 29 listopada 2025 r.</p>
+      <p>Data ostatniej aktualizacji: 25 sierpnia 2026 r.</p>
 
       <hr />
 
@@ -330,10 +340,13 @@ export default function PolicyContentPl() {
       </p>
       <ul>
         <li>
-          <strong>Formularz kontaktowy:</strong> https://devMike.pl
+          <strong>E-mail:</strong> michal@michalmajewski.dev
         </li>
         <li>
-          <strong>Strona internetowa:</strong> https://devMike.pl
+          <strong>Formularz kontaktowy:</strong> https://michalmajewski.dev/#contact
+        </li>
+        <li>
+          <strong>Strona internetowa:</strong> https://michalmajewski.dev
         </li>
       </ul>
 
@@ -351,7 +364,7 @@ export default function PolicyContentPl() {
       <hr />
 
       <p>
-        <strong>Dokument wchodzi w życie: 29 listopada 2025 r.</strong>
+        <strong>Dokument wchodzi w życie: 25 sierpnia 2026 r.</strong>
       </p>
 
       <hr />
@@ -359,7 +372,7 @@ export default function PolicyContentPl() {
       <p>
         <em>
           Polityka prywatności i cookies jest dokumentem obowiązującym na
-          stronie https://devMike.pl. Jej naruszenie podlega konsekwencjom
+          stronie https://michalmajewski.dev. Jej naruszenie podlega konsekwencjom
           prawnym.
         </em>
       </p>

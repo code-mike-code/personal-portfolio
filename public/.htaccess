@@ -1,0 +1,55 @@
+# michalmajewski.dev — konfiguracja Apache (hostido)
+# SPA (React Router / BrowserRouter) + HTTPS + kompresja + cache
+
+Options -Indexes
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+
+  # Wymuś HTTPS (hostido serwuje SSL). Jeśli po proxy pojawi się pętla,
+  # zamień warunek na: RewriteCond %{HTTP:X-Forwarded-Proto} !https
+  RewriteCond %{HTTPS} !=on
+  RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+  # Istniejące pliki i katalogi serwuj wprost (assety, sitemap, og-image, wideo)
+  RewriteCond %{REQUEST_FILENAME} -f [OR]
+  RewriteCond %{REQUEST_FILENAME} -d
+  RewriteRule ^ - [L]
+
+  # Każda inna ścieżka (np. /privacy-policy) -> index.html (routing po stronie klienta)
+  RewriteRule ^ /index.html [L]
+</IfModule>
+
+# Gdyby mod_rewrite był niedostępny — brak 404.html psułby deep-linki;
+# 404.html to kopia index.html (patrz skrypt build), więc SPA nadal wstanie
+ErrorDocument 404 /index.html
+
+# Kompresja tekstowa
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/plain text/css text/xml \
+    text/javascript application/javascript application/json \
+    application/xml image/svg+xml
+</IfModule>
+
+# Cache: hashowane assety (contenthash w nazwie) — długo i immutable; HTML bez cache
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType text/css                "access plus 1 year"
+  ExpiresByType application/javascript  "access plus 1 year"
+  ExpiresByType image/webp              "access plus 1 year"
+  ExpiresByType image/png               "access plus 1 year"
+  ExpiresByType image/svg+xml           "access plus 1 year"
+  ExpiresByType video/mp4               "access plus 1 year"
+  ExpiresByType font/woff2              "access plus 1 year"
+  ExpiresByType text/html               "access plus 0 seconds"
+</IfModule>
+
+<IfModule mod_headers.c>
+  <FilesMatch "\.(css|js|webp|png|svg|mp4|woff2)$">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </FilesMatch>
+  <FilesMatch "\.html$">
+    Header set Cache-Control "no-cache"
+  </FilesMatch>
+</IfModule>

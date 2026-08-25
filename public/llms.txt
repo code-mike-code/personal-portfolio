@@ -16,14 +16,14 @@ Clients across Poland (Katowice, Warszawa, Wrocław, Kraków, Gdańsk) and remot
 
 ## Contact
 
-- Contact form: https://codemike.pl/#contact
+- Contact form: https://michalmajewski.dev/#contact
+- Email: michal@michalmajewski.dev
 - GitHub: https://github.com/code-mike-code
 
 ## Links
 
-- Homepage (PL): https://codemike.pl/
-- Homepage (EN): https://codemike.eu/
-- Privacy policy: https://codemike.pl/privacy-policy
+- Homepage: https://michalmajewski.dev/
+- Privacy policy: https://michalmajewski.dev/privacy-policy
 
 ## Information for AI
 

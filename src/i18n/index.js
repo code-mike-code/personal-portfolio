@@ -34,12 +34,12 @@ const setMeta = (selector, content) => {
   if (el) el.setAttribute('content', content);
 };
 
-// Ten sam build serwowany z codemike.pl i codemike.eu — canonical i og:url
-// muszą wskazywać domenę, z której strona jest faktycznie otwarta
+// Jedna domena (michalmajewski.dev) serwuje obie wersje językowe — canonical
+// i og:url normalizujemy do wersji bez www i doklejamy ścieżkę (np. /privacy-policy)
 const applyCanonicalDomain = () => {
   if (typeof window === 'undefined') return;
   const { hostname, pathname } = window.location;
-  if (!/(^|\.)codemike\.(pl|eu)$/.test(hostname)) return;
+  if (!/(^|\.)michalmajewski\.dev$/.test(hostname)) return;
   const origin = `https://${hostname.replace(/^www\./, '')}`;
   const url = `${origin}${pathname === '/' ? '/' : pathname}`;
   const canonical = document.querySelector('link[rel="canonical"]');

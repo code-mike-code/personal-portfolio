@@ -13,5 +13,4 @@ Allow: /
 User-agent: PerplexityBot
 Allow: /
 
-Sitemap: https://codemike.pl/sitemap.xml
-Sitemap: https://codemike.eu/sitemap.xml
+Sitemap: https://michalmajewski.dev/sitemap.xml
