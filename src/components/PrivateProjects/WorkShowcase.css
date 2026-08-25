@@ -349,10 +349,9 @@
 @media (max-width: 600px) {
   .work-showcase-media {
     aspect-ratio: 400 / 866;
-    /* 22svh — kompromis: wideo dostatecznie duże, ale treść (wideo + panel
-       info 36svh + rezerwa na BottomNav) mieści się w 100svh bez ucinania
-       górnej krawędzi wideo */
-    width: min(85vw, 22svh);
+    /* 24svh — wideo możliwie duże; przy panelu info 36svh + padding-bottom 4rem
+       treść nadal mieści się w 100svh (górna krawędź wideo ~+15px, nie ucięta) */
+    width: min(85vw, 24svh);
   }
 
   .work-showcase-static .work-media-card {
@@ -367,9 +366,19 @@
   }
 
   /* Panel niższy niż na tablecie (36 zamiast 40svh) — zwalnia pion na wyższą
-     kartę wideo (22svh) bez ucinania jej górnej krawędzi */
+     kartę wideo (24svh) bez ucinania jej górnej krawędzi */
   .work-showcase-info {
     height: 36svh;
+  }
+
+  /* Ciaśniejsze odstępy pionowe — przy dużym wideo najdłuższy opis (Cor-Dent,
+     5 linii) miał tylko ~3px do BottomNav; zbicie gapów daje ~25px zapasu */
+  .work-showcase-inner {
+    gap: 1rem;
+  }
+
+  .work-info-panel {
+    row-gap: 1rem;
   }
 
   /* Numer projektu w lewej kolumnie gridu, nazwa w prawej — jeden rząd,
