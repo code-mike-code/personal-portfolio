@@ -1,7 +1,7 @@
 {
   "meta": {
     "title": "Code Mike — Frontend Developer | React & TypeScript",
-    "description": "AI-augmented frontend developer building fast, accessible websites with React, TypeScript and GSAP.",
+    "description": "Frontend developer building fast, accessible websites with React, TypeScript and GSAP. Modern websites in as little as 3 days.",
     "keywords": "frontend developer, React developer, TypeScript developer, GSAP animations, accessible websites, Core Web Vitals, freelance frontend developer Poland, web developer Katowice, web developer Warsaw, web developer Wrocław, web developer Kraków, web developer Gdańsk, JavaScript developer, web performance optimization"
   },
   "language": {
@@ -170,5 +170,35 @@
   "errors": {
     "title": "Something went wrong.",
     "reload": "Reload page"
+  },
+  "testimonials": {
+    "heading": "What clients say",
+    "items": [
+      {
+        "quote": "Michał rebuilt our website from scratch — new identity, logo, it finally works on mobile and looks like a premium clinic. Patients find us and book more easily.",
+        "author": "Ewa Ż.",
+        "company": "Cor-Dent Żurakowscy"
+      },
+      {
+        "quote": "The new site is fast, clear and accessible. It presents the team and services clearly, and the map and contact make it easy for patients to reach the clinic.",
+        "author": "prof. nadzw. dr hab. n. med. Aleksander Żurakowski",
+        "company": "Vitalis-Cardio"
+      },
+      {
+        "quote": "The previous version barely worked. Michał rebuilt it from the ground up — with an FAQ, map, a driver application form and portal integration. Onboarding finally works.",
+        "author": "Grzegorz B.",
+        "company": "Drago Partner"
+      },
+      {
+        "quote": "A website from scratch together with a logo, custom icons and brand identity. A clear offer, calls to action and a financing enquiry form. The brand is finally visible online.",
+        "author": "GB+ Sp. z o.o.",
+        "company": "Pewny Leasing"
+      },
+      {
+        "quote": "An unusual product — CO2-absorbing flowerpots — got a site that tells the story: a blog, product presentation and a CO2 counter linked to an NFC tag on the pot. It educates and impresses.",
+        "author": "Adam M.",
+        "company": "Cudowna Doniczka"
+      }
+    ]
   }
 }

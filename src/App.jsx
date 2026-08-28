@@ -7,6 +7,7 @@ import Hero from './components/Hero/Hero';
 import PrivateProjects from './components/PrivateProjects/PrivateProjects';
 import AboutMe from './components/AboutMe/AboutMe';
 import TechBanner from './components/Banner/TechBanner';
+import Testimonials from './components/Testimonials/Testimonials';
 import Contact from './components/Contact/Contact';
 import Footer from './components/Footer/Footer';
 
@@ -39,6 +40,8 @@ function MainLayout() {
         <AboutMe />
         <span className="section-divider-dot section-divider-dot--teal" aria-hidden="true"></span>
         <TechBanner />
+        <span className="section-divider-dot section-divider-dot--teal" aria-hidden="true"></span>
+        <Testimonials />
         <span className="section-divider-dot section-divider-dot--coral" aria-hidden="true"></span>
         <Contact />
       </main>

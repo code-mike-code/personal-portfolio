@@ -1,7 +1,7 @@
 {
   "meta": {
     "title": "Code Mike — Frontend Developer | React i TypeScript",
-    "description": "Frontend developer wspierany przez AI — szybkie i dostępne strony internetowe w React, TypeScript i GSAP.",
+    "description": "Frontend developer — szybkie, dostępne strony internetowe w React, TypeScript i GSAP. Nowoczesne strony nawet w 3 dni.",
     "keywords": "frontend developer, programista frontend, React developer, TypeScript, tworzenie stron internetowych, strony internetowe Katowice, frontend developer Warszawa, strony www Wrocław, frontend developer Kraków, strony internetowe Gdańsk, animacje GSAP, dostępność WCAG, Core Web Vitals, freelancer frontend Polska"
   },
   "language": {
@@ -170,5 +170,35 @@
   "errors": {
     "title": "Coś poszło nie tak.",
     "reload": "Odśwież stronę"
+  },
+  "testimonials": {
+    "heading": "Co mówią klienci",
+    "items": [
+      {
+        "quote": "Michał przebudował naszą stronę od zera — nowa identyfikacja, logo, wreszcie działa na telefonie i wygląda jak klinika premium. Pacjentom łatwiej nas znaleźć i umówić wizytę.",
+        "author": "Ewa Ż.",
+        "company": "Cor-Dent Żurakowscy"
+      },
+      {
+        "quote": "Nowa strona jest szybka, przejrzysta i dostępna. Czytelnie prezentuje zespół i usługi, a mapa i kontakt ułatwiają pacjentom dotarcie do kliniki.",
+        "author": "prof. nadzw. dr hab. n. med. Aleksander Żurakowski",
+        "company": "Vitalis-Cardio"
+      },
+      {
+        "quote": "Poprzednia wersja praktycznie nie działała. Michał zbudował stronę na nowo — z FAQ, mapą, formularzem zgłoszeniowym dla kierowców i integracją z portalem. Onboarding wreszcie działa.",
+        "author": "Grzegorz B.",
+        "company": "Drago Partner"
+      },
+      {
+        "quote": "Strona od zera razem z logo, customowymi ikonami i identyfikacją. Klarowna oferta, wezwania do działania i formularz zapytania o finansowanie. Marka jest wreszcie widoczna w sieci.",
+        "author": "GB+ Sp. z o.o.",
+        "company": "Pewny Leasing"
+      },
+      {
+        "quote": "Nietypowy produkt — doniczki pochłaniające CO2 — dostał stronę, która to opowiada: blog, prezentacja produktu i licznik CO2 spięty z NFC na doniczce. Edukuje i robi wrażenie.",
+        "author": "Adam M.",
+        "company": "Cudowna Doniczka"
+      }
+    ]
   }
 }
