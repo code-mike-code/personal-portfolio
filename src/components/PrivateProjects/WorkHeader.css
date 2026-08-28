@@ -6,24 +6,12 @@
   align-items: center;
   justify-content: center;
   text-align: center;
-  min-height: 55vh;
-  padding: 4rem 1.5rem 0;
-  /* Nakłada header na start showcase — karta media podjeżdża pod tytuł */
-  margin-bottom: -30vh;
+  /* Wysokość z treści — wcześniej 55vh + margin-bottom:-30vh nakładały kartę
+     wideo na dłuższy nagłówek/opis. Teraz header stoi w całości nad showcase */
+  min-height: auto;
+  padding: 4rem 1.5rem 2.5rem;
+  margin-bottom: 0;
   pointer-events: none;
-}
-
-@media (max-width: 900px) {
-  /* Mniejsze nałożenie — większy oddech między opisem a work-showcase-inner */
-  .work-header {
-    margin-bottom: -6vh;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .work-header {
-    margin-bottom: 0;
-  }
 }
 
 /* Soft gradient blob behind the title, tuned to the ecru palette */
