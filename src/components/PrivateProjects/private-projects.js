@@ -8,6 +8,8 @@ import dragoPartnerMobile from '../../assets/videos/drago-partner-mobile.mp4';
 import dragoPartnerDesktop from '../../assets/videos/drago-partner-desktop.mp4';
 import cudownaDoniczkaMobile from '../../assets/videos/cudowna-doniczka-mobile.mp4';
 import cudownaDoniczkaDesktop from '../../assets/videos/cudowna-doniczka-desktop.mp4';
+import geoScanMobile from '../../assets/videos/geoscan-uav-mobile.mp4';
+import geoScanDesktop from '../../assets/videos/geoscan-uav-desktop.mp4';
 
 // Postery (pierwsza klatka wideo) — pokazywane natychmiast; wideo dobiera się
 // dopiero gdy sekcja wjedzie w viewport (patrz WorkShowcase). Bez posterów
@@ -22,6 +24,8 @@ import dragoPartnerMobilePoster from '../../assets/videos/posters/drago-partner-
 import dragoPartnerDesktopPoster from '../../assets/videos/posters/drago-partner-desktop.webp';
 import cudownaDoniczkaMobilePoster from '../../assets/videos/posters/cudowna-doniczka-mobile.webp';
 import cudownaDoniczkaDesktopPoster from '../../assets/videos/posters/cudowna-doniczka-desktop.webp';
+import geoScanMobilePoster from '../../assets/videos/posters/geoscan-uav-mobile.webp';
+import geoScanDesktopPoster from '../../assets/videos/posters/geoscan-uav-desktop.webp';
 
 // Tylko dane nietłumaczalne — opisy żyją w src/i18n/locales/*.json
 // pod kluczami work.projects.<id>.short / .full
@@ -80,5 +84,16 @@ export const privateProjects = [
     thumbnailPoster: cudownaDoniczkaMobilePoster,
     fullPoster: cudownaDoniczkaDesktopPoster,
     techStack: ["React", "GSAP", "Responsive Design", "E-commerce"]
+  },
+  {
+    id: 6,
+    title: "GeoScan UAV",
+    liveUrl: "https://geoscanuav.pl/",
+    thumbnailVideo: geoScanMobile,
+    tabletVideo: null,
+    fullVideo: geoScanDesktop,
+    thumbnailPoster: geoScanMobilePoster,
+    fullPoster: geoScanDesktopPoster,
+    techStack: ["React", "TypeScript", "GSAP", "SEO"]
   }
 ];
