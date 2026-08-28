@@ -53,12 +53,13 @@ export default function PrivateProjects() {
 
   return (
     <section id="private-projects" className="private-projects-section">
-      <WorkHeader />
-
-      {/* Najpierw wartość (co wyróżnia), potem dowód (realizacje) */}
+      {/* Najpierw wartość (co wyróżnia), potem jednostka realizacji:
+          nagłówek "Każdy projekt..." + opis zostają RAZEM z listą projektów */}
       <WorkDifferent />
 
       <span className="section-divider-dot section-divider-dot--coral" aria-hidden="true"></span>
+
+      <WorkHeader />
 
       <WorkShowcase
         projects={privateProjects}
