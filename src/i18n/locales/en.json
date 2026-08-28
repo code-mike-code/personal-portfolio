@@ -35,8 +35,8 @@
     "contact": "Contact"
   },
   "work": {
-    "title": "Selected Work",
-    "subtitle": "Every project is shaped around the client — not a template — with a focus on clarity, performance, and craft.",
+    "title": "Every project is built around the client",
+    "subtitle": "No templates. A focus on clarity, performance, and real business impact.",
     "counterAria": "Project {{current}} of {{total}}",
     "viewLive": "View live",
     "details": "Details",
@@ -48,7 +48,7 @@
     "closure": {
       "line1": "Transforming Ideas",
       "line2": "into Digital Reality",
-      "text": "The projects above demonstrate my commitment to building high-performance web applications with a focus on clean code and user experience. If you are looking for a reliable developer to bring your vision to life or optimize your current digital presence, I am ready to help. Let's connect and discuss how we can build something exceptional for your business."
+      "text": "It's not about code for its own sake — it's about a website that works for your business: attracts clients, builds brand credibility, and ranks well on Google. Looking for someone to deliver that — fast and measurable? Get in touch and let's talk about your project."
     },
     "different": {
       "title": "What makes my work different.",
@@ -103,11 +103,11 @@
     "headingLine2": "Code Mike",
     "photoAlt": "Michał with his cat",
     "bioHeading": "Hey, I'm Michał",
-    "bio1": "AI-Augmented Frontend Developer specializing in building efficient and responsive interfaces in React and TypeScript. I support the coding process with advanced AI tools such as Claude Code and AI Agents, which translates into higher-quality delivered solutions and shorter turnaround times. I built a solid technical foundation through independent practice in the React ecosystem, JavaScript, and modern frontend tools.",
-    "bio2": "Good software requires both logic and empathy. I am a proactive problem-solver who values organized workflows and collaboration to deliver clean, impactful solutions.",
-    "tagline": "Independent by nature, collaborative by choice.",
+    "bio1": "I design and build modern websites in React and TypeScript — fast, accessible (WCAG) and optimized for SEO. A simple site or landing page I can deliver in as little as 3 days, with no compromise on quality. I care about one thing: that your website actually works for your business — brings in enquiries, builds brand credibility, and ranks well on Google.",
+    "bio2": "Years in Supervisor and Manager roles in international environments gave me business maturity: I understand product priorities, communicate without jargon, and take responsibility for the outcome of the whole project — not just the code.",
+    "tagline": "Websites that build a brand and bring in clients.",
     "statProjects": "client projects",
-    "statDelivery": "faster delivery with AI tools",
+    "statDelivery": "days to launch a simple site",
     "interestsHeading": "Personal interests",
     "interests": [
       "Gravity & enduro mountain biking",

@@ -73,11 +73,11 @@ export default function AboutMe() {
 
           <div className="about-stats">
             <div className="about-stat">
-              <span className="about-stat-number">5+</span>
+              <span className="about-stat-number">10+</span>
               <span className="about-stat-label">{t('about.statProjects')}</span>
             </div>
             <div className="about-stat">
-              <span className="about-stat-number">2×</span>
+              <span className="about-stat-number">3</span>
               <span className="about-stat-label">{t('about.statDelivery')}</span>
             </div>
           </div>

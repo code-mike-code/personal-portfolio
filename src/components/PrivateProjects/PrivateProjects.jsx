@@ -55,14 +55,15 @@ export default function PrivateProjects() {
     <section id="private-projects" className="private-projects-section">
       <WorkHeader />
 
+      {/* Najpierw wartość (co wyróżnia), potem dowód (realizacje) */}
+      <WorkDifferent />
+
+      <span className="section-divider-dot section-divider-dot--coral" aria-hidden="true"></span>
+
       <WorkShowcase
         projects={privateProjects}
         onDetails={(project) => setExpandedProject(project)}
       />
-
-      <span className="section-divider-dot section-divider-dot--coral" aria-hidden="true"></span>
-
-      <WorkDifferent />
 
       {/* Domknięcie */}
       <div className="section-closure">

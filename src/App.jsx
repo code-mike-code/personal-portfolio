@@ -5,7 +5,6 @@ import Header from './components/Header/Header';
 import BottomNav from './components/Header/BottomNav';
 import Hero from './components/Hero/Hero';
 import PrivateProjects from './components/PrivateProjects/PrivateProjects';
-import Projects from './components/Projects/Projects';
 import AboutMe from './components/AboutMe/AboutMe';
 import TechBanner from './components/Banner/TechBanner';
 import Contact from './components/Contact/Contact';
@@ -37,8 +36,6 @@ function MainLayout() {
         {/* kolejna kropka (coral) jest wewnątrz PrivateProjects, pod work-showcase */}
         <PrivateProjects />
         <span className="section-divider-dot section-divider-dot--teal" aria-hidden="true"></span>
-        <Projects />
-        <span className="section-divider-dot section-divider-dot--coral" aria-hidden="true"></span>
         <AboutMe />
         <span className="section-divider-dot section-divider-dot--teal" aria-hidden="true"></span>
         <TechBanner />

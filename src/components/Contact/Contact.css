@@ -33,6 +33,41 @@
   margin: 0;
 }
 
+/* Ikony social — w kolorze tekstu, na hover oryginalny kolor marki */
+.contact-socials {
+  display: flex;
+  gap: 1.25rem;
+  margin-top: 0.25rem;
+}
+
+.contact-social {
+  color: var(--color-ink);
+  display: inline-flex;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.contact-social svg {
+  width: 30px;
+  height: 30px;
+  fill: currentColor;
+  display: block;
+}
+
+.contact-social:hover,
+.contact-social:focus-visible {
+  transform: translateY(-2px);
+}
+
+.contact-social--github:hover,
+.contact-social--github:focus-visible {
+  color: #181717;
+}
+
+.contact-social--linkedin:hover,
+.contact-social--linkedin:focus-visible {
+  color: #0A66C2;
+}
+
 .contact-title {
   font-size: 4.4rem;
   font-weight: 600;
