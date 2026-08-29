@@ -182,26 +182,26 @@ const ProjectModal = ({ isOpen, project, onClose }) => {
               return (
                 <div className="project-modal-case">
                   {c.challenge && (
-                    <section className="pm-case-block">
+                    <div className="pm-case-block">
                       <h3 className="pm-case-label">{t('work.caseChallenge')}</h3>
                       <p className="pm-case-text">{c.challenge}</p>
-                    </section>
+                    </div>
                   )}
                   {Array.isArray(c.scope) && c.scope.length > 0 && (
-                    <section className="pm-case-block">
+                    <div className="pm-case-block">
                       <h3 className="pm-case-label">{t('work.caseScope')}</h3>
                       <ul className="pm-case-list">
                         {c.scope.map((s, i) => <li key={i}>{s}</li>)}
                       </ul>
-                    </section>
+                    </div>
                   )}
                   {Array.isArray(c.result) && c.result.length > 0 && (
-                    <section className="pm-case-block">
+                    <div className="pm-case-block">
                       <h3 className="pm-case-label">{t('work.caseResult')}</h3>
                       <ul className="pm-case-list pm-case-list--result">
                         {c.result.map((s, i) => <li key={i}>{s}</li>)}
                       </ul>
-                    </section>
+                    </div>
                   )}
                 </div>
               );
