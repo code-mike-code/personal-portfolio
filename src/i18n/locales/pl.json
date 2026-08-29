@@ -73,29 +73,142 @@
     "projects": {
       "1": {
         "short": "Nowoczesna strona specjalistycznej kliniki kardiologicznej — czytelna prezentacja usług, profile lekarzy i łatwy kontakt w sprawie wizyt.",
-        "full": "Klinika Vitalis to specjalistyczna placówka medyczna z Trzebini. Strona prezentuje usługi kardiologiczne, zespół lekarzy i informacje dla pacjentów w przejrzystym, budzącym zaufanie układzie. \n\nNajważniejsze funkcje: listy usług i specjalistów, dane kontaktowe i lokalizacja kliniki, responsywny układ zoptymalizowany dla pacjentów przeglądających na telefonie oraz struktura przygotowana pod rejestrację wizyt online. Nacisk na dostępność, szybkie ładowanie i spokojny język wizualny odpowiedni dla ochrony zdrowia."
+        "full": "Klinika Vitalis to specjalistyczna placówka medyczna z Trzebini. Strona prezentuje usługi kardiologiczne, zespół lekarzy i informacje dla pacjentów w przejrzystym, budzącym zaufanie układzie. \n\nNajważniejsze funkcje: listy usług i specjalistów, dane kontaktowe i lokalizacja kliniki, responsywny układ zoptymalizowany dla pacjentów przeglądających na telefonie oraz struktura przygotowana pod rejestrację wizyt online. Nacisk na dostępność, szybkie ładowanie i spokojny język wizualny odpowiedni dla ochrony zdrowia.",
+        "case": {
+          "challenge": "Klinika potrzebowała nowoczesnej, wiarygodnej strony, która czytelnie prezentuje zespół i usługi oraz ułatwia pacjentom kontakt i dotarcie.",
+          "scope": [
+            "Całkowity rebuild strony",
+            "Responsywny układ (RWD)",
+            "Integracja Google Maps — dojazd do kliniki",
+            "SEO + Google Search Console",
+            "Google Analytics",
+            "Dostępność WCAG AA/AAA",
+            "Optymalizacja wydajności"
+          ],
+          "result": [
+            "Szybka, dostępna i przejrzysta witryna",
+            "Łatwiejszy kontakt i dojazd dla pacjentów",
+            "Solidne fundamenty pod widoczność w Google"
+          ]
+        }
       },
       "2": {
         "short": "Strona B2B warszawskiej firmy leasingowej i wynajmu — prezentacja oferty, generowanie leadów i ścieżki kontaktu dla klientów biznesowych.",
-        "full": "Pewny Leasing dostarcza firmom rozwiązania leasingu i wynajmu długoterminowego. Strona pełni rolę głównej cyfrowej wizytówki firmy: prezentuje ofertę, buduje zaufanie klientów biznesowych i zamienia odwiedzających w leady. \n\nNajważniejsze funkcje: uporządkowane sekcje oferty leasingu i wynajmu, czytelne wezwania do działania, formularze kontaktowe i zapytań, responsywny design oraz architektura przyjazna SEO nastawiona na polski rynek B2B."
+        "full": "Pewny Leasing dostarcza firmom rozwiązania leasingu i wynajmu długoterminowego. Strona pełni rolę głównej cyfrowej wizytówki firmy: prezentuje ofertę, buduje zaufanie klientów biznesowych i zamienia odwiedzających w leady. \n\nNajważniejsze funkcje: uporządkowane sekcje oferty leasingu i wynajmu, czytelne wezwania do działania, formularze kontaktowe i zapytań, responsywny design oraz architektura przyjazna SEO nastawiona na polski rynek B2B.",
+        "case": {
+          "challenge": "Firma B2B potrzebowała widoczności w sieci i profesjonalnej wizytówki, która zamienia odwiedzających w zapytania o finansowanie.",
+          "scope": [
+            "Budowa strony od zera",
+            "Logo, customowe ikony i projekt graficzny",
+            "Sekcje usług i wezwania do działania (CTA)",
+            "Formularz zapytania o konkretne finansowanie (EmailJS)",
+            "Responsywny układ (RWD)",
+            "SEO + Google Search Console",
+            "Google Analytics",
+            "Profil Google Firma z zaplanowanymi wpisami",
+            "Dostępność WCAG",
+            "Optymalizacja wydajności"
+          ],
+          "result": [
+            "Spójna marka widoczna w internecie",
+            "Klarowna ścieżka do zapytania o finansowanie",
+            "Obecność w Google — wizytówka i wpisy"
+          ]
+        }
       },
       "3": {
         "short": "Strona partnera flotowego łączącego kierowców z Uber, Bolt i FreeNow — onboarding kierowców, informacje o zarobkach i kontakt.",
-        "full": "Drago Partner to warszawski partner flotowy dla kierowców aplikacji przewozowych. Strona wyjaśnia model współpracy, prezentuje zarobki i warunki rozliczeń oraz prowadzi kierowców przez proces dołączenia do platform takich jak Uber, Bolt i FreeNow. \n\nNajważniejsze funkcje: czytelne sekcje onboardingu krok po kroku, FAQ dla kierowców, ścieżki kontaktu i zapisu, układ mobile-first — większość odwiedzających to kierowcy przeglądający na telefonach."
+        "full": "Drago Partner to warszawski partner flotowy dla kierowców aplikacji przewozowych. Strona wyjaśnia model współpracy, prezentuje zarobki i warunki rozliczeń oraz prowadzi kierowców przez proces dołączenia do platform takich jak Uber, Bolt i FreeNow. \n\nNajważniejsze funkcje: czytelne sekcje onboardingu krok po kroku, FAQ dla kierowców, ścieżki kontaktu i zapisu, układ mobile-first — większość odwiedzających to kierowcy przeglądający na telefonach.",
+        "case": {
+          "challenge": "Poprzednia strona praktycznie nie działała — trzeba było odbudować ją tak, by realnie pozyskiwała i onboardowała kierowców.",
+          "scope": [
+            "Rebuild od zera",
+            "Układ mobile-first (kierowcy na telefonach)",
+            "Sekcja FAQ",
+            "Integracja Google Maps",
+            "Formularz zgłoszeniowy dla kandydatów",
+            "Podpięcie zewnętrznego portalu/aplikacji dla kierowców",
+            "SEO + Google Search Console",
+            "Google Analytics",
+            "Dostępność WCAG"
+          ],
+          "result": [
+            "Działający onboarding kierowców",
+            "Zgłoszenia przez formularz",
+            "Widoczność w Google",
+            "Dostępna, szybka strona mobile-first"
+          ]
+        }
       },
       "4": {
         "short": "Nowoczesna, responsywna aplikacja webowa dla kliniki kardiologiczno-stomatologicznej klasy premium. Zbudowana w React, TypeScript i Tailwind CSS.",
-        "full": "Nowoczesna, responsywna aplikacja webowa dla kliniki kardiologiczno-stomatologicznej klasy premium. Zbudowana w React, TypeScript i Tailwind CSS. Cor-Dent to profesjonalna platforma usług medycznych oferująca: \n\nUsługi kardiologiczne — profesjonalna opieka i diagnostyka kardiologiczna. Usługi stomatologiczne — kompleksowa opieka dentystyczna i protetyka. Rezerwacja online — prosty system umawiania wizyt. Wielojęzyczność — obsługa wielu języków. \n\nStack technologiczny: framework: React 18 z TypeScript, build tool: Vite, style: Tailwind CSS, komponenty UI: shadcn-ui (Radix UI + Tailwind), routing: React Router v6, formularze: React Hook Form + walidacja Zod, ikony: Lucide React, internacjonalizacja: własne hooki i18n, zarządzanie stanem: TanStack React Query"
+        "full": "Nowoczesna, responsywna aplikacja webowa dla kliniki kardiologiczno-stomatologicznej klasy premium. Zbudowana w React, TypeScript i Tailwind CSS. Cor-Dent to profesjonalna platforma usług medycznych oferująca: \n\nUsługi kardiologiczne — profesjonalna opieka i diagnostyka kardiologiczna. Usługi stomatologiczne — kompleksowa opieka dentystyczna i protetyka. Rezerwacja online — prosty system umawiania wizyt. Wielojęzyczność — obsługa wielu języków. \n\nStack technologiczny: framework: React 18 z TypeScript, build tool: Vite, style: Tailwind CSS, komponenty UI: shadcn-ui (Radix UI + Tailwind), routing: React Router v6, formularze: React Hook Form + walidacja Zod, ikony: Lucide React, internacjonalizacja: własne hooki i18n, zarządzanie stanem: TanStack React Query",
+        "case": {
+          "challenge": "Strona nie była responsywna i nie oddawała klasy premium kliniki — potrzebny był pełny rebuild z nową identyfikacją.",
+          "scope": [
+            "Całkowity rebuild (React, TypeScript, Tailwind)",
+            "Poprawa UI/UX",
+            "Responsywność (RWD, której wcześniej brakowało)",
+            "Rebranding + nowe logo",
+            "Rezerwacja online i wielojęzyczność",
+            "SEO + Google Search Console",
+            "Google Analytics",
+            "Dostępność WCAG AA/AAA",
+            "Optymalizacja wydajności"
+          ],
+          "result": [
+            "Nowoczesna, w pełni responsywna witryna klasy premium",
+            "Spójna identyfikacja wizualna",
+            "Łatwe umawianie wizyt online",
+            "Wysoka dostępność i wydajność"
+          ]
+        }
       },
       "5": {
         "short": "Prezentacja e-commerce ekologicznych doniczek z kompozytu konopnego pochłaniającego CO2 — historia produktu i identyfikacja marki.",
-        "full": "Cudowna Doniczka to ekologiczna marka produkująca biodegradowalne doniczki z naturalnego kompozytu konopnego, który pochłania CO2. Strona opowiada historię produktu, wyjaśnia korzyści środowiskowe i prezentuje linię produktów w ciepłym, inspirowanym naturą języku wizualnym. \n\nNajważniejsze funkcje: storytellingowe sekcje produktowe, układ treści oparty na korzyściach, prezentacja skoncentrowana na zdjęciach, responsywny design i struktura przygotowana pod sprzedaż online."
+        "full": "Cudowna Doniczka to ekologiczna marka produkująca biodegradowalne doniczki z naturalnego kompozytu konopnego, który pochłania CO2. Strona opowiada historię produktu, wyjaśnia korzyści środowiskowe i prezentuje linię produktów w ciepłym, inspirowanym naturą języku wizualnym. \n\nNajważniejsze funkcje: storytellingowe sekcje produktowe, układ treści oparty na korzyściach, prezentacja skoncentrowana na zdjęciach, responsywny design i struktura przygotowana pod sprzedaż online.",
+        "case": {
+          "challenge": "Nowatorski produkt — doniczki pochłaniające CO2 — wymagał strony, która edukuje i buduje świadomość ekologicznych technologii.",
+          "scope": [
+            "Budowa strony od zera",
+            "Prezentacja produktu i historia marki",
+            "Blog",
+            "Licznik pochłoniętego CO2 spięty z tagiem NFC na doniczce (skan → ile CO2 wchłonęła dana doniczka)",
+            "SEO + Google Search Console",
+            "Google Analytics",
+            "Dostępność WCAG"
+          ],
+          "result": [
+            "Strona edukująca i budująca świadomość",
+            "Unikalny licznik CO2 przez NFC",
+            "Treści blogowe pod SEO"
+          ]
+        }
       },
       "6": {
         "short": "Strona firmy usług dronowych — ortofotomapy, NDVI, termowizja i fotogrametria 3D z precyzją RTK. Techniczny, dopracowany interfejs prezentujący ofertę dla rolnictwa, geodezji i budownictwa.",
-        "full": "GeoScan UAV oferuje profesjonalne usługi fotogrametrii i teledetekcji z powietrza — ortofotomapy, modele 3D, analizy NDVI i termowizyjne, z centymetrową precyzją RTK. \n\nStrona prezentuje ofertę w czytelny, techniczny sposób, kierując uwagę na konkretne zastosowania w rolnictwie, geodezji, budownictwie i ochronie środowiska. Nacisk na szybkość ładowania, dostępność i widoczność w wyszukiwarce."
+        "full": "GeoScan UAV oferuje profesjonalne usługi fotogrametrii i teledetekcji z powietrza — ortofotomapy, modele 3D, analizy NDVI i termowizyjne, z centymetrową precyzją RTK. \n\nStrona prezentuje ofertę w czytelny, techniczny sposób, kierując uwagę na konkretne zastosowania w rolnictwie, geodezji, budownictwie i ochronie środowiska. Nacisk na szybkość ładowania, dostępność i widoczność w wyszukiwarce.",
+        "case": {
+          "challenge": "Firma usług dronowych potrzebowała technicznej, wiarygodnej strony prezentującej precyzyjne usługi fotogrametryczne.",
+          "scope": [
+            "Prezentacja usług (ortofotomapy, NDVI, termowizja, fotogrametria 3D, RTK)",
+            "Techniczny język wizualny",
+            "Responsywny układ (RWD)",
+            "SEO",
+            "Optymalizacja wydajności",
+            "Dostępność"
+          ],
+          "result": [
+            "Czytelna prezentacja oferty dla rolnictwa, geodezji i budownictwa",
+            "Szybka, dostępna witryna"
+          ]
+        }
       }
-    }
+    },
+    "caseChallenge": "Wyzwanie",
+    "caseScope": "Zakres prac",
+    "caseResult": "Efekt",
+    "caseVisit": "Zobacz stronę"
   },
   "projects": {
     "heading": "GITHUB",

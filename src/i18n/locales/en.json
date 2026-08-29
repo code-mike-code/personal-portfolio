@@ -73,29 +73,142 @@
     "projects": {
       "1": {
         "short": "A modern website for a specialist cardiology clinic — clear service presentation, doctor profiles and easy appointment contact.",
-        "full": "Klinika Vitalis is a specialist medical clinic based in Trzebinia, Poland. The website presents the clinic's cardiology services, medical team and patient information in a clean, trustworthy layout. \n\nKey features: service and specialist listings, clinic contact and location details, responsive layout optimized for patients browsing on mobile, and a structure prepared for online appointment booking. Focus on accessibility, fast load times and a calm visual language appropriate for healthcare."
+        "full": "Klinika Vitalis is a specialist medical clinic based in Trzebinia, Poland. The website presents the clinic's cardiology services, medical team and patient information in a clean, trustworthy layout. \n\nKey features: service and specialist listings, clinic contact and location details, responsive layout optimized for patients browsing on mobile, and a structure prepared for online appointment booking. Focus on accessibility, fast load times and a calm visual language appropriate for healthcare.",
+        "case": {
+          "challenge": "The clinic needed a modern, trustworthy website that clearly presents the team and services and makes it easy for patients to get in touch and find them.",
+          "scope": [
+            "Complete website rebuild",
+            "Responsive layout (RWD)",
+            "Google Maps integration — directions to the clinic",
+            "SEO + Google Search Console",
+            "Google Analytics",
+            "WCAG AA/AAA accessibility",
+            "Performance optimization"
+          ],
+          "result": [
+            "A fast, accessible and clear website",
+            "Easier contact and directions for patients",
+            "Solid foundations for Google visibility"
+          ]
+        }
       },
       "2": {
         "short": "B2B website for a Warsaw-based leasing and rental company — offer presentation, lead generation and contact flows for business clients.",
-        "full": "Pewny Leasing provides leasing and long-term rental solutions for companies. The website acts as the company's primary digital presence: it presents the offer, builds trust with business clients and converts visitors into leads. \n\nKey features: structured offer sections for leasing and rental products, clear calls to action, contact and inquiry forms, responsive design and SEO-friendly architecture targeting the Polish B2B market."
+        "full": "Pewny Leasing provides leasing and long-term rental solutions for companies. The website acts as the company's primary digital presence: it presents the offer, builds trust with business clients and converts visitors into leads. \n\nKey features: structured offer sections for leasing and rental products, clear calls to action, contact and inquiry forms, responsive design and SEO-friendly architecture targeting the Polish B2B market.",
+        "case": {
+          "challenge": "The B2B company needed online visibility and a professional presence that turns visitors into financing enquiries.",
+          "scope": [
+            "Website built from scratch",
+            "Logo, custom icons and visual design",
+            "Service sections and calls to action (CTA)",
+            "Financing enquiry form (EmailJS)",
+            "Responsive layout (RWD)",
+            "SEO + Google Search Console",
+            "Google Analytics",
+            "Google Business Profile with scheduled posts",
+            "WCAG accessibility",
+            "Performance optimization"
+          ],
+          "result": [
+            "A consistent brand visible online",
+            "A clear path to a financing enquiry",
+            "Google presence — profile and posts"
+          ]
+        }
       },
       "3": {
         "short": "Website for a fleet partner connecting drivers with Uber, Bolt and FreeNow — driver onboarding, earnings info and contact.",
-        "full": "Drago Partner is a Warsaw-based fleet partner for ride-hailing drivers. The website explains the partnership model, presents earnings and settlement conditions, and guides drivers through the onboarding process for platforms such as Uber, Bolt and FreeNow. \n\nKey features: clear step-by-step onboarding sections, FAQ for drivers, contact and signup flows, mobile-first layout — most visitors are drivers browsing on phones."
+        "full": "Drago Partner is a Warsaw-based fleet partner for ride-hailing drivers. The website explains the partnership model, presents earnings and settlement conditions, and guides drivers through the onboarding process for platforms such as Uber, Bolt and FreeNow. \n\nKey features: clear step-by-step onboarding sections, FAQ for drivers, contact and signup flows, mobile-first layout — most visitors are drivers browsing on phones.",
+        "case": {
+          "challenge": "The previous website barely worked — it had to be rebuilt so it actually attracts and onboards drivers.",
+          "scope": [
+            "Rebuild from scratch",
+            "Mobile-first layout (drivers on phones)",
+            "FAQ section",
+            "Google Maps integration",
+            "Application form for candidates",
+            "Integration with an external driver portal/app",
+            "SEO + Google Search Console",
+            "Google Analytics",
+            "WCAG accessibility"
+          ],
+          "result": [
+            "Working driver onboarding",
+            "Applications via the form",
+            "Google visibility",
+            "An accessible, fast mobile-first site"
+          ]
+        }
       },
       "4": {
         "short": "A modern, responsive web application for a premium cardiology and dental care clinic. Built with React, TypeScript and Tailwind CSS.",
-        "full": "A modern, responsive web application for a premium cardiology and dental care clinic. Built with React, TypeScript, and Tailwind CSS. Cor-Dent is a professional medical services platform offering: \n\nCardiology Services - Professional cardiovascular care and diagnostics. Dental Services - Comprehensive dental care and prosthetics. Online Booking - Easy appointment scheduling system. Multilingual Support - Support for multiple languages. \n\nTech Stack: Frontend Framework: React 18 with TypeScript, Build Tool: Vite, Styling: Tailwind CSS, UI Components: shadcn-ui (Radix UI + Tailwind), Routing: React Router v6, Form Management: React Hook Form + Zod validation, Icons: Lucide React, Internationalization: Custom i18n hooks, State Management: TanStack React Query"
+        "full": "A modern, responsive web application for a premium cardiology and dental care clinic. Built with React, TypeScript, and Tailwind CSS. Cor-Dent is a professional medical services platform offering: \n\nCardiology Services - Professional cardiovascular care and diagnostics. Dental Services - Comprehensive dental care and prosthetics. Online Booking - Easy appointment scheduling system. Multilingual Support - Support for multiple languages. \n\nTech Stack: Frontend Framework: React 18 with TypeScript, Build Tool: Vite, Styling: Tailwind CSS, UI Components: shadcn-ui (Radix UI + Tailwind), Routing: React Router v6, Form Management: React Hook Form + Zod validation, Icons: Lucide React, Internationalization: Custom i18n hooks, State Management: TanStack React Query",
+        "case": {
+          "challenge": "The site was not responsive and did not reflect the clinic's premium class — a full rebuild with a new identity was needed.",
+          "scope": [
+            "Complete rebuild (React, TypeScript, Tailwind)",
+            "UI/UX improvement",
+            "Responsiveness (RWD, previously missing)",
+            "Rebranding + new logo",
+            "Online booking and multilingual support",
+            "SEO + Google Search Console",
+            "Google Analytics",
+            "WCAG AA/AAA accessibility",
+            "Performance optimization"
+          ],
+          "result": [
+            "A modern, fully responsive premium-class website",
+            "A consistent visual identity",
+            "Easy online appointment booking",
+            "High accessibility and performance"
+          ]
+        }
       },
       "5": {
         "short": "E-commerce presentation for eco-friendly flowerpots made of hemp composite with CO2 absorption — product story and brand identity.",
-        "full": "Cudowna Doniczka is an eco-conscious brand producing biodegradable flowerpots made of natural hemp composite that absorbs CO2. The website tells the product story, explains the environmental benefits and presents the product line in a warm, nature-inspired visual language. \n\nKey features: storytelling product sections, benefit-driven copy layout, photo-focused presentation, responsive design and a structure prepared for online sales."
+        "full": "Cudowna Doniczka is an eco-conscious brand producing biodegradable flowerpots made of natural hemp composite that absorbs CO2. The website tells the product story, explains the environmental benefits and presents the product line in a warm, nature-inspired visual language. \n\nKey features: storytelling product sections, benefit-driven copy layout, photo-focused presentation, responsive design and a structure prepared for online sales.",
+        "case": {
+          "challenge": "An innovative product — CO2-absorbing flowerpots — required a website that educates and raises awareness of green technologies.",
+          "scope": [
+            "Website built from scratch",
+            "Product presentation and brand story",
+            "Blog",
+            "A CO2 counter linked to an NFC tag on the pot (scan → how much CO2 that pot has absorbed)",
+            "SEO + Google Search Console",
+            "Google Analytics",
+            "WCAG accessibility"
+          ],
+          "result": [
+            "A site that educates and builds awareness",
+            "A unique CO2 counter via NFC",
+            "Blog content for SEO"
+          ]
+        }
       },
       "6": {
         "short": "Website for a drone-services company — orthophoto maps, NDVI, thermal imaging and 3D photogrammetry with RTK precision. A technical, polished interface presenting the offer for agriculture, surveying and construction.",
-        "full": "GeoScan UAV provides professional aerial photogrammetry and remote-sensing services — orthophoto maps, 3D models, NDVI and thermal analysis, with centimeter-level RTK precision. \n\nThe website presents the offer in a clear, technical way, focusing attention on concrete use cases in agriculture, surveying, construction and environmental protection. Built for speed, accessibility and search visibility."
+        "full": "GeoScan UAV provides professional aerial photogrammetry and remote-sensing services — orthophoto maps, 3D models, NDVI and thermal analysis, with centimeter-level RTK precision. \n\nThe website presents the offer in a clear, technical way, focusing attention on concrete use cases in agriculture, surveying, construction and environmental protection. Built for speed, accessibility and search visibility.",
+        "case": {
+          "challenge": "A drone-services company needed a technical, credible website presenting precise photogrammetry services.",
+          "scope": [
+            "Service presentation (orthophoto maps, NDVI, thermal imaging, 3D photogrammetry, RTK)",
+            "Technical visual language",
+            "Responsive layout (RWD)",
+            "SEO",
+            "Performance optimization",
+            "Accessibility"
+          ],
+          "result": [
+            "A clear offer presentation for agriculture, surveying and construction",
+            "A fast, accessible website"
+          ]
+        }
       }
-    }
+    },
+    "caseChallenge": "Challenge",
+    "caseScope": "Scope",
+    "caseResult": "Outcome",
+    "caseVisit": "View live"
   },
   "projects": {
     "heading": "GITHUB",

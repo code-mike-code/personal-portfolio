@@ -110,6 +110,83 @@
   font-family: 'Inter', sans-serif;
 }
 
+/* Case study — Wyzwanie / Zakres / Efekt */
+.project-modal-case {
+  margin: 0 0 1.75rem;
+}
+
+.pm-case-block {
+  margin: 0 0 1.75rem;
+}
+
+.pm-case-label {
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-coral, #d96a55);
+  margin: 0 0 0.6rem;
+}
+
+.pm-case-text {
+  font-size: 1.05rem;
+  line-height: 1.65;
+  color: #333;
+  margin: 0;
+}
+
+.pm-case-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.pm-case-list li {
+  position: relative;
+  padding-left: 1.6rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #333;
+}
+
+.pm-case-list li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.5em;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--color-teal, #2b9dad);
+}
+
+.pm-case-list--result li::before {
+  background: var(--color-coral, #d96a55);
+}
+
+.project-modal-live {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin: 0.25rem 0 0;
+  padding: 0.7rem 1.4rem;
+  border: 1px solid var(--color-ink, #222);
+  border-radius: 999px;
+  color: var(--color-ink, #222);
+  text-decoration: none;
+  font-weight: 500;
+  transition: background 0.25s ease, color 0.25s ease;
+}
+
+.project-modal-live:hover,
+.project-modal-live:focus-visible {
+  background: var(--color-ink, #222);
+  color: #fff;
+}
+
 /* Tech Stack */
 .project-modal-tech-stack {
   margin-top: 2rem;

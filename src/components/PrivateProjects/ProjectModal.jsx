@@ -174,7 +174,49 @@ const ProjectModal = ({ isOpen, project, onClose }) => {
           <div className="project-modal-content" style={{ position: 'relative', zIndex: 1, backgroundColor: '#fff', minHeight: '100%' }}>
             <h2 className="project-modal-title" id="project-modal-title">{project.title}</h2>
 
-            <p className="project-modal-description">{t(`work.projects.${project.id}.full`)}</p>
+            {(() => {
+              const c = t(`work.projects.${project.id}.case`, { returnObjects: true });
+              if (!c || typeof c !== 'object' || Array.isArray(c)) {
+                return <p className="project-modal-description">{t(`work.projects.${project.id}.full`)}</p>;
+              }
+              return (
+                <div className="project-modal-case">
+                  {c.challenge && (
+                    <section className="pm-case-block">
+                      <h3 className="pm-case-label">{t('work.caseChallenge')}</h3>
+                      <p className="pm-case-text">{c.challenge}</p>
+                    </section>
+                  )}
+                  {Array.isArray(c.scope) && c.scope.length > 0 && (
+                    <section className="pm-case-block">
+                      <h3 className="pm-case-label">{t('work.caseScope')}</h3>
+                      <ul className="pm-case-list">
+                        {c.scope.map((s, i) => <li key={i}>{s}</li>)}
+                      </ul>
+                    </section>
+                  )}
+                  {Array.isArray(c.result) && c.result.length > 0 && (
+                    <section className="pm-case-block">
+                      <h3 className="pm-case-label">{t('work.caseResult')}</h3>
+                      <ul className="pm-case-list pm-case-list--result">
+                        {c.result.map((s, i) => <li key={i}>{s}</li>)}
+                      </ul>
+                    </section>
+                  )}
+                </div>
+              );
+            })()}
+
+            {project.liveUrl && (
+              <a
+                className="project-modal-live"
+                href={project.liveUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {t('work.caseVisit')} ↗
+              </a>
+            )}
 
             {/* Tech Stack */}
             {project.techStack && project.techStack.length > 0 && (
