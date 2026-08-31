@@ -8,7 +8,8 @@
     "switchAria": "Zmień język na angielski"
   },
   "common": {
-    "loading": "Wczytywanie..."
+    "loading": "Wczytywanie...",
+    "backHome": "Wróć na stronę główną"
   },
   "header": {
     "logoAria": "Przewiń do sekcji o mnie",
@@ -214,7 +215,11 @@
     "caseChallenge": "Wyzwanie",
     "caseScope": "Zakres prac",
     "caseResult": "Efekt",
-    "caseVisit": "Zobacz stronę"
+    "caseVisit": "Zobacz stronę",
+    "viewAll": "Zobacz wszystkie realizacje",
+    "pageKicker": "Realizacje",
+    "pageTitle": "Wybrane realizacje",
+    "pageSubtitle": "Strony, które zbudowałem dla klientów z różnych branż. Każda od zera, pod konkretny cel — z naciskiem na przejrzystość, szybkość i realny efekt."
   },
   "projects": {
     "heading": "GITHUB",

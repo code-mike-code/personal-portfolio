@@ -8,7 +8,8 @@
     "switchAria": "Switch language to Polish"
   },
   "common": {
-    "loading": "Loading..."
+    "loading": "Loading...",
+    "backHome": "Back to home"
   },
   "header": {
     "logoAria": "Scroll to about section",
@@ -213,7 +214,11 @@
     "caseChallenge": "Challenge",
     "caseScope": "Scope",
     "caseResult": "Outcome",
-    "caseVisit": "View live"
+    "caseVisit": "View live",
+    "viewAll": "See all projects",
+    "pageKicker": "Work",
+    "pageTitle": "Selected projects",
+    "pageSubtitle": "Websites I built for clients across different industries. Each one from scratch, for a specific goal — with a focus on clarity, speed, and real impact."
   },
   "projects": {
     "heading": "GITHUB",

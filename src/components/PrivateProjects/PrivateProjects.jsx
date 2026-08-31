@@ -1,4 +1,5 @@
 import React, { useEffect, useLayoutEffect, useRef, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -16,10 +17,15 @@ gsap.registerPlugin(ScrollTrigger);
 // Zapobiega skokom animacji na mobile gdy chowa się pasek adresu
 ScrollTrigger.config({ ignoreMobileResize: true });
 
-export default function PrivateProjects() {
+export default function PrivateProjects({ limit }) {
   const { t } = useTranslation();
   const lenisRef = useRef(null);
   const [expandedProject, setExpandedProject] = useState(null);
+
+  // Na home pokazujemy skrót (3 realizacje) + link do pełnej listy;
+  // pełna lista żyje na /realizacje
+  const shownProjects =
+    typeof limit === 'number' ? privateProjects.slice(0, limit) : privateProjects;
 
   // Inicjalizacja Lenis (Smooth Scroll)
   useLayoutEffect(() => {
@@ -62,9 +68,17 @@ export default function PrivateProjects() {
       <WorkHeader />
 
       <WorkShowcase
-        projects={privateProjects}
+        projects={shownProjects}
         onDetails={(project) => setExpandedProject(project)}
       />
+
+      {typeof limit === 'number' && privateProjects.length > limit && (
+        <div className="work-view-all">
+          <Link to="/realizacje" className="work-view-all-link">
+            {t('work.viewAll')} <span aria-hidden="true">→</span>
+          </Link>
+        </div>
+      )}
 
       {/* Domknięcie */}
       <div className="section-closure">

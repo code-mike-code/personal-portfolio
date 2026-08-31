@@ -40,7 +40,7 @@ function MainLayout() {
         <Testimonials />
         <span className="section-divider-dot section-divider-dot--teal" aria-hidden="true"></span>
         {/* kolejna kropka (coral) jest wewnątrz PrivateProjects, pod work-showcase */}
-        <PrivateProjects />
+        <PrivateProjects limit={3} />
         <span className="section-divider-dot section-divider-dot--teal" aria-hidden="true"></span>
         <Process />
         <span className="section-divider-dot section-divider-dot--teal" aria-hidden="true"></span>
@@ -63,6 +63,7 @@ function MainLayout() {
 
 const PrivacyPolicy = lazy(() => import('./components/PrivacyPolicy/PrivacyPolicy'));
 const AboutPage = lazy(() => import('./components/AboutMe/AboutPage'));
+const RealizacjePage = lazy(() => import('./components/PrivateProjects/RealizacjePage'));
 
 
 export default function App() {
@@ -88,6 +89,14 @@ export default function App() {
           element={
             <Suspense fallback={<div>{t('common.loading')}</div>}>
               <AboutPage key={i18n.resolvedLanguage} />
+            </Suspense>
+          }
+        />
+        <Route
+          path="/realizacje"
+          element={
+            <Suspense fallback={<div>{t('common.loading')}</div>}>
+              <RealizacjePage key={i18n.resolvedLanguage} />
             </Suspense>
           }
         />
