@@ -116,16 +116,6 @@ const Header = () => {
               <span className="menu-text">{t('header.contact')}</span>
             </a>
           </li>
-          <li className="header__cta-item">
-            <a
-              className="header__cta"
-              href={CALENDLY_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              {t('header.bookCall')}
-            </a>
-          </li>
         </ul>
         <button
           className="header__menu-toggle"
