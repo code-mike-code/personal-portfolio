@@ -110,8 +110,22 @@
   padding-bottom: 0.1em;
   background-image: linear-gradient(var(--color-teal), var(--color-teal));
   background-repeat: no-repeat;
-  background-size: 100% 0.08em;
+  /* Podkreślenie rysuje się od lewej do prawej dopiero, gdy cała treść hero
+     jest już widoczna (klasa --drawn dodawana z JS). Start: szerokość 0. */
+  background-size: 0% 0.08em;
   background-position: left calc(100% - 0.02em);
+  transition: background-size 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.hero-title-underline.hero-title-underline--drawn {
+  background-size: 100% 0.08em;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-title-underline {
+    transition: none;
+    background-size: 100% 0.08em;
+  }
 }
 
 /* Subnagłówek — doprecyzowuje dla kogo i jak */

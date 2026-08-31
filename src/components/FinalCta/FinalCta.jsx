@@ -1,5 +1,6 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
+import Button from '../common/Button';
 import { CALENDLY_URL } from '../../constants';
 import './FinalCta.css';
 
@@ -11,14 +12,16 @@ export default function FinalCta() {
       <div className="finalcta-inner">
         <h2 className="finalcta-heading">{t('finalCta.heading')}</h2>
         <p className="finalcta-text">{t('finalCta.text')}</p>
-        <a
+        <Button
+          as="a"
           className="finalcta-btn"
           href={CALENDLY_URL}
           target="_blank"
           rel="noopener noreferrer"
+          variant="teal"
         >
           {t('finalCta.cta')} ↗
-        </a>
+        </Button>
         <p className="finalcta-alt">{t('finalCta.alt')}</p>
       </div>
     </section>

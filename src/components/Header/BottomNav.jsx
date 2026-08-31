@@ -4,7 +4,7 @@ import LanguageToggle from '../common/LanguageToggle';
 import './BottomNav.css';
 
 // Sekcje śledzone dla podświetlenia aktywnego linku (kolejność = kolejność na stronie)
-const TRACKED_SECTIONS = ['private-projects', 'projects', 'contact'];
+const TRACKED_SECTIONS = ['oferta', 'private-projects', 'contact'];
 
 export default function BottomNav() {
   const { t } = useTranslation();
@@ -88,11 +88,10 @@ export default function BottomNav() {
       {/* Na mobile toggle języka wypada z paska — osobne kółko obok pigułki */}
       <LanguageToggle compact className="bottom-nav__lang-circle" />
       <ul className="bottom-nav__menu">
-        {/* Link zewnętrzny, ale podświetlany gdy widać sekcję #projects (repozytoria GitHub) */}
-        <li><a href="https://github.com/code-mike-code"
-          target="_blank"
-          rel="noopener noreferrer"
-          className={activeSection === 'projects' ? 'is-active' : undefined}>{t('header.github')}</a></li>
+        <li><a href="#oferta"
+          className={activeSection === 'oferta' ? 'is-active' : undefined}
+          aria-current={activeSection === 'oferta' ? 'true' : undefined}
+          onClick={(e) => { e.preventDefault(); scrollToSection('oferta'); }}>{t('header.offer')}</a></li>
         <li><a href="#private-projects"
           className={activeSection === 'private-projects' ? 'is-active' : undefined}
           aria-current={activeSection === 'private-projects' ? 'true' : undefined}

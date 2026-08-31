@@ -16,7 +16,7 @@ export default function Button({
   className,
   ...props
 }) {
-  const variantClass = variant === 'primary' ? styles.primary : styles.secondary;
+  const variantClass = styles[variant] || styles.primary;
   const combinedClassName = [styles.btn, variantClass, className].filter(Boolean).join(' ');
 
   return (

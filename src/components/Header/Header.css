@@ -54,7 +54,12 @@
 .header__logo a:hover {
   color: white;
   transform: translate(0.5px, -0.5px) scale(1.03);
-} 
+}
+
+/* Domyślnie (desktop) monogram ukryty — widać tekst "O mnie" */
+.header__logo-mark {
+  display: none;
+}
 
 .header__logo::before,
 .header__menu li::before {
@@ -342,6 +347,24 @@
   .header__logo-button {
     white-space: nowrap;
     font-size: 1.5rem;
+  }
+
+  /* Mobile: zamiast tekstu "O mnie" pokazujemy monogram M (jak w favicon) */
+  .header__logo-text {
+    display: none;
+  }
+
+  .header__logo-mark {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-coral);
+  }
+
+  .header__logo-mark svg {
+    width: 32px;
+    height: 32px;
+    display: block;
   }
 
   .mobile-menu__num {

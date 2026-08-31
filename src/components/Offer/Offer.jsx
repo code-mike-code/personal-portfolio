@@ -1,5 +1,6 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
+import Button from '../common/Button';
 import { CALENDLY_URL } from '../../constants';
 import './Offer.css';
 
@@ -24,14 +25,16 @@ export default function Offer() {
             <span className="offer-price-heading">{t('offer.priceHeading')}</span>
             <span className="offer-price-value">{t('offer.priceValue')}</span>
             <p className="offer-price-note">{t('offer.priceNote')}</p>
-            <a
-              className="offer-cta"
+            <Button
+              as="a"
               href={CALENDLY_URL}
               target="_blank"
               rel="noopener noreferrer"
+              variant="teal"
+              className="offer-cta"
             >
               {t('offer.cta')} ↗
-            </a>
+            </Button>
           </div>
 
           <div className="offer-lists">

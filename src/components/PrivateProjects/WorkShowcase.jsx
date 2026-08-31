@@ -157,13 +157,19 @@ const WorkShowcase = ({ projects, onDetails }) => {
       const mediaEl = mediaWrapRef.current;
       const infoEl = infoWrapRef.current;
       const total = projects.length;
-      const introFraction = INTRO_VIEWPORTS / (INTRO_VIEWPORTS + total);
+      // Mobile: krótsze intro i mniej scrollu na projekt — na telefonie pełny
+      // 1 viewport/projekt dawał zbyt długie przewijanie sekcji
+      const isMobile = window.matchMedia('(max-width: 600px)').matches;
+      const introVp = isMobile ? 0.8 : INTRO_VIEWPORTS;
+      const perProjectVp = isMobile ? 0.6 : 1;
+      const totalVp = introVp + perProjectVp * total;
+      const introFraction = introVp / totalVp;
 
-      // Pin całej sekcji: intro + 1 viewport na każdy projekt
+      // Pin całej sekcji: intro + kilka viewportów na projekty (mniej na mobile)
       ScrollTrigger.create({
         trigger: sectionRef.current,
         start: 'top top',
-        end: () => `+=${window.innerHeight * (INTRO_VIEWPORTS + total)}`,
+        end: () => `+=${window.innerHeight * totalVp}`,
         pin: true,
         pinSpacing: true,
         invalidateOnRefresh: true,
@@ -191,7 +197,7 @@ const WorkShowcase = ({ projects, onDetails }) => {
           scrollTrigger: {
             trigger: sectionRef.current,
             start: 'top top',
-            end: () => `+=${window.innerHeight * INTRO_VIEWPORTS}`,
+            end: () => `+=${window.innerHeight * introVp}`,
             scrub: 0.5,
             onUpdate: () => {
               infoEl.style.pointerEvents = tl.progress() > 0.9 ? 'auto' : 'none';

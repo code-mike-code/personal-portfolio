@@ -32,6 +32,18 @@
   border: 2px solid var(--color-ink);
 }
 
+.teal {
+  background: var(--color-teal);
+  border: 2px solid transparent;
+  color: var(--color-ecru);
+}
+
+.coral {
+  background: var(--color-coral);
+  border: 2px solid transparent;
+  color: var(--color-ecru);
+}
+
 .btn::before {
   content: '';
   position: absolute;
@@ -55,6 +67,14 @@
   background: var(--color-ink);
 }
 
+.teal::before {
+  background: var(--color-ecru);
+}
+
+.coral::before {
+  background: var(--color-ecru);
+}
+
 .btn:hover::before,
 .btn:focus::before {
   width: 100%;
@@ -69,6 +89,18 @@
 .secondary:hover,
 .secondary:focus {
   color: var(--color-ecru);
+}
+
+.teal:hover,
+.teal:focus {
+  color: var(--color-teal-ink);
+  border: 2px solid var(--color-teal-ink);
+}
+
+.coral:hover,
+.coral:focus {
+  color: var(--color-coral-ink);
+  border: 2px solid var(--color-coral-ink);
 }
 
 .btn:hover,

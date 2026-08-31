@@ -1,6 +1,7 @@
 import React, { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import Button from '../common/Button';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Lenis from 'lenis';
@@ -74,9 +75,9 @@ export default function PrivateProjects({ limit }) {
 
       {typeof limit === 'number' && privateProjects.length > limit && (
         <div className="work-view-all">
-          <Link to="/realizacje" className="work-view-all-link">
+          <Button as={Link} to="/realizacje" variant="secondary">
             {t('work.viewAll')} <span aria-hidden="true">→</span>
-          </Link>
+          </Button>
         </div>
       )}
 

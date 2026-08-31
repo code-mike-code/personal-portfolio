@@ -11,13 +11,17 @@ export default function Hero() {
   const titleLines = Array.isArray(rawLines) ? rawLines : [];
   const [showSecond, setShowSecond] = useState(false);
   const [showButtons, setShowButtons] = useState(false);
+  const [drawUnderline, setDrawUnderline] = useState(false);
 
   useEffect(() => {
     const t1 = setTimeout(() => setShowSecond(true), 450);
     const t2 = setTimeout(() => setShowButtons(true), 1200);
+    // Podkreślenie rysuje się dopiero, gdy cała treść hero jest już widoczna
+    const t3 = setTimeout(() => setDrawUnderline(true), 1500);
     return () => {
       clearTimeout(t1);
       clearTimeout(t2);
+      clearTimeout(t3);
     };
   }, []);
 
@@ -43,7 +47,11 @@ export default function Hero() {
               <div
                 key={i}
                 aria-hidden="true"
-                className={i === titleLines.length - 1 ? 'hero-title-underline' : undefined}
+                className={
+                  i === titleLines.length - 1
+                    ? `hero-title-underline ${drawUnderline ? 'hero-title-underline--drawn' : ''}`
+                    : undefined
+                }
               >
                 <AnimatedHeadlinePart text={line} start={i === 0 ? true : showSecond} />
               </div>

@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
+import Button from '../common/Button';
 import { privateProjects } from './private-projects';
 import './RealizacjePage.css';
 
@@ -128,14 +129,16 @@ function ProjectRow({ project, index }) {
         )}
 
         {project.liveUrl && (
-          <a
+          <Button
+            as="a"
             className="rlz-live"
             href={project.liveUrl}
             target="_blank"
             rel="noopener noreferrer"
+            variant="primary"
           >
             {t('work.caseVisit')} ↗
-          </a>
+          </Button>
         )}
       </div>
     </article>

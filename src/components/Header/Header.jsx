@@ -86,7 +86,16 @@ const Header = () => {
             aria-label={t('header.aboutAria')}
             className="header__logo-button"
           >
-            {t('header.about')}
+            {/* Desktop: tekst "O mnie". Mobile: monogram M (jak w favicon) */}
+            <span className="header__logo-mark" aria-hidden="true">
+              <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M14 48V16h7l11 18 11-18h7v32h-8V31l-10 16-10-16v17z"
+                  fill="currentColor"
+                />
+              </svg>
+            </span>
+            <span className="header__logo-text">{t('header.about')}</span>
           </Link>
         </div>
         <ul className="header__menu">

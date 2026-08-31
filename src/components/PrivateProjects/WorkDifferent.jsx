@@ -16,7 +16,6 @@ const items = [
         <path d="M12 3l2 6 6 2-6 2-2 6-2-6-6-2 6-2 2-6z" />
       </svg>
     ),
-    tags: ['Figma', 'React', 'CSS', 'TailwindCSS'],
   },
   {
     number: '02',
@@ -27,7 +26,6 @@ const items = [
         <circle cx="17" cy="8" r="2.5" />
       </svg>
     ),
-    tags: ['GSAP', 'ScrollTrigger', 'Lenis', 'MUI'],
   },
   {
     number: '03',
@@ -37,7 +35,6 @@ const items = [
         <path d="M5 19V10M12 19V5M19 19v-7" />
       </svg>
     ),
-    tags: ['Lighthouse', 'Core Web Vitals', 'SEO', 'WCAG'],
   },
 ];
 
@@ -59,7 +56,6 @@ export default function WorkDifferent() {
         const blob = row.querySelector('.work-different-blob');
         const heading = row.querySelector('.work-different-heading');
         const body = row.querySelector('.work-different-body');
-        const tags = row.querySelectorAll('.work-different-tag');
 
         const tl = gsap.timeline({
           scrollTrigger: {
@@ -88,12 +84,6 @@ export default function WorkDifferent() {
             body,
             { opacity: 0, y: 16 },
             { opacity: 1, y: 0, ease: 'none' },
-            '<0.1'
-          )
-          .fromTo(
-            tags,
-            { opacity: 0, y: 8 },
-            { opacity: 1, y: 0, stagger: 0.08, ease: 'none' },
             '<0.1'
           );
       });
@@ -130,13 +120,6 @@ export default function WorkDifferent() {
             </div>
             <div className="work-different-body">
               <p>{itemTexts[index].description}</p>
-              <div className="work-different-tags">
-                {item.tags.map((tag) => (
-                  <span className="work-different-tag" key={tag}>
-                    {tag}
-                  </span>
-                ))}
-              </div>
             </div>
           </div>
         ))}

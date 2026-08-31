@@ -32,23 +32,7 @@
   opacity: 0.85;
 }
 
-.finalcta-btn {
-  display: inline-block;
-  padding: 0.95rem 2.2rem;
-  border-radius: 999px;
-  background: var(--color-teal);
-  color: var(--color-ecru);
-  font-size: 1.1rem;
-  font-weight: 700;
-  text-decoration: none;
-  transition: background 0.25s ease, transform 0.2s ease;
-}
-
-.finalcta-btn:hover,
-.finalcta-btn:focus-visible {
-  background: var(--color-teal-ink);
-  transform: translateY(-2px);
-}
+/* Wizualia z komponentu Button (wariant teal) */
 
 .finalcta-alt {
   margin: 1.25rem 0 0;

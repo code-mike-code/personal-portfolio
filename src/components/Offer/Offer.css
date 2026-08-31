@@ -80,25 +80,10 @@
   opacity: 0.8;
 }
 
+/* Wizualia przycisku pochodzą z komponentu Button — tu tylko rozmieszczenie */
 .offer-cta {
-  margin-top: auto;
   align-self: flex-start;
-  display: inline-block;
   margin-top: 1.75rem;
-  padding: 0.8rem 1.6rem;
-  border-radius: 999px;
-  background: var(--color-ecru);
-  color: var(--color-ink);
-  font-weight: 600;
-  text-decoration: none;
-  transition: background 0.25s ease, transform 0.2s ease;
-}
-
-.offer-cta:hover,
-.offer-cta:focus-visible {
-  background: var(--color-teal);
-  color: var(--color-ecru);
-  transform: translateY(-2px);
 }
 
 /* Listy: co robię / w cenie */

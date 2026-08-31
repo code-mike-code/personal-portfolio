@@ -203,23 +203,10 @@
   background: var(--color-coral);
 }
 
+/* Wizualia z komponentu Button — tu tylko rozmieszczenie */
 .rlz-live {
   align-self: flex-start;
-  display: inline-block;
   margin-top: 1.75rem;
-  padding: 0.8rem 1.6rem;
-  border-radius: 999px;
-  background: var(--color-ink);
-  color: var(--color-ecru);
-  font-weight: 600;
-  text-decoration: none;
-  transition: background 0.25s ease, transform 0.2s ease;
-}
-
-.rlz-live:hover,
-.rlz-live:focus-visible {
-  background: var(--color-teal);
-  transform: translateY(-2px);
 }
 
 /* Powrót */
