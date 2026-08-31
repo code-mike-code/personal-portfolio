@@ -61,19 +61,19 @@
       "title": "Co wyróżnia moje projekty.",
       "items": [
         {
-          "title": "Autorskie doświadczenia cyfrowe",
-          "tagline": "Bez szablonów — strony szyte na miarę",
-          "description": "Każdy projekt zaczyna się od zrozumienia biznesu i jego odbiorców, a następnie zbudowania UX i systemu wizualnego, który jest konkretny, przemyślany i żywy."
+          "title": "Strony szyte na miarę",
+          "tagline": "Zero szablonów",
+          "description": "Zaczynam od zrozumienia Twojego biznesu i klientów, a potem projektuję stronę pod konkretny cel — tak, żeby wyglądała profesjonalnie i realnie pomagała sprzedawać."
         },
         {
-          "title": "Ruch i interakcja",
-          "tagline": "Responsywne strony, które czuć w wielu wymiarach",
-          "description": "Używam animacji i interakcji opartych na scrollu, by kierować uwagę, opowiadać historie i ożywiać interfejsy — od subtelnych przejść po bardziej wyraziste, immersyjne momenty."
+          "title": "Nowoczesny, żywy design",
+          "tagline": "Design, który przyciąga uwagę",
+          "description": "Subtelne animacje i dopracowane detale sprawiają, że strona wyróżnia się na tle konkurencji i zostaje w pamięci — bez przesady, zawsze w służbie treści."
         },
         {
-          "title": "Wydajność i SEO",
-          "tagline": "Szybko, widocznie, mierzalnie",
-          "description": "Czysty, semantyczny kod i budżety wydajnościowe od pierwszego dnia — strony, które szybko się ładują, dobrze pozycjonują i osiągają wysokie wyniki w Core Web Vitals."
+          "title": "Szybkość i widoczność w Google",
+          "tagline": "Szybko i widocznie",
+          "description": "Strony ładują się błyskawicznie i są przygotowane pod Google, żeby klienci łatwo Cię znajdowali. Efekt widać w liczbach."
         }
       ]
     },

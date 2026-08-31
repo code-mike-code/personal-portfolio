@@ -60,19 +60,19 @@
       "title": "What makes my work different.",
       "items": [
         {
-          "title": "Custom digital experiences",
-          "tagline": "No templates — tailored, custom websites",
-          "description": "Every project starts with understanding the business and its audience, then building a UX and visual system that feels specific, intentional, and alive."
+          "title": "Tailor-made websites",
+          "tagline": "No templates",
+          "description": "I start by understanding your business and your clients, then design the site around a specific goal — so it looks professional and genuinely helps you sell."
         },
         {
-          "title": "Motion & interaction",
-          "tagline": "Responsive websites that feel multidimensional",
-          "description": "I use animation and scroll-based interaction to guide attention, tell stories, and bring interfaces to life — from subtle transitions to more expressive, immersive moments."
+          "title": "Modern, lively design",
+          "tagline": "Design that grabs attention",
+          "description": "Subtle animations and polished details make your site stand out from the competition and stick in memory — never overdone, always serving the content."
         },
         {
-          "title": "Performance & SEO",
-          "tagline": "Fast, visible, measurable",
-          "description": "Clean, semantic code and performance budgets from day one — websites that load fast, rank well, and score high in Core Web Vitals."
+          "title": "Speed and Google visibility",
+          "tagline": "Fast and findable",
+          "description": "Sites load in a flash and are built to rank in Google, so clients find you easily. The results show up in the numbers."
         }
       ]
     },

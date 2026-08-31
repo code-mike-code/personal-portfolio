@@ -260,37 +260,3 @@
     margin-top: 1.1rem;
   }
 }
-
-/* @media (max-width: 600px) {
-  .hero-content-wrapper {
-    flex-direction: column;
-    justify-content: center;
-    height: auto;
-    padding: 10vh 1rem 5vh 1rem;
-  }
-
-  .hero-title-container.hero-title-container--left,
-  .hero-3d-container {
-    width: 100%;
-    max-width: 600px;
-    height: auto;
-    text-align: center;
-    align-items: center;
-  }
-
-  .hero-3d-container {
-    min-height: 30vh;
-  }
-
-  .hero-title {
-    align-items: center;
-    text-align: center;
-    font-size: clamp(2.5rem, 10vw, 4rem);
-  }
-
-  .hero-buttons.hero-buttons--left {
-    justify-content: center;
-    margin-left: 0;
-    
-  }
-} */
