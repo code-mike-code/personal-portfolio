@@ -25,7 +25,9 @@
     "menuOpen": "Menu",
     "menuClose": "Close",
     "socials": "Socials",
-    "linkedinAria": "LinkedIn Profile"
+    "linkedinAria": "LinkedIn Profile",
+    "offer": "Offer",
+    "bookCall": "Book a call"
   },
   "hero": {
     "kicker": "Michał Majewski",

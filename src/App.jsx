@@ -5,7 +5,6 @@ import Header from './components/Header/Header';
 import BottomNav from './components/Header/BottomNav';
 import Hero from './components/Hero/Hero';
 import PrivateProjects from './components/PrivateProjects/PrivateProjects';
-import AboutMe from './components/AboutMe/AboutMe';
 import TechBanner from './components/Banner/TechBanner';
 import Testimonials from './components/Testimonials/Testimonials';
 import Contact from './components/Contact/Contact';
@@ -37,8 +36,6 @@ function MainLayout() {
         {/* kolejna kropka (coral) jest wewnątrz PrivateProjects, pod work-showcase */}
         <PrivateProjects />
         <span className="section-divider-dot section-divider-dot--teal" aria-hidden="true"></span>
-        <AboutMe />
-        <span className="section-divider-dot section-divider-dot--teal" aria-hidden="true"></span>
         <TechBanner />
         <span className="section-divider-dot section-divider-dot--teal" aria-hidden="true"></span>
         <Testimonials />
@@ -59,6 +56,7 @@ function MainLayout() {
 }
 
 const PrivacyPolicy = lazy(() => import('./components/PrivacyPolicy/PrivacyPolicy'));
+const AboutPage = lazy(() => import('./components/AboutMe/AboutPage'));
 
 
 export default function App() {
@@ -76,6 +74,14 @@ export default function App() {
           element={
             <Suspense fallback={<div>{t('common.loading')}</div>}>
               <PrivacyPolicy />
+            </Suspense>
+          }
+        />
+        <Route
+          path="/o-mnie"
+          element={
+            <Suspense fallback={<div>{t('common.loading')}</div>}>
+              <AboutPage key={i18n.resolvedLanguage} />
             </Suspense>
           }
         />

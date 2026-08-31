@@ -323,6 +323,26 @@
   .mobile-menu--open .mobile-menu__item:nth-child(3) .mobile-menu__item-inner {
     transition-delay: 0.41s;
   }
+  .mobile-menu--open .mobile-menu__item:nth-child(4) .mobile-menu__item-inner {
+    transition-delay: 0.49s;
+  }
+
+  /* CTA w menu mobilnym — pojawia się po pozycjach */
+  .mobile-menu__cta {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  .mobile-menu--open .mobile-menu__cta {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.57s;
+  }
+
+  /* "O mnie" w headerze nie może zawijać się na dwie linie */
+  .header__logo-button {
+    white-space: nowrap;
+    font-size: 1.5rem;
+  }
 
   .mobile-menu__num {
     font-size: 0.3em;
@@ -429,4 +449,50 @@
   .header select {
     cursor: text;
   }
+}
+
+/* CTA "Umów rozmowę" w nagłówku (desktop) */
+.header__cta-item {
+  flex: 0 0 auto;
+}
+
+.header__cta {
+  display: inline-block;
+  padding: 0.55rem 1.35rem;
+  background: var(--color-ink);
+  color: var(--color-ecru);
+  border-radius: 999px;
+  font-size: 1.05rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background 0.25s ease, transform 0.2s ease;
+}
+
+.header__cta:hover,
+.header__cta:focus-visible {
+  background: var(--color-teal-ink);
+  color: var(--color-ecru);
+  transform: translateY(-1px);
+}
+
+/* CTA w menu mobilnym */
+.mobile-menu__cta {
+  display: inline-block;
+  align-self: flex-start;
+  margin-top: 1.5rem;
+  padding: 0.9rem 2rem;
+  background: var(--color-ink);
+  color: var(--color-ecru);
+  border-radius: 999px;
+  font-size: 1.15rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: opacity 0.4s ease, transform 0.4s cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+.mobile-menu__cta:hover,
+.mobile-menu__cta:focus-visible {
+  background: var(--color-teal-ink);
 }
