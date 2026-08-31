@@ -1,10 +1,11 @@
 import React, { useEffect, useState, useRef } from 'react';
+import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import LanguageToggle from '../common/LanguageToggle';
 import './BottomNav.css';
 
 // Sekcje śledzone dla podświetlenia aktywnego linku (kolejność = kolejność na stronie)
-const TRACKED_SECTIONS = ['oferta', 'private-projects', 'contact'];
+const TRACKED_SECTIONS = ['oferta', 'contact'];
 
 export default function BottomNav() {
   const { t } = useTranslation();
@@ -92,10 +93,7 @@ export default function BottomNav() {
           className={activeSection === 'oferta' ? 'is-active' : undefined}
           aria-current={activeSection === 'oferta' ? 'true' : undefined}
           onClick={(e) => { e.preventDefault(); scrollToSection('oferta'); }}>{t('header.offer')}</a></li>
-        <li><a href="#private-projects"
-          className={activeSection === 'private-projects' ? 'is-active' : undefined}
-          aria-current={activeSection === 'private-projects' ? 'true' : undefined}
-          onClick={(e) => { e.preventDefault(); scrollToSection('private-projects'); }}>{t('header.work')}</a></li>
+        <li><Link to="/realizacje">{t('header.work')}</Link></li>
         <li><a href="#contact"
           className={activeSection === 'contact' ? 'is-active' : undefined}
           aria-current={activeSection === 'contact' ? 'true' : undefined}

@@ -108,13 +108,13 @@ const Header = () => {
             </a>
           </li>
           <li onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
-            <a
-              href="#private-projects"
-              onClick={(e) => { e.preventDefault(); goToSection('private-projects'); }}
+            <Link
+              to="/realizacje"
+              onClick={() => setMenuOpen(false)}
               aria-label={t('header.workAria')}
             >
               <span className="menu-text">{t('header.work')}</span>
-            </a>
+            </Link>
           </li>
           <li onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
             <a
@@ -162,15 +162,15 @@ const Header = () => {
               </a>
             </li>
             <li className="mobile-menu__item">
-              <a
-                href="#private-projects"
-                onClick={(e) => { e.preventDefault(); goToSection('private-projects'); }}
+              <Link
+                to="/realizacje"
+                onClick={() => setMenuOpen(false)}
                 aria-label={t('header.workAria')}
               >
                 <span className="mobile-menu__item-inner">
                   {t('header.work')}<sup className="mobile-menu__num">03</sup>
                 </span>
-              </a>
+              </Link>
             </li>
             <li className="mobile-menu__item">
               <a
