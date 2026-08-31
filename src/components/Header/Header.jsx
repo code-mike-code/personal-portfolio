@@ -92,7 +92,7 @@ const Header = () => {
             aria-label={t('header.logoAria')}
             className="header__logo-button"
           >
-            Code Mike
+            Michał Majewski
           </a>
         </div>
         <ul className="header__menu" onClick={handleLinkClick}>

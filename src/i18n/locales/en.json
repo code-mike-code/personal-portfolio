@@ -1,6 +1,6 @@
 {
   "meta": {
-    "title": "Code Mike — Frontend Developer | React & TypeScript",
+    "title": "Michał Majewski — Modern Websites",
     "description": "Frontend developer building fast, accessible websites with React, TypeScript and GSAP. Modern websites in as little as 3 days.",
     "keywords": "frontend developer, React developer, TypeScript developer, GSAP animations, accessible websites, Core Web Vitals, freelance frontend developer Poland, web developer Katowice, web developer Warsaw, web developer Wrocław, web developer Kraków, web developer Gdańsk, JavaScript developer, web performance optimization"
   },
@@ -28,11 +28,14 @@
     "linkedinAria": "LinkedIn Profile"
   },
   "hero": {
-    "line1": "Code Mike",
-    "line2": "Modern Web",
-    "line3": "Development",
-    "projects": "Projects",
-    "contact": "Contact"
+    "kicker": "Michał Majewski",
+    "titleLines": [
+      "Modern websites",
+      "tailored to you"
+    ],
+    "subtitle": "For business owners in any industry, across Poland. Tailor-made — no templates, with SEO — from design to deployment, I do it all myself. A landing page in 3 days.",
+    "ctaCall": "Book a call",
+    "ctaWork": "See work"
   },
   "work": {
     "title": "Every project is built around the client",
@@ -217,7 +220,7 @@
   },
   "about": {
     "headingLine1": "The story behind",
-    "headingLine2": "Code Mike",
+    "headingLine2": "Michał Majewski",
     "photoAlt": "Michał with his cat",
     "bioHeading": "Hey, I'm Michał",
     "bio1": "I design and build modern websites in React and TypeScript — fast, accessible (WCAG) and optimized for SEO. A simple site or landing page I can deliver in as little as 3 days, with no compromise on quality. I care about one thing: that your website actually works for your business — brings in enquiries, builds brand credibility, and ranks well on Google.",
@@ -266,7 +269,7 @@
     }
   },
   "footer": {
-    "copyright": "Code Mike - Modern Web Development",
+    "copyright": "Michał Majewski",
     "topAria": "Scroll back to top",
     "privacyLink": "Privacy Policy & Cookies"
   },

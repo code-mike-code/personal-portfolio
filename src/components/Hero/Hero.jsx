@@ -3,27 +3,25 @@ import { useTranslation } from 'react-i18next';
 import './Hero.css';
 import Button from '../common/Button';
 import AnimatedHeadlinePart from '../common/AnimatedHeadlinePart';
+import { CALENDLY_URL } from '../../constants';
 
 export default function Hero() {
   const { t } = useTranslation();
+  const rawLines = t('hero.titleLines', { returnObjects: true });
+  const titleLines = Array.isArray(rawLines) ? rawLines : [];
   const [showSecond, setShowSecond] = useState(false);
-  const [showThird, setShowThird] = useState(false);
   const [showButtons, setShowButtons] = useState(false);
 
   useEffect(() => {
     const t1 = setTimeout(() => setShowSecond(true), 450);
-    // Start third line animation after the second one begins
-    const t2 = setTimeout(() => setShowThird(true), 850);
-    const t3 = setTimeout(() => setShowButtons(true), 1700);
+    const t2 = setTimeout(() => setShowButtons(true), 1200);
     return () => {
       clearTimeout(t1);
       clearTimeout(t2);
-      clearTimeout(t3);
     };
   }, []);
 
-
-   const scrollToSection = (sectionId) => {
+  const scrollToSection = (sectionId) => {
     const element = document.getElementById(sectionId);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
@@ -34,43 +32,48 @@ export default function Hero() {
     <section className="hero-section">
       <div className="hero-content-wrapper">
         <div className="hero-title-container hero-title-container--left">
-          {/* aria-label: czytniki dostają pełny tekst od razu, animacja liter jest czysto wizualna */}
+          <p className="hero-kicker">{t('hero.kicker')}</p>
+          {/* aria-label: czytniki dostają pełny tekst od razu, animacja liter jest czysto wizualna.
+              Ostatnia linia (np. "szyte pod Ciebie") podkreślona w kolorze morskim */}
           <h1
             className="hero-title hero-title--left"
-            aria-label={`${t('hero.line1')} — ${t('hero.line2')} ${t('hero.line3')}`}
+            aria-label={titleLines.join(' ')}
           >
-            <div aria-hidden="true"><AnimatedHeadlinePart text={t('hero.line1')} start={true} /></div>
-            <div aria-hidden="true"><AnimatedHeadlinePart text={t('hero.line2')} start={showSecond} /></div>
-            <div aria-hidden="true"><AnimatedHeadlinePart text={t('hero.line3')} start={showThird} /></div>
+            {titleLines.map((line, i) => (
+              <div
+                key={i}
+                aria-hidden="true"
+                className={i === titleLines.length - 1 ? 'hero-title-underline' : undefined}
+              >
+                <AnimatedHeadlinePart text={line} start={i === 0 ? true : showSecond} />
+              </div>
+            ))}
           </h1>
+          <p className="hero-subtitle">{t('hero.subtitle')}</p>
           <div className="hero-buttons hero-buttons--left">
             <Button
-              onClick={() => scrollToSection('private-projects')}
+              as="a"
+              href={CALENDLY_URL}
+              target="_blank"
+              rel="noopener noreferrer"
               variant="primary"
               className={`hero-btn-fade ${showButtons ? 'hero-btn--visible' : ''}`}
               tabIndex={showButtons ? 0 : -1}
               aria-hidden={!showButtons}
             >
-              {t('hero.projects')}
+              {t('hero.ctaCall')}
             </Button>
-            <Button 
-              onClick={() => scrollToSection('contact')} 
-              variant="secondary" 
-              className={`hero-btn-fade ${showButtons ? 'hero-btn--visible' : ''}`} tabIndex={showButtons ? 0 : -1} aria-hidden={!showButtons}
+            <Button
+              as="button"
+              type="button"
+              onClick={() => scrollToSection('private-projects')}
+              variant="secondary"
+              className={`hero-btn-fade ${showButtons ? 'hero-btn--visible' : ''}`}
+              tabIndex={showButtons ? 0 : -1}
+              aria-hidden={!showButtons}
             >
-              {t('hero.contact')}
+              {t('hero.ctaWork')}
             </Button>
-          </div>
-          {/* Orbitujące punkty: desktop — absolutnie, środek na linii gridu 75vw,
-              mobile — w przepływie, wyśrodkowane pod przyciskami */}
-          <div className="hero-orbit" aria-hidden="true">
-            <span className="hero-orbit-ring hero-orbit-ring--outer">
-              <span className="hero-orbit-dot hero-orbit-dot--coral"></span>
-            </span>
-            <span className="hero-orbit-ring hero-orbit-ring--inner">
-              <span className="hero-orbit-dot hero-orbit-dot--teal"></span>
-            </span>
-            <span className="hero-orbit-core"></span>
           </div>
         </div>
       </div>

@@ -1,8 +1,8 @@
-# Code Mike
+# Michał Majewski
 
-> Code Mike (Michał) is a frontend developer from Poland building fast, accessible websites with React, TypeScript and GSAP.
+> Michał Majewski is a frontend developer from Poland building fast, accessible websites with React, TypeScript and GSAP.
 
-Code Mike is a freelance frontend developer working with clients across Poland — Katowice, Warszawa, Wrocław, Kraków, Gdańsk — and remotely. Projects combine intentional UX and visual design, scroll-based animation, and strict performance and accessibility budgets (Core Web Vitals, WCAG).
+Michał Majewski is a freelance frontend developer working with clients across Poland — Katowice, Warszawa, Wrocław, Kraków, Gdańsk — and remotely. Projects combine intentional UX and visual design, scroll-based animation, and strict performance and accessibility budgets (Core Web Vitals, WCAG).
 
 ## Services
 

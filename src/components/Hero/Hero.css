@@ -74,16 +74,23 @@
   height: 100%;
 }
 
-.hero-title {
-  /* Mniejszy niż wcześniej (było 8vw/6.75rem): dłuższa linia PL "Nowoczesne
-     strony" nachodziła na orbitę przy 75vw. Ten rozmiar utrzymuje nagłówek
-     na lewo od orbity na całym zakresie desktopu (>900px). */
-  font-size: clamp(3rem, 5.4vw, 5rem);
+/* Kicker — imię/marka nad głównym nagłówkiem */
+.hero-kicker {
+  margin: 0 0 0.75rem 0;
+  font-size: clamp(0.95rem, 1.4vw, 1.15rem);
   font-weight: 600;
-  font-stretch: 85%;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-teal-ink);
+}
+
+.hero-title {
+  /* Duży, przyciągający uwagę — orbita usunięta, więc nagłówek może rosnąć */
+  font-size: clamp(3rem, 7.5vw, 6.5rem);
+  font-weight: 800;
   color: var(--color-ink);
-  letter-spacing: -0.01em;
-  line-height: 1.1;
+  letter-spacing: -0.02em;
+  line-height: 1.05;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -93,10 +100,29 @@
   text-align: left;
   word-break: keep-all;
   overflow-wrap: normal;
+  margin: 0;
+}
+
+/* Druga linia — "szyte pod Ciebie" — podkreślona w kolorze morskim */
+.hero-title-underline {
+  text-decoration: underline;
+  text-decoration-color: var(--color-teal);
+  text-decoration-thickness: 0.09em;
+  text-underline-offset: 0.12em;
+}
+
+/* Subnagłówek — doprecyzowuje dla kogo i jak */
+.hero-subtitle {
+  margin: 1.5rem 0 0 0;
+  max-width: 46ch;
+  font-size: clamp(1.05rem, 1.6vw, 1.35rem);
+  font-weight: 400;
+  line-height: 1.55;
+  color: #4a4738;
 }
 
 .hero-title--left {
-  margin-top: 20px;
+  margin-top: 12px;
 }
 
 .hero-title-part {
@@ -127,10 +153,11 @@
 
 .hero-buttons.hero-buttons--left {
   display: flex;
-  gap: 2rem;
+  flex-wrap: wrap;
+  gap: 1.25rem;
   align-items: flex-start;
   justify-content: flex-start;
-  margin-left: 2.5rem;
+  margin-top: 2.25rem;
 }
 
 .hero-btn-fade {
@@ -226,102 +253,3 @@
     
   }
 } */
-/* --- Hero orbit — subtelny element techniczny po prawej stronie --- */
-
-.hero-section {
-  position: relative;
-}
-
-.hero-orbit {
-  position: absolute;
-  top: 50%;
-  /* Środek animacji dokładnie na linii gridu strony (75vw) */
-  left: 75vw;
-  width: 230px;
-  height: 230px;
-  transform: translate(-50%, -50%);
-  pointer-events: none;
-  z-index: 0;
-}
-
-.hero-orbit-ring {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  border: 1px solid var(--color-grid);
-  border-radius: 50%;
-  opacity: 0.8;
-}
-
-.hero-orbit-ring--outer {
-  width: 230px;
-  height: 230px;
-  margin: -115px 0 0 -115px;
-  animation: hero-orbit-spin 14s linear infinite;
-}
-
-.hero-orbit-ring--inner {
-  width: 132px;
-  height: 132px;
-  margin: -66px 0 0 -66px;
-  animation: hero-orbit-spin 9s linear infinite reverse;
-}
-
-.hero-orbit-dot {
-  position: absolute;
-  left: 50%;
-  border-radius: 50%;
-}
-
-/* Kropki w różnych rozmiarach */
-.hero-orbit-dot--coral {
-  top: -7px;
-  width: 14px;
-  height: 14px;
-  margin-left: -7px;
-  background: var(--color-coral);
-}
-
-.hero-orbit-dot--teal {
-  top: -4px;
-  width: 8px;
-  height: 8px;
-  margin-left: -4px;
-  background: var(--color-teal);
-}
-
-.hero-orbit-core {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 6px;
-  height: 6px;
-  margin: -3px 0 0 -3px;
-  border-radius: 50%;
-  background: var(--color-ink);
-}
-
-@keyframes hero-orbit-spin {
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .hero-orbit-ring--outer,
-  .hero-orbit-ring--inner {
-    animation: none;
-  }
-}
-
-@media (max-width: 900px) {
-  /* Orbita w przepływie dokumentu — pod przyciskami, wyśrodkowana (linia gridu 50vw).
-     position: relative (nie static), bo pierścienie pozycjonują się względem niej */
-  .hero-orbit {
-    position: relative;
-    top: auto;
-    left: auto;
-    transform: none;
-    margin: auto;
-  }
-}

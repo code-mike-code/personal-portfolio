@@ -23,14 +23,14 @@ describe('i18n', () => {
   });
 
   test('serves English strings by default', () => {
-    expect(i18n.t('hero.line2')).toBe('Modern Web');
+    expect(i18n.t('hero.ctaWork')).toBe('See work');
     expect(i18n.t('work.title')).toBe('Every project is built around the client');
   });
 
   test('switches to Polish via changeLanguage', async () => {
     await i18n.changeLanguage('pl');
     expect(i18n.resolvedLanguage).toBe('pl');
-    expect(i18n.t('hero.line2')).toBe('Nowoczesne strony');
+    expect(i18n.t('hero.ctaWork')).toBe('Zobacz realizacje');
     expect(i18n.t('work.title')).toBe('Każdy projekt powstaje z myślą o kliencie');
   });
 

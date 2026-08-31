@@ -1,6 +1,6 @@
 {
   "meta": {
-    "title": "Code Mike — Frontend Developer | React i TypeScript",
+    "title": "Michał Majewski — Nowoczesne strony internetowe",
     "description": "Frontend developer — szybkie, dostępne strony internetowe w React, TypeScript i GSAP. Nowoczesne strony nawet w 3 dni.",
     "keywords": "frontend developer, programista frontend, React developer, TypeScript, tworzenie stron internetowych, strony internetowe Katowice, frontend developer Warszawa, strony www Wrocław, frontend developer Kraków, strony internetowe Gdańsk, animacje GSAP, dostępność WCAG, Core Web Vitals, freelancer frontend Polska"
   },
@@ -28,11 +28,15 @@
     "linkedinAria": "Profil LinkedIn"
   },
   "hero": {
-    "line1": "Code Mike",
-    "line2": "Nowoczesne strony",
-    "line3": "internetowe",
-    "projects": "Projekty",
-    "contact": "Kontakt"
+    "kicker": "Michał Majewski",
+    "titleLines": [
+      "Nowoczesne strony",
+      "internetowe",
+      "szyte pod Ciebie"
+    ],
+    "subtitle": "Dla przedsiębiorców z każdej branży, w całej Polsce. Szyte na miarę — bez szablonów, z SEO — od projektu po wdrożenie robię wszystko sam. Landing w 3 dni.",
+    "ctaCall": "Umów rozmowę",
+    "ctaWork": "Zobacz realizacje"
   },
   "work": {
     "title": "Każdy projekt powstaje z myślą o kliencie",
@@ -217,7 +221,7 @@
   },
   "about": {
     "headingLine1": "Historia, która stoi za",
-    "headingLine2": "Code Mike",
+    "headingLine2": "Michał Majewski",
     "photoAlt": "Michał ze swoim kotem",
     "bioHeading": "Cześć, jestem Michał",
     "bio1": "Projektuję i buduję nowoczesne strony internetowe w React i TypeScript — szybkie, dostępne (WCAG) i zoptymalizowane pod SEO. Prostą stronę lub landing potrafię dostarczyć nawet w 3 dni, bez kompromisów w jakości. Zależy mi na jednym: żeby strona realnie pracowała na Twój biznes — generowała zapytania, budowała wiarygodność marki i była dobrze widoczna w Google.",
@@ -266,7 +270,7 @@
     }
   },
   "footer": {
-    "copyright": "Code Mike - Nowoczesne strony internetowe",
+    "copyright": "Michał Majewski",
     "topAria": "Wróć na górę strony",
     "privacyLink": "Polityka prywatności i cookies"
   },
