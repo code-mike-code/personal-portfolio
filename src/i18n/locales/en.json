@@ -318,5 +318,51 @@
         "company": "Cudowna Doniczka"
       }
     ]
+  },
+  "offer": {
+    "kicker": "Offer",
+    "heading": "A simple, clear offer",
+    "forWho": "For business owners in any industry across Poland — from a landing page, through a company website, to a shop or a custom system.",
+    "priceHeading": "Custom Landing Page",
+    "priceValue": "from 1590 PLN net",
+    "priceNote": "Company and product websites, shops, redesigns and custom CRMs — individually quoted after a call.",
+    "servicesLabel": "What I build",
+    "services": [
+      "Custom landing page",
+      "Company websites",
+      "Blog",
+      "Online shops",
+      "Redesign",
+      "Custom CRM"
+    ],
+    "includesLabel": "Included",
+    "includes": [
+      "Hosting configuration",
+      "First 3 revisions after delivery",
+      "2 weeks of support"
+    ],
+    "cta": "Book a call"
+  },
+  "process": {
+    "kicker": "Process",
+    "heading": "How we work together",
+    "steps": [
+      {
+        "title": "Free call",
+        "desc": "We get to know your business and the goal of the site. No commitment."
+      },
+      {
+        "title": "Defining the scope",
+        "desc": "We agree on the scope, content and timeline."
+      },
+      {
+        "title": "Delivery in up to 3 days",
+        "desc": "A simple site or landing page delivered in as little as 3 days."
+      },
+      {
+        "title": "Support",
+        "desc": "2 weeks of free support after delivery, then optionally paid."
+      }
+    ]
   }
 }

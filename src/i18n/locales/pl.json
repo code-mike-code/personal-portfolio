@@ -319,5 +319,51 @@
         "company": "Cudowna Doniczka"
       }
     ]
+  },
+  "offer": {
+    "kicker": "Oferta",
+    "heading": "Prosta, jasna oferta",
+    "forWho": "Dla przedsiębiorców z każdej branży w całej Polsce — od landingu, przez stronę firmową, po sklep czy własny system.",
+    "priceHeading": "Custom Landing Page",
+    "priceValue": "od 1590 zł netto",
+    "priceNote": "Strony firmowe i produktowe, sklepy, redesign i custom CRM — wycena indywidualna po rozmowie.",
+    "servicesLabel": "Co robię",
+    "services": [
+      "Custom landing page",
+      "Strony firmowe",
+      "Blog",
+      "Sklepy internetowe",
+      "Redesign",
+      "Custom CRM"
+    ],
+    "includesLabel": "W cenie",
+    "includes": [
+      "Konfiguracja hostingu",
+      "Pierwsze 3 poprawki po oddaniu",
+      "2 tygodnie wsparcia"
+    ],
+    "cta": "Umów rozmowę"
+  },
+  "process": {
+    "kicker": "Proces",
+    "heading": "Jak wygląda współpraca",
+    "steps": [
+      {
+        "title": "Darmowa rozmowa",
+        "desc": "Poznajemy Twój biznes i cel strony. Bez zobowiązań."
+      },
+      {
+        "title": "Ustalenie zakresu",
+        "desc": "Ustalamy zakres prac, treści i termin realizacji."
+      },
+      {
+        "title": "Realizacja do 3 dni",
+        "desc": "Prostą stronę lub landing dostarczam nawet w 3 dni."
+      },
+      {
+        "title": "Wsparcie",
+        "desc": "2 tygodnie darmowego wsparcia po oddaniu, później opcjonalnie płatne."
+      }
+    ]
   }
 }
