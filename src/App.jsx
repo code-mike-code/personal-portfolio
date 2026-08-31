@@ -4,8 +4,11 @@ import { useTranslation } from 'react-i18next';
 import Header from './components/Header/Header';
 import BottomNav from './components/Header/BottomNav';
 import Hero from './components/Hero/Hero';
+import ForWho from './components/ForWho/ForWho';
 import Offer from './components/Offer/Offer';
 import Process from './components/Process/Process';
+import Faq from './components/Faq/Faq';
+import FinalCta from './components/FinalCta/FinalCta';
 import PrivateProjects from './components/PrivateProjects/PrivateProjects';
 import TechBanner from './components/Banner/TechBanner';
 import Testimonials from './components/Testimonials/Testimonials';
@@ -35,6 +38,8 @@ function MainLayout() {
       <main id="main">
         <Hero />
         <span className="section-divider-dot section-divider-dot--teal" aria-hidden="true"></span>
+        <ForWho />
+        <span className="section-divider-dot section-divider-dot--coral" aria-hidden="true"></span>
         <Offer />
         <span className="section-divider-dot section-divider-dot--coral" aria-hidden="true"></span>
         <Testimonials />
@@ -44,7 +49,11 @@ function MainLayout() {
         <span className="section-divider-dot section-divider-dot--teal" aria-hidden="true"></span>
         <Process />
         <span className="section-divider-dot section-divider-dot--teal" aria-hidden="true"></span>
+        <Faq />
+        <span className="section-divider-dot section-divider-dot--teal" aria-hidden="true"></span>
         <TechBanner />
+        <span className="section-divider-dot section-divider-dot--coral" aria-hidden="true"></span>
+        <FinalCta />
         <span className="section-divider-dot section-divider-dot--coral" aria-hidden="true"></span>
         <Contact />
       </main>

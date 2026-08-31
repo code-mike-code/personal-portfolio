@@ -369,5 +369,63 @@
         "desc": "2 weeks of free support after delivery, then optionally paid."
       }
     ]
+  },
+  "forWho": {
+    "kicker": "Who it is for",
+    "heading": "Who I work with",
+    "items": [
+      {
+        "title": "Small & mid-size businesses",
+        "desc": "That want a professional website which builds trust and brings in clients."
+      },
+      {
+        "title": "Specialists & services",
+        "desc": "Doctors, lawyers, consultants — sites that present the offer clearly and make contact easy."
+      },
+      {
+        "title": "Startups & products",
+        "desc": "A landing page that communicates value and collects leads from day one."
+      },
+      {
+        "title": "Businesses ready for a refresh",
+        "desc": "Got an outdated site? I redesign it to look modern and sell better."
+      }
+    ]
+  },
+  "faq": {
+    "kicker": "FAQ",
+    "heading": "Frequently asked questions",
+    "items": [
+      {
+        "q": "How much does a website cost?",
+        "a": "A custom landing page starts at 1590 PLN net. Business sites, stores and systems are quoted individually after a short call — you know the price before we start."
+      },
+      {
+        "q": "How long does it take?",
+        "a": "A simple landing page or one-pager can be delivered in as little as 3 working days. Larger projects are scheduled individually."
+      },
+      {
+        "q": "Will it work on mobile?",
+        "a": "Yes. Every site is designed mobile-first — it looks and works great on phone, tablet and desktop."
+      },
+      {
+        "q": "Do you handle hosting and the domain?",
+        "a": "Yes. I help choose and set up hosting and the domain so you don't have to worry about it."
+      },
+      {
+        "q": "What do I get after launch?",
+        "a": "The price includes 3 revisions and 2 weeks of support. After that I can handle further development and maintenance — optionally."
+      },
+      {
+        "q": "Can you help with content?",
+        "a": "Yes, I advise on structure and content. If you have materials — great; if not, I'll tell you what to prepare."
+      }
+    ]
+  },
+  "finalCta": {
+    "heading": "Got an idea for a website? Let's talk.",
+    "text": "Book a free, no-obligation call. Tell me about your business and I'll suggest the best solution and a ballpark quote.",
+    "cta": "Book a call",
+    "alt": "or write via the form below"
   }
 }

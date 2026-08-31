@@ -370,5 +370,63 @@
         "desc": "2 tygodnie darmowego wsparcia po oddaniu, później opcjonalnie płatne."
       }
     ]
+  },
+  "forWho": {
+    "kicker": "Dla kogo",
+    "heading": "Dla kogo pracuję",
+    "items": [
+      {
+        "title": "Małe i średnie firmy",
+        "desc": "Które chcą profesjonalnej strony budującej zaufanie i pozyskującej klientów."
+      },
+      {
+        "title": "Specjaliści i usługi",
+        "desc": "Lekarze, prawnicy, doradcy — strony, które jasno prezentują ofertę i ułatwiają kontakt."
+      },
+      {
+        "title": "Startupy i produkty",
+        "desc": "Landing page, który komunikuje wartość i zbiera zgłoszenia od pierwszego dnia."
+      },
+      {
+        "title": "Firmy do odświeżenia",
+        "desc": "Masz starą stronę? Zrobię redesign, który wygląda nowocześnie i lepiej sprzedaje."
+      }
+    ]
+  },
+  "faq": {
+    "kicker": "FAQ",
+    "heading": "Najczęstsze pytania",
+    "items": [
+      {
+        "q": "Ile kosztuje strona?",
+        "a": "Custom landing page od 1590 zł netto. Strony firmowe, sklepy i systemy wyceniam indywidualnie po krótkiej rozmowie — cenę znasz przed startem."
+      },
+      {
+        "q": "Ile trwa realizacja?",
+        "a": "Prosty landing lub stronę wizytówkę dostarczam nawet w 3 dni robocze. Większe projekty ustalamy indywidualnie."
+      },
+      {
+        "q": "Czy strona będzie działać na telefonie?",
+        "a": "Tak. Każdą stronę projektuję mobile-first — wygląda i działa dobrze na telefonie, tablecie i komputerze."
+      },
+      {
+        "q": "Czy zajmujesz się hostingiem i domeną?",
+        "a": "Tak. Pomagam dobrać i skonfigurować hosting oraz domenę, żebyś nie musiał się tym martwić."
+      },
+      {
+        "q": "Co dostaję po oddaniu strony?",
+        "a": "W cenie masz 3 poprawki i 2 tygodnie wsparcia. Później mogę zająć się dalszym rozwojem i opieką — opcjonalnie."
+      },
+      {
+        "q": "Czy pomożesz z treściami?",
+        "a": "Tak, doradzam przy strukturze i treściach. Masz materiały — świetnie; jeśli nie, podpowiem, co przygotować."
+      }
+    ]
+  },
+  "finalCta": {
+    "heading": "Masz pomysł na stronę? Porozmawiajmy.",
+    "text": "Umów bezpłatną rozmowę, bez zobowiązań. Opowiesz o swoim biznesie, a ja podpowiem najlepsze rozwiązanie i orientacyjną wycenę.",
+    "cta": "Umów rozmowę",
+    "alt": "albo napisz przez formularz poniżej"
   }
 }

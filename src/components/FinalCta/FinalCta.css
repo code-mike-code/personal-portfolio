@@ -1,0 +1,67 @@
+.finalcta-section {
+  min-height: auto;
+  width: 100%;
+  padding: clamp(4.5rem, 11vh, 8rem) clamp(1.25rem, 4vw, 3rem);
+  align-items: center;
+}
+
+.finalcta-inner {
+  width: 100%;
+  max-width: 780px;
+  margin: 0 auto;
+  padding: clamp(2.5rem, 5vw, 4rem);
+  border-radius: 24px;
+  background: var(--color-ink);
+  color: var(--color-ecru);
+  text-align: center;
+}
+
+.finalcta-heading {
+  margin: 0 0 1rem;
+  font-size: clamp(1.9rem, 4.5vw, 3rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.08;
+}
+
+.finalcta-text {
+  margin: 0 auto clamp(1.75rem, 4vh, 2.5rem);
+  max-width: 52ch;
+  font-size: clamp(1.05rem, 1.6vw, 1.25rem);
+  line-height: 1.55;
+  opacity: 0.85;
+}
+
+.finalcta-btn {
+  display: inline-block;
+  padding: 0.95rem 2.2rem;
+  border-radius: 999px;
+  background: var(--color-teal);
+  color: var(--color-ecru);
+  font-size: 1.1rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition: background 0.25s ease, transform 0.2s ease;
+}
+
+.finalcta-btn:hover,
+.finalcta-btn:focus-visible {
+  background: var(--color-teal-ink);
+  transform: translateY(-2px);
+}
+
+.finalcta-alt {
+  margin: 1.25rem 0 0;
+  font-size: 0.95rem;
+  opacity: 0.65;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .finalcta-btn {
+    transition: none;
+  }
+  .finalcta-btn:hover,
+  .finalcta-btn:focus-visible {
+    transform: none;
+  }
+}
