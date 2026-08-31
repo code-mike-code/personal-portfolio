@@ -39,13 +39,3 @@
   font-size: 0.95rem;
   opacity: 0.65;
 }
-
-@media (prefers-reduced-motion: reduce) {
-  .finalcta-btn {
-    transition: none;
-  }
-  .finalcta-btn:hover,
-  .finalcta-btn:focus-visible {
-    transform: none;
-  }
-}

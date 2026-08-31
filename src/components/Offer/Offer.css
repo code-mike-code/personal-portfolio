@@ -149,13 +149,3 @@
     gap: 1.5rem;
   }
 }
-
-@media (prefers-reduced-motion: reduce) {
-  .offer-cta {
-    transition: none;
-  }
-  .offer-cta:hover,
-  .offer-cta:focus-visible {
-    transform: none;
-  }
-}

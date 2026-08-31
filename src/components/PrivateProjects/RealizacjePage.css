@@ -254,13 +254,8 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .rlz-live,
   .rlz-video-pause,
   .rlz-back-link {
     transition: none;
-  }
-  .rlz-live:hover,
-  .rlz-live:focus-visible {
-    transform: none;
   }
 }
