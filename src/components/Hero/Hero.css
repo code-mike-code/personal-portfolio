@@ -103,12 +103,15 @@
   margin: 0;
 }
 
-/* Druga linia — "szyte pod Ciebie" — podkreślona w kolorze morskim */
+/* Ostatnia linia — "szyte pod Ciebie" — podkreślona morskim paskiem.
+   Litery w AnimatedHeadlinePart są inline-block, więc text-decoration ich nie
+   łapie — podkreślenie rysujemy tłem (działa zawsze). */
 .hero-title-underline {
-  text-decoration: underline;
-  text-decoration-color: var(--color-teal);
-  text-decoration-thickness: 0.09em;
-  text-underline-offset: 0.12em;
+  padding-bottom: 0.1em;
+  background-image: linear-gradient(var(--color-teal), var(--color-teal));
+  background-repeat: no-repeat;
+  background-size: 100% 0.08em;
+  background-position: left calc(100% - 0.02em);
 }
 
 /* Subnagłówek — doprecyzowuje dla kogo i jak */
@@ -206,7 +209,9 @@
   .hero-title {
     align-items: center;
     text-align: center;
-    font-size: clamp(2.5rem, 10vw, 4rem);
+    /* Najdłuższa linia "Nowoczesne strony" musi zmieścić się z marginesami
+       na najwęższych telefonach (360px) — stąd bezpieczny clamp */
+    font-size: clamp(1.85rem, 8.5vw, 2.8rem);
   }
 
   .hero-title--left {
@@ -217,6 +222,42 @@
     justify-content: center;
     margin-left: 0;
     margin-top: 2.5rem;
+  }
+}
+
+/* Krótka wysokość (telefon/tablet w poziomie) — kompaktowy hero, żeby CTA
+   było widoczne bez scrolla */
+@media (max-height: 560px) and (orientation: landscape) {
+  .hero-content-wrapper {
+    min-height: auto;
+    justify-content: center;
+    padding: 64px 1.5rem 1rem;
+  }
+
+  .hero-title-container.hero-title-container--left {
+    flex: none;
+    justify-content: center;
+  }
+
+  .hero-kicker {
+    margin-bottom: 0.35rem;
+    font-size: 0.85rem;
+  }
+
+  .hero-title {
+    font-size: clamp(1.7rem, 6.2vh, 2.6rem);
+    line-height: 1.02;
+  }
+
+  .hero-subtitle {
+    margin-top: 0.6rem;
+    font-size: 0.95rem;
+    line-height: 1.45;
+    max-width: 70ch;
+  }
+
+  .hero-buttons.hero-buttons--left {
+    margin-top: 1.1rem;
   }
 }
 
