@@ -1,7 +1,7 @@
 {
   "meta": {
-    "title": "Michał Majewski — Nowoczesne strony internetowe",
-    "description": "Frontend developer — szybkie, dostępne strony internetowe w React, TypeScript i GSAP. Nowoczesne strony nawet w 3 dni.",
+    "title": "Michał Majewski - Nowoczesne strony internetowe",
+    "description": "Frontend developer - szybkie, dostępne strony internetowe w React, TypeScript i GSAP. Nowoczesne strony nawet w 3 dni.",
     "keywords": "frontend developer, programista frontend, React developer, TypeScript, tworzenie stron internetowych, strony internetowe Katowice, frontend developer Warszawa, strony www Wrocław, frontend developer Kraków, strony internetowe Gdańsk, animacje GSAP, dostępność WCAG, Core Web Vitals, freelancer frontend Polska"
   },
   "language": {
@@ -37,12 +37,12 @@
       "internetowe",
       "szyte pod Ciebie"
     ],
-    "subtitle": "Dla przedsiębiorców z każdej branży, w całej Polsce. Szyte na miarę — bez szablonów, z SEO — od projektu po wdrożenie robię wszystko sam. Landing w 3 dni.",
+    "subtitle": "Dla przedsiębiorców z każdej branży, w całej Polsce. Szyte na miarę - bez szablonów, z SEO - od projektu po wdrożenie robię wszystko sam. Landing w 3 dni.",
     "ctaCall": "Umów rozmowę",
     "ctaWork": "Zobacz realizacje"
   },
   "work": {
-    "title": "Każdy projekt powstaje z myślą o kliencie",
+    "title": "Każdy projekt powstaje z myślą o Tobie",
     "subtitle": "Bez szablonów. Z naciskiem na przejrzystość, wydajność i realny efekt biznesowy.",
     "counterAria": "Projekt {{current}} z {{total}}",
     "viewLive": "Zobacz stronę",
@@ -55,7 +55,7 @@
     "closure": {
       "line1": "Zamieniam pomysły",
       "line2": "w cyfrową rzeczywistość",
-      "text": "Nie chodzi o kod dla samego kodu — chodzi o stronę, która pracuje na Twój biznes: przyciąga klientów, buduje wiarygodność marki i dobrze pozycjonuje się w Google. Szukasz kogoś, kto dowiezie taki efekt — szybko i mierzalnie? Napisz do mnie i porozmawiajmy o Twoim projekcie."
+      "text": "Nie chodzi o kod dla samego kodu - chodzi o stronę, która pracuje na Twój biznes: przyciąga klientów, buduje wiarygodność marki i dobrze pozycjonuje się w Google. Szukasz kogoś, kto dowiezie taki efekt - szybko i mierzalnie? Napisz do mnie i porozmawiajmy o Twoim projekcie."
     },
     "different": {
       "title": "Co wyróżnia moje strony.",
@@ -63,12 +63,12 @@
         {
           "title": "Strony szyte na miarę",
           "tagline": "Zero szablonów",
-          "description": "Zaczynam od zrozumienia Twojego biznesu i klientów, a potem projektuję stronę pod konkretny cel — tak, żeby wyglądała profesjonalnie i realnie pomagała sprzedawać."
+          "description": "Zaczynam od zrozumienia Twojego biznesu i klientów, a potem projektuję stronę pod konkretny cel - tak, żeby wyglądała profesjonalnie i realnie pomagała sprzedawać."
         },
         {
           "title": "Nowoczesny, żywy design",
           "tagline": "Design, który przyciąga uwagę",
-          "description": "Subtelne animacje i dopracowane detale sprawiają, że strona wyróżnia się na tle konkurencji i zostaje w pamięci — bez przesady, zawsze w służbie treści."
+          "description": "Subtelne animacje i dopracowane detale sprawiają, że strona wyróżnia się na tle konkurencji i zostaje w pamięci - bez przesady, zawsze w służbie treści."
         },
         {
           "title": "Szybkość i widoczność w Google",
@@ -79,14 +79,14 @@
     },
     "projects": {
       "1": {
-        "short": "Nowoczesna strona specjalistycznej kliniki kardiologicznej — czytelna prezentacja usług, profile lekarzy i łatwy kontakt w sprawie wizyt.",
+        "short": "Nowoczesna strona specjalistycznej kliniki kardiologicznej - czytelna prezentacja usług, profile lekarzy i łatwy kontakt w sprawie wizyt.",
         "full": "Klinika Vitalis to specjalistyczna placówka medyczna z Trzebini. Strona prezentuje usługi kardiologiczne, zespół lekarzy i informacje dla pacjentów w przejrzystym, budzącym zaufanie układzie. \n\nNajważniejsze funkcje: listy usług i specjalistów, dane kontaktowe i lokalizacja kliniki, responsywny układ zoptymalizowany dla pacjentów przeglądających na telefonie oraz struktura przygotowana pod rejestrację wizyt online. Nacisk na dostępność, szybkie ładowanie i spokojny język wizualny odpowiedni dla ochrony zdrowia.",
         "case": {
           "challenge": "Klinika potrzebowała nowoczesnej, wiarygodnej strony, która czytelnie prezentuje zespół i usługi oraz ułatwia pacjentom kontakt i dotarcie.",
           "scope": [
             "Całkowity rebuild strony",
             "Responsywny układ (RWD)",
-            "Integracja Google Maps — dojazd do kliniki",
+            "Integracja Google Maps - dojazd do kliniki",
             "SEO + Google Search Console",
             "Google Analytics",
             "Dostępność WCAG AA/AAA",
@@ -100,7 +100,7 @@
         }
       },
       "2": {
-        "short": "Strona B2B warszawskiej firmy leasingowej i wynajmu — prezentacja oferty, generowanie leadów i ścieżki kontaktu dla klientów biznesowych.",
+        "short": "Strona B2B warszawskiej firmy leasingowej i wynajmu - prezentacja oferty, generowanie leadów i ścieżki kontaktu dla klientów biznesowych.",
         "full": "Pewny Leasing dostarcza firmom rozwiązania leasingu i wynajmu długoterminowego. Strona pełni rolę głównej cyfrowej wizytówki firmy: prezentuje ofertę, buduje zaufanie klientów biznesowych i zamienia odwiedzających w leady. \n\nNajważniejsze funkcje: uporządkowane sekcje oferty leasingu i wynajmu, czytelne wezwania do działania, formularze kontaktowe i zapytań, responsywny design oraz architektura przyjazna SEO nastawiona na polski rynek B2B.",
         "case": {
           "challenge": "Firma B2B potrzebowała widoczności w sieci i profesjonalnej wizytówki, która zamienia odwiedzających w zapytania o finansowanie.",
@@ -119,15 +119,15 @@
           "result": [
             "Spójna marka widoczna w internecie",
             "Klarowna ścieżka do zapytania o finansowanie",
-            "Obecność w Google — wizytówka i wpisy"
+            "Obecność w Google - wizytówka i wpisy"
           ]
         }
       },
       "3": {
-        "short": "Strona partnera flotowego łączącego kierowców z Uber, Bolt i FreeNow — onboarding kierowców, informacje o zarobkach i kontakt.",
-        "full": "Drago Partner to warszawski partner flotowy dla kierowców aplikacji przewozowych. Strona wyjaśnia model współpracy, prezentuje zarobki i warunki rozliczeń oraz prowadzi kierowców przez proces dołączenia do platform takich jak Uber, Bolt i FreeNow. \n\nNajważniejsze funkcje: czytelne sekcje onboardingu krok po kroku, FAQ dla kierowców, ścieżki kontaktu i zapisu, układ mobile-first — większość odwiedzających to kierowcy przeglądający na telefonach.",
+        "short": "Strona partnera flotowego łączącego kierowców z Uber, Bolt i FreeNow - onboarding kierowców, informacje o zarobkach i kontakt.",
+        "full": "Drago Partner to warszawski partner flotowy dla kierowców aplikacji przewozowych. Strona wyjaśnia model współpracy, prezentuje zarobki i warunki rozliczeń oraz prowadzi kierowców przez proces dołączenia do platform takich jak Uber, Bolt i FreeNow. \n\nNajważniejsze funkcje: czytelne sekcje onboardingu krok po kroku, FAQ dla kierowców, ścieżki kontaktu i zapisu, układ mobile-first - większość odwiedzających to kierowcy przeglądający na telefonach.",
         "case": {
-          "challenge": "Poprzednia strona praktycznie nie działała — trzeba było odbudować ją tak, by realnie pozyskiwała i onboardowała kierowców.",
+          "challenge": "Poprzednia strona praktycznie nie działała - trzeba było odbudować ją tak, by realnie pozyskiwała i onboardowała kierowców.",
           "scope": [
             "Rebuild od zera",
             "Układ mobile-first (kierowcy na telefonach)",
@@ -149,9 +149,9 @@
       },
       "4": {
         "short": "Nowoczesna, responsywna aplikacja webowa dla kliniki kardiologiczno-stomatologicznej klasy premium. Zbudowana w React, TypeScript i Tailwind CSS.",
-        "full": "Nowoczesna, responsywna aplikacja webowa dla kliniki kardiologiczno-stomatologicznej klasy premium. Zbudowana w React, TypeScript i Tailwind CSS. Cor-Dent to profesjonalna platforma usług medycznych oferująca: \n\nUsługi kardiologiczne — profesjonalna opieka i diagnostyka kardiologiczna. Usługi stomatologiczne — kompleksowa opieka dentystyczna i protetyka. Rezerwacja online — prosty system umawiania wizyt. Wielojęzyczność — obsługa wielu języków. \n\nStack technologiczny: framework: React 18 z TypeScript, build tool: Vite, style: Tailwind CSS, komponenty UI: shadcn-ui (Radix UI + Tailwind), routing: React Router v6, formularze: React Hook Form + walidacja Zod, ikony: Lucide React, internacjonalizacja: własne hooki i18n, zarządzanie stanem: TanStack React Query",
+        "full": "Nowoczesna, responsywna aplikacja webowa dla kliniki kardiologiczno-stomatologicznej klasy premium. Zbudowana w React, TypeScript i Tailwind CSS. Cor-Dent to profesjonalna platforma usług medycznych oferująca: \n\nUsługi kardiologiczne - profesjonalna opieka i diagnostyka kardiologiczna. Usługi stomatologiczne - kompleksowa opieka dentystyczna i protetyka. Rezerwacja online - prosty system umawiania wizyt. Wielojęzyczność - obsługa wielu języków. \n\nStack technologiczny: framework: React 18 z TypeScript, build tool: Vite, style: Tailwind CSS, komponenty UI: shadcn-ui (Radix UI + Tailwind), routing: React Router v6, formularze: React Hook Form + walidacja Zod, ikony: Lucide React, internacjonalizacja: własne hooki i18n, zarządzanie stanem: TanStack React Query",
         "case": {
-          "challenge": "Strona nie była responsywna i nie oddawała klasy premium kliniki — potrzebny był pełny rebuild z nową identyfikacją.",
+          "challenge": "Strona nie była responsywna i nie oddawała klasy premium kliniki - potrzebny był pełny rebuild z nową identyfikacją.",
           "scope": [
             "Całkowity rebuild (React, TypeScript, Tailwind)",
             "Poprawa UI/UX",
@@ -172,10 +172,10 @@
         }
       },
       "5": {
-        "short": "Prezentacja e-commerce ekologicznych doniczek z kompozytu konopnego pochłaniającego CO2 — historia produktu i identyfikacja marki.",
+        "short": "Prezentacja e-commerce ekologicznych doniczek z kompozytu konopnego pochłaniającego CO2 - historia produktu i identyfikacja marki.",
         "full": "Cudowna Doniczka to ekologiczna marka produkująca biodegradowalne doniczki z naturalnego kompozytu konopnego, który pochłania CO2. Strona opowiada historię produktu, wyjaśnia korzyści środowiskowe i prezentuje linię produktów w ciepłym, inspirowanym naturą języku wizualnym. \n\nNajważniejsze funkcje: storytellingowe sekcje produktowe, układ treści oparty na korzyściach, prezentacja skoncentrowana na zdjęciach, responsywny design i struktura przygotowana pod sprzedaż online.",
         "case": {
-          "challenge": "Nowatorski produkt — doniczki pochłaniające CO2 — wymagał strony, która edukuje i buduje świadomość ekologicznych technologii.",
+          "challenge": "Nowatorski produkt - doniczki pochłaniające CO2 - wymagał strony, która edukuje i buduje świadomość ekologicznych technologii.",
           "scope": [
             "Budowa strony od zera",
             "Prezentacja produktu i historia marki",
@@ -193,8 +193,8 @@
         }
       },
       "6": {
-        "short": "Strona firmy usług dronowych — ortofotomapy, NDVI, termowizja i fotogrametria 3D z precyzją RTK. Techniczny, dopracowany interfejs prezentujący ofertę dla rolnictwa, geodezji i budownictwa.",
-        "full": "GeoScan UAV oferuje profesjonalne usługi fotogrametrii i teledetekcji z powietrza — ortofotomapy, modele 3D, analizy NDVI i termowizyjne, z centymetrową precyzją RTK. \n\nStrona prezentuje ofertę w czytelny, techniczny sposób, kierując uwagę na konkretne zastosowania w rolnictwie, geodezji, budownictwie i ochronie środowiska. Nacisk na szybkość ładowania, dostępność i widoczność w wyszukiwarce.",
+        "short": "Strona firmy usług dronowych - ortofotomapy, NDVI, termowizja i fotogrametria 3D z precyzją RTK. Techniczny, dopracowany interfejs prezentujący ofertę dla rolnictwa, geodezji i budownictwa.",
+        "full": "GeoScan UAV oferuje profesjonalne usługi fotogrametrii i teledetekcji z powietrza - ortofotomapy, modele 3D, analizy NDVI i termowizyjne, z centymetrową precyzją RTK. \n\nStrona prezentuje ofertę w czytelny, techniczny sposób, kierując uwagę na konkretne zastosowania w rolnictwie, geodezji, budownictwie i ochronie środowiska. Nacisk na szybkość ładowania, dostępność i widoczność w wyszukiwarce.",
         "case": {
           "challenge": "Firma usług dronowych potrzebowała technicznej, wiarygodnej strony prezentującej precyzyjne usługi fotogrametryczne.",
           "scope": [
@@ -219,7 +219,7 @@
     "viewAll": "Zobacz wszystkie realizacje",
     "pageKicker": "Realizacje",
     "pageTitle": "Wybrane realizacje",
-    "pageSubtitle": "Strony, które zbudowałem dla klientów z różnych branż. Każda od zera, pod konkretny cel — z naciskiem na przejrzystość, szybkość i realny efekt."
+    "pageSubtitle": "Strony, które zbudowałem dla klientów z różnych branż. Każda od zera, pod konkretny cel - z naciskiem na przejrzystość, szybkość i realny efekt."
   },
   "projects": {
     "heading": "GITHUB",
@@ -231,7 +231,7 @@
     "headingLine2": "Michał Majewski",
     "photoAlt": "Michał ze swoim kotem",
     "bioHeading": "Cześć, jestem Michał",
-    "bio1": "Projektuję i buduję nowoczesne strony internetowe w React i TypeScript — szybkie, dostępne (WCAG) i zoptymalizowane pod SEO. Prostą stronę lub landing potrafię dostarczyć nawet w 3 dni, bez kompromisów w jakości. Zależy mi na jednym: żeby strona realnie pracowała na Twój biznes — generowała zapytania, budowała wiarygodność marki i była dobrze widoczna w Google.",
+    "bio1": "Projektuję i buduję nowoczesne strony internetowe w React i TypeScript - szybkie, dostępne (WCAG) i zoptymalizowane pod SEO. Prostą stronę lub landing potrafię dostarczyć nawet w 3 dni, bez kompromisów w jakości. Zależy mi na jednym: żeby strona realnie pracowała na Twój biznes - generowała zapytania, budowała wiarygodność marki i była dobrze widoczna w Google.",
     "bio2": "Wieloletnie doświadczenie na stanowiskach Supervisora i Managera w środowiskach międzynarodowych wyposażyło mnie w dojrzałość biznesową, którą dziś przenoszę na grunt nowych technologii: rozumiem priorytety produktowe, komunikuję się z klientem bez żargonu i biorę odpowiedzialność za wynik całego projektu, a nie tylko za kod.",
     "tagline": "Strony, które budują markę i przynoszą klientów.",
     "statProjects": "projektów dla klientów",
@@ -239,8 +239,8 @@
     "interestsHeading": "Zainteresowania",
     "interests": [
       "Kolarstwo grawitacyjne i enduro",
-      "Sporty deskowe — skate, snowboard, podróże z wiatrem",
-      "Boks, freediving — ogólnie świr sportowy",
+      "Sporty deskowe - skate, snowboard, podróże z wiatrem",
+      "Boks, freediving - ogólnie świr sportowy",
       "Outdoor, technologia, podróże",
       "Muzyka elektroniczna, hip-hop, festiwale i znajomi",
       "Koty (puchaty szef mieszka ze mną)"
@@ -257,7 +257,7 @@
   "contact": {
     "titleLine1": "Zróbmy coś",
     "titleLine2": "razem.",
-    "intro": "Zawsze szukam nowych projektów i możliwości współpracy. Jeśli masz w głowie projekt albo chcesz po prostu się przywitać — napisz do mnie.",
+    "intro": "Zawsze szukam nowych projektów i możliwości współpracy. Jeśli masz w głowie projekt albo chcesz po prostu się przywitać - napisz do mnie.",
     "form": {
       "labelName": "Imię",
       "labelEmail": "E-mail",
@@ -299,7 +299,7 @@
     "heading": "Co mówią klienci",
     "items": [
       {
-        "quote": "Michał przebudował naszą stronę od zera — nowa identyfikacja, logo, wreszcie działa na telefonie i wygląda jak klinika premium. Pacjentom łatwiej nas znaleźć i umówić wizytę.",
+        "quote": "Michał przebudował naszą stronę od zera - nowa identyfikacja, logo, wreszcie działa na telefonie i wygląda jak klinika premium. Pacjentom łatwiej nas znaleźć i umówić wizytę.",
         "author": "Ewa Ż.",
         "company": "Cor-Dent Żurakowscy"
       },
@@ -309,7 +309,7 @@
         "company": "Vitalis-Cardio"
       },
       {
-        "quote": "Poprzednia wersja praktycznie nie działała. Michał zbudował stronę na nowo — z FAQ, mapą, formularzem zgłoszeniowym dla kierowców i integracją z portalem. Onboarding wreszcie działa.",
+        "quote": "Poprzednia wersja praktycznie nie działała. Michał zbudował stronę na nowo - z FAQ, mapą, formularzem zgłoszeniowym dla kierowców i integracją z portalem. Onboarding wreszcie działa.",
         "author": "Grzegorz B.",
         "company": "Drago Partner"
       },
@@ -319,7 +319,7 @@
         "company": "Pewny Leasing"
       },
       {
-        "quote": "Nietypowy produkt — doniczki pochłaniające CO2 — dostał stronę, która to opowiada: blog, prezentacja produktu i licznik CO2 spięty z NFC na doniczce. Edukuje i robi wrażenie.",
+        "quote": "Nietypowy produkt - doniczki pochłaniające CO2 - dostał stronę, która to opowiada: blog, prezentacja produktu i licznik CO2 spięty z NFC na doniczce. Edukuje i robi wrażenie.",
         "author": "Adam M.",
         "company": "Cudowna Doniczka"
       }
@@ -328,10 +328,10 @@
   "offer": {
     "kicker": "Oferta",
     "heading": "Prosta, jasna oferta",
-    "forWho": "Dla przedsiębiorców z każdej branży w całej Polsce — od landingu, przez stronę firmową, po sklep czy własny system.",
+    "forWho": "Dla przedsiębiorców z każdej branży w całej Polsce - od landingu, przez stronę firmową, po sklep czy własny system.",
     "priceHeading": "Custom Landing Page",
     "priceValue": "od 1590 zł netto",
-    "priceNote": "Strony firmowe i produktowe, sklepy, redesign i custom CRM — wycena indywidualna po rozmowie.",
+    "priceNote": "Strony firmowe i produktowe, sklepy, redesign i custom CRM - wycena indywidualna po rozmowie.",
     "servicesLabel": "Co robię",
     "services": [
       "Custom landing page",
@@ -381,7 +381,7 @@
       },
       {
         "title": "Specjaliści i usługi",
-        "desc": "Lekarze, prawnicy, doradcy — strony, które jasno prezentują ofertę i ułatwiają kontakt."
+        "desc": "Lekarze, prawnicy, doradcy - strony, które jasno prezentują ofertę i ułatwiają kontakt."
       },
       {
         "title": "Startupy i produkty",
@@ -399,7 +399,7 @@
     "items": [
       {
         "q": "Ile kosztuje strona?",
-        "a": "Custom landing page od 1590 zł netto. Strony firmowe, sklepy i systemy wyceniam indywidualnie po krótkiej rozmowie — cenę znasz przed startem."
+        "a": "Custom landing page od 1590 zł netto. Strony firmowe, sklepy i systemy wyceniam indywidualnie po krótkiej rozmowie - cenę znasz przed startem."
       },
       {
         "q": "Ile trwa realizacja?",
@@ -407,7 +407,7 @@
       },
       {
         "q": "Czy strona będzie działać na telefonie?",
-        "a": "Tak. Każdą stronę projektuję mobile-first — wygląda i działa dobrze na telefonie, tablecie i komputerze."
+        "a": "Tak. Każdą stronę projektuję mobile-first - wygląda i działa dobrze na telefonie, tablecie i komputerze."
       },
       {
         "q": "Czy zajmujesz się hostingiem i domeną?",
@@ -415,11 +415,11 @@
       },
       {
         "q": "Co dostaję po oddaniu strony?",
-        "a": "W cenie masz 3 poprawki i 2 tygodnie wsparcia. Później mogę zająć się dalszym rozwojem i opieką — opcjonalnie."
+        "a": "W cenie masz 3 poprawki i 2 tygodnie wsparcia. Później mogę zająć się dalszym rozwojem i opieką - opcjonalnie."
       },
       {
         "q": "Czy pomożesz z treściami?",
-        "a": "Tak, doradzam przy strukturze i treściach. Masz materiały — świetnie; jeśli nie, podpowiem, co przygotować."
+        "a": "Tak, doradzam przy strukturze i treściach. Masz materiały - świetnie; jeśli nie, podpowiem, co przygotować."
       }
     ]
   },

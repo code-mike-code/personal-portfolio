@@ -1,6 +1,6 @@
 {
   "meta": {
-    "title": "Michał Majewski — Modern Websites",
+    "title": "Michał Majewski - Modern Websites",
     "description": "Frontend developer building fast, accessible websites with React, TypeScript and GSAP. Modern websites in as little as 3 days.",
     "keywords": "frontend developer, React developer, TypeScript developer, GSAP animations, accessible websites, Core Web Vitals, freelance frontend developer Poland, web developer Katowice, web developer Warsaw, web developer Wrocław, web developer Kraków, web developer Gdańsk, JavaScript developer, web performance optimization"
   },
@@ -36,12 +36,12 @@
       "Modern websites",
       "tailored to you"
     ],
-    "subtitle": "For business owners in any industry, across Poland. Tailor-made — no templates, with SEO — from design to deployment, I do it all myself. A landing page in 3 days.",
+    "subtitle": "For business owners in any industry, across Poland. Tailor-made - no templates, with SEO - from design to deployment, I do it all myself. A landing page in 3 days.",
     "ctaCall": "Book a call",
     "ctaWork": "See work"
   },
   "work": {
-    "title": "Every project is built around the client",
+    "title": "Every project is built around you",
     "subtitle": "No templates. A focus on clarity, performance, and real business impact.",
     "counterAria": "Project {{current}} of {{total}}",
     "viewLive": "View live",
@@ -54,7 +54,7 @@
     "closure": {
       "line1": "Transforming Ideas",
       "line2": "into Digital Reality",
-      "text": "It's not about code for its own sake — it's about a website that works for your business: attracts clients, builds brand credibility, and ranks well on Google. Looking for someone to deliver that — fast and measurable? Get in touch and let's talk about your project."
+      "text": "It's not about code for its own sake - it's about a website that works for your business: attracts clients, builds brand credibility, and ranks well on Google. Looking for someone to deliver that - fast and measurable? Get in touch and let's talk about your project."
     },
     "different": {
       "title": "What sets my sites apart.",
@@ -62,12 +62,12 @@
         {
           "title": "Tailor-made websites",
           "tagline": "No templates",
-          "description": "I start by understanding your business and your clients, then design the site around a specific goal — so it looks professional and genuinely helps you sell."
+          "description": "I start by understanding your business and your clients, then design the site around a specific goal - so it looks professional and genuinely helps you sell."
         },
         {
           "title": "Modern, lively design",
           "tagline": "Design that grabs attention",
-          "description": "Subtle animations and polished details make your site stand out from the competition and stick in memory — never overdone, always serving the content."
+          "description": "Subtle animations and polished details make your site stand out from the competition and stick in memory - never overdone, always serving the content."
         },
         {
           "title": "Speed and Google visibility",
@@ -78,14 +78,14 @@
     },
     "projects": {
       "1": {
-        "short": "A modern website for a specialist cardiology clinic — clear service presentation, doctor profiles and easy appointment contact.",
+        "short": "A modern website for a specialist cardiology clinic - clear service presentation, doctor profiles and easy appointment contact.",
         "full": "Klinika Vitalis is a specialist medical clinic based in Trzebinia, Poland. The website presents the clinic's cardiology services, medical team and patient information in a clean, trustworthy layout. \n\nKey features: service and specialist listings, clinic contact and location details, responsive layout optimized for patients browsing on mobile, and a structure prepared for online appointment booking. Focus on accessibility, fast load times and a calm visual language appropriate for healthcare.",
         "case": {
           "challenge": "The clinic needed a modern, trustworthy website that clearly presents the team and services and makes it easy for patients to get in touch and find them.",
           "scope": [
             "Complete website rebuild",
             "Responsive layout (RWD)",
-            "Google Maps integration — directions to the clinic",
+            "Google Maps integration - directions to the clinic",
             "SEO + Google Search Console",
             "Google Analytics",
             "WCAG AA/AAA accessibility",
@@ -99,7 +99,7 @@
         }
       },
       "2": {
-        "short": "B2B website for a Warsaw-based leasing and rental company — offer presentation, lead generation and contact flows for business clients.",
+        "short": "B2B website for a Warsaw-based leasing and rental company - offer presentation, lead generation and contact flows for business clients.",
         "full": "Pewny Leasing provides leasing and long-term rental solutions for companies. The website acts as the company's primary digital presence: it presents the offer, builds trust with business clients and converts visitors into leads. \n\nKey features: structured offer sections for leasing and rental products, clear calls to action, contact and inquiry forms, responsive design and SEO-friendly architecture targeting the Polish B2B market.",
         "case": {
           "challenge": "The B2B company needed online visibility and a professional presence that turns visitors into financing enquiries.",
@@ -118,15 +118,15 @@
           "result": [
             "A consistent brand visible online",
             "A clear path to a financing enquiry",
-            "Google presence — profile and posts"
+            "Google presence - profile and posts"
           ]
         }
       },
       "3": {
-        "short": "Website for a fleet partner connecting drivers with Uber, Bolt and FreeNow — driver onboarding, earnings info and contact.",
-        "full": "Drago Partner is a Warsaw-based fleet partner for ride-hailing drivers. The website explains the partnership model, presents earnings and settlement conditions, and guides drivers through the onboarding process for platforms such as Uber, Bolt and FreeNow. \n\nKey features: clear step-by-step onboarding sections, FAQ for drivers, contact and signup flows, mobile-first layout — most visitors are drivers browsing on phones.",
+        "short": "Website for a fleet partner connecting drivers with Uber, Bolt and FreeNow - driver onboarding, earnings info and contact.",
+        "full": "Drago Partner is a Warsaw-based fleet partner for ride-hailing drivers. The website explains the partnership model, presents earnings and settlement conditions, and guides drivers through the onboarding process for platforms such as Uber, Bolt and FreeNow. \n\nKey features: clear step-by-step onboarding sections, FAQ for drivers, contact and signup flows, mobile-first layout - most visitors are drivers browsing on phones.",
         "case": {
-          "challenge": "The previous website barely worked — it had to be rebuilt so it actually attracts and onboards drivers.",
+          "challenge": "The previous website barely worked - it had to be rebuilt so it actually attracts and onboards drivers.",
           "scope": [
             "Rebuild from scratch",
             "Mobile-first layout (drivers on phones)",
@@ -150,7 +150,7 @@
         "short": "A modern, responsive web application for a premium cardiology and dental care clinic. Built with React, TypeScript and Tailwind CSS.",
         "full": "A modern, responsive web application for a premium cardiology and dental care clinic. Built with React, TypeScript, and Tailwind CSS. Cor-Dent is a professional medical services platform offering: \n\nCardiology Services - Professional cardiovascular care and diagnostics. Dental Services - Comprehensive dental care and prosthetics. Online Booking - Easy appointment scheduling system. Multilingual Support - Support for multiple languages. \n\nTech Stack: Frontend Framework: React 18 with TypeScript, Build Tool: Vite, Styling: Tailwind CSS, UI Components: shadcn-ui (Radix UI + Tailwind), Routing: React Router v6, Form Management: React Hook Form + Zod validation, Icons: Lucide React, Internationalization: Custom i18n hooks, State Management: TanStack React Query",
         "case": {
-          "challenge": "The site was not responsive and did not reflect the clinic's premium class — a full rebuild with a new identity was needed.",
+          "challenge": "The site was not responsive and did not reflect the clinic's premium class - a full rebuild with a new identity was needed.",
           "scope": [
             "Complete rebuild (React, TypeScript, Tailwind)",
             "UI/UX improvement",
@@ -171,10 +171,10 @@
         }
       },
       "5": {
-        "short": "E-commerce presentation for eco-friendly flowerpots made of hemp composite with CO2 absorption — product story and brand identity.",
+        "short": "E-commerce presentation for eco-friendly flowerpots made of hemp composite with CO2 absorption - product story and brand identity.",
         "full": "Cudowna Doniczka is an eco-conscious brand producing biodegradable flowerpots made of natural hemp composite that absorbs CO2. The website tells the product story, explains the environmental benefits and presents the product line in a warm, nature-inspired visual language. \n\nKey features: storytelling product sections, benefit-driven copy layout, photo-focused presentation, responsive design and a structure prepared for online sales.",
         "case": {
-          "challenge": "An innovative product — CO2-absorbing flowerpots — required a website that educates and raises awareness of green technologies.",
+          "challenge": "An innovative product - CO2-absorbing flowerpots - required a website that educates and raises awareness of green technologies.",
           "scope": [
             "Website built from scratch",
             "Product presentation and brand story",
@@ -192,8 +192,8 @@
         }
       },
       "6": {
-        "short": "Website for a drone-services company — orthophoto maps, NDVI, thermal imaging and 3D photogrammetry with RTK precision. A technical, polished interface presenting the offer for agriculture, surveying and construction.",
-        "full": "GeoScan UAV provides professional aerial photogrammetry and remote-sensing services — orthophoto maps, 3D models, NDVI and thermal analysis, with centimeter-level RTK precision. \n\nThe website presents the offer in a clear, technical way, focusing attention on concrete use cases in agriculture, surveying, construction and environmental protection. Built for speed, accessibility and search visibility.",
+        "short": "Website for a drone-services company - orthophoto maps, NDVI, thermal imaging and 3D photogrammetry with RTK precision. A technical, polished interface presenting the offer for agriculture, surveying and construction.",
+        "full": "GeoScan UAV provides professional aerial photogrammetry and remote-sensing services - orthophoto maps, 3D models, NDVI and thermal analysis, with centimeter-level RTK precision. \n\nThe website presents the offer in a clear, technical way, focusing attention on concrete use cases in agriculture, surveying, construction and environmental protection. Built for speed, accessibility and search visibility.",
         "case": {
           "challenge": "A drone-services company needed a technical, credible website presenting precise photogrammetry services.",
           "scope": [
@@ -218,7 +218,7 @@
     "viewAll": "See all projects",
     "pageKicker": "Work",
     "pageTitle": "Selected projects",
-    "pageSubtitle": "Websites I built for clients across different industries. Each one from scratch, for a specific goal — with a focus on clarity, speed, and real impact."
+    "pageSubtitle": "Websites I built for clients across different industries. Each one from scratch, for a specific goal - with a focus on clarity, speed, and real impact."
   },
   "projects": {
     "heading": "GITHUB",
@@ -230,16 +230,16 @@
     "headingLine2": "Michał Majewski",
     "photoAlt": "Michał with his cat",
     "bioHeading": "Hey, I'm Michał",
-    "bio1": "I design and build modern websites in React and TypeScript — fast, accessible (WCAG) and optimized for SEO. A simple site or landing page I can deliver in as little as 3 days, with no compromise on quality. I care about one thing: that your website actually works for your business — brings in enquiries, builds brand credibility, and ranks well on Google.",
-    "bio2": "Years in Supervisor and Manager roles in international environments gave me business maturity: I understand product priorities, communicate without jargon, and take responsibility for the outcome of the whole project — not just the code.",
+    "bio1": "I design and build modern websites in React and TypeScript - fast, accessible (WCAG) and optimized for SEO. A simple site or landing page I can deliver in as little as 3 days, with no compromise on quality. I care about one thing: that your website actually works for your business - brings in enquiries, builds brand credibility, and ranks well on Google.",
+    "bio2": "Years in Supervisor and Manager roles in international environments gave me business maturity: I understand product priorities, communicate without jargon, and take responsibility for the outcome of the whole project - not just the code.",
     "tagline": "Websites that build a brand and bring in clients.",
     "statProjects": "client projects",
     "statDelivery": "days to launch a simple site",
     "interestsHeading": "Personal interests",
     "interests": [
       "Gravity & enduro mountain biking",
-      "Boardsports — skate, snowboard, travel with wind",
-      "Boxing, freediving — sport freak in general",
+      "Boardsports - skate, snowboard, travel with wind",
+      "Boxing, freediving - sport freak in general",
       "Outdoors, tech, travel",
       "Electronic music, hip-hop, festivals & friends",
       "Cats (the fluffy boss lives with me)"
@@ -298,7 +298,7 @@
     "heading": "What clients say",
     "items": [
       {
-        "quote": "Michał rebuilt our website from scratch — new identity, logo, it finally works on mobile and looks like a premium clinic. Patients find us and book more easily.",
+        "quote": "Michał rebuilt our website from scratch - new identity, logo, it finally works on mobile and looks like a premium clinic. Patients find us and book more easily.",
         "author": "Ewa Ż.",
         "company": "Cor-Dent Żurakowscy"
       },
@@ -308,7 +308,7 @@
         "company": "Vitalis-Cardio"
       },
       {
-        "quote": "The previous version barely worked. Michał rebuilt it from the ground up — with an FAQ, map, a driver application form and portal integration. Onboarding finally works.",
+        "quote": "The previous version barely worked. Michał rebuilt it from the ground up - with an FAQ, map, a driver application form and portal integration. Onboarding finally works.",
         "author": "Grzegorz B.",
         "company": "Drago Partner"
       },
@@ -318,7 +318,7 @@
         "company": "Pewny Leasing"
       },
       {
-        "quote": "An unusual product — CO2-absorbing flowerpots — got a site that tells the story: a blog, product presentation and a CO2 counter linked to an NFC tag on the pot. It educates and impresses.",
+        "quote": "An unusual product - CO2-absorbing flowerpots - got a site that tells the story: a blog, product presentation and a CO2 counter linked to an NFC tag on the pot. It educates and impresses.",
         "author": "Adam M.",
         "company": "Cudowna Doniczka"
       }
@@ -327,10 +327,10 @@
   "offer": {
     "kicker": "Offer",
     "heading": "A simple, clear offer",
-    "forWho": "For business owners in any industry across Poland — from a landing page, through a company website, to a shop or a custom system.",
+    "forWho": "For business owners in any industry across Poland - from a landing page, through a company website, to a shop or a custom system.",
     "priceHeading": "Custom Landing Page",
     "priceValue": "from 1590 PLN net",
-    "priceNote": "Company and product websites, shops, redesigns and custom CRMs — individually quoted after a call.",
+    "priceNote": "Company and product websites, shops, redesigns and custom CRMs - individually quoted after a call.",
     "servicesLabel": "What I build",
     "services": [
       "Custom landing page",
@@ -380,7 +380,7 @@
       },
       {
         "title": "Specialists & services",
-        "desc": "Doctors, lawyers, consultants — sites that present the offer clearly and make contact easy."
+        "desc": "Doctors, lawyers, consultants - sites that present the offer clearly and make contact easy."
       },
       {
         "title": "Startups & products",
@@ -398,7 +398,7 @@
     "items": [
       {
         "q": "How much does a website cost?",
-        "a": "A custom landing page starts at 1590 PLN net. Business sites, stores and systems are quoted individually after a short call — you know the price before we start."
+        "a": "A custom landing page starts at 1590 PLN net. Business sites, stores and systems are quoted individually after a short call - you know the price before we start."
       },
       {
         "q": "How long does it take?",
@@ -406,7 +406,7 @@
       },
       {
         "q": "Will it work on mobile?",
-        "a": "Yes. Every site is designed mobile-first — it looks and works great on phone, tablet and desktop."
+        "a": "Yes. Every site is designed mobile-first - it looks and works great on phone, tablet and desktop."
       },
       {
         "q": "Do you handle hosting and the domain?",
@@ -414,11 +414,11 @@
       },
       {
         "q": "What do I get after launch?",
-        "a": "The price includes 3 revisions and 2 weeks of support. After that I can handle further development and maintenance — optionally."
+        "a": "The price includes 3 revisions and 2 weeks of support. After that I can handle further development and maintenance - optionally."
       },
       {
         "q": "Can you help with content?",
-        "a": "Yes, I advise on structure and content. If you have materials — great; if not, I'll tell you what to prepare."
+        "a": "Yes, I advise on structure and content. If you have materials - great; if not, I'll tell you what to prepare."
       }
     ]
   },
