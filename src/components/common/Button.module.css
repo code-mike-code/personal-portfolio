@@ -18,6 +18,17 @@
   overflow: hidden;
   z-index: 1;
   background: none;
+  max-width: 100%;
+}
+
+/* Treść w jednej linii — tekst + strzałka trzymają się razem, strzałka nie
+   spada do drugiego wiersza i przycisk zachowuje kształt pigułki */
+.btn > span {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4em;
+  white-space: nowrap;
 }
 
 .primary {
@@ -113,4 +124,13 @@
   left: auto;
   width: 0%;
   transition: width 0.5s cubic-bezier(0.4, 2, 0.6, 1);
+}
+
+/* Mobile: mniejszy padding i font, żeby dłuższe etykiety (np. „Zobacz
+   wszystkie realizacje →") mieściły się w jednej linii i nie rozjeżdżały */
+@media (max-width: 480px) {
+  .btn {
+    padding: 1rem 1.6rem;
+    font-size: 1.05rem;
+  }
 }

@@ -8,7 +8,7 @@ export default function ForWho() {
   const list = Array.isArray(items) ? items : [];
 
   return (
-    <section id="dla-kogo" className="forwho-section">
+    <section id="for-who" className="forwho-section">
       <div className="forwho-inner">
         <header className="forwho-head">
           <p className="forwho-kicker">{t('forWho.kicker')}</p>
