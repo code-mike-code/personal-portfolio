@@ -5,7 +5,7 @@ import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 import Button from '../common/Button';
 import { privateProjects } from './private-projects';
-import './RealizacjePage.css';
+import './WorkPage.css';
 
 const prefersReducedMotion = () =>
   typeof window !== 'undefined' &&
@@ -63,7 +63,7 @@ function ProjectVideo({ project }) {
     : project.fullPoster || project.thumbnailPoster;
 
   return (
-    <div className={`rlz-media ${isMobile ? 'rlz-media--portrait' : 'rlz-media--landscape'}`} ref={wrapRef}>
+    <div className={`wp-media ${isMobile ? 'wp-media--portrait' : 'wp-media--landscape'}`} ref={wrapRef}>
       <video
         ref={videoRef}
         src={videoSrc}
@@ -72,11 +72,11 @@ function ProjectVideo({ project }) {
         loop
         playsInline
         preload={inView ? 'metadata' : 'none'}
-        className="rlz-video"
+        className="wp-video"
       />
       <button
         type="button"
-        className="rlz-video-pause"
+        className="wp-video-pause"
         onClick={() => setPaused((p) => !p)}
         aria-label={paused ? t('work.videoPlayAria') : t('work.videoPauseAria')}
       >
@@ -92,35 +92,35 @@ function ProjectRow({ project, index }) {
   const hasCase = c && typeof c === 'object' && !Array.isArray(c);
 
   return (
-    <article className="rlz-row">
-      <div className="rlz-row-media">
+    <article className="wp-row">
+      <div className="wp-row-media">
         <ProjectVideo project={project} />
       </div>
-      <div className="rlz-row-body">
-        <span className="rlz-row-num">{String(index + 1).padStart(2, '0')}</span>
-        <h2 className="rlz-row-title">{project.title}</h2>
-        <p className="rlz-row-desc">{t(`work.projects.${project.id}.short`)}</p>
+      <div className="wp-row-body">
+        <span className="wp-row-num">{String(index + 1).padStart(2, '0')}</span>
+        <h2 className="wp-row-title">{project.title}</h2>
+        <p className="wp-row-desc">{t(`work.projects.${project.id}.short`)}</p>
 
         {hasCase && (
-          <div className="rlz-case">
+          <div className="wp-case">
             {c.challenge && (
-              <div className="rlz-case-block">
-                <h3 className="rlz-case-label">{t('work.caseChallenge')}</h3>
-                <p className="rlz-case-text">{c.challenge}</p>
+              <div className="wp-case-block">
+                <h3 className="wp-case-label">{t('work.caseChallenge')}</h3>
+                <p className="wp-case-text">{c.challenge}</p>
               </div>
             )}
             {Array.isArray(c.scope) && c.scope.length > 0 && (
-              <div className="rlz-case-block">
-                <h3 className="rlz-case-label">{t('work.caseScope')}</h3>
-                <ul className="rlz-case-list">
+              <div className="wp-case-block">
+                <h3 className="wp-case-label">{t('work.caseScope')}</h3>
+                <ul className="wp-case-list">
                   {c.scope.map((s, i) => <li key={i}>{s}</li>)}
                 </ul>
               </div>
             )}
             {Array.isArray(c.result) && c.result.length > 0 && (
-              <div className="rlz-case-block">
-                <h3 className="rlz-case-label">{t('work.caseResult')}</h3>
-                <ul className="rlz-case-list rlz-case-list--result">
+              <div className="wp-case-block">
+                <h3 className="wp-case-label">{t('work.caseResult')}</h3>
+                <ul className="wp-case-list wp-case-list--result">
                   {c.result.map((s, i) => <li key={i}>{s}</li>)}
                 </ul>
               </div>
@@ -131,7 +131,7 @@ function ProjectRow({ project, index }) {
         {project.liveUrl && (
           <Button
             as="a"
-            className="rlz-live"
+            className="wp-live"
             href={project.liveUrl}
             target="_blank"
             rel="noopener noreferrer"
@@ -145,7 +145,7 @@ function ProjectRow({ project, index }) {
   );
 }
 
-export default function RealizacjePage() {
+export default function WorkPage() {
   const { t } = useTranslation();
 
   useEffect(() => {
@@ -157,22 +157,22 @@ export default function RealizacjePage() {
       <a href="#main" className="skip-link">Skip to main content</a>
       <Header />
       <main id="main">
-        <section className="rlz-page">
-          <div className="rlz-inner">
-            <header className="rlz-head">
-              <p className="rlz-kicker">{t('work.pageKicker')}</p>
-              <h1 className="rlz-title">{t('work.pageTitle')}</h1>
-              <p className="rlz-subtitle">{t('work.pageSubtitle')}</p>
+        <section className="wp-page">
+          <div className="wp-inner">
+            <header className="wp-head">
+              <p className="wp-kicker">{t('work.pageKicker')}</p>
+              <h1 className="wp-title">{t('work.pageTitle')}</h1>
+              <p className="wp-subtitle">{t('work.pageSubtitle')}</p>
             </header>
 
-            <div className="rlz-list">
+            <div className="wp-list">
               {privateProjects.map((project, index) => (
                 <ProjectRow key={project.id} project={project} index={index} />
               ))}
             </div>
 
-            <div className="rlz-back">
-              <Link to="/" className="rlz-back-link">
+            <div className="wp-back">
+              <Link to="/" className="wp-back-link">
                 <span aria-hidden="true">←</span> {t('common.backHome')}
               </Link>
             </div>

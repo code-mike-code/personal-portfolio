@@ -12,7 +12,7 @@ export default function Offer() {
   const includeList = Array.isArray(includes) ? includes : [];
 
   return (
-    <section id="oferta" className="offer-section">
+    <section id="offer" className="offer-section">
       <div className="offer-inner">
         <header className="offer-head">
           <p className="offer-kicker">{t('offer.kicker')}</p>

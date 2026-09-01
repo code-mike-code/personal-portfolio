@@ -5,7 +5,7 @@ import LanguageToggle from '../common/LanguageToggle';
 import './BottomNav.css';
 
 // Sekcje śledzone dla podświetlenia aktywnego linku (kolejność = kolejność na stronie)
-const TRACKED_SECTIONS = ['oferta', 'contact'];
+const TRACKED_SECTIONS = ['offer', 'contact'];
 
 export default function BottomNav() {
   const { t } = useTranslation();
@@ -89,10 +89,10 @@ export default function BottomNav() {
       {/* Na mobile toggle języka wypada z paska — osobne kółko obok pigułki */}
       <LanguageToggle compact className="bottom-nav__lang-circle" />
       <ul className="bottom-nav__menu">
-        <li><a href="#oferta"
-          className={activeSection === 'oferta' ? 'is-active' : undefined}
-          aria-current={activeSection === 'oferta' ? 'true' : undefined}
-          onClick={(e) => { e.preventDefault(); scrollToSection('oferta'); }}>{t('header.offer')}</a></li>
+        <li><a href="#offer"
+          className={activeSection === 'offer' ? 'is-active' : undefined}
+          aria-current={activeSection === 'offer' ? 'true' : undefined}
+          onClick={(e) => { e.preventDefault(); scrollToSection('offer'); }}>{t('header.offer')}</a></li>
         <li><Link to="/realizacje">{t('header.work')}</Link></li>
         <li><a href="#contact"
           className={activeSection === 'contact' ? 'is-active' : undefined}

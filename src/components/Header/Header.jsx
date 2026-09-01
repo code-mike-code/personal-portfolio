@@ -101,8 +101,8 @@ const Header = () => {
         <ul className="header__menu">
           <li onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
             <a
-              href="#oferta"
-              onClick={(e) => { e.preventDefault(); goToSection('oferta'); }}
+              href="#offer"
+              onClick={(e) => { e.preventDefault(); goToSection('offer'); }}
             >
               <span className="menu-text">{t('header.offer')}</span>
             </a>
@@ -153,8 +153,8 @@ const Header = () => {
             </li>
             <li className="mobile-menu__item">
               <a
-                href="#oferta"
-                onClick={(e) => { e.preventDefault(); goToSection('oferta'); }}
+                href="#offer"
+                onClick={(e) => { e.preventDefault(); goToSection('offer'); }}
               >
                 <span className="mobile-menu__item-inner">
                   {t('header.offer')}<sup className="mobile-menu__num">02</sup>

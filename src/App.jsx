@@ -1,5 +1,5 @@
 import React, { useEffect, lazy, Suspense } from 'react';
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import { useTranslation } from 'react-i18next';
 import Header from './components/Header/Header';
 import BottomNav from './components/Header/BottomNav';
@@ -19,7 +19,17 @@ import Cursor from './components/Cursor/Cursor';
 // import PrivacyPolicy from "./components/PrivacyPolicy/PrivacyPolicy";
 import { CookieConsentModal } from "./components/common/CookieConsentModal";
 import ErrorBoundary from './components/common/ErrorBoundary';
-import { initGoogleAnalytics } from './utils/analytics';
+import { initGoogleAnalytics, trackPageView } from './utils/analytics';
+
+// Fires a GA page_view on every client-side route change (no-op until GA is
+// initialized after consent).
+function RouteChangeTracker() {
+  const location = useLocation();
+  useEffect(() => {
+    trackPageView(location.pathname + location.search);
+  }, [location]);
+  return null;
+}
 
 
 function MainLayout() {
@@ -28,7 +38,7 @@ function MainLayout() {
     if (consent === "accepted") {
       initGoogleAnalytics();
     }
-    // jeśli "declined" – nie ładujesz GA
+    // if "declined" – GA is not loaded
   }, []);
   return (
     <>
@@ -44,7 +54,7 @@ function MainLayout() {
         <span className="section-divider-dot section-divider-dot--coral" aria-hidden="true"></span>
         <Testimonials />
         <span className="section-divider-dot section-divider-dot--teal" aria-hidden="true"></span>
-        {/* kolejna kropka (coral) jest wewnątrz PrivateProjects, pod work-showcase */}
+        {/* next dot (coral) lives inside PrivateProjects, below work-showcase */}
         <PrivateProjects limit={3} />
         <span className="section-divider-dot section-divider-dot--teal" aria-hidden="true"></span>
         <Process />
@@ -63,7 +73,7 @@ function MainLayout() {
           initGoogleAnalytics();
         }}
         onDecline={() => {
-          // brak zgody — GA nie jest ładowane
+          // consent declined — GA is not loaded
         }}
       />
     </>
@@ -72,17 +82,18 @@ function MainLayout() {
 
 const PrivacyPolicy = lazy(() => import('./components/PrivacyPolicy/PrivacyPolicy'));
 const AboutPage = lazy(() => import('./components/AboutMe/AboutPage'));
-const RealizacjePage = lazy(() => import('./components/PrivateProjects/RealizacjePage'));
+const WorkPage = lazy(() => import('./components/PrivateProjects/WorkPage'));
 
 
 export default function App() {
-  // key = język: zmiana przemontowuje layout, więc animacje GSAP/Lenis
-  // i stany pochodne od długości tekstu (Hero) startują czysto
+  // key = language: changing it remounts the layout so GSAP/Lenis animations
+  // and text-length-derived state (Hero) start from a clean slate
   const { t, i18n } = useTranslation();
   return (
     <ErrorBoundary>
     <BrowserRouter>
     <Cursor />
+    <RouteChangeTracker />
       <Routes>
         <Route path="/" element={<MainLayout key={i18n.resolvedLanguage} />} />
         <Route
@@ -105,7 +116,7 @@ export default function App() {
           path="/realizacje"
           element={
             <Suspense fallback={<div>{t('common.loading')}</div>}>
-              <RealizacjePage key={i18n.resolvedLanguage} />
+              <WorkPage key={i18n.resolvedLanguage} />
             </Suspense>
           }
         />

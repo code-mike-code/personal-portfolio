@@ -1,5 +1,5 @@
-// Google Analytics 4 — ładowany wyłącznie po zgodzie użytkownika (cookie consent).
-// Measurement ID pochodzi ze zmiennej środowiskowej, brak ID = brak GA (dev/preview).
+// Google Analytics 4 — loaded only after the user's consent (cookie consent).
+// The Measurement ID comes from an environment variable; no ID = no GA (dev/preview).
 
 export const GA_MEASUREMENT_ID = process.env.REACT_APP_GA_MEASUREMENT_ID;
 
@@ -22,7 +22,26 @@ export function initGoogleAnalytics() {
   gtag('js', new Date());
   gtag('config', GA_MEASUREMENT_ID, {
     anonymize_ip: true,
+    // Single-page app: we send page_view manually on route changes.
+    send_page_view: true,
   });
 
   initialized = true;
+}
+
+// Send a page_view for SPA route changes. GA4's initial config fires one
+// page_view; client-side navigations need an explicit event.
+export function trackPageView(path) {
+  if (!initialized || typeof window === 'undefined' || !window.gtag) return;
+  window.gtag('event', 'page_view', {
+    page_path: path,
+    page_location: window.location.href,
+    page_title: document.title,
+  });
+}
+
+// Generic custom-event helper (e.g. CTA clicks, form submits).
+export function trackEvent(name, params = {}) {
+  if (!initialized || typeof window === 'undefined' || !window.gtag) return;
+  window.gtag('event', name, params);
 }

@@ -8,7 +8,7 @@ export default function Process() {
   const list = Array.isArray(steps) ? steps : [];
 
   return (
-    <section id="proces" className="process-section">
+    <section id="process" className="process-section">
       <div className="process-inner">
         <header className="process-head">
           <p className="process-kicker">{t('process.kicker')}</p>

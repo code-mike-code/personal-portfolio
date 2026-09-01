@@ -1,4 +1,4 @@
-.rlz-page {
+.wp-page {
   min-height: auto;
   width: 100%;
   padding: clamp(6rem, 12vh, 9rem) clamp(1.25rem, 4vw, 3rem) clamp(4rem, 8vh, 6rem);
@@ -6,19 +6,19 @@
   background: var(--color-ecru);
 }
 
-.rlz-inner {
+.wp-inner {
   width: 100%;
   max-width: 1180px;
   margin: 0 auto;
 }
 
 /* Nagłówek strony */
-.rlz-head {
+.wp-head {
   max-width: 720px;
   margin: 0 0 clamp(3rem, 7vh, 5rem);
 }
 
-.rlz-kicker {
+.wp-kicker {
   margin: 0 0 0.7rem;
   font-size: clamp(0.9rem, 1.3vw, 1.05rem);
   font-weight: 600;
@@ -27,7 +27,7 @@
   color: var(--color-teal-ink);
 }
 
-.rlz-title {
+.wp-title {
   margin: 0 0 1.1rem;
   font-size: clamp(2.4rem, 6vw, 4.2rem);
   font-weight: 800;
@@ -36,7 +36,7 @@
   color: var(--color-ink);
 }
 
-.rlz-subtitle {
+.wp-subtitle {
   margin: 0;
   font-size: clamp(1.1rem, 1.7vw, 1.4rem);
   line-height: 1.55;
@@ -44,13 +44,13 @@
 }
 
 /* Lista realizacji */
-.rlz-list {
+.wp-list {
   display: flex;
   flex-direction: column;
   gap: clamp(3.5rem, 8vh, 6rem);
 }
 
-.rlz-row {
+.wp-row {
   display: grid;
   grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
   gap: clamp(1.75rem, 4vw, 3.5rem);
@@ -58,15 +58,15 @@
 }
 
 /* Naprzemienny układ: co druga realizacja ma media po prawej */
-.rlz-row:nth-child(even) .rlz-row-media {
+.wp-row:nth-child(even) .wp-row-media {
   order: 2;
 }
 
-.rlz-row-media {
+.wp-row-media {
   min-width: 0;
 }
 
-.rlz-media {
+.wp-media {
   position: relative;
   width: 100%;
   border-radius: 18px;
@@ -75,17 +75,17 @@
   box-shadow: 0 24px 60px -30px rgba(17, 17, 17, 0.5);
 }
 
-.rlz-media--landscape {
+.wp-media--landscape {
   aspect-ratio: 16 / 10;
 }
 
-.rlz-media--portrait {
+.wp-media--portrait {
   aspect-ratio: 9 / 16;
   max-width: 360px;
   margin: 0 auto;
 }
 
-.rlz-video {
+.wp-video {
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -93,7 +93,7 @@
   display: block;
 }
 
-.rlz-video-pause {
+.wp-video-pause {
   position: absolute;
   bottom: 12px;
   right: 12px;
@@ -112,17 +112,17 @@
   transition: background 0.2s ease;
 }
 
-.rlz-video-pause:hover,
-.rlz-video-pause:focus-visible {
+.wp-video-pause:hover,
+.wp-video-pause:focus-visible {
   background: rgba(17, 17, 17, 0.85);
 }
 
 /* Treść realizacji */
-.rlz-row-body {
+.wp-row-body {
   min-width: 0;
 }
 
-.rlz-row-num {
+.wp-row-num {
   display: block;
   font-size: 0.95rem;
   font-weight: 700;
@@ -131,7 +131,7 @@
   margin-bottom: 0.6rem;
 }
 
-.rlz-row-title {
+.wp-row-title {
   margin: 0 0 0.75rem;
   font-size: clamp(1.7rem, 3vw, 2.4rem);
   font-weight: 700;
@@ -140,14 +140,14 @@
   color: var(--color-ink);
 }
 
-.rlz-row-desc {
+.wp-row-desc {
   margin: 0 0 1.75rem;
   font-size: clamp(1.02rem, 1.4vw, 1.15rem);
   line-height: 1.55;
   color: #4a4738;
 }
 
-.rlz-case {
+.wp-case {
   display: flex;
   flex-direction: column;
   gap: 1.4rem;
@@ -155,7 +155,7 @@
   border-top: 1px solid var(--color-grid);
 }
 
-.rlz-case-label {
+.wp-case-label {
   margin: 0 0 0.5rem;
   font-size: 0.8rem;
   font-weight: 700;
@@ -164,14 +164,14 @@
   color: var(--color-teal-ink);
 }
 
-.rlz-case-text {
+.wp-case-text {
   margin: 0;
   font-size: 1.02rem;
   line-height: 1.55;
   color: var(--color-ink);
 }
 
-.rlz-case-list {
+.wp-case-list {
   list-style: none;
   margin: 0;
   padding: 0;
@@ -180,7 +180,7 @@
   gap: 0.45rem 1.25rem;
 }
 
-.rlz-case-list li {
+.wp-case-list li {
   position: relative;
   padding-left: 1.35rem;
   font-size: 0.98rem;
@@ -188,7 +188,7 @@
   color: var(--color-ink);
 }
 
-.rlz-case-list li::before {
+.wp-case-list li::before {
   content: '';
   position: absolute;
   left: 0;
@@ -199,24 +199,24 @@
   background: var(--color-teal);
 }
 
-.rlz-case-list--result li::before {
+.wp-case-list--result li::before {
   background: var(--color-coral);
 }
 
 /* Wizualia z komponentu Button — tu tylko rozmieszczenie */
-.rlz-live {
+.wp-live {
   align-self: flex-start;
   margin-top: 1.75rem;
 }
 
 /* Powrót */
-.rlz-back {
+.wp-back {
   margin-top: clamp(3.5rem, 8vh, 5.5rem);
   display: flex;
   justify-content: center;
 }
 
-.rlz-back-link {
+.wp-back-link {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
@@ -228,34 +228,34 @@
   transition: border-color 0.2s ease;
 }
 
-.rlz-back-link:hover,
-.rlz-back-link:focus-visible {
+.wp-back-link:hover,
+.wp-back-link:focus-visible {
   border-bottom-color: var(--color-ink);
 }
 
 /* Tablet i mniej: układ jednokolumnowy, media zawsze na górze */
 @media (max-width: 860px) {
-  .rlz-row {
+  .wp-row {
     grid-template-columns: 1fr;
     gap: 1.75rem;
   }
-  .rlz-row:nth-child(even) .rlz-row-media {
+  .wp-row:nth-child(even) .wp-row-media {
     order: 0;
   }
-  .rlz-media--portrait {
+  .wp-media--portrait {
     max-width: 300px;
   }
 }
 
 @media (max-width: 520px) {
-  .rlz-case-list {
+  .wp-case-list {
     grid-template-columns: 1fr;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .rlz-video-pause,
-  .rlz-back-link {
+  .wp-video-pause,
+  .wp-back-link {
     transition: none;
   }
 }
