@@ -1,17 +1,17 @@
 import React, { useEffect, useRef, useState } from 'react';
 import './RepoOrbs.css';
 
-// Paleta koral (#d96a55) + morski (#2b9dad) + ecru — spójna z resztą strony
+// Palette: coral (#d96a55) + teal (#2b9dad) + ecru — consistent with the rest of the site
 const PALETTE = ['orb-coral', 'orb-teal', 'orb-olive'];
 
-// Kolory poświaty obwodu przy zderzeniu (rgba bez kanału alpha)
+// Rim glow colors on collision (rgba without the alpha channel)
 const GLOW = ['rgba(217, 106, 85, ', 'rgba(43, 157, 173, ', 'rgba(179, 173, 142, '];
 
-// Czas życia poświaty po zderzeniu (s) — miękkie narastanie i długie wygasanie
+// Glow lifetime after a collision (s) — soft ramp-up and long fade-out
 const FLASH_DURATION = 1.4;
-const FLASH_ATTACK = 0.18; // część czasu na narastanie
+const FLASH_ATTACK = 0.18; // fraction of the time spent ramping up
 
-// Powiększenie na hover (desktop) i docelowa średnica po tapnięciu (mobile)
+// Hover scale-up (desktop) and target diameter after tap (mobile)
 const HOVER_SCALE = 1.3;
 const TAP_DIAMETER_VW = 0.45;
 const TAP_COLLAPSE_MS = 3000;
@@ -25,7 +25,7 @@ export default function RepoOrbs({ repos }) {
   const orbRefs = useRef([]);
   const orbsRef = useRef([]);
   const [staticMode] = useState(prefersReducedMotion);
-  // Kula rozwinięta tapnięciem (mobile): stan do klasy CSS, ref do handlerów
+  // Bubble expanded by tap (mobile): state for the CSS class, ref for handlers
   const [expandedIndex, setExpandedIndex] = useState(-1);
   const expandedRef = useRef(-1);
   const collapseTimerRef = useRef(null);
@@ -41,9 +41,9 @@ export default function RepoOrbs({ repos }) {
       const base = isMobile
         ? 36 + Math.random() * 14
         : 68 + Math.random() * 36;
-      // Mobile: element ma od razu rozmiar rozwiniętej kuli (45vw), a stan
-      // spoczynkowy to skala <1. Downscale rastruje ostro; upscale małego
-      // layoutu dawał piksele na krawędzi po tapnięciu
+      // Mobile: the element is sized to the expanded bubble (45vw) up front, and the
+      // resting state is scale <1. Downscale rasterizes sharply; upscaling a small
+      // layout produced edge pixels after a tap
       const k = isMobile
         ? Math.max(1, (window.innerWidth * TAP_DIAMETER_VW) / (base * 2))
         : 1;
@@ -58,7 +58,7 @@ export default function RepoOrbs({ repos }) {
         y: 0,
         vx,
         vy,
-        // Docelowa (stała) szybkość — zderzenia zmieniają tylko kierunek
+        // Target (constant) speed — collisions change direction only
         speed: Math.hypot(vx, vy),
         phase: Math.random() * Math.PI * 2,
         oscSpeed: 0.3 + Math.random() * 0.4,
@@ -72,7 +72,7 @@ export default function RepoOrbs({ repos }) {
       };
     });
 
-    // Rozmieszczenie startowe bez nakładania (losowe próby)
+    // Initial placement without overlap (random tries)
     orbs.forEach((orb) => {
       let placed = false;
       for (let attempt = 0; attempt < 60 && !placed; attempt++) {
@@ -100,16 +100,16 @@ export default function RepoOrbs({ repos }) {
       last = now;
       const t = now / 1000;
 
-      // Pulsowanie rozmiaru + płynny wzrost do targetScale (hover/tap).
-      // Wzrost wchodzi do o.r, więc fizyka (zderzenia, ściany) widzi
-      // powiększoną kulę i sąsiadki są odpychane zamiast nachodzić
+      // Size pulsing + smooth growth to targetScale (hover/tap).
+      // Growth feeds into o.r, so the physics (collisions, walls) sees
+      // the enlarged bubble and neighbors are pushed away instead of overlapping
       orbs.forEach((o) => {
         o.hoverT += ((o.frozen ? 1 : 0) - o.hoverT) * Math.min(1, dt * 8);
         const grow = 1 + (o.targetScale - 1) * o.hoverT;
         o.r = o.base * (1 + 0.12 * Math.sin(t * o.oscSpeed + o.phase)) * grow;
       });
 
-      // Ruch + odbicia od ścian
+      // Motion + bouncing off walls
       orbs.forEach((o) => {
         if (!o.frozen) {
           o.x += o.vx * dt;
@@ -121,7 +121,7 @@ export default function RepoOrbs({ repos }) {
         if (o.y + o.r > bounds.height) { o.y = bounds.height - o.r; o.vy = -Math.abs(o.vy); o.flash = t; o.flashAngle = Math.PI / 2; }
       });
 
-      // Zderzenia sprężyste (masa ~ r^2)
+      // Elastic collisions (mass ~ r^2)
       for (let i = 0; i < orbs.length; i++) {
         for (let j = i + 1; j < orbs.length; j++) {
           const a = orbs[i];
@@ -134,12 +134,12 @@ export default function RepoOrbs({ repos }) {
             const nx = dx / dist;
             const ny = dy / dist;
 
-            // Rozdzielenie nakładających się okręgów
+            // Separate overlapping circles
             const overlap = (minDist - dist) / 2;
             if (!a.frozen) { a.x -= nx * overlap; a.y -= ny * overlap; }
             if (!b.frozen) { b.x += nx * overlap; b.y += ny * overlap; }
 
-            // Impuls wzdłuż normalnej
+            // Impulse along the normal
             const dvx = a.vx - b.vx;
             const dvy = a.vy - b.vy;
             const vn = dvx * nx + dvy * ny;
@@ -153,7 +153,7 @@ export default function RepoOrbs({ repos }) {
               b.vy += impulse * m1 * ny;
               a.flash = t;
               b.flash = t;
-              // Punkt uderzenia: dla a w stronę b, dla b w stronę a
+              // Impact point: for a toward b, for b toward a
               a.flashAngle = Math.atan2(ny, nx);
               b.flashAngle = Math.atan2(-ny, -nx);
             }
@@ -161,9 +161,9 @@ export default function RepoOrbs({ repos }) {
         }
       }
 
-      // Normalizacja szybkości do wartości startowej. Masa ~ r², a r pulsuje,
-      // więc impulsy zderzeń nie zachowują energii między klatkami — bez tego
-      // kule stopniowo się rozpędzają. Zderzenia zmieniają tylko kierunek.
+      // Normalize speed back to the initial value. Mass ~ r², and r pulses,
+      // so collision impulses do not conserve energy between frames — without this
+      // bubbles gradually speed up. Collisions change direction only.
       orbs.forEach((o) => {
         const s = Math.hypot(o.vx, o.vy);
         if (s > 0) {
@@ -175,16 +175,16 @@ export default function RepoOrbs({ repos }) {
 
       // Render
       orbs.forEach((o) => {
-        // Skala względem powiększonego layoutu (base*2*k) — środek kuli
-        // zostaje w (x, y), transform-origin domyślnie 50% 50%
+        // Scale relative to the enlarged layout (base*2*k) — the bubble center
+        // stays at (x, y), transform-origin defaults to 50% 50%
         const scale = o.r / (o.base * o.k);
         o.el.style.transform = `translate3d(${o.x - o.base * o.k}px, ${o.y - o.base * o.k}px, 0) scale(${scale})`;
-        // Kontr-skala dla tekstu w rozwiniętej kuli — tekst nie rośnie
-        // razem z transformem (ostry render, stały rozmiar)
+        // Counter-scale for text in the expanded bubble — text does not grow
+        // with the transform (sharp render, constant size)
         o.el.style.setProperty('--orb-scale', scale.toFixed(4));
 
-        // Poświata rozchodząca się po obwodzie od punktu uderzenia:
-        // łuk conic-gradient rośnie wokół kuli, jasność wg obwiedni smoothstep
+        // Glow spreading around the rim from the impact point:
+        // the conic-gradient arc grows around the bubble, brightness per a smoothstep envelope
         const p = o.flash >= 0 ? (t - o.flash) / FLASH_DURATION : 1;
         if (p < 1) {
           const raw = p < FLASH_ATTACK ? p / FLASH_ATTACK : 1 - (p - FLASH_ATTACK) / (1 - FLASH_ATTACK);
@@ -217,7 +217,7 @@ export default function RepoOrbs({ repos }) {
       if (raf) cancelAnimationFrame(raf);
     };
 
-    // Animacja tylko gdy sekcja w viewport
+    // Animate only when the section is in the viewport
     const io = new IntersectionObserver(
       ([entry]) => (entry.isIntersecting ? start() : stop()),
       { threshold: 0 }
@@ -241,7 +241,7 @@ export default function RepoOrbs({ repos }) {
     };
   }, [repos, staticMode]);
 
-  // Timer zwijania nie może przeżyć odmontowania (np. zmiana języka)
+  // The collapse timer must not outlive unmount (e.g. language change)
   useEffect(() => () => clearTimeout(collapseTimerRef.current), []);
 
   const collapseOrb = () => {
@@ -259,7 +259,7 @@ export default function RepoOrbs({ repos }) {
     clearTimeout(collapseTimerRef.current);
     orbsRef.current.forEach((o, i) => {
       o.frozen = i === index;
-      // Docelowa średnica 35vw — targetScale przelicza ją na mnożnik bazy
+      // Target diameter 35vw — targetScale converts it into a base multiplier
       o.targetScale = i === index
         ? Math.max(1, (window.innerWidth * TAP_DIAMETER_VW) / (o.base * 2))
         : 1;
@@ -272,7 +272,7 @@ export default function RepoOrbs({ repos }) {
   const freeze = (index, value) => {
     const orb = orbsRef.current[index];
     if (!orb) return;
-    // Blur rozwiniętej kuli (tap poza nią) = wcześniejsze zwinięcie
+    // Blur of the expanded bubble (tap outside it) = early collapse
     if (!value && expandedRef.current === index) {
       collapseOrb();
       return;
@@ -286,11 +286,11 @@ export default function RepoOrbs({ repos }) {
     if (staticMode) return;
     if (!window.matchMedia('(max-width: 900px)').matches) return;
     if (expandedRef.current === index) {
-      // Drugi tap: nawigacja do repo (default) + natychmiastowe zwinięcie
+      // Second tap: navigate to the repo (default) + immediate collapse
       collapseOrb();
       return;
     }
-    // Pierwszy tap: tylko podgląd — powiększenie i info zamiast nawigacji
+    // First tap: preview only — enlarge and info instead of navigation
     event.preventDefault();
     expandOrb(index);
   };
@@ -315,7 +315,7 @@ export default function RepoOrbs({ repos }) {
           onClick={(e) => handleOrbClick(e, index)}
         >
           <span className="repo-orb-glow" aria-hidden="true"></span>
-          {/* Mobile/tablet: domyślnie ikona GitHuba, nazwa + technologia po hover/focus */}
+          {/* Mobile/tablet: GitHub icon by default, name + tech on hover/focus */}
           <span className="repo-orb-icon" aria-hidden="true">
             <svg viewBox="0 0 16 16" fill="currentColor">
               <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z" />

@@ -25,7 +25,7 @@ export default function AboutMe() {
 
   return (
     <section id='about' className="about-section">
-      {/* Nagłówek */}
+      {/* Heading */}
       <div className="about-header">
         <div className="about-header-blob" aria-hidden="true"></div>
         <h2 className="about-header-title">
@@ -35,7 +35,7 @@ export default function AboutMe() {
         </h2>
       </div>
 
-      {/* Intro: zdjęcie + bio */}
+      {/* Intro: photo + bio */}
       <div className="about-intro">
         <div className="about-photo-wrap">
           <span className="about-shape-circle" aria-hidden="true"></span>

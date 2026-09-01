@@ -11,8 +11,8 @@ const prefersReducedMotion = () =>
   typeof window !== 'undefined' &&
   window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-// Wideo dobiera się dopiero gdy karta wjeżdża w viewport (pliki mają kilka MB).
-// Poster (pierwsza klatka) widać od razu.
+// The video is fetched only once the card enters the viewport (files are several MB).
+// The poster (first frame) is visible right away.
 function ProjectVideo({ project }) {
   const { t } = useTranslation();
   const wrapRef = useRef(null);

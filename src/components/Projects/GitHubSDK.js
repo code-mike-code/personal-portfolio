@@ -1,5 +1,5 @@
-// Publiczne REST API GitHuba — bez tokenu, żaden sekret nie trafia do bundla.
-// Repozytoria do sekcji wybierane po topicu (domyślnie "portfolio"),
+// Public GitHub REST API — no token, no secret ends up in the bundle.
+// Repos for the section are picked by topic (default "portfolio"),
 // z fallbackiem na najpopularniejsze publiczne repozytoria.
 class GitHubSDK {
   constructor(userName) {
@@ -30,7 +30,7 @@ class GitHubSDK {
           .sort((a, b) => b.stargazers_count - a.stargazers_count)
     ).slice(0, limit);
 
-    // Kształt zgodny z komponentami sekcji (wcześniej GraphQL pinnedItems)
+    // Shape matching the section components (previously GraphQL pinnedItems)
     return picked.map((repo) => ({
       id: repo.id,
       name: repo.name,

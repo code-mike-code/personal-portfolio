@@ -19,8 +19,8 @@ export default function Projects() {
     sdk.getPortfolioRepos()
       .then(setRepos)
       .catch(() => {
-        // API padło (rate limit / offline) — pokazujemy przykładowe repo
-        // zamiast surowego komunikatu błędu
+        // API failed (rate limit / offline) — show sample repos
+        // instead of a raw error message
         setRepos(mockRepos);
         setUsingFallback(true);
       })

@@ -1,10 +1,10 @@
 import React, { useEffect, useRef, useState } from 'react';
 
-// Wspólny animowany nagłówek (litera po literze).
-// mode="shuffle"    — litery odsłaniają się w losowej kolejności (Hero)
-// mode="sequential" — litery odsłaniają się od lewej do prawej (Contact)
-// Kontener nagłówka powinien mieć aria-label z pełnym tekstem,
-// a wrapper tego komponentu aria-hidden — animacja jest czysto wizualna.
+// Shared animated headline (letter by letter).
+// mode="shuffle"    — letters reveal in random order (Hero)
+// mode="sequential" — letters reveal left to right (Contact)
+// The headline container should carry an aria-label with the full text,
+// and this component wrapper is aria-hidden — the animation is purely visual.
 export default function AnimatedHeadlinePart({ text, start, mode = 'shuffle' }) {
   const [revealed, setRevealed] = useState(() => Array(text.length).fill(false));
   const timeoutsRef = useRef([]);
@@ -41,7 +41,7 @@ export default function AnimatedHeadlinePart({ text, start, mode = 'shuffle' }) 
       timeoutsRef.current.push(t);
     });
 
-    // Fallback: po zakończeniu sekwencji wszystko widoczne
+    // Fallback: everything visible once the sequence finishes
     const finalTimeout = setTimeout(() => {
       setRevealed(Array(text.length).fill(true));
     }, baseDelay + indices.length * step + 200);

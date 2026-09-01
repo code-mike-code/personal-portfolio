@@ -2,7 +2,7 @@ import i18n from '../index';
 import en from '../locales/en.json';
 import pl from '../locales/pl.json';
 
-// Rekurencyjnie zbiera ścieżki kluczy — do porównania kompletności słowników
+// Recursively collects key paths — to compare dictionary completeness
 function collectKeys(obj, prefix = '') {
   return Object.entries(obj).flatMap(([key, value]) => {
     const path = prefix ? `${prefix}.${key}` : key;

@@ -8,7 +8,7 @@ export default function LanguageToggle({ className = '', compact = false }) {
   const next = current === 'pl' ? 'en' : 'pl';
 
   if (compact) {
-    // Wariant kompaktowy: okrągły przycisk z kodem języka docelowego
+    // Compact variant: round button with the target language code
     return (
       <button
         type="button"

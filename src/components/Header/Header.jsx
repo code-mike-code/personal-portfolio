@@ -44,8 +44,8 @@ const Header = () => {
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [menuOpen]);
 
-  // Sekcje żyją na stronie głównej. Z podstrony (/o-mnie) najpierw wracamy
-  // na home, potem przewijamy do sekcji.
+  // Sections live on the home page. From a subpage (/o-mnie) we first go back
+  // to home, then scroll to the section.
   const goToSection = (sectionId) => {
     setMenuOpen(false);
     const doScroll = () => {
@@ -86,7 +86,7 @@ const Header = () => {
             aria-label={t('header.aboutAria')}
             className="header__logo-button"
           >
-            {/* Desktop: tekst "O mnie". Mobile: monogram M (jak w favicon) */}
+            {/* Desktop: "About" text. Mobile: M monogram (like the favicon) */}
             <span className="header__logo-mark" aria-hidden="true">
               <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
                 <path

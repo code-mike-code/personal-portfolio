@@ -1,6 +1,6 @@
 import React from 'react';
 
-// Dane karuzeli technologii — nazwy + inline SVG (wyniesione z TechBanner dla czytelności)
+// Tech carousel data — names + inline SVG (extracted from TechBanner for readability)
 export const technologies = [
   {
     name: 'HTML',

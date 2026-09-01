@@ -11,9 +11,9 @@ import cudownaDoniczkaDesktop from '../../assets/videos/cudowna-doniczka-desktop
 import geoScanMobile from '../../assets/videos/geoscan-uav-mobile.mp4';
 import geoScanDesktop from '../../assets/videos/geoscan-uav-desktop.mp4';
 
-// Postery (pierwsza klatka wideo) — pokazywane natychmiast; wideo dobiera się
-// dopiero gdy sekcja wjedzie w viewport (patrz WorkShowcase). Bez posterów
-// aktywne wideo z preload="auto" ściągało 4–6 MB od razu na starcie strony.
+// Posters (first video frame) — shown instantly; the video is fetched
+// only once the section enters the viewport (see WorkShowcase). Without posters
+// the active preload="auto" video pulled 4–6 MB right at page start.
 import corDentMobilePoster from '../../assets/videos/posters/cor-dent-mobile.webp';
 import corDentDesktopPoster from '../../assets/videos/posters/cor-dent-desktop.webp';
 import vitalisCardioMobilePoster from '../../assets/videos/posters/vitalis-cardio-mobile.webp';

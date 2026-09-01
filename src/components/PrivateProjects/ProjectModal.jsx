@@ -10,7 +10,7 @@ const ProjectModal = ({ isOpen, project, onClose }) => {
   const backdropRef = useRef(null);
   const videoRef = useRef(null);
   const [videoSrc, setVideoSrc] = useState('');
-  // WCAG 2.2.2: możliwość zatrzymania ruchu; przy reduced-motion start w pauzie
+  // WCAG 2.2.2: ability to stop motion; with reduced-motion it starts paused
   const [videoPaused, setVideoPaused] = useState(
     () => typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches
   );
@@ -27,7 +27,7 @@ const ProjectModal = ({ isOpen, project, onClose }) => {
 
   useFocusTrap(modalRef, isOpen);
 
-  // Zamknięcie na ESC key
+  // Close on ESC key
   useEffect(() => {
     const handleKeyDown = (e) => {
       if (e.key === 'Escape' && isOpen) {
@@ -47,7 +47,7 @@ const ProjectModal = ({ isOpen, project, onClose }) => {
     };
   }, [isOpen, onClose]);
 
-  // Animacja otwarcia/zamknięcia
+  // Open/close animation
   useEffect(() => {
     if (!modalRef.current) return;
 
@@ -80,7 +80,7 @@ const ProjectModal = ({ isOpen, project, onClose }) => {
     }
   }, [isOpen]);
 
-  // Logika wyboru wideo w zależności od urządzenia
+  // Device-dependent video selection logic
   useEffect(() => {
     if (!project) return;
 
@@ -89,7 +89,7 @@ const ProjectModal = ({ isOpen, project, onClose }) => {
       if (width <= 600) {
         setVideoSrc(project.thumbnailVideo); // Mobile
       } else if (width <= 900) {
-        setVideoSrc(project.tabletVideo || project.fullVideo); // Tablet (fallback do desktop jeśli brak)
+        setVideoSrc(project.tabletVideo || project.fullVideo); // Tablet (falls back to desktop if missing)
       } else {
         setVideoSrc(project.fullVideo); // Desktop
       }
@@ -100,7 +100,7 @@ const ProjectModal = ({ isOpen, project, onClose }) => {
     return () => window.removeEventListener('resize', updateVideoSource);
   }, [project]);
 
-  // Zamknięcie na klik backdrop
+  // Close on backdrop click
   const handleBackdropClick = (e) => {
     if (e.target === backdropRef.current) {
       onClose();
@@ -141,7 +141,7 @@ const ProjectModal = ({ isOpen, project, onClose }) => {
           style={{ width: '100%', height: '100%', overflowY: 'auto' }} 
           data-lenis-prevent
         >
-          {/* Video tło - Sticky sprawia, że wideo stoi w miejscu jak tło, podczas gdy kontener się przewija */}
+          {/* Video background - Sticky keeps the video fixed like a background while the container scrolls */}
           <div className="project-modal-video-container" style={{ position: 'sticky', top: 0, left: 0, width: '100%', height: '70vh', zIndex: 0, paddingTop: 0 }}>
             {videoSrc ? (
               <>

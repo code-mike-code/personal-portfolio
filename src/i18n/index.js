@@ -16,7 +16,7 @@ i18n
     },
     fallbackLng: 'en',
     supportedLngs: ['en', 'pl'],
-    // pl-PL z przeglądarki ma trafiać w 'pl'
+    // browser pl-PL should map to 'pl'
     nonExplicitSupportedLngs: true,
     detection: {
       order: ['localStorage', 'navigator'],
@@ -24,7 +24,7 @@ i18n
       lookupLocalStorage: LANGUAGE_STORAGE_KEY,
     },
     interpolation: {
-      // React sam escapuje wartości
+      // React escapes values itself
       escapeValue: false,
     },
   });
@@ -34,8 +34,8 @@ const setMeta = (selector, content) => {
   if (el) el.setAttribute('content', content);
 };
 
-// Jedna domena (michalmajewski.dev) serwuje obie wersje językowe — canonical
-// i og:url normalizujemy do wersji bez www i doklejamy ścieżkę (np. /privacy-policy)
+// One domain (michalmajewski.dev) serves both languages — canonical
+// and og:url are normalized to the non-www form with the path appended (e.g. /privacy-policy)
 const applyCanonicalDomain = () => {
   if (typeof window === 'undefined') return;
   const { hostname, pathname } = window.location;
@@ -50,7 +50,7 @@ const applyCanonicalDomain = () => {
   setMeta('meta[name="twitter:image"]', `${origin}/og-image.png`);
 };
 
-// Meta + atrybut lang podążają za językiem (guard: testy działają w node)
+// Meta + the lang attribute follow the language (guard: tests run in node)
 const applyDocumentLanguage = (lng) => {
   if (typeof document === 'undefined') return;
   document.documentElement.lang = lng;

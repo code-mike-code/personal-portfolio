@@ -6,15 +6,15 @@ import './WorkShowcase.css';
 
 gsap.registerPlugin(ScrollTrigger);
 
-// Długość fazy intro (grow + slide) w wysokościach viewportu
+// Length of the intro phase (grow + slide) in viewport heights
 const INTRO_VIEWPORTS = 1.6;
 
 const prefersReducedMotion = () =>
   typeof window !== 'undefined' &&
   window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-// Źródło wideo: telefon (≤600px) gra pionowe, tablet i desktop poziome.
-// Układ kolumnowy (wideo nad panelem) obowiązuje do 900px — patrz CSS
+// Video source: phone (≤600px) plays vertical, tablet and desktop horizontal.
+// Column layout (video above the panel) applies up to 900px — see CSS
 const MOBILE_QUERY = '(max-width: 600px)';
 
 const useIsMobile = () => {
@@ -35,7 +35,7 @@ const useIsMobile = () => {
 const ProjectMedia = ({ project, index, isActive = true }) => {
   const { t } = useTranslation();
   const isMobile = useIsMobile();
-  // Mobile: pionowe wideo (thumbnailVideo, 400x866), desktop: poziome (fullVideo)
+  // Mobile: vertical video (thumbnailVideo, 400x866), desktop: horizontal (fullVideo)
   const videoSrc = isMobile
     ? project.thumbnailVideo || project.fullVideo
     : project.fullVideo || project.tabletVideo || project.thumbnailVideo;
@@ -44,10 +44,10 @@ const ProjectMedia = ({ project, index, isActive = true }) => {
     : project.fullPoster || project.thumbnailPoster;
   const wrapRef = useRef(null);
   const videoRef = useRef(null);
-  // Sekcja w polu widzenia — wideo (kilka MB) dobiera się dopiero wtedy;
-  // poza viewportem widać tylko lekki poster
+  // Section in view — the video (several MB) is fetched only then;
+  // outside the viewport only the lightweight poster shows
   const [inView, setInView] = useState(false);
-  // WCAG 2.2.2: użytkownik może zatrzymać ruch; przy reduced-motion start w pauzie
+  // WCAG 2.2.2: the user can stop motion; with reduced-motion it starts paused
   const [paused, setPaused] = useState(prefersReducedMotion);
 
   useEffect(() => {
@@ -85,8 +85,8 @@ const ProjectMedia = ({ project, index, isActive = true }) => {
           muted
           loop
           playsInline
-          // Pełny plik ściągamy dopiero dla aktywnego wideo w viewport;
-          // reszta czeka (poster wystarcza wizualnie)
+          // We fetch the full file only for the active video in the viewport;
+          // the rest waits (the poster is visually sufficient)
           preload={isActive && inView ? 'metadata' : 'none'}
           className="work-media-video"
         />
@@ -157,15 +157,15 @@ const WorkShowcase = ({ projects, onDetails }) => {
       const mediaEl = mediaWrapRef.current;
       const infoEl = infoWrapRef.current;
       const total = projects.length;
-      // Mobile: krótsze intro i mniej scrollu na projekt — na telefonie pełny
-      // 1 viewport/projekt dawał zbyt długie przewijanie sekcji
+      // Mobile: shorter intro and less scroll per project — on phones a full
+      // 1 viewport/project made the section scroll too long
       const isMobile = window.matchMedia('(max-width: 600px)').matches;
       const introVp = isMobile ? 0.8 : INTRO_VIEWPORTS;
       const perProjectVp = isMobile ? 0.6 : 1;
       const totalVp = introVp + perProjectVp * total;
       const introFraction = introVp / totalVp;
 
-      // Pin całej sekcji: intro + kilka viewportów na projekty (mniej na mobile)
+      // Pin the whole section: intro + a few viewports for the projects (fewer on mobile)
       ScrollTrigger.create({
         trigger: sectionRef.current,
         start: 'top top',
@@ -189,9 +189,9 @@ const WorkShowcase = ({ projects, onDetails }) => {
         },
       });
 
-      // Intro: karta startuje wyżej jako płaski prostokąt rozpięty między
-      // liniami gridu (25vw–75vw), rośnie do pełnego rozmiaru, potem zjeżdża
-      // w lewo, a panel info wsuwa się z prawej z niewidoczności
+      // Intro: the card starts higher as a flat rectangle spanning between
+      // the grid lines (25vw–75vw), grows to full size, then slides
+      // left, while the info panel slides in from the right out of invisibility
       const createIntroTl = () => {
         const tl = gsap.timeline({
           scrollTrigger: {
@@ -213,16 +213,16 @@ const WorkShowcase = ({ projects, onDetails }) => {
         const introTl = createIntroTl();
         const vw = window.innerWidth;
         const vh = window.innerHeight;
-        const startWidth = vw * 0.5; // od linii 25vw do 75vw
+        const startWidth = vw * 0.5; // from the 25vw line to 75vw
         const startHeight = Math.min(vh * 0.28, 320);
-        // Wysokość trzyma proporcje wideo (2:1),
-        // limity spójne z width w .work-showcase-media
+        // Height keeps the video aspect ratio (2:1),
+        // limits consistent with width in .work-showcase-media
         const endWidth = Math.min(vw * 0.65, vh * 1.12, 1200);
         const endHeight = endWidth / 2;
 
-        // Pozycja layoutowa liczona przed nałożeniem transformów.
-        // Dwa shifty trzymają kartę idealnie na środku podczas wzrostu
-        // (szerokość rośnie od lewej krawędzi, więc x musi kompensować)
+        // Layout position computed before transforms are applied.
+        // Two shifts keep the card perfectly centered during growth
+        // (width grows from the left edge, so x must compensate)
         const mediaRect = mediaEl.getBoundingClientRect();
         const centerShiftStart = vw / 2 - (mediaRect.left + startWidth / 2);
         const centerShiftEnd = vw / 2 - (mediaRect.left + endWidth / 2);
@@ -235,7 +235,7 @@ const WorkShowcase = ({ projects, onDetails }) => {
         });
 
         introTl
-          // Faza 1: wzrost do pełnego rozmiaru, karta nie rusza się ze środka
+          // Phase 1: grow to full size, the card stays put in the center
           .to(mediaEl, {
             x: centerShiftEnd,
             y: 0,
@@ -244,7 +244,7 @@ const WorkShowcase = ({ projects, onDetails }) => {
             duration: 1,
             ease: 'none',
           })
-          // Faza 2: dopiero po pełnym wzroście (plus pauza) zjazd w lewo
+          // Phase 2: only after full growth (plus a pause) slide left
           .to(mediaEl, { x: 0, duration: 1, ease: 'none' }, '>+0.25')
           .fromTo(
             infoEl,
@@ -274,7 +274,7 @@ const WorkShowcase = ({ projects, onDetails }) => {
     return () => ctx.revert();
   }, [projects.length, staticMode]);
 
-  // Fallback bez pinowania dla prefers-reduced-motion
+  // Fallback without pinning for prefers-reduced-motion
   if (staticMode) {
     return (
       <section className="work-showcase work-showcase-static">

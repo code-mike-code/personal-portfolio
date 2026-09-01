@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next';
 import LanguageToggle from '../common/LanguageToggle';
 import './BottomNav.css';
 
-// Sekcje śledzone dla podświetlenia aktywnego linku (kolejność = kolejność na stronie)
+// Sections tracked for highlighting the active link (order = order on the page)
 const TRACKED_SECTIONS = ['offer', 'contact'];
 
 export default function BottomNav() {
@@ -16,9 +16,9 @@ export default function BottomNav() {
   const lastScrollY = useRef(0);
 
   useEffect(() => {
-    // Przybliżona wysokość nav — do detekcji nakładania z banerem
+    // Approximate nav height — for detecting overlap with the banner
     const NAV_OFFSET = 60;
-    // Refy DOM cachowane raz — bez querySelector przy każdym scrollu
+    // DOM refs cached once — no querySelector on every scroll
     const footer = document.querySelector('.footer');
     const techBanner = document.querySelector('.tech-banner');
     const sections = TRACKED_SECTIONS
@@ -49,7 +49,7 @@ export default function BottomNav() {
         setOverTechBanner(bannerRect.bottom > navBottom && bannerRect.top < navBottom);
       }
 
-      // Aktywna sekcja: ta, która przecina środek viewportu
+      // Active section: the one crossing the middle of the viewport
       const marker = window.innerHeight / 2;
       let current = null;
       for (const { id, el } of sections) {
@@ -61,7 +61,7 @@ export default function BottomNav() {
       setActiveSection(current);
     };
 
-    // rAF-throttle: max jeden update na klatkę
+    // rAF-throttle: at most one update per frame
     let ticking = false;
     const handleScroll = () => {
       if (ticking) return;
@@ -86,7 +86,7 @@ export default function BottomNav() {
   return (
     <nav className={`bottom-nav${visible && !hideForFooter ? ' bottom-nav--visible' : ''}${overTechBanner ? ' bottom-nav--over-banner' : ''}`} 
       aria-label={t('header.mobileNavAria')}>
-      {/* Na mobile toggle języka wypada z paska — osobne kółko obok pigułki */}
+      {/* On mobile the language toggle drops off the bar — a separate circle next to the pill */}
       <LanguageToggle compact className="bottom-nav__lang-circle" />
       <ul className="bottom-nav__menu">
         <li><a href="#offer"

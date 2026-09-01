@@ -16,7 +16,7 @@ export default function Hero() {
   useEffect(() => {
     const t1 = setTimeout(() => setShowSecond(true), 450);
     const t2 = setTimeout(() => setShowButtons(true), 1200);
-    // Podkreślenie rysuje się dopiero, gdy cała treść hero jest już widoczna
+    // The underline draws only once all hero content is already visible
     const t3 = setTimeout(() => setDrawUnderline(true), 1500);
     return () => {
       clearTimeout(t1);
@@ -37,8 +37,8 @@ export default function Hero() {
       <div className="hero-content-wrapper">
         <div className="hero-title-container hero-title-container--left">
           <p className="hero-kicker">{t('hero.kicker')}</p>
-          {/* aria-label: czytniki dostają pełny tekst od razu, animacja liter jest czysto wizualna.
-              Ostatnia linia (np. "szyte pod Ciebie") podkreślona w kolorze morskim */}
+          {/* aria-label: screen readers get the full text at once, the letter animation is purely visual.
+              Last line (e.g. "szyte pod Ciebie") underlined in teal */}
           <h1
             className="hero-title hero-title--left"
             aria-label={titleLines.join(' ')}

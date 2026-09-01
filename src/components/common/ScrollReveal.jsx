@@ -4,8 +4,8 @@ import './ScrollReveal.css';
 
 const ScrollReveal = ({
   children,
-  // Tag semantyczny wrappera — domyślnie neutralny div; nagłówki (h2/h3)
-  // przekazywać tylko tam, gdzie tekst faktycznie pełni rolę nagłówka
+  // Semantic wrapper tag — a neutral div by default; pass headings (h2/h3)
+  // only where the text actually acts as a heading
   as: Tag = 'div',
   enableBlur = true,
   baseOpacity = 0.1,
@@ -13,10 +13,10 @@ const ScrollReveal = ({
   blurStrength = 4,
   containerClassName = '',
   textClassName = '',
-  // Offset (px od góry viewportu), przy którym reveal jest w 100% ukończony.
-  // Domyślnie null = oryginalne zachowanie (koniec, gdy element opuszcza viewport)
+  // Offset (px from the top of the viewport) at which the reveal is 100% complete.
+  // Default null = original behavior (ends when the element leaves the viewport)
   completeAt = null,
-  // Mnożnik tempa reveal — mniejsza wartość = słowa pojawiają się przez dłuższy
+  // Reveal pace multiplier — a smaller value = words appear over a longer
   // odcinek scrolla (3 = dotychczasowe zachowanie)
   speed = 3,
   // rotationEnd = 'bottom bottom', // TODO: Implement custom rotation end
@@ -42,9 +42,9 @@ const ScrollReveal = ({
 
     const wordElements = el.querySelectorAll('.word');
 
-    // Opóźnienie między słowami skalowane tak, aby OSTATNIE słowo osiągnęło
-    // pełną widoczność zanim scrollProgress dojdzie do 1 — przy długim tekście
-    // i niskim speed stały krok 0.01 zostawiał końcowe słowa rozmazane
+    // Delay between words scaled so the LAST word reaches
+    // full visibility before scrollProgress reaches 1 — with long text
+    // and low speed a fixed 0.01 step left the trailing words blurred
     const maxTotalDelay = Math.max(0, 1 - 1 / speed) * 0.9;
     const staggerStep = wordElements.length > 1
       ? Math.min(0.01, maxTotalDelay / (wordElements.length - 1))
@@ -73,14 +73,14 @@ const ScrollReveal = ({
         word.style.opacity = opacity;
 
         if (enableBlur) {
-          // Blur znika nieco szybciej niż rośnie opacity (proporcja 4:3 jak w oryginale)
+          // Blur clears slightly faster than opacity grows (4:3 ratio, as in the original)
           const blur = blurStrength * (1 - Math.min(1, wordProgress * speed * (4 / 3)));
           word.style.filter = `blur(${blur}px)`;
         }
       });
     };
 
-    // rAF-throttle: max jeden update na klatkę zamiast na każde zdarzenie scroll
+    // rAF-throttle: at most one update per frame instead of per scroll event
     let ticking = false;
     const handleScroll = () => {
       if (ticking) return;

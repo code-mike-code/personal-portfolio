@@ -40,12 +40,12 @@ const items = [
 
 export default function WorkDifferent() {
   const { t } = useTranslation();
-  // Teksty (title/tagline/description) per pozycja — z i18n, równolegle do items
+  // Texts (title/tagline/description) per item — from i18n, parallel to items
   const itemTexts = t('work.different.items', { returnObjects: true });
   const containerRef = useRef(null);
   const rowsRef = useRef([]);
 
-  // Animacje sprzężone ze scrollem (scrub), jak reszta sekcji
+  // Animations tied to scroll (scrub), like the rest of the section
   useLayoutEffect(() => {
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return undefined;
 

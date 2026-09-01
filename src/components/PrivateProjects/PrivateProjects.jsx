@@ -15,7 +15,7 @@ import './PrivateProjects.css';
 
 gsap.registerPlugin(ScrollTrigger);
 
-// Zapobiega skokom animacji na mobile gdy chowa się pasek adresu
+// Prevents animation jumps on mobile when the address bar hides
 ScrollTrigger.config({ ignoreMobileResize: true });
 
 export default function PrivateProjects({ limit }) {
@@ -23,12 +23,12 @@ export default function PrivateProjects({ limit }) {
   const lenisRef = useRef(null);
   const [expandedProject, setExpandedProject] = useState(null);
 
-  // Na home pokazujemy skrót (3 realizacje) + link do pełnej listy;
-  // pełna lista żyje na /realizacje
+  // On home we show a teaser (3 projects) + a link to the full list;
+  // the full list lives at /realizacje
   const shownProjects =
     typeof limit === 'number' ? privateProjects.slice(0, limit) : privateProjects;
 
-  // Inicjalizacja Lenis (Smooth Scroll)
+  // Initialize Lenis (Smooth Scroll)
   useLayoutEffect(() => {
     const lenis = new Lenis();
     lenisRef.current = lenis;
@@ -49,7 +49,7 @@ export default function PrivateProjects({ limit }) {
     };
   }, []);
 
-  // Zatrzymywanie Lenis gdy modal jest otwarty, aby umożliwić przewijanie jego zawartości
+  // Pause Lenis while the modal is open so its content can scroll
   useEffect(() => {
     if (expandedProject) {
       lenisRef.current?.stop();
@@ -60,8 +60,8 @@ export default function PrivateProjects({ limit }) {
 
   return (
     <section id="private-projects" className="private-projects-section">
-      {/* Najpierw wartość (co wyróżnia), potem jednostka realizacji:
-          nagłówek "Każdy projekt..." + opis zostają RAZEM z listą projektów */}
+      {/* First the value (what sets it apart), then the project proof:
+          the "Every project..." heading + description stay TOGETHER with the project list */}
       <WorkDifferent />
 
       <span className="section-divider-dot section-divider-dot--coral" aria-hidden="true"></span>
@@ -81,7 +81,7 @@ export default function PrivateProjects({ limit }) {
         </div>
       )}
 
-      {/* Domknięcie */}
+      {/* Closure */}
       <div className="section-closure">
         <ScrollReveal
           baseOpacity={0}
@@ -103,9 +103,9 @@ export default function PrivateProjects({ limit }) {
         >{t('work.closure.line2')}
         </ScrollReveal>
 
-        {/* completeAt: pełny reveal zanim heading dojedzie do góry —
-            24px zapasu + wysokość dwóch nagłówków nad tekstem (~264px).
-            speed: wolniejsze tempo, żeby efekt pojawiania był widoczny */}
+        {/* completeAt: full reveal before the heading reaches the top —
+            24px of slack + the height of the two headings above the text (~264px).
+            speed: slower pace so the reveal effect is visible */}
         <ScrollReveal
           baseOpacity={0}
           enableBlur={true}
@@ -118,7 +118,7 @@ export default function PrivateProjects({ limit }) {
         </ScrollReveal>
       </div>
 
-      {/* Project Modal - Popover dla wybranego projektu */}
+      {/* Project Modal - Popover for the selected project */}
       <ProjectModal
         isOpen={expandedProject !== null}
         project={expandedProject}

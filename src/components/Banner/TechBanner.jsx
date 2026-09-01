@@ -13,14 +13,14 @@ const TechBanner = () => {
     const banner = bannerRef.current;
     if (!carousel || !banner) return;
 
-    // Obliczamy szerokość połowy zawartości (jednego zestawu ikon)
+    // Compute the width of half the content (one set of icons)
     const loopWidth = carousel.scrollWidth / 2;
 
-    // Ustawiamy stan początkowy na piksele (x), a nie procenty, aby uniknąć konfliktu z dragiem
+    // Set the initial state in pixels (x), not percentages, to avoid conflict with the drag
     gsap.set(carousel, { x: 0, xPercent: 0 });
 
     const tween = gsap.to(carousel, {
-      x: -loopWidth, // Animujemy do ujemnej wartości szerokości pętli w pikselach
+      x: -loopWidth, // Animate to the negative loop width in pixels
       duration: 50, // Czas trwania jednego cyklu
       ease: 'none',
       repeat: -1,
@@ -33,11 +33,11 @@ const TechBanner = () => {
     const onDragStart = (e) => {
       isDragging = true;
       banner.classList.add('is-dragging');
-      // e.preventDefault(); // Zakomentowane, aby nie blokować scrollowania strony na mobile, jeśli gest jest pionowy
+      // e.preventDefault(); // Commented out so it does not block page scrolling on mobile when the gesture is vertical
       const x = e.type.includes('touch') ? e.touches[0].clientX : e.clientX;
       startX = x;
       startX_tween = gsap.getProperty(carousel, 'x');
-      // Animacja jest już pauzowana przez najechanie myszą (mouseenter), ale dla touch musimy zadbać o pauzę
+      // The animation is already paused on mouseenter, but for touch we must ensure the pause
       tween.pause();
     };
 
@@ -53,20 +53,20 @@ const TechBanner = () => {
       isDragging = false;
       banner.classList.remove('is-dragging');
       
-      // Po zakończeniu przeciągania, synchronizujemy postęp animacji
+      // After the drag ends, sync the animation progress
       const currentX = gsap.getProperty(carousel, 'x');
       
-      // Obliczamy progress (0 do 1) na podstawie przesunięcia w pikselach
-      // Ponieważ ruch jest w lewo (ujemny x), dzielimy -currentX przez loopWidth
+      // Compute progress (0 to 1) from the pixel offset
+      // Since motion is leftward (negative x), we divide -currentX by loopWidth
       let progress = (-currentX / loopWidth) % 1;
 
-      // Obsługa przypadku, gdy użytkownik przeciągnął w prawo (dodatni x)
+      // Handle the case where the user dragged right (positive x)
       if (progress < 0) {
         progress += 1;
       }
       
-      // Aktualizujemy postęp tweenera i wznawiamy. 
-      // Ponieważ tween operuje teraz na 'x' (pikselach), automatycznie nadpisze pozycję z draga, zachowując ciągłość.
+      // Update the tween progress and resume. 
+      // Since the tween now operates on 'x' (pixels), it automatically overrides the drag position, keeping continuity.
       tween.progress(progress).resume();
     };
 

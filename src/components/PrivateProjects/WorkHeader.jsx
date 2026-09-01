@@ -15,7 +15,7 @@ export default function WorkHeader() {
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return undefined;
 
     const ctx = gsap.context(() => {
-      // Tytuł zmniejsza się wędrując w górę — od 60% wysokości okna do góry
+      // The title shrinks as it travels up — from 60% of the window height to the top
       gsap.to(titleRef.current, {
         scale: 0.55,
         ease: 'none',
@@ -28,10 +28,10 @@ export default function WorkHeader() {
         },
       });
 
-      // Nagłówek z opisem znikają dopiero, gdy karta media dojeżdża do środka
-      // — fade zaczyna się 25vh po starcie pinu i kończy wraz z końcem wzrostu.
-      // Element zamiast selektora: gsap.context scope'uje selektory do headerRef,
-      // a '.work-showcase' leży poza nim (warning "not found" w konsoli)
+      // The heading and description fade out only as the media card reaches the center
+      // — the fade starts 25vh after the pin begins and ends when the growth ends.
+      // Element instead of a selector: gsap.context scopes selectors to headerRef,
+      // while '.work-showcase' lies outside it (a "not found" console warning)
       gsap.to(headerRef.current, {
         autoAlpha: 0,
         ease: 'none',

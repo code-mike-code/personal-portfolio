@@ -4,7 +4,7 @@ import './Contact.css';
 import '../Hero/Hero.css';
 import AnimatedHeadlinePart from '../common/AnimatedHeadlinePart';
 
-// Endpoint po stronie hostingu (hostido/PHP) — mail idzie bezpośrednio na skrzynkę
+// Server-side endpoint (hostido/PHP) — mail goes straight to the inbox
 const CONTACT_ENDPOINT = '/contact.php';
 
 export default function Contact() {
@@ -42,8 +42,8 @@ export default function Contact() {
     setSending(true);
     setStatus(null);
 
-    // Honeypot: pole niewidoczne dla ludzi — wypełnione tylko przez boty.
-    // Cichy "sukces" nie zdradza botowi, że został odfiltrowany.
+    // Honeypot: field invisible to humans — filled only by bots.
+    // A silent "success" does not reveal to the bot that it was filtered out.
     if (formRef.current.elements.website?.value) {
       setStatus({ ok: true, message: t('contact.form.success') });
       formRef.current.reset();
@@ -125,7 +125,7 @@ export default function Contact() {
             </select>
             <label htmlFor="message" className="sr-only">{t('contact.form.labelMessage')}</label>
             <textarea name="message" id="message" placeholder={t('contact.form.message')} required />
-            {/* Honeypot antyspamowy — ukryty przed ludźmi i czytnikami ekranu */}
+            {/* Anti-spam honeypot — hidden from humans and screen readers */}
             <input
               type="text"
               name="website"

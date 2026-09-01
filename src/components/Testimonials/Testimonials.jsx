@@ -3,11 +3,11 @@ import { useTranslation } from 'react-i18next';
 import './Testimonials.css';
 
 /**
- * Sekcja opinii klientów.
+ * Client testimonials section.
  *
- * UWAGA (integralność): cytaty są przypisane do imiennych, realnych osób.
- * Przed publicznym uruchomieniem strony KAŻDA osoba musi zatwierdzić swój
- * cytat (wymóg prawny — UOKiK / dyrektywa omnibus: opinie tylko za zgodą).
+ * NOTE (integrity): quotes are attributed to named, real people.
+ * Before the site goes public EACH person must approve their
+ * quote (legal requirement — UOKiK / omnibus directive: reviews only with consent).
  * Treści żyją w src/i18n/locales/*.json pod kluczem `testimonials`.
  */
 export default function Testimonials() {

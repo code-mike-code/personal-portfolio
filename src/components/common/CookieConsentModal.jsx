@@ -11,10 +11,10 @@ export function CookieConsentModal({ onAccept, onDecline }) {
   const { t } = useTranslation();
   const [isOpen, setIsOpen] = useState(() => {
     const stored = window.localStorage.getItem(COOKIE_CONSENT_KEY);
-    return !stored; // true jeśli brak zgody (nie ma stored), false jeśli jest zgoda
+    return !stored; // true if no consent (nothing stored), false if consent exists
   });
   
-  // RODO: zgoda nie może być domyślnie zaznaczona — start od "decline"
+  // GDPR: consent must not be pre-checked — start from "decline"
   const [isAccepted, setIsAccepted] = useState(false);
   const modalRef = useRef(null);
 

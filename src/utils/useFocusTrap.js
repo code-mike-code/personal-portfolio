@@ -3,10 +3,10 @@ import { useEffect } from 'react';
 const FOCUSABLE_SELECTOR =
   'a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])';
 
-// Pułapka fokusa dla modali (WCAG 2.4.3):
-// przy otwarciu zapamiętuje aktywny element i fokusuje pierwszy fokusowalny
-// w kontenerze, Tab/Shift+Tab zawija się wewnątrz, przy zamknięciu
-// przywraca fokus tam, skąd użytkownik przyszedł.
+// Focus trap for modals (WCAG 2.4.3):
+// on open it stores the active element and focuses the first focusable one
+// in the container, Tab/Shift+Tab wraps inside, and on close it
+// restores focus to where the user came from.
 export default function useFocusTrap(containerRef, isOpen) {
   useEffect(() => {
     if (!isOpen) return undefined;
