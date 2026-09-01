@@ -1,7 +1,11 @@
 // Google Analytics 4 — loaded only after the user's consent (cookie consent).
 // The Measurement ID comes from an environment variable; no ID = no GA (dev/preview).
 
-export const GA_MEASUREMENT_ID = process.env.REACT_APP_GA_MEASUREMENT_ID;
+const RAW_GA_ID = process.env.REACT_APP_GA_MEASUREMENT_ID;
+// Treat the .env placeholder as "not configured" so a template value never
+// initializes GA with an invalid stream.
+export const GA_MEASUREMENT_ID =
+  RAW_GA_ID && RAW_GA_ID !== 'G-XXXXXXXXXX' ? RAW_GA_ID : undefined;
 
 let initialized = false;
 
