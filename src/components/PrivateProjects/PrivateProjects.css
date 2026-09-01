@@ -19,7 +19,7 @@
   }
 }
 
-/* Domknięcie sekcji — odsunięte od work-different, spójne odstępy */
+/* Section closure — spaced from work-different, consistent gaps */
 .section-closure {
   position: relative;
   display: flex;
@@ -30,7 +30,7 @@
   padding: clamp(4rem, 10vh, 8rem) 1.5rem;
 }
 
-/* Podświetlenie za nagłówkiem — te same kolory co blob w work-header */
+/* Highlight behind the heading — same colors as the blob in work-header */
 .section-closure::before {
   content: '';
   position: absolute;
@@ -78,7 +78,7 @@
   margin: 2.5rem auto 0;
 }
 
-/* Style Lenis (wymagane dla płynnego scrolla) */
+/* Lenis styles (required for smooth scroll) */
 html.lenis,
 html.lenis body {
   height: auto;
@@ -100,8 +100,8 @@ html.lenis body {
   pointer-events: none;
 }
 
-/* Link do pełnej listy realizacji (home pokazuje skrót 3 projektów).
-   Wizualia przycisku pochodzą z komponentu Button — tu tylko centrowanie. */
+/* Link to the full project list (home shows a teaser of 3 projects).
+   Button visuals come from the Button component — centering only here. */
 .work-view-all {
   display: flex;
   justify-content: center;

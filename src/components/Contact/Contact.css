@@ -33,7 +33,7 @@
   margin: 0;
 }
 
-/* Ikony social — w kolorze tekstu, na hover oryginalny kolor marki */
+/* Social icons — in the text color, on hover the original brand color */
 .contact-socials {
   display: flex;
   gap: 1.25rem;
@@ -208,7 +208,7 @@
   max-width: 150px;
   text-align: center;
   color: #0f5132;                   /* tekst zielony */
-  background: #d1e7dd;              /* jasne tło */
+  background: #d1e7dd;              /* light background */
   border: 1px solid #badbcc;
   padding: 0.5rem 0.75rem;
   border-radius: 6px;
@@ -221,7 +221,7 @@
   max-width: 200px;
   text-align: center;
   color: #842029;                   /* tekst czerwony */
-  background: #f8d7da;              /* jasne różowe tło */
+  background: #f8d7da;              /* light pink background */
   border: 1px solid #f5c2c7;
   padding: 0.5rem 0.75rem;
   border-radius: 6px;
@@ -232,24 +232,24 @@
 
 @media (max-width: 900px) {
   section.contact-section {
-    /* Było sztywne height:80vh + justify-content:flex-end (z global.css) —
-       na iPhone dolny pasek Safari wpychał treść, a footer nachodził na
-       przycisk wysyłania. Teraz wysokość z treści, min. pełny WIDOCZNY ekran
-       (svh), zawartość od góry; footer odsunięty marginesem */
+    /* It used to be a fixed height:80vh + justify-content:flex-end (from global.css) —
+       on iPhone the bottom Safari bar pushed content, and the footer overlapped
+       the submit button. Now height comes from content, min. the full VISIBLE screen
+       (svh), content from the top; the footer pushed away with a margin */
     height: auto;
     min-height: 100svh;
-    /* selektor section.contact-section (wyższa specyficzność) bije flex-end
-       z global.css — inaczej formularz był przyklejany do dołu sekcji */
+    /* the section.contact-section selector (higher specificity) beats flex-end
+       from global.css — otherwise the form was stuck to the bottom of the section */
     justify-content: flex-start;
     width: 100vw;
     box-sizing: border-box;
     background: transparent;
-    /* footer odsunięty od sekcji kontakt, żeby (z dolnym paskiem Safari)
-       nie nachodził na przycisk wysyłania */
+    /* the footer pushed away from the contact section so that (with the bottom Safari bar)
+       it does not overlap the submit button */
     margin-bottom: 6rem;
   }
   .contact-container {
-    /* height z treści — bazowe 90svh (desktop) sztywno rozpychało i wpychało
+    /* height from content — the base 90svh (desktop) rigidly stretched and pushed
        submit pod pasek/footer */
     height: auto;
     flex-direction: column;
@@ -286,7 +286,7 @@
     min-height: 70px;
   }
 }
-/* Honeypot antyspamowy — poza ekranem, niedostępny dla ludzi */
+/* Anti-spam honeypot — off-screen, inaccessible to humans */
 .contact-hp {
   position: absolute;
   left: -9999px;

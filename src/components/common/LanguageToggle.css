@@ -20,7 +20,7 @@
 
 .lang-toggle__option--active {
   opacity: 1;
-  /* Ciemniejszy koral — tekst na ecru: var(--color-coral) dawał 3.09:1 (< WCAG AA 4.5) */
+  /* Darker coral — text on ecru: var(--color-coral) gave 3.09:1 (< WCAG AA 4.5) */
   color: var(--color-coral-ink);
   font-weight: 700;
 }

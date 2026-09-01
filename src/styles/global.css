@@ -15,9 +15,9 @@ body {
   font-family: 'Inter', sans-serif;
   color: var(--color-ink);
   position: relative;
-  /* clip (nie hidden): ucina poziomy overflow animacji wjazdowych
+  /* clip (not hidden): trims horizontal overflow of entry animations
      (np. panel info work-showcase startuje z x:+12vw) bez tworzenia
-     scroll containera — pinowanie ScrollTriggera działa bez zmian */
+     scroll container — ScrollTrigger pinning works unchanged */
   overflow-x: clip;
 }
 
@@ -77,7 +77,7 @@ body.hide-header-grid::after {
   transition: opacity 0.3s;
 }
 
-/* Pozioma linia gridu (z-index 10000) nie może ciąć otwartego menu
+/* The horizontal grid line (z-index 10000) must not cut across the open menu
    mobilnego — no-scroll ustawia tylko Header przy otwartym menu */
 body.no-scroll::after {
   opacity: 0;
@@ -108,8 +108,8 @@ footer {
 } */
 
 section {
-  /* svh = mały (gwarantowanie widoczny) viewport — na mobile treść nie chowa
-     się pod paskiem przeglądarki; na desktopie svh == vh */
+  /* svh = small (guaranteed-visible) viewport — on mobile content does not hide
+     under the browser bar; on desktop svh == vh */
   min-height: 100svh;
   width: 100vw;
   box-sizing: border-box;
@@ -130,7 +130,7 @@ section {
 
 body.no-scroll {
   /* position:fixed = jedyny pewny scroll-lock na iOS; top ustawia
-     Header.jsx (-scrollY), żeby tło zostało w miejscu */
+     Header.jsx (-scrollY), so the background stays in place */
   overflow: hidden;
   position: fixed;
   width: 100%;
@@ -144,15 +144,15 @@ body.no-scroll {
     box-shadow: none;
   }
 
-  /* Mniejsze odstępy między sekcjami — wysokość z treści, nie z viewportu
-     (sekcje pełnoekranowe: hero, github i contact mają własne min-height) */
+  /* Smaller gaps between sections — height from content, not the viewport
+     (full-screen sections: hero, github and contact have their own min-height) */
   section {
     min-height: auto;
   }
 }
 
-/* Kropka-separator między sekcjami — widoczna tylko na mobile,
-   kolory naprzemiennie teal / coral (wzór: .about-interests-dot) */
+/* Dot separator between sections — visible on mobile only,
+   colors alternating teal / coral (pattern: .about-interests-dot) */
 .section-divider-dot {
   display: none;
 }
@@ -163,7 +163,7 @@ body.no-scroll {
     width: 10px;
     height: 10px;
     border-radius: 50%;
-    /* Środek dokładnie na mobilnej linii gridu (50vw), jak .about-interests-dot */
+    /* Center exactly on the mobile grid line (50vw), like .about-interests-dot */
     margin: 1.5rem 0 1.5rem calc(50vw - 5px);
   }
 

@@ -59,7 +59,7 @@
   color: #e5e5e5;
 }
 
-/* Slider-pil jak w iOS, trochę większy */
+/* Slider pill like iOS, a bit larger */
 .ccm-toggle {
   position: relative;
   width: 80px;
@@ -95,13 +95,13 @@
   transition: transform 0.22s ease, background 0.22s ease;
 }
 
-/* Gdy Accept (biały background) – pil przesuwa się w prawo i jest czarny */
+/* When Accept (white background) – the pill moves right and turns black */
 .ccm-toggle-accept .ccm-toggle-pill {
   transform: translateX(44px);
   background: #000000;
 }
 
-/* Gdy Decline (czarny background) – pil zostaje po lewej, biały */
+/* When Decline (black background) – the pill stays left, white */
 .ccm-toggle-decline .ccm-toggle-pill {
   transform: translateX(0);
   background: #ffffff;

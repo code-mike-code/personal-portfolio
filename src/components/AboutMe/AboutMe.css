@@ -5,12 +5,12 @@
   width: 100%;
   padding: clamp(4rem, 10vh, 8rem) 0;
   gap: clamp(4rem, 10vh, 8rem);
-  /* Dekoracyjne kółka wystają poza zdjęcie (right/left ujemne) — na wąskim
-     ekranie przekraczały krawędź viewportu i rozszerzały go (poziomy suwak) */
+  /* Decorative circles extend beyond the photo (negative right/left) — on a narrow
+     screen they crossed the viewport edge and widened it (horizontal scrollbar) */
   overflow-x: clip;
 }
 
-/* --- Nagłówek --- */
+/* --- Heading --- */
 
 .about-header {
   position: relative;
@@ -20,7 +20,7 @@
   text-align: center;
   min-height: 55vh;
   padding: 2rem 1.5rem;
-  /* nowrap na tytule: bezpiecznik na wypadek fontu szerszego niż estymacja */
+  /* nowrap on the title: a safeguard in case the font is wider than estimated */
   overflow-x: clip;
 }
 
@@ -42,8 +42,8 @@
 .about-header-title {
   position: relative;
   z-index: 1;
-  /* min(): na wąskich ekranach 7.4vw, żeby dłuższa linia PL
-     („Historia, która stoi za") nie łamała się — heading ma mieć 2 linie */
+  /* min(): 7.4vw on narrow screens so the longer PL line
+     („Historia, która stoi za") does not wrap — the heading should be 2 lines */
   font-size: min(var(--fs-section-title), 7.4vw);
   font-weight: 600;
   letter-spacing: -0.02em;
@@ -53,10 +53,10 @@
   white-space: nowrap;
 }
 
-/* --- Intro: zdjęcie + bio --- */
+/* --- Intro: photo + bio --- */
 
-/* Pełna szerokość, granica kolumn = 2. linia gridu strony (50vw):
-   zdjęcie w lewej połowie, bio w prawej */
+/* Full width, the column boundary = the 2nd page grid line (50vw):
+   photo in the left half, bio on the right */
 .about-intro {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -81,7 +81,7 @@
   border-radius: 24px;
 }
 
-/* Kształty dekoracyjne w palecie koral + morski */
+/* Decorative shapes in the coral + teal palette */
 .about-shape-circle {
   position: absolute;
   top: -12%;
@@ -104,7 +104,7 @@
   z-index: 0;
 }
 
-/* Odsunięcie tekstu od linii gridu 50vw */
+/* Offset the text from the 50vw grid line */
 .about-bio {
   padding-left: 3vw;
   padding-right: 2vw;
@@ -137,8 +137,8 @@
   margin: 0 0 2rem 0;
 }
 
-/* Statsy wyśrodkowane w 3. kolumnie gridu strony (50–75vw):
-   margin-left znosi padding .about-bio, blok 25vw zaczyna się na linii 50vw */
+/* Stats centered in the 3rd page grid column (50–75vw):
+   margin-left cancels .about-bio padding, the 25vw block starts at the 50vw line */
 .about-stats {
   display: flex;
   justify-content: center;
@@ -166,17 +166,17 @@
 }
 
 /* --- Personal interests ---
-   Nagłówek wyśrodkowany na środkowej linii gridu (50vw),
+   Heading centered on the middle grid line (50vw),
    lista w drugiej kolumnie gridu strony (25–50vw) */
 
 .about-interests {
   width: 100%;
   padding: 0;
-  /* Dodatkowy oddech ponad gap sekcji — wyraźniejsze odcięcie od bio/statów */
+  /* Extra breathing room above the section gap — a clearer separation from bio/stats */
   margin-top: clamp(1.5rem, 4vh, 3rem);
 }
 
-/* Nagłówek z kropką wyśrodkowany na pierwszej linii gridu (25vw) */
+/* Heading with a dot centered on the first grid line (25vw) */
 .about-interests-dot {
   display: block;
   width: 10px;
@@ -204,7 +204,7 @@
   list-style: none;
   margin: 0 0 0 25vw;
   padding: 0 2vw;
-  /* max-content: itemy z nowrap nie są ucinane, lista startuje na linii 25vw */
+  /* max-content: nowrap items are not clipped, the list starts at the 25vw line */
   width: max-content;
   min-width: min(25vw, 280px);
   display: flex;
@@ -219,7 +219,7 @@
   font-size: 1.05rem;
   line-height: 1.5;
   color: #4a4738;
-  /* Punkt listy nie łamie tekstu do nowej linii */
+  /* The list bullet does not wrap text to a new line */
   white-space: nowrap;
 }
 
@@ -282,7 +282,7 @@
   transition: opacity 0.35s ease, transform 0.35s ease;
 }
 
-/* Hover: wyprostowanie + lekkie powiększenie + podpis */
+/* Hover: straighten + slight scale-up + caption */
 .about-gallery-item:hover,
 .about-gallery-item:focus-within {
   transform: rotate(0deg) scale(1.04);
@@ -325,8 +325,8 @@
     padding-right: 0;
   }
 
-  /* Staty: każda liczba w swojej kolumnie gridu strony (linia na 50vw),
-     wyśrodkowana w obrębie swojej połowy */
+  /* Stats: each number in its own page grid column (line at 50vw),
+     centered within its own half */
   .about-stats {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -341,7 +341,7 @@
     text-align: center;
   }
 
-  /* Zdjęcie i bio wyśrodkowane na linii gridu (50vw); staty bez zmian */
+  /* Photo and bio centered on the grid line (50vw); stats unchanged */
   .about-photo-wrap {
     justify-self: center;
   }
@@ -372,14 +372,14 @@
     padding: 0 1.25rem;
   }
 
-  /* Wąski ekran: nowrap uciąłby dłuższe pozycje */
+  /* Narrow screen: nowrap would clip longer items */
   .about-interests-list li {
     white-space: normal;
   }
 
-  /* column-count (masonry) balansował po wysokości — 2 wysokie zdjęcia w
-     prawej kolumnie równały wysokość 4 niższych po lewej (rozkład 4/2, część
-     wypadała z kadru). Grid 2-kolumnowy = deterministycznie 3 lewo / 3 prawo,
+  /* column-count (masonry) balanced by height — 2 tall photos in
+     the right column matched the height of 4 shorter ones on the left (4/2 split, some
+     fell out of frame). A 2-column grid = deterministically 3 left / 3 right,
      wszystkie widoczne */
   .about-gallery {
     column-count: initial;
@@ -393,8 +393,8 @@
     margin: 0;
   }
 
-  /* Para w rzędzie ma identyczny rozmiar (aspect-ratio na kafelku + cover na
-     zdjęciu). Rzędy: średni (góra) → mały (środek) → duży (dół) */
+  /* A pair in a row has identical size (aspect-ratio on the tile + cover on
+     the photo). Rows: medium (top) → small (middle) → large (bottom) */
   .about-gallery-item img {
     height: 100%;
     object-fit: cover;
@@ -402,17 +402,17 @@
 
   .about-gallery-item:nth-child(1),
   .about-gallery-item:nth-child(2) {
-    aspect-ratio: 4 / 5; /* średnie */
+    aspect-ratio: 4 / 5; /* medium */
   }
 
   .about-gallery-item:nth-child(3),
   .about-gallery-item:nth-child(4) {
-    aspect-ratio: 1 / 1; /* małe */
+    aspect-ratio: 1 / 1; /* small */
   }
 
   .about-gallery-item:nth-child(5),
   .about-gallery-item:nth-child(6) {
-    aspect-ratio: 2 / 3; /* duże */
+    aspect-ratio: 2 / 3; /* large */
   }
 }
 

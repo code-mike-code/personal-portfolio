@@ -56,7 +56,7 @@
   transform: translate(0.5px, -0.5px) scale(1.03);
 }
 
-/* Domyślnie (desktop) monogram ukryty — widać tekst "O mnie" */
+/* By default (desktop) the monogram is hidden — the "O mnie" text is shown */
 .header__logo-mark {
   display: none;
 }
@@ -74,7 +74,7 @@
   transform: translate(-50%, -50%) scale(0); 
   transform-origin: center center;
   
-  /* Koral z palety strony (var(--color-coral)) — nie czerwień spoza niej */
+  /* Coral from the site palette (var(--color-coral)) — not a red outside it */
   background: radial-gradient(
     circle,
     rgba(217, 106, 85, 0.9) 0%,
@@ -163,7 +163,7 @@
   line-height: 1;
 }
 
-/* Track = okno przycinające; labele rolują się pionowo przy przełączeniu */
+/* Track = clipping window; labels roll vertically on toggle */
 .header__menu-toggle-track {
   display: block;
   height: 1.2em;
@@ -182,11 +182,11 @@
   transform: translateY(-100%);
 }
 
-/* "+" obraca się o 135° i czyta jako "×" — obrót zsynchronizowany
+/* "+" rotates 135° and reads as "×" — rotation synchronized
    z rolowaniem labela */
 .header__menu-toggle-icon {
   display: inline-block;
-  /* Ciemniejszy morski — tekst/glif na ecru: var(--color-teal) dawał 2.91:1 (< WCAG AA 4.5) */
+  /* Darker teal — text/glyph on ecru: var(--color-teal) gave 2.91:1 (< WCAG AA 4.5) */
   color: var(--color-teal-ink);
   font-weight: 700;
   font-size: 1.2em;
@@ -197,38 +197,38 @@
   transform: rotate(135deg);
 }
 
-/* Overlay menu jest w kolorze ecru — logo zostaje ciemne */
+/* The menu overlay is ecru — the logo stays dark */
 .header--menu-open .header__logo a {
   color: var(--color-ink);
   transition-delay: 0.3s;
 }
 
-/* Mobilne menu (fullscreen overlay) — poza media query tylko ukryte */
+/* Mobile menu (fullscreen overlay) — outside the media query just hidden */
 .mobile-menu {
   display: none;
 }
 
 @media (max-width: 900px) {
-  /* Desktopowe menu w rzędzie znika — mobile ma własny overlay */
+  /* The desktop row menu disappears — mobile has its own overlay */
   .header__menu {
     display: none;
   }
 
   .header__menu-toggle {
     display: inline-flex;
-    /* Toggle ("Zamknij ×" ~123px) jest szerszy niż kolumna gridu (25vw);
-       centrowanie wypychało go poza prawą krawędź → poziomy overflow
-       rozszerzał mobilny viewport (suwak, zgubiony fixed BottomNav) */
+    /* The toggle ("Zamknij ×" ~123px) is wider than the grid column (25vw);
+       centering pushed it past the right edge → horizontal overflow
+       widened the mobile viewport (scrollbar, lost fixed BottomNav) */
     justify-self: end;
     margin-right: 1rem;
   }
 
-  /* Przy otwartym menu header przypięty do viewportu — overlay jest fixed,
-     więc logo i toggle nie mogą odjechać z przewijanym dokumentem
+  /* With the menu open the header is pinned to the viewport — the overlay is fixed,
+     so the logo and toggle cannot scroll away with the document
      (iOS ignoruje overflow:hidden na body przy dotyku).
      z-index: header tworzy stacking context (bazowo 2) — overlay z z-index
-     1000 liczy się tylko WEWNĄTRZ niego; bez podbicia BottomNav (100)
-     i pinowane sekcje (np. work-showcase, 5) malują się nad menu */
+     1000 counts only WITHIN it; without a bump BottomNav (100)
+     and pinned sections (e.g. work-showcase, 5) paint over the menu */
   .header--menu-open {
     position: fixed;
     top: 0;
@@ -236,14 +236,14 @@
     z-index: 1000;
   }
 
-  /* Fixed header wypada z przepływu dokumentu — bez kompensacji hero
-     (i cała treść pod headerem) podjeżdża o 80px do góry przy otwieraniu
+  /* The fixed header drops out of document flow — without compensation the hero
+     (and all content below the header) shifts up by 80px when opening
      menu. no-scroll jest na body tylko przy otwartym menu (Header.jsx) */
   body.no-scroll {
     padding-top: 80px;
   }
 
-  /* Fullscreen panel wjeżdżający z prawej — wzór: nagranie w assets */
+  /* Fullscreen panel sliding in from the right — reference: recording in assets */
   .mobile-menu {
     display: flex;
     flex-direction: column;
@@ -262,13 +262,13 @@
     transition:
       transform 0.6s cubic-bezier(0.77, 0, 0.175, 1),
       visibility 0s linear 0.6s;
-    /* Gesty przewijania nie przechodzą przez otwarte menu */
+    /* Scroll gestures do not pass through the open menu */
     touch-action: none;
     overscroll-behavior: contain;
   }
 
-  /* Tealowa krawędź prowadząca — wystaje z lewej, więc widać ją
-     tylko podczas wjazdu; w spoczynku ląduje poza viewportem */
+  /* Teal leading edge — it sticks out on the left, so it is visible
+     only during entry; at rest it lands off-screen */
   .mobile-menu::before {
     content: '';
     position: absolute;
@@ -291,7 +291,7 @@
     padding: 0;
   }
 
-  /* Maska mask-reveal: li przycina, inner wjeżdża od dołu */
+  /* mask-reveal: the li clips, the inner slides in from the bottom */
   .mobile-menu__item {
     overflow: hidden;
   }
@@ -310,8 +310,8 @@
     letter-spacing: -0.03em;
     line-height: 1.2;
     transform: translateY(120%);
-    /* Bez delaya w stanie bazowym — przy zamykaniu pozycje chowają się
-       od razu, gdy panel zjeżdża */
+    /* No delay in the base state — on close the items hide
+       immediately as the panel slides away */
     transition: transform 0.5s cubic-bezier(0.77, 0, 0.175, 1);
   }
 
@@ -332,7 +332,7 @@
     transition-delay: 0.49s;
   }
 
-  /* CTA w menu mobilnym — pojawia się po pozycjach */
+  /* CTA in the mobile menu — appears after the items */
   .mobile-menu__cta {
     opacity: 0;
     transform: translateY(10px);
@@ -343,7 +343,7 @@
     transition-delay: 0.57s;
   }
 
-  /* "O mnie" w headerze nie może zawijać się na dwie linie */
+  /* "O mnie" in the header must not wrap onto two lines */
   .header__logo-button {
     white-space: nowrap;
     font-size: 1.5rem;
@@ -372,7 +372,7 @@
     font-weight: 600;
     letter-spacing: 0;
     line-height: 0;
-    /* morski na ecru — WCAG AA (było var(--color-teal) = 2.91:1) */
+    /* teal on ecru — WCAG AA (was var(--color-teal) = 2.91:1) */
     color: var(--color-teal-ink);
     margin-left: 0.4em;
     vertical-align: 1.6em;
@@ -415,7 +415,7 @@
   }
 
   .mobile-menu__socials-label {
-    /* morski na ecru — WCAG AA (było var(--color-teal) = 2.91:1) */
+    /* teal on ecru — WCAG AA (was var(--color-teal) = 2.91:1) */
     color: var(--color-teal-ink);
     font-size: 0.95rem;
     font-weight: 600;
@@ -474,7 +474,7 @@
   }
 }
 
-/* CTA "Umów rozmowę" w nagłówku (desktop) */
+/* CTA "Umów rozmowę" in the header (desktop) */
 .header__cta-item {
   flex: 0 0 auto;
 }

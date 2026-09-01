@@ -34,7 +34,7 @@
   background-color: #000;
 }
 
-/* Placeholder gdy projekt nie ma jeszcze video */
+/* Placeholder when a project has no video yet */
 .project-modal-media-placeholder {
   width: 100%;
   height: 100%;
@@ -56,8 +56,8 @@
   left: 0;
   width: 100%;
   height: 100%;
-  /* contain: całe wideo widoczne (letterbox na czarnym tle kontenera),
-     cover ucinał boki — proporcje wideo (2:1) ≠ proporcje kontenera */
+  /* contain: the whole video visible (letterbox on the container black background),
+     cover cropped the sides — video aspect (2:1) ≠ container aspect */
   object-fit: contain;
   /* filter: brightness(0.65); */
 }

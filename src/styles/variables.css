@@ -1,20 +1,20 @@
-/* Design tokens — jedno źródło prawdy.
-   variables.css jest importowany globalnie (src/index.js) przed resztą stylów,
-   więc te zmienne :root są dostępne we wszystkich plikach, także CSS Modules. */
+/* Design tokens — single source of truth.
+   variables.css is imported globally (src/index.js) before the rest of the styles,
+   so these :root variables are available in all files, including CSS Modules. */
 :root {
-  /* Paleta kolorów */
-  --color-ecru: #F5F5DC;        /* tło strony */
+  /* Color palette */
+  --color-ecru: #F5F5DC;        /* page background */
   --color-ink: #222222;         /* tekst podstawowy */
   --color-ink-strong: #111111;  /* stopka / mocny akcent */
   --color-grid: #b3ad8e;        /* linie gridu, subtelne obramowania */
-  --color-teal: #2b9dad;        /* morski akcent — tła, kropki (dekoracja) */
-  --color-coral: #d96a55;       /* koralowy akcent — tła, kropki (dekoracja) */
-  --color-teal-ink: #17727d;    /* morski jako TEKST na ecru — WCAG AA (5.07:1) */
-  --color-coral-ink: #b8442f;   /* koral jako TEKST na ecru — WCAG AA (4.86:1) */
+  --color-teal: #2b9dad;        /* teal accent — backgrounds, dots (decoration) */
+  --color-coral: #d96a55;       /* coral accent — backgrounds, dots (decoration) */
+  --color-teal-ink: #17727d;    /* teal as TEXT on ecru — WCAG AA (5.07:1) */
+  --color-coral-ink: #b8442f;   /* coral as TEXT on ecru — WCAG AA (4.86:1) */
   --color-muted: #6b654a;       /* wyciszony tekst (liczniki, tagi, etykiety) — 5.29:1 na ecru */
 
-  /* Fluid typography — wspólna skala dla nagłówków sekcji.
-     Jedna zmienna = identyczny rozmiar we wszystkich sekcjach na każdej szerokości. */
+  /* Fluid typography — a shared scale for section headings.
+     One variable = identical size across all sections at every width. */
   --fs-section-title: clamp(3rem, 8vw, 6.75rem);
   --fs-section-subtitle: clamp(2.4rem, 5.5vw, 4.4rem);
 }

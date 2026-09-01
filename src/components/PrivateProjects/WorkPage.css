@@ -12,7 +12,7 @@
   margin: 0 auto;
 }
 
-/* Nagłówek strony */
+/* Page heading */
 .wp-head {
   max-width: 720px;
   margin: 0 0 clamp(3rem, 7vh, 5rem);
@@ -57,7 +57,7 @@
   align-items: center;
 }
 
-/* Naprzemienny układ: co druga realizacja ma media po prawej */
+/* Alternating layout: every other project has media on the right */
 .wp-row:nth-child(even) .wp-row-media {
   order: 2;
 }
@@ -117,7 +117,7 @@
   background: rgba(17, 17, 17, 0.85);
 }
 
-/* Treść realizacji */
+/* Project content */
 .wp-row-body {
   min-width: 0;
 }
@@ -203,13 +203,13 @@
   background: var(--color-coral);
 }
 
-/* Wizualia z komponentu Button — tu tylko rozmieszczenie */
+/* Button visuals from the Button component — layout only here */
 .wp-live {
   align-self: flex-start;
   margin-top: 1.75rem;
 }
 
-/* Powrót */
+/* Back */
 .wp-back {
   margin-top: clamp(3.5rem, 8vh, 5.5rem);
   display: flex;
@@ -233,7 +233,7 @@
   border-bottom-color: var(--color-ink);
 }
 
-/* Tablet i mniej: układ jednokolumnowy, media zawsze na górze */
+/* Tablet and below: single-column layout, media always on top */
 @media (max-width: 860px) {
   .wp-row {
     grid-template-columns: 1fr;

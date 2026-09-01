@@ -24,7 +24,7 @@
   pointer-events: auto;
 }
 
-/* Otwarte menu mobilne (body.no-scroll ustawia tylko Header) — BottomNav
+/* Open mobile menu (body.no-scroll is set only by Header) — BottomNav
    schowany, nawet gdy scroll listener ustawi --visible */
 body.no-scroll .bottom-nav {
   opacity: 0;
@@ -32,8 +32,8 @@ body.no-scroll .bottom-nav {
   pointer-events: none;
 }
 
-/* Pigułka z linkami — tło i kształt na menu, żeby kółko języka
-   mogło stać obok jako osobny element */
+/* Pill with links — background and shape for the menu, so the language circle
+   can sit beside it as a separate element */
 .bottom-nav__menu {
   flex: 1 1 auto;
   display: flex;
@@ -71,7 +71,7 @@ body.no-scroll .bottom-nav {
   color: var(--color-ink);
 }
 
-/* Okrągły przycisk zmiany języka obok pigułki — tylko na mobile */
+/* Round language switch button next to the pill — mobile only */
 .bottom-nav__lang-circle {
   display: none;
 }
@@ -96,12 +96,12 @@ body.no-scroll .bottom-nav {
     max-width: none;
   }
 
-  /* Toggle języka wypada z paska — chowamy pozycję w menu... */
+  /* The language toggle drops off the bar — we hide the menu item... */
   .bottom-nav__lang-item {
     display: none;
   }
 
-  /* ...i pokazujemy kółko obok pigułki */
+  /* ...and show the circle next to the pill */
   .bottom-nav__lang-circle {
     display: flex;
     align-items: center;
@@ -133,8 +133,8 @@ body.no-scroll .bottom-nav {
   color: var(--color-ecru);
 }
 
-/* Aktywny język na ciemnym pasku menu — jasny koral. Domyślny (ciemny)
-   var(--color-coral-ink) jest pod kontrast na ecru w headerze, ale na czerni menu dawałby
+/* Active language on the dark menu bar — light coral. The default (dark)
+   var(--color-coral-ink) is tuned for contrast on ecru in the header, but on the menu black it would give
    3.9:1; var(--color-coral) na ~czerni = 5.7:1 (WCAG AA). */
 .bottom-nav__menu .lang-toggle__option--active {
   color: var(--color-coral);

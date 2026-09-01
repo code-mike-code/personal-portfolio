@@ -1,4 +1,4 @@
-/* Sekcja pełnej szerokości — kolumny wierszy mapują się na linie gridu strony
+/* Full-width section — the row columns map to the page grid lines
    (25vw / 50vw / 75vw) */
 .work-different {
   width: 100%;
@@ -26,7 +26,7 @@
 }
 
 /* Stany animacji wierszy nadaje GSAP (scrub ze scrollem) — bez CSS transitions.
-   Kolumny: 0–25vw meta, 25–50vw heading, 50–100vw opis (środek na linii 75vw) */
+   Columns: 0–25vw meta, 25–50vw heading, 50–100vw description (center on the 75vw line) */
 .work-different-row {
   display: grid;
   grid-template-columns: 25vw 25vw 1fr;
@@ -77,7 +77,7 @@
   background: radial-gradient(circle at 40% 35%, rgba(217, 106, 85, 0.4), rgba(43, 157, 173, 0.35) 65%, transparent 78%);
 }
 
-/* Kolumna 2: heading z krótkim opisem */
+/* Column 2: heading with a short description */
 .work-different-heading {
   grid-area: heading;
   padding: 0 2vw;
@@ -97,7 +97,7 @@
   margin: 0;
 }
 
-/* Kolumny 3–4: pełny opis z tagami, blok wyśrodkowany na linii 75vw */
+/* Columns 3–4: full description with tags, block centered on the 75vw line */
 .work-different-body {
   grid-area: body;
   justify-self: center;

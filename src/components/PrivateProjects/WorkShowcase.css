@@ -6,8 +6,8 @@
   align-items: center;
   justify-content: center;
   /* Panel info startuje z x:+12vw (animacja wjazdowa) — clip na osi X
-     ucina go na krawędzi sekcji. Sam body::overflow-x:clip nie wystarcza:
-     mobilny viewport i tak rozszerza się do treści (poziomy suwak,
+     clips it at the section edge. body::overflow-x:clip alone is not enough:
+     the mobile viewport widens to content anyway (horizontal scrollbar,
      rozjechany fixed BottomNav) */
   overflow-x: clip;
 }
@@ -29,8 +29,8 @@
   position: relative;
   flex: none;
   /* Proporcje karty = proporcje wideo (1918x962 ≈ 2:1) — object-fit: cover
-     nie ucina wtedy boków. Na niskich viewportach szerokość ogranicza 112vh
-     (wysokość karty ≤ 56vh), na wielkich 1200px (wysokość ≤ 600px) */
+     does not clip the sides then. On short viewports width is limited by 112vh
+     (card height ≤ 56vh), on large ones 1200px (height ≤ 600px) */
   width: min(65vw, 112vh, 1200px);
   aspect-ratio: 2 / 1;
   will-change: transform;
@@ -142,7 +142,7 @@
     visibility 0s;
 }
 
-/* Numer + nagłówek — górny lewy róg panelu */
+/* Number + heading — top-left corner of the panel */
 .work-info-head {
   grid-area: head;
   align-self: start;
@@ -177,7 +177,7 @@
   margin: 0;
 }
 
-/* Opis — bezpośrednio pod przyciskami, ta sama kotwica do 4. kolumny */
+/* Description — directly below the buttons, same anchor to the 4th column */
 .work-project-desc {
   grid-area: desc;
   align-self: start;
@@ -192,17 +192,17 @@
   margin-block: 0;
 }
 
-/* Przyciski i opis wyśrodkowane w 4. kolumnie gridu strony (75vw–100vw).
-   Panel nie zaczyna się na linii 75vw, więc kotwica do prawej krawędzi:
-   szerokość 25vw, margin-right -2vw znosi padding .work-showcase-inner,
-   prawa krawędź elementu = 100vw, zawartość centrowana w środku (87.5vw) */
+/* Buttons and description centered in the 4th page grid column (75vw–100vw).
+   The panel does not start at the 75vw line, so anchor to the right edge:
+   width 25vw, margin-right -2vw cancels .work-showcase-inner padding,
+   the element right edge = 100vw, content centered in the middle (87.5vw) */
 .work-actions {
   grid-area: actions;
   justify-self: end;
   width: 25vw;
   margin-right: -2vw;
   display: flex;
-  /* wrap: na wąskiej kolumnie (tablet) przyciski układają się w pion */
+  /* wrap: on a narrow column (tablet) the buttons stack vertically */
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
@@ -274,8 +274,8 @@
 
 /* --- Mobile / tablet --- */
 
-/* Wspólny układ kolumnowy dla telefonu i tabletu: wideo na górze,
-   panel info pod spodem. Różni się tylko karta wideo:
+/* Shared column layout for phone and tablet: video on top,
+   info panel below. Only the video card differs:
    tablet gra poziome wideo desktopowe (2:1), telefon pionowe (400/866) */
 @media (max-width: 900px) {
   .work-showcase-inner {
@@ -286,8 +286,8 @@
     padding: 1.25rem;
   }
 
-  /* Tablet: karta desktopowa 2:1, na całą szerokość z limitem wysokości
-     (90svh szerokości = 45svh wysokości), żeby zmieściła się z panelem
+  /* Tablet: desktop 2:1 card, full width with a height limit
+     (90svh width = 45svh height), so it fits with the panel
      w pinowanej sekcji 100svh */
   .work-showcase-media {
     flex: none;
@@ -304,8 +304,8 @@
 
   .work-info-panel {
     grid-template-columns: 1fr;
-    /* Rzędy do treści (nie 1fr) — inaczej elastyczne tory rozpychały duże
-       puste przerwy między nr/tytułem, przyciskami i opisem */
+    /* Rows sized to content (not 1fr) — otherwise flexible tracks stretched large
+       empty gaps between the number/title, buttons and description */
     grid-template-rows: auto auto auto;
     grid-template-areas:
       'head'
@@ -323,7 +323,7 @@
     margin-bottom: 0.75rem;
   }
 
-  /* Mobile: layout 1-kolumnowy, kotwica do 4. kolumny nie obowiązuje */
+  /* Mobile: 1-column layout, the 4th-column anchor does not apply */
   .work-project-desc {
     align-self: start;
     justify-self: stretch;
@@ -344,13 +344,13 @@
 }
 
 /* Telefon: pionowe wideo (400x866) — karta w proporcjach telefonu,
-   maksymalnie duża: do 85vw szerokości, ale ograniczona wysokością
-   (24svh szerokości ≈ 52svh wysokości przy proporcjach 400/866) */
+   as large as possible: up to 85vw width, but limited by height
+   (24svh width ≈ 52svh height at a 400/866 aspect) */
 @media (max-width: 600px) {
   .work-showcase-media {
     aspect-ratio: 400 / 866;
-    /* 24svh — wideo możliwie duże; przy panelu info 36svh + padding-bottom 4rem
-       treść nadal mieści się w 100svh (górna krawędź wideo ~+15px, nie ucięta) */
+    /* 24svh — video as large as possible; with the 36svh info panel + padding-bottom 4rem
+       content still fits in 100svh (video top edge ~+15px, not clipped) */
     width: min(85vw, 24svh);
   }
 
@@ -358,21 +358,21 @@
     aspect-ratio: 400 / 866;
   }
 
-  /* Fixed BottomNav (48px + 20px offset) zasłaniał ostatnie linie opisu —
-     rezerwa na dole sekcji. Treść pinowana jest centrowana, więc padding
-     unosi ją nad pasek */
+  /* The fixed BottomNav (48px + 20px offset) covered the last description lines —
+     reserve at the bottom of the section. The pinned content is centered, so padding
+     lifts it above the bar */
   .work-showcase-inner {
     padding-bottom: 4rem;
   }
 
-  /* Panel niższy niż na tablecie (36 zamiast 40svh) — zwalnia pion na wyższą
-     kartę wideo (24svh) bez ucinania jej górnej krawędzi */
+  /* Panel shorter than on tablet (36 instead of 40svh) — frees vertical space for a taller
+     video card (24svh) without clipping its top edge */
   .work-showcase-info {
     height: 36svh;
   }
 
-  /* Ciaśniejsze odstępy pionowe — przy dużym wideo najdłuższy opis (Cor-Dent,
-     5 linii) miał tylko ~3px do BottomNav; zbicie gapów daje ~25px zapasu */
+  /* Tighter vertical spacing — with a large video the longest description (Cor-Dent,
+     5 lines) had only ~3px to BottomNav; tightening gaps gives ~25px of slack */
   .work-showcase-inner {
     gap: 1rem;
   }
@@ -381,8 +381,8 @@
     row-gap: 1rem;
   }
 
-  /* Numer projektu w lewej kolumnie gridu, nazwa w prawej — jeden rząd,
-     rozdzielone środkową linią gridu (50vw). column-gap odsuwa oba od linii */
+  /* Project number in the left grid column, name on the right — one row,
+     separated by the middle grid line (50vw). column-gap pushes both off the line */
   .work-info-head {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -400,7 +400,7 @@
     font-size: clamp(1.5rem, 6vw, 2rem);
   }
 
-  /* Przyciski: równa szerokość, podział dokładnie na środkowej linii gridu */
+  /* Buttons: equal width, split exactly on the middle grid line */
   .work-actions {
     flex-wrap: nowrap;
     justify-content: stretch;

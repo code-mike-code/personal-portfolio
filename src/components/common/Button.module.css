@@ -21,8 +21,8 @@
   max-width: 100%;
 }
 
-/* Treść w jednej linii — tekst + strzałka trzymają się razem, strzałka nie
-   spada do drugiego wiersza i przycisk zachowuje kształt pigułki */
+/* Content on one line — text + arrow stay together, the arrow does not
+   drop to a second row and the button keeps its pill shape */
 .btn > span {
   display: inline-flex;
   align-items: center;
@@ -64,9 +64,9 @@
   height: 100%;
   z-index: -1;
   transition: width 0.6s cubic-bezier(0.4, 2, 0.6, 1);
-  /* ::before wypełnia padding-box (wsunięty o 2px border), więc jego promień
-     musi być mniejszy o szerokość bordera — inaczej łuki wypełnienia nie są
-     koncentryczne z zaokrągleniem bordera (2rem − 2px = wewnętrzny promień) */
+  /* ::before fills the padding-box (inset by the 2px border), so its radius
+     must be smaller by the border width — otherwise the fill arcs are not
+     concentric with the border radius (2rem − 2px = inner radius) */
   border-radius: calc(2rem - 2px);
 }
 
@@ -126,8 +126,8 @@
   transition: width 0.5s cubic-bezier(0.4, 2, 0.6, 1);
 }
 
-/* Mobile: mniejszy padding i font, żeby dłuższe etykiety (np. „Zobacz
-   wszystkie realizacje →") mieściły się w jednej linii i nie rozjeżdżały */
+/* Mobile: smaller padding and font so longer labels (e.g. „Zobacz
+   wszystkie realizacje →") fit on one line and do not break the layout */
 @media (max-width: 480px) {
   .btn {
     padding: 1rem 1.6rem;

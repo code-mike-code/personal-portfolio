@@ -1,8 +1,8 @@
 /* Hero section layout */
 
 .hero-section {
-  /* svh (mały viewport) zamiast vh — na mobile pasek adresu Safari nie chowa
-     już treści pod dolną krawędzią */
+  /* svh (small viewport) instead of vh — on mobile the Safari address bar no longer hides
+     content under the bottom edge */
   min-height: 100svh;
   width: 100vw;
   display: flex;
@@ -55,10 +55,10 @@
   height: 100%;
   padding-top: 0;
   padding-bottom: 0;
-  /* Nagłówek dosunięty do lewej (nie centrowany) — dłuższy tytuł PL
-     nachodził na orbitę po prawej. margin-right: auto przypina kontener
+  /* Heading pushed to the left (not centered) — the longer PL title
+     overlapped the orbit on the right. margin-right: auto pins the container
      do lewej mimo justify-content: center na wrapperze.
-     Margines zamiast transform/position — oba tworzyłyby containing block
+     Margin instead of transform/position — both would create a containing block
      dla absolutnie pozycjonowanej orbity (dziecko tego kontenera) */
   margin-left: 3vw;
   margin-right: auto;
@@ -74,7 +74,7 @@
   height: 100%;
 }
 
-/* Kicker — imię/marka nad głównym nagłówkiem */
+/* Kicker — name/brand above the main heading */
 .hero-kicker {
   margin: 0 0 0.75rem 0;
   font-size: clamp(0.95rem, 1.4vw, 1.15rem);
@@ -85,7 +85,7 @@
 }
 
 .hero-title {
-  /* Duży, przyciągający uwagę — orbita usunięta, więc nagłówek może rosnąć */
+  /* Large, attention-grabbing — the orbit is gone, so the heading can grow */
   font-size: clamp(3rem, 7.5vw, 6.5rem);
   font-weight: 800;
   color: var(--color-ink);
@@ -103,15 +103,15 @@
   margin: 0;
 }
 
-/* Ostatnia linia — "szyte pod Ciebie" — podkreślona morskim paskiem.
-   Litery w AnimatedHeadlinePart są inline-block, więc text-decoration ich nie
-   łapie — podkreślenie rysujemy tłem (działa zawsze). */
+/* Last line — "szyte pod Ciebie" — underlined with a teal bar.
+   Letters in AnimatedHeadlinePart are inline-block, so text-decoration does not
+   catch them — we draw the underline with a background (always works). */
 .hero-title-underline {
   padding-bottom: 0.1em;
   background-image: linear-gradient(var(--color-teal), var(--color-teal));
   background-repeat: no-repeat;
-  /* Podkreślenie rysuje się od lewej do prawej dopiero, gdy cała treść hero
-     jest już widoczna (klasa --drawn dodawana z JS). Start: szerokość 0. */
+  /* The underline draws left to right only once all hero content
+     is already visible (the --drawn class is added from JS). Start: width 0. */
   background-size: 0% 0.08em;
   background-position: left calc(100% - 0.02em);
   transition: background-size 0.7s cubic-bezier(0.4, 0, 0.2, 1);
@@ -128,7 +128,7 @@
   }
 }
 
-/* Subnagłówek — doprecyzowuje dla kogo i jak */
+/* Subheading — clarifies for whom and how */
 .hero-subtitle {
   margin: 1.5rem 0 0 0;
   max-width: 46ch;
@@ -189,14 +189,14 @@
 }
 
 @media (max-width: 900px) {
-  /* Nagłówek u góry, orbita wyśrodkowana pod nim, przyciski na dole */
+  /* Heading at the top, orbit centered below it, buttons at the bottom */
   .hero-content-wrapper {
     flex-direction: column;
     justify-content: flex-start;
     height: auto;
     min-height: 100svh;
-    /* Mniejszy górny padding — treść (nagłówek/orbita/przyciski) wyżej,
-       dalej od dolnego paska przeglądarki. svh w min-height dba o resztę */
+    /* Smaller top padding — content (heading/orbit/buttons) higher,
+       further from the browser bottom bar. svh in min-height handles the rest */
     padding: calc(72px + 1vh) 1rem 4vh 1rem;
   }
 
@@ -223,8 +223,8 @@
   .hero-title {
     align-items: center;
     text-align: center;
-    /* Najdłuższa linia "Nowoczesne strony" musi zmieścić się z marginesami
-       na najwęższych telefonach (360px) — stąd bezpieczny clamp */
+    /* The longest line "Nowoczesne strony" must fit with margins
+       on the narrowest phones (360px) — hence the safe clamp */
     font-size: clamp(1.85rem, 8.5vw, 2.8rem);
   }
 
@@ -239,8 +239,8 @@
   }
 }
 
-/* Krótka wysokość (telefon/tablet w poziomie) — kompaktowy hero, żeby CTA
-   było widoczne bez scrolla */
+/* Short height (phone/tablet landscape) — a compact hero so the CTA
+   is visible without scrolling */
 @media (max-height: 560px) and (orientation: landscape) {
   .hero-content-wrapper {
     min-height: auto;

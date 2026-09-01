@@ -44,8 +44,8 @@ footer {
   text-decoration: underline;
 }
 
-/* Mobile: copyright 1.4rem (22px) zawijał się na dwie duże linie krawędź
-   w krawędź — zmniejszony i z marginesem bocznym */
+/* Mobile: the copyright 1.4rem (22px) wrapped onto two large edge-to-edge
+   lines — reduced and with side margins */
 @media (max-width: 600px) {
   .footer {
     font-size: 1rem;
